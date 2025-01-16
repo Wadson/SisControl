@@ -152,11 +152,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="bdsiscontrolDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>bdsiscontrolDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="BLL\CategoriaBLL.cs" />
     <Compile Include="BLL\CidadeBLL.cs" />
     <Compile Include="BLL\ClienteBLL.cs" />
@@ -183,11 +178,6 @@
     <Compile Include="DALL\SubCategoriaDALL.cs" />
     <Compile Include="DALL\UsuarioDALL.cs" />
     <Compile Include="DALL\VendaDALL.cs" />
-    <Compile Include="moneyDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>moneyDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Utilitario.cs" />
     <Compile Include="View\FrmBaseGeral.cs">
       <SubType>Form</SubType>
@@ -421,28 +411,6 @@
     <EmbeddedResource Include="View\FrmVendas.resx">
       <DependentUpon>FrmVendas.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="bdsiscontrolDataSet.xsc">
-      <DependentUpon>bdsiscontrolDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="bdsiscontrolDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>bdsiscontrolDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="bdsiscontrolDataSet.xss">
-      <DependentUpon>bdsiscontrolDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="moneyDataSet.xsc">
-      <DependentUpon>moneyDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="moneyDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>moneyDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="moneyDataSet.xss">
-      <DependentUpon>moneyDataSet.xsd</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

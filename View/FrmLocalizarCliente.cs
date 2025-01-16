@@ -64,7 +64,7 @@ namespace SisControl.View
         private void FrmLocalizarCliente_FormClosing(object sender, FormClosingEventArgs e)
         {
             ClienteID = Convert.ToInt32(dataGridPesquisar[0, LinhaAtual].Value);            
-            string numeroComZeros = Utilitario.AcrescentarZerosEsquerda(ClienteID, 6);
+            string numeroComZeros = Utilitario.AcrescentarZerosEsquerda(ClienteID, 4);
 
 
 

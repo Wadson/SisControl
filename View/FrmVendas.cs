@@ -9,6 +9,8 @@ using System.Text;
 using System.Windows.Forms;
 using System.Configuration;
 using System.Drawing.Text;
+using System.Linq;
+using SisControl;
 
 
 namespace SisControl.View
@@ -21,7 +23,7 @@ namespace SisControl.View
         private string QueryContaReceber = "SELECT MAX(ContaReceberID) FROM ContaReceber";
 
         private Guid VendaID;        
-        private Guid ItensVendaID;
+        private Guid ItemVendaID;
         private Guid ContaReceberID;
         private Guid ParcelaID;
         private Guid ProdutoID;
@@ -37,10 +39,39 @@ namespace SisControl.View
             //Implementado dia 10/01/2025
             //connectionString = ConfigurationManager.ConnectionStrings["Data Source=NOTEBOOK-DELL\\SQLEXPRESS;Initial Catalog=bdsiscontrol;Integrated Security=True;"].ConnectionString;
             //connectionString = ConfigurationManager.ConnectionStrings["SisControl.Properties.Settings.bdsiscontrolConnectionString"].ConnectionString;
-            PersonalizarDataGridView(dgvItensVenda);
-            PersonalizarDataGridViewParc(dgvParcelas);
+            InicializarDataGridViewItensVenda();
+            PersonalizarDataGridViewParcela(dgvParcelas);
         }
-        public void PersonalizarDataGridView(DataGridView dgv)
+        private void InicializarDataGridViewItensVenda()
+        {
+            DataTable dt = new DataTable();
+
+            // Definir colunas no DataTable apenas uma vez            
+            dt.Columns.Add("ProdutoID", typeof(int));
+            dt.Columns.Add("Quantidade", typeof(int));
+            dt.Columns.Add("ValorProduto", typeof(decimal));
+            dt.Columns.Add("SubTotal", typeof(decimal));
+
+            dgvItensVenda.DataSource = dt;
+
+            // Alinhar e renomear colunas no DataGridView            
+            dgvItensVenda.Columns["ProdutoID"].HeaderText = "ID do Produto";
+            dgvItensVenda.Columns["Quantidade"].HeaderText = "Quantidade";
+            dgvItensVenda.Columns["ValorProduto"].HeaderText = "Valor do Produto";            
+            dgvItensVenda.Columns["SubTotal"].HeaderText = "Subtotal";
+            
+            dgvItensVenda.Columns["Quantidade"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopCenter;
+            dgvItensVenda.Columns["ValorProduto"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopCenter;
+            dgvItensVenda.Columns["SubTotal"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopCenter;
+            dgvItensVenda.Columns["ProdutoID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopCenter;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            InicializarDataGridViewItensVenda();
+        }
+
+        public void PersonalizarDataGridViewParcela(DataGridView dgv)
         {
             // Configuração dos cabeçalhos das colunas
             dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.Navy;
@@ -79,102 +110,52 @@ namespace SisControl.View
 
             // Definir as colunas manualmente
             if (dgv.Columns.Count == 0)
-            {
-                dgv.Columns.Add("ItensVendaID", "ItensVendaID");
-                dgv.Columns.Add("VendaID", "VendaID");
-                dgv.Columns.Add("ProdutoID", "ProdutoID");
-                dgv.Columns.Add("Quantidade", "Quantidade");
-                dgv.Columns.Add("PrecoUnitario", "Valor do Produto");
-                dgv.Columns.Add("SubTotal", "SubTotal");
-
-                dgv.Columns["ItensVendaID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgv.Columns["VendaID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgv.Columns["ProdutoID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgv.Columns["Quantidade"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgv.Columns["PrecoUnitario"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgv.Columns["SubTotal"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            }
-
-            // Ocultar coluna específica se necessário
-            if (dgv.Columns.Contains("ItensVendaID"))
-            {
-                dgv.Columns["ItensVendaID"].Visible = false; // Oculta a coluna "ID"
-            }
-        }
-
-
-
-        public void PersonalizarDataGridViewParc(DataGridView dgv)
-        {
-            // Configuração dos cabeçalhos das colunas
-            dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.Navy;
-            dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Bold);
-            dgv.EnableHeadersVisualStyles = false; // Necessário para aplicar as cores personalizadas no cabeçalho
-
-            // Estilo alternado das linhas
-            dgv.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
-
-            // Alinhamento e fonte das células
-            dgv.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dgv.DefaultCellStyle.Font = new Font("Arial", 10);
-
-            // Ajustar colunas automaticamente
-            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-
-            // Tornar o grid somente leitura
-            dgv.ReadOnly = true;
-
-            // Estilo das bordas das células
-            dgv.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-
-            // Estilo da seleção das células
-            dgv.DefaultCellStyle.SelectionBackColor = Color.DarkTurquoise;
-            dgv.DefaultCellStyle.SelectionForeColor = Color.White;
-
-            dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgv.MultiSelect = false;
-
-            // Esconder a coluna de cabeçalho de linha
-            dgv.RowHeadersVisible = false;
-
-            // Cor do grid
-            dgv.GridColor = Color.Black;
-
-            // Definir as colunas manualmente
-            if (dgv.Columns.Count == 0)
-            {
-                dgv.Columns.Add("ParcelaID", "Parcela ID");
-                dgv.Columns.Add("ValorParcela", "Valor da Parcela");
-                dgv.Columns.Add("NumeroParcela", "Número da Parcela");
-                dgv.Columns.Add("DataVencimento", "Data de Vencimento");
-                dgv.Columns.Add("VendaID", "Venda ID");
-
-                dgv.Columns["ParcelaID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            {                
+                dgv.Columns.Add("ValorParcela", "Preço Unit.");
+                dgv.Columns.Add("NumeroParcela", "Nº Parc");
+                dgv.Columns.Add("DataVencimento", "Vencimento");
+                                
                 dgv.Columns["ValorParcela"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dgv.Columns["NumeroParcela"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgv.Columns["DataVencimento"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgv.Columns["VendaID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            }
+                dgv.Columns["DataVencimento"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;                
+            }           
+        }
 
-            // Ocultar coluna específica se necessário
-            if (dgv.Columns.Contains("ParcelaID"))
+        private void IncluirItens()
+        {
+            try
             {
-                dgv.Columns["ParcelaID"].Visible = false; // Oculta a coluna "ParcelaID"
+                int _ProdutoID = int.Parse(txtProdutoID.Text);
+                int Quantidade = int.Parse(txtQuantidade.Text);
+                decimal ValorProduto = decimal.Parse(txtValorProduto.Text);
+                decimal SubTotal = decimal.Parse(txtSubTotal.Text);
+
+                // Obter a fonte de dados do DataGridView
+                DataTable dt = dgvItensVenda.DataSource as DataTable;
+
+                // Remover a linha dt.Rows.Clear();
+
+                // Adicionar linhas ao DataTable
+                for (var i = 0; i < numeroParcelas; i++)
+                {
+                    dt.Rows.Add(_ProdutoID, Quantidade, ValorProduto, SubTotal);
+                    SomarSubtotal();
+                }
             }
-            if (dgv.Columns.Contains("VendaID"))
+            catch (Exception ex)
             {
-                dgv.Columns["VendaID"].Visible = false; // Oculta a coluna "VendaID"
+                MessageBox.Show("Erro ao inserir os dados no datagridview: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
 
+        
         private void IncluirItensNaGrid()
         {
             try
             {
                 // Inicializa as colunas do DataGridView se ainda não estiverem definidas
-                PersonalizarDataGridView(dgvItensVenda);
+                //PersonalizarDataGridView(dgvItensVenda);
 
                 // Verificações iniciais
                 if (string.IsNullOrWhiteSpace(txtVendaID.Text))
@@ -192,48 +173,36 @@ namespace SisControl.View
                     MessageBox.Show("Por favor, informe o valor do produto.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-
-                // Obter e converter valores
-                if (!Guid.TryParse(txtProdutoID.Text, out ProdutoID))
-                {
-                    MessageBox.Show("ID do produto inválido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                if (!Guid.TryParse(txtVendaID.Text, out VendaID))
-                {
-                    MessageBox.Show("ID da venda inválido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
                 DataTable dt = dgvItensVenda.DataSource as DataTable ?? new DataTable();
-                
-                Guid zeroColumn = ItensVendaID;
-                Guid primeiraColumn = Utilitario.AcrescentarZerosEsquerda(VendaID, 6);
-                Guid segundaColumn = Utilitario.AcrescentarZerosEsquerda(ProdutoID, 6);
-                string terceiraColumn = txtQuantidade.Text;
-                string quartaColumn = txtValorProduto.Text;
-                string quintaColumn = txtSubTotal.Text;
-                //string decimaPriColumn = Utilitario.AcrescentarZerosEsquerda(ContaReceberID, 6);
+
+                // Verifica se as colunas já foram adicionadas ao DataTable
+                if (dt.Columns.Count == 0)
+                {
+                    dt.Columns.Add("ProdutoID");
+                    dt.Columns.Add("Quantidade");
+                    dt.Columns.Add("ValorProduto");
+                    dt.Columns.Add("SubTotal");
+                }
 
                 // Criação e adição da linha
-                string[] row = {
-            zeroColumn.ToString(),
-            primeiraColumn,
-            segundaColumn,
-            terceiraColumn,
-            quartaColumn,
-            quintaColumn
-        };
-                dgvItensVenda.Rows.Add(row);
+                DataRow row = dt.NewRow();
+                row["ProdutoID"] = txtProdutoID.Text;
+                row["Quantidade"] = txtQuantidade.Text;
+                row["ValorProduto"] = txtValorProduto.Text;
+                row["SubTotal"] = txtSubTotal.Text;
+
+                dt.Rows.Add(row);
+
+                // Atualiza o DataGridView
+                dgvItensVenda.DataSource = dt;
 
                 // Atualização dos valores
                 if (decimal.TryParse(txtValorProduto.Text, out decimal valorProduto))
                 {
                     valorTotal = valorProduto;
                 }
-
                 // Limpeza dos campos
-                txtNomeProduto.Clear();               
+                txtNomeProduto.Clear();
                 txtProdutoID.Clear();
                 txtQuantidade.Clear();
                 txtValorProduto.Clear();
@@ -268,15 +237,17 @@ namespace SisControl.View
         }
 
         private void NovoCodigo()
-        {//Traz o último código cadastrado + 1, para novo cadastro
+        {
+            // Gera novos GUIDs para as chaves primárias
             VendaID = Guid.NewGuid();
-            ItensVendaID = Guid.NewGuid();
+            ItemVendaID = Guid.NewGuid();
             ContaReceberID = Guid.NewGuid();
             ParcelaID = Guid.NewGuid();
-
-            string numeroComZeros = Utilitario.AcrescentarZerosEsquerda(VendaID, 6);
-            txtVendaID.Text = numeroComZeros;
+            
+            txtVendaID.Text = VendaID.ToString();
         }
+
+            
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
@@ -325,7 +296,7 @@ namespace SisControl.View
 
         private void btnFinalizar_Click(object sender, EventArgs e)
         {
-            SalvarVenda2();
+            GravarVenda();
         }
         public void ReceberDadosParcelas(DataTable dt)
         {
@@ -333,21 +304,28 @@ namespace SisControl.View
 
             foreach (DataRow row in dt.Rows)
             {
+                // Converte o valor de "DataVencimento" para apenas a data
+                DateTime dataVencimento = Convert.ToDateTime(row["DataVencimento"]).Date;
+
                 dgvParcelas.Rows.Add(
-                    row["ParcelaID"],
                     row["ValorParcela"],
                     row["NumeroParcela"],
-                    row["DataVencimento"],                    
-                    row["VendaID"]
+                    dataVencimento
                 );
             }
-        }
 
-        public void SalvarVenda2()
+            // Configura o formato da célula para mostrar apenas a data
+            foreach (DataGridViewRow dgvRow in dgvParcelas.Rows)
+            {
+                dgvRow.Cells["DataVencimento"].Value = Convert.ToDateTime(dgvRow.Cells["DataVencimento"].Value).ToString("dd/MM/yyyy");
+            }
+        }
+        
+        public void GravarVenda()
         {
             try
             {
-                using (var connection = Conexao.Conex())//using (SqlConnection connection = new SqlConnection(connectionString))
+                using (var connection = Conexao.Conex())
                 {
                     connection.Open();
                     using (SqlTransaction transaction = connection.BeginTransaction())
@@ -363,10 +341,10 @@ namespace SisControl.View
                                 ValorTotal = decimal.Parse(txtValorTotal.Text)
                             };
 
-                            string vendaQuery = @"INSERT INTO Venda (DataVenda, ClienteID, ValorTotal) 
-                                          VALUES (@DataVenda, @ClienteID, @ValorTotal)";
+                            string vendaQuery = @"INSERT INTO Venda (VendaID, DataVenda, ClienteID, ValorTotal) VALUES (@VendaID, @DataVenda, @ClienteID, @ValorTotal)";
                             using (SqlCommand vendaCommand = new SqlCommand(vendaQuery, connection, transaction))
-                            {                                
+                            {
+                                vendaCommand.Parameters.AddWithValue("@VendaID", venda.VendaID);
                                 vendaCommand.Parameters.AddWithValue("@DataVenda", venda.DataVenda);
                                 vendaCommand.Parameters.AddWithValue("@ClienteID", venda.ClienteID);
                                 vendaCommand.Parameters.AddWithValue("@ValorTotal", venda.ValorTotal);
@@ -378,29 +356,27 @@ namespace SisControl.View
                             foreach (DataGridViewRow row in dgvItensVenda.Rows)
                             {
                                 if (row.Cells["ProdutoID"].Value != null &&
-                                    row.Cells["VendaID"].Value != null &&
                                     row.Cells["Quantidade"].Value != null &&
-                                    row.Cells["PrecoUnitario"].Value != null &&
-                                    row.Cells["ItensVendaID"].Value != null)
+                                    row.Cells["ValorProduto"].Value != null)
                                 {
                                     var itemVenda = new ItemVendaModel
                                     {
-                                        ItemVendaID = Guid.NewGuid(), // Gerar um novo GUID                                        
-                                        VendaID = int.Parse(row.Cells["VendaID"].Value.ToString()),
+                                        ItemVendaID = Guid.NewGuid(),
+                                        VendaID = venda.VendaID,
                                         ProdutoID = int.Parse(row.Cells["ProdutoID"].Value.ToString()),
                                         Quantidade = int.Parse(row.Cells["Quantidade"].Value.ToString()),
-                                        PrecoUnitario = decimal.Parse(row.Cells["PrecoUnitario"].Value.ToString())
+                                        PrecoUnitario = decimal.Parse(row.Cells["ValorProduto"].Value.ToString())
                                     };
                                     itens.Add(itemVenda);
                                 }
                             }
 
-                            string itemVendaQuery = @"INSERT INTO ItemVenda (VendaID, ProdutoID, Quantidade, PrecoUnitario) 
-                                              VALUES (@ItemVendaID, @VendaID, @ProdutoID, @Quantidade, @PrecoUnitario)";
+                            string itemVendaQuery = @"INSERT INTO ItemVenda (ItemVendaID, VendaID, ProdutoID, Quantidade, PrecoUnitario) VALUES (@ItemVendaID, @VendaID, @ProdutoID, @Quantidade, @PrecoUnitario)";
                             foreach (var item in itens)
                             {
                                 using (SqlCommand itemVendaCommand = new SqlCommand(itemVendaQuery, connection, transaction))
-                                {                                    
+                                {
+                                    itemVendaCommand.Parameters.AddWithValue("@ItemVendaID", item.ItemVendaID);
                                     itemVendaCommand.Parameters.AddWithValue("@VendaID", item.VendaID);
                                     itemVendaCommand.Parameters.AddWithValue("@ProdutoID", item.ProdutoID);
                                     itemVendaCommand.Parameters.AddWithValue("@Quantidade", item.Quantidade);
@@ -409,38 +385,36 @@ namespace SisControl.View
                                 }
                             }
 
-                            // Inserir dados na tabela Parcela a partir do dgvParcelas
+                            // Inserir dados na tabela Parcela
                             List<ParcelaModel> parcelas = new List<ParcelaModel>();
                             foreach (DataGridViewRow row in dgvParcelas.Rows)
                             {
-                                if (row.Cells["ParcelaID"].Value != null &&
-                                    row.Cells["VendaID"].Value != null &&
-                                    row.Cells["DataVencimento"].Value != null &&
+                                if (row.Cells["DataVencimento"].Value != null &&
                                     row.Cells["ValorParcela"].Value != null &&
                                     row.Cells["NumeroParcela"].Value != null)
-                                    
                                 {
                                     var parcela = new ParcelaModel
                                     {
                                         ParcelaID = Guid.NewGuid(),
-                                        VendaID = int.Parse(row.Cells["VendaID"].Value.ToString()),
+                                        VendaID = venda.VendaID,
                                         NumeroParcela = int.Parse(row.Cells["NumeroParcela"].Value.ToString()),
                                         DataVencimento = DateTime.Parse(row.Cells["DataVencimento"].Value.ToString()),
                                         ValorParcela = decimal.Parse(row.Cells["ValorParcela"].Value.ToString()),
-                                        ValorRecebido = decimal.Parse(txtValorRecebido.Text),
-                                        SaldoRestante = decimal.Parse(txtValorRecebido.Text) - decimal.Parse(row.Cells["ValorParcela"].Value.ToString()),
-                                        Pago = false                                        
+                                        ValorRecebido = 0,
+                                        SaldoRestante = decimal.Parse(row.Cells["ValorParcela"].Value.ToString()),
+                                        Pago = false
                                     };
                                     parcelas.Add(parcela);
                                 }
                             }
 
-                            string parcelaQuery = @"INSERT INTO Parcela (VendaID, NumeroParcela, DataVencimento, ValorParcela, ValorRecebido, SaldoRestante, Pago) 
-                                            VALUES (@VendaID, @NumeroParcela, @DataVencimento, @ValorParcela, @ValorRecebido, @SaldoRestante, @Pago)";
+                            string parcelaQuery = @"INSERT INTO Parcela (ParcelaID, VendaID, NumeroParcela, DataVencimento, ValorParcela, ValorRecebido, SaldoRestante, Pago) 
+                                   VALUES (@ParcelaID, @VendaID, @NumeroParcela, @DataVencimento, @ValorParcela, @ValorRecebido, @SaldoRestante, @Pago)";
                             foreach (var parcela in parcelas)
                             {
                                 using (SqlCommand parcelaCommand = new SqlCommand(parcelaQuery, connection, transaction))
-                                {   
+                                {
+                                    parcelaCommand.Parameters.AddWithValue("@ParcelaID", parcela.ParcelaID);
                                     parcelaCommand.Parameters.AddWithValue("@VendaID", parcela.VendaID);
                                     parcelaCommand.Parameters.AddWithValue("@NumeroParcela", parcela.NumeroParcela);
                                     parcelaCommand.Parameters.AddWithValue("@DataVencimento", parcela.DataVencimento);
@@ -448,42 +422,7 @@ namespace SisControl.View
                                     parcelaCommand.Parameters.AddWithValue("@ValorRecebido", parcela.ValorRecebido);
                                     parcelaCommand.Parameters.AddWithValue("@SaldoRestante", parcela.SaldoRestante);
                                     parcelaCommand.Parameters.AddWithValue("@Pago", parcela.Pago);
-                                    //parcelaCommand.Parameters.AddWithValue("@FormaPagamento", parcela.FormaPagamento);
                                     parcelaCommand.ExecuteNonQuery();
-                                }
-                            }
-
-                            // Inserir dados na tabela ContaReceber
-                            List<ContaReceberModel> contasReceber = new List<ContaReceberModel>();
-                            contasReceber = ObterContasReceber(parcelas);
-
-                            string contaReceberQuery = @"INSERT INTO ContaReceber (VendaID, ParcelaID, DataRecebimento, ValorRecebido, SaldoRestante, Pago) 
-                            VALUES (@VendaID, @ParcelaID, @DataRecebimento, @ValorRecebido, @SaldoRestante, @Pago)";
-                            foreach (var conta in contasReceber)
-                            {
-                                using (SqlCommand contaReceberCommand = new SqlCommand(contaReceberQuery, connection, transaction))
-                                {
-                                    // Gerar um novo GUID para ContaReceberID
-                                    Guid contaReceberID = Guid.NewGuid();
-                                    contaReceberCommand.Parameters.AddWithValue("@ContaReceberID", contaReceberID);
-                                    contaReceberCommand.Parameters.AddWithValue("@VendaID", conta.VendaID);
-                                    contaReceberCommand.Parameters.AddWithValue("@ParcelaID", conta.ParcelaID);
-
-                                    // Verifica se DataRecebimento é nulo e define o valor apropriado
-                                    if (conta.DataRecebimento.HasValue)
-                                    {
-                                        contaReceberCommand.Parameters.AddWithValue("@DataRecebimento", conta.DataRecebimento.Value);
-                                    }
-                                    else
-                                    {
-                                        contaReceberCommand.Parameters.AddWithValue("@DataRecebimento", DBNull.Value);
-                                    }
-
-                                    contaReceberCommand.Parameters.AddWithValue("@ValorRecebido", conta.ValorRecebido);
-                                    contaReceberCommand.Parameters.AddWithValue("@SaldoRestante", conta.SaldoRestante);
-                                    contaReceberCommand.Parameters.AddWithValue("@Pago", conta.Pago);
-
-                                    contaReceberCommand.ExecuteNonQuery();
                                 }
                             }
 
@@ -507,6 +446,8 @@ namespace SisControl.View
                 MessageBox.Show($"Erro ao conectar ao banco de dados: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
         private List<ContaReceberModel> ObterContasReceber(List<ParcelaModel> parcelas)
         {
             List<ContaReceberModel> contasReceber = new List<ContaReceberModel>();
@@ -514,7 +455,7 @@ namespace SisControl.View
             // Adiciona contas a receber com base nos dados do DataGridView
             foreach (DataGridViewRow row in dgvParcelas.Rows)
             {
-                if (row.Cells["VendaID"].Value != null && row.Cells["ParcelaID"].Value != null)
+                if (VendaID != null && ParcelaID != null)
                 {
                     var valorParcela = decimal.Parse(row.Cells["ValorParcela"].Value.ToString());
                     var valorRecebido = 0; // Inicialmente, valor recebido é zero.
@@ -524,8 +465,8 @@ namespace SisControl.View
                     var contaReceber = new ContaReceberModel
                     {
                         ContaReceberID = Guid.NewGuid(), // Gerar um novo GUID para ContaReceberID
-                        VendaID = int.Parse(row.Cells["VendaID"].Value.ToString()), // Converter VendaID para GUID
-                        ParcelaID = Guid.Parse(row.Cells["ParcelaID"].Value.ToString()), // Converter ParcelaID para GUID
+                        VendaID = VendaID, // Converter VendaID para GUID
+                        ParcelaID = ParcelaID, // Converter ParcelaID para GUID
                         DataRecebimento = dataRecebimento,
                         ValorRecebido = valorRecebido,
                         SaldoRestante = valorParcela - valorRecebido, // Cálculo do Saldo Restante
@@ -539,230 +480,12 @@ namespace SisControl.View
         }
 
 
-
-        //private List<ContaReceberModel> ObterContasReceber(List<ParcelaModel> parcelas)
-        //{
-        //    List<ContaReceberModel> contasReceber = new List<ContaReceberModel>();
-
-        //    // Adiciona contas a receber com base nos dados do DataGridView
-        //    foreach (DataGridViewRow row in dgvParcelas.Rows)
-        //    {
-        //        if (row.Cells["VendaID"].Value != null && row.Cells["ParcelaID"].Value != null)
-        //        {
-        //            var valorParcela = decimal.Parse(row.Cells["ValorParcela"].Value.ToString());
-        //            var valorRecebido = 0; // Inicialmente, valor recebido é zero.
-
-        //            var contaReceber = new ContaReceberModel
-        //            {
-        //                ContaReceberID = ItensVendaID++,
-        //                VendaID = int.Parse(row.Cells["VendaID"].Value.ToString()),
-        //                ParcelaID = int.Parse(row.Cells["ParcelaID"].Value.ToString()),
-        //                //DataRecebimento = DataRecebimento,
-        //                ValorRecebido = valorRecebido,
-        //                SaldoRestante = valorParcela - valorRecebido, // Cálculo do Saldo Restante
-        //                Pago = false
-        //            };
-        //            contasReceber.Add(contaReceber);
-        //        }
-        //    }
-
-
-        //    // Adiciona contas a receber com base nos dados dos TextBox
-        //    foreach (var parcela in parcelas)
-        //    {
-        //        var contaReceber = new ContaReceberModel
-        //        {
-        //            ContaReceberID = ContaReceberID,
-        //            VendaID = parcela.VendaID,
-        //            ParcelaID = parcela.ParcelaID,
-        //            DataRecebimento = DateTime.Now, // Supondo que o DataRecebimento seja a data atual ou um valor específico vindo de outro TextBox
-        //            ValorRecebido = 0, // Valor vindo do TextBox
-        //            SaldoRestante = parcela.ValorParcela - decimal.Parse(txtValorRecebido.Text), // Inicialmente igual ao valor da parcela menos o valor recebido
-        //            Pago = parcela.Pago
-        //        };
-        //        contasReceber.Add(contaReceber);
-        //    }
-
-        //    return contasReceber;
-        //}
-
-        public void SalvarVenda()
-        {
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
-                    using (SqlTransaction transaction = connection.BeginTransaction())
-                    {
-                        try
-                        {
-                            // Inserir dados na tabela Venda
-                            VendaModel venda = new VendaModel
-                            {
-                                VendaID = Guid.Parse(txtVendaID.Text),
-                                ClienteID = int.Parse(txtClienteID.Text),
-                                DataVenda = DateTime.Now,
-                                ValorTotal = decimal.Parse(txtValorTotal.Text)
-                            };
-
-
-                            string vendaQuery = @"INSERT INTO Venda (VendaID, DataVenda, ClienteID, ValorTotal) 
-                                  VALUES (@VendaID, @DataVenda, @ClienteID, @ValorTotal)";
-                            using (SqlCommand vendaCommand = new SqlCommand(vendaQuery, connection, transaction))
-                            {
-                                vendaCommand.Parameters.AddWithValue("@VendaID", venda.VendaID);
-                                vendaCommand.Parameters.AddWithValue("@DataVenda", venda.DataVenda);
-                                vendaCommand.Parameters.AddWithValue("@ClienteID", venda.ClienteID);
-                                vendaCommand.Parameters.AddWithValue("@ValorTotal", venda.ValorTotal);
-                                vendaCommand.ExecuteNonQuery();
-                            }
-
-                            // Inserir dados na tabela ItemVenda
-                            List<ItemVendaModel> itens = new List<ItemVendaModel>();
-                            foreach (DataGridViewRow row in dgvItensVenda.Rows)
-                            {
-                                if (row.Cells["ProdutoID"].Value != null &&
-                                    row.Cells["VendaID"].Value != null &&
-                                    row.Cells["Quantidade"].Value != null &&
-                                    row.Cells["PrecoUnitario"].Value != null &&
-                                    row.Cells["ItemVendaID"].Value != null)
-                                {
-                                    var itemVenda = new ItemVendaModel
-                                    {
-                                        ItemVendaID = Guid.Parse(row.Cells["ItemVendaID"].Value.ToString()), // Converter ItemVendaID para GUID
-                                        VendaID = int.Parse(row.Cells["VendaID"].Value.ToString()), // Converter VendaID para GUID
-                                        ProdutoID = int.Parse(row.Cells["ProdutoID"].Value.ToString()),
-                                        Quantidade = int.Parse(row.Cells["Quantidade"].Value.ToString()),
-                                        PrecoUnitario = decimal.Parse(row.Cells["PrecoUnitario"].Value.ToString())
-                                    };
-                                    itens.Add(itemVenda);
-                                }
-                            }
-
-
-                            string itemVendaQuery = @"INSERT INTO ItemVenda (ItemVendaID, VendaID, ProdutoID, Quantidade, PrecoUnitario) 
-                                      VALUES (@ItemVendaID, @VendaID, @ProdutoID, @Quantidade, @PrecoUnitario)";
-                            foreach (var item in itens)
-                            {
-                                using (SqlCommand itemVendaCommand = new SqlCommand(itemVendaQuery, connection, transaction))
-                                {
-                                    itemVendaCommand.Parameters.AddWithValue("@ItemVendaID", item.ItemVendaID);
-                                    itemVendaCommand.Parameters.AddWithValue("@VendaID", item.VendaID);
-                                    itemVendaCommand.Parameters.AddWithValue("@ProdutoID", item.ProdutoID);
-                                    itemVendaCommand.Parameters.AddWithValue("@Quantidade", item.Quantidade);
-                                    itemVendaCommand.Parameters.AddWithValue("@PrecoUnitario", item.PrecoUnitario);
-                                    itemVendaCommand.ExecuteNonQuery();
-                                }
-                            }
-                            // Inserir dados na tabela Parcela a partir do dgvParcelas
-                            List<ParcelaModel> parcelas = new List<ParcelaModel>();
-
-                            foreach (DataGridViewRow row in dgvParcelas.Rows)
-                            {
-                                if (row.Cells["ParcelaID"].Value != null &&
-                                    row.Cells["VendaID"].Value != null &&
-                                    row.Cells["DataVencimento"].Value != null &&
-                                    row.Cells["ValorParcela"].Value != null &&
-                                    row.Cells["NumeroParcela"].Value != null)
-                                {
-                                    var parcela = new ParcelaModel
-                                    {
-                                        ParcelaID = Guid.Parse(row.Cells["ParcelaID"].Value.ToString()), // Converter ParcelaID para GUID
-                                        VendaID = int.Parse(row.Cells["VendaID"].Value.ToString()), // Converter VendaID para GUID
-                                        NumeroParcela = int.Parse(row.Cells["NumeroParcela"].Value.ToString()),
-                                        DataVencimento = DateTime.Parse(row.Cells["DataVencimento"].Value.ToString()),
-                                        ValorParcela = decimal.Parse(row.Cells["ValorParcela"].Value.ToString()),
-                                        ValorRecebido = 0,
-                                        SaldoRestante = decimal.Parse(txtValorRecebido.Text),
-                                        Pago = false,
-                                    };
-                                    parcelas.Add(parcela);
-                                }
-                            }
-
-                            string parcelaQuery = @"INSERT INTO Parcela (ParcelaID, VendaID, DataVencimento, ValorParcela, ValorRecebido, SaldoRestante, Pago) 
-VALUES (@ParcelaID, @VendaID, @DataVencimento, @ValorParcela, @ValorRecebido, @SaldoRestante, @Pago)";
-                            foreach (var parcela in parcelas)
-                            {
-                                using (SqlCommand parcelaCommand = new SqlCommand(parcelaQuery, connection, transaction))
-                                {
-                                    parcelaCommand.Parameters.AddWithValue("@ParcelaID", parcela.ParcelaID);
-                                    parcelaCommand.Parameters.AddWithValue("@VendaID", parcela.VendaID);
-                                    parcelaCommand.Parameters.AddWithValue("@NumeroParcela", parcela.NumeroParcela);
-                                    parcelaCommand.Parameters.AddWithValue("@DataVencimento", parcela.DataVencimento);
-                                    parcelaCommand.Parameters.AddWithValue("@ValorParcela", parcela.ValorParcela);
-                                    parcelaCommand.Parameters.AddWithValue("@ValorRecebido", parcela.ValorRecebido);
-                                    parcelaCommand.Parameters.AddWithValue("@SaldoRestante", parcela.SaldoRestante);
-                                    parcelaCommand.Parameters.AddWithValue("@Pago", parcela.Pago);
-                                    parcelaCommand.ExecuteNonQuery();
-                                }
-                            }
-
-
-
-
-
-
-
-
-
-
-                            // Inserir dados na tabela ContaReceber
-                            List<ContaReceberModel> contasReceber = new List<ContaReceberModel>();
-                            contasReceber = ObterContasReceber(parcelas);
-
-                            string contaReceberQuery = @"INSERT INTO ContaReceber (ContaReceberID, ParcelaID, DataRecebimento, ValorRecebido) 
-                                         VALUES (@ContaReceberID, @ParcelaID, @DataRecebimento, @ValorRecebido)";
-                            foreach (var conta in contasReceber)
-                            {
-                                using (SqlCommand contaReceberCommand = new SqlCommand(contaReceberQuery, connection, transaction))
-                                {
-                                    contaReceberCommand.Parameters.AddWithValue("@ContaReceberID", conta.ContaReceberID);
-                                    contaReceberCommand.Parameters.AddWithValue("@ParcelaID", conta.ParcelaID);
-                                    contaReceberCommand.Parameters.AddWithValue("@DataRecebimento", conta.DataRecebimento);
-                                    contaReceberCommand.Parameters.AddWithValue("@ValorRecebido", conta.ValorRecebido);
-
-                                    contaReceberCommand.ExecuteNonQuery();
-                                }
-                            }
-
-                            // Commit da transação
-                            transaction.Commit();
-                            MessageBox.Show("Venda finalizada com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        catch (Exception ex)
-                        {
-                            // Rollback da transação em caso de erro
-                            transaction.Rollback();
-                            MessageBox.Show($"Erro ao finalizar a venda: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Erro ao conectar ao banco de dados: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-             
         private void btnParcelar_Click(object sender, EventArgs e)
         {
             try
             {
                 FrmGerarParcelas gerarparc = new FrmGerarParcelas();
-
-                string stringg = txtClienteID.Text;
-                string resultado = stringg.TrimStart('0');
-
-                if (!Guid.TryParse(resultado, out Guid clienteID))
-                {
-                    MessageBox.Show("Cliente ID inválido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                gerarparc.clienteID = clienteID;
-
+                                
                 if (dgvItensVenda.Rows.Count == 0)
                 {
                     MessageBox.Show("Nenhum item de venda encontrado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -770,15 +493,17 @@ VALUES (@ParcelaID, @VendaID, @DataVencimento, @ValorParcela, @ValorRecebido, @S
                 }
 
                 gerarparc.txtIdVenda.Text = txtVendaID.Text;
-                gerarparc.txtTotal.Text = txtValorTotal.Text;//dgvItensVenda.CurrentRow.Cells[4].Value.ToString();
+                gerarparc.txtTotal.Text = txtValorTotal.Text; // dgvItensVenda.CurrentRow.Cells[4].Value.ToString();
                 gerarparc.txtNomeCliente.Text = txtNomeCliente.Text;
                 gerarparc.txtQtdParcelas.Text = txtNumeroParcelas.Text;
 
+                // Passa o parcelaID como Guid para o formulário de gerar parcelas
                 gerarparc.parcelaID = ParcelaID;
 
                 gerarparc.ShowDialog();
                 gerarparc.Text = "Gerar Parcelas para o Cliente:" + txtNomeCliente.Text;
                 btnParcelar.Enabled = false;
+                rbUmaParcela.Checked = true;
             }
             catch (FormatException ex)
             {
@@ -788,7 +513,6 @@ VALUES (@ParcelaID, @VendaID, @DataVencimento, @ValorParcela, @ValorRecebido, @S
             {
                 MessageBox.Show("Ocorreu um erro: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
         }
 
         private void btnLocalizarCliente_Click(object sender, EventArgs e)
@@ -805,13 +529,19 @@ VALUES (@ParcelaID, @VendaID, @DataVencimento, @ValorParcela, @ValorRecebido, @S
             try
             {
                 // Verifica se todos os valores necessários estão preenchidos
-                if (VendaID == 0)
+                if (VendaID == Guid.Empty)
                 {
                     MessageBox.Show("Por favor, informe o ID da venda.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                if (ItensVendaID == 0)
+               if (VendaID == Guid.Empty)
+               {
+                    MessageBox.Show("Por favor, informe o ID da venda.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (ItemVendaID == Guid.Empty)
                 {
                     MessageBox.Show("Por favor, informe o ID dos itens da venda.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -831,7 +561,8 @@ VALUES (@ParcelaID, @VendaID, @DataVencimento, @ValorParcela, @ValorRecebido, @S
                 }
 
                 // Chama o método para incluir os itens na grid
-                IncluirItensNaGrid();
+                
+                IncluirItens();
             }
             catch (Exception ex)
             {
@@ -874,6 +605,11 @@ VALUES (@ParcelaID, @VendaID, @DataVencimento, @ValorParcela, @ValorRecebido, @S
         private void txtValorRecebido_Leave(object sender, EventArgs e)
         {
             CalcularSubtotal();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            GravarVenda();
         }
     }
 }

@@ -118,7 +118,7 @@ namespace SisControl.View
 
                 ProdutoID = Convert.ToInt32(dataGridPesquisar["ProdutoID", LinhaAtual].Value);
 
-                string numeroComZeros = Utilitario.AcrescentarZerosEsquerda(ProdutoID, 6);
+                string numeroComZeros = Utilitario.AcrescentarZerosEsquerda(ProdutoID, 4);
                 NomeProduto = dataGridPesquisar["NomeProduto", LinhaAtual].Value.ToString();
                 PrecoUnitario = Convert.ToDecimal(dataGridPesquisar["PrecoVenda", LinhaAtual].Value);
 
