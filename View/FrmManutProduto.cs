@@ -137,8 +137,8 @@ namespace SisControl.View
                         frm.txtPrecoDeVenda.Text = dataGridPesquisar.CurrentRow.Cells["PrecoDeVenda"].Value.ToString();
                         frm.txtQuantidadeEmEstoque.Text = dataGridPesquisar.CurrentRow.Cells["QuantidadeEmEstoque"].Value.ToString();
                         frm.dtpDataDeEntrada.Text = dataGridPesquisar.CurrentRow.Cells["DataDeEntrada"].Value.ToString();
-                        frm.txtCategoriaID.Text = dataGridPesquisar.CurrentRow.Cells["CategoriaID"].Value.ToString();
-                        frm.txtFabricanteID.Text = dataGridPesquisar.CurrentRow.Cells["FabricanteID"].Value.ToString();
+                        frm.CategoriaID = int.Parse(dataGridPesquisar.CurrentRow.Cells["CategoriaID"].Value.ToString());
+                        frm.FabricanteID = int.Parse(dataGridPesquisar.CurrentRow.Cells["FabricanteID"].Value.ToString());
                         frm.cmbUnidadeDeMedida.Text = dataGridPesquisar.CurrentRow.Cells["UnidadeDeMedida"].Value.ToString();
                         frm.cmbStatus.Text = dataGridPesquisar.CurrentRow.Cells["Status"].Value.ToString();
                         frm.dtpDataDeVencimento.Text = dataGridPesquisar.CurrentRow.Cells["DataDeVencimento"].Value.ToString();
@@ -190,8 +190,8 @@ namespace SisControl.View
                         frm.txtPrecoDeVenda.Text = dataGridPesquisar.CurrentRow.Cells["PrecoDeVenda"].Value.ToString();
                         frm.txtQuantidadeEmEstoque.Text = dataGridPesquisar.CurrentRow.Cells["QuantidadeEmEstoque"].Value.ToString();
                         frm.dtpDataDeEntrada.Text = dataGridPesquisar.CurrentRow.Cells["DataDeEntrada"].Value.ToString();
-                        frm.txtCategoriaID.Text = dataGridPesquisar.CurrentRow.Cells["CategoriaID"].Value.ToString();
-                        frm.txtFabricanteID.Text = dataGridPesquisar.CurrentRow.Cells["FabricanteID"].Value.ToString();
+                        frm.CategoriaID = int.Parse(dataGridPesquisar.CurrentRow.Cells["CategoriaID"].Value.ToString());
+                        frm.FabricanteID = int.Parse(dataGridPesquisar.CurrentRow.Cells["FabricanteID"].Value.ToString());
                         frm.cmbUnidadeDeMedida.Text = dataGridPesquisar.CurrentRow.Cells["UnidadeDeMedida"].Value.ToString();
                         frm.cmbStatus.Text = dataGridPesquisar.CurrentRow.Cells["Status"].Value.ToString();
                         frm.dtpDataDeVencimento.Text = dataGridPesquisar.CurrentRow.Cells["DataDeVencimento"].Value.ToString();
@@ -211,9 +211,7 @@ namespace SisControl.View
                         frm.txtLucro.Enabled = false;
                         frm.txtPrecoDeVenda.Enabled = false;
                         frm.txtQuantidadeEmEstoque.Enabled = false;
-                        frm.dtpDataDeEntrada.Enabled = false;
-                        frm.txtCategoriaID.Enabled = false;
-                        frm.txtFabricanteID.Enabled = false;
+                        frm.dtpDataDeEntrada.Enabled = false;                        
                         frm.cmbUnidadeDeMedida.Enabled = false;
                         frm.cmbStatus.Enabled = false;
                         frm.dtpDataDeVencimento.Enabled = false;

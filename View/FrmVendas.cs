@@ -242,8 +242,11 @@ namespace SisControl.View
             ItemVendaID = Guid.NewGuid();
             ContaReceberID = Guid.NewGuid();
             ParcelaID = Guid.NewGuid();
-            
-            txtVendaID.Text = VendaID.ToString();
+
+            txtVendaID.Text = Utilitario.ConvertGuidToHash(VendaID);//VendaID.ToString();
+            txtVendaIDDGuid.Text = VendaID.ToString();
+
+
             txtQuantidade.Leave += txtQuantidade_Leave;
             txtValorProduto.Leave += txtValorProduto_Leave;
         }           
@@ -683,7 +686,10 @@ foreach (var item in itens)
                 }
             }
         }
-        
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            txtVendaIDHasGuid.Text = Utilitario.ConvertHashToGuid(txtVendaID.Text).ToString();
+        }
     }
 }
