@@ -11,7 +11,10 @@ using System.Configuration;
 using System.Drawing.Text;
 using System.Linq;
 using SisControl;
+<<<<<<< HEAD
 using System.IO;
+=======
+>>>>>>> 4d7533ac6658105f916433324377f073e909b48b
 
 
 namespace SisControl.View
@@ -37,7 +40,13 @@ namespace SisControl.View
         public FrmVendas()
         {
             InitializeComponent();
+<<<<<<< HEAD
            
+=======
+            //Implementado dia 10/01/2025
+            //connectionString = ConfigurationManager.ConnectionStrings["Data Source=NOTEBOOK-DELL\\SQLEXPRESS;Initial Catalog=bdsiscontrol;Integrated Security=True;"].ConnectionString;
+            //connectionString = ConfigurationManager.ConnectionStrings["SisControl.Properties.Settings.bdsiscontrolConnectionString"].ConnectionString;
+>>>>>>> 4d7533ac6658105f916433324377f073e909b48b
             InicializarDataGridViewItensVenda();
             PersonalizarDataGridViewParcela(dgvParcelas);
         }
@@ -242,6 +251,7 @@ namespace SisControl.View
             ItemVendaID = Guid.NewGuid();
             ContaReceberID = Guid.NewGuid();
             ParcelaID = Guid.NewGuid();
+<<<<<<< HEAD
 
             txtVendaID.Text = Utilitario.ConvertGuidToHash(VendaID);//VendaID.ToString();
             txtVendaIDDGuid.Text = VendaID.ToString();
@@ -250,6 +260,13 @@ namespace SisControl.View
             txtQuantidade.Leave += txtQuantidade_Leave;
             txtValorProduto.Leave += txtValorProduto_Leave;
         }           
+=======
+            
+            txtVendaID.Text = VendaID.ToString();
+        }
+>>>>>>> 4d7533ac6658105f916433324377f073e909b48b
+
+            
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
@@ -343,6 +360,7 @@ VendaModel venda = new VendaModel
     // Gera um novo identificador único para VendaID
     VendaID = Guid.NewGuid(),
 
+<<<<<<< HEAD
     // Converte o texto do campo txtClienteID para um inteiro e atribui a ClienteID
     ClienteID = int.Parse(txtClienteID.Text),
 
@@ -426,6 +444,52 @@ foreach (var item in itens)
     }
 }
 
+=======
+                            string vendaQuery = @"INSERT INTO Venda (VendaID, DataVenda, ClienteID, ValorTotal) VALUES (@VendaID, @DataVenda, @ClienteID, @ValorTotal)";
+                            using (SqlCommand vendaCommand = new SqlCommand(vendaQuery, connection, transaction))
+                            {
+                                vendaCommand.Parameters.AddWithValue("@VendaID", venda.VendaID);
+                                vendaCommand.Parameters.AddWithValue("@DataVenda", venda.DataVenda);
+                                vendaCommand.Parameters.AddWithValue("@ClienteID", venda.ClienteID);
+                                vendaCommand.Parameters.AddWithValue("@ValorTotal", venda.ValorTotal);
+                                vendaCommand.ExecuteNonQuery();
+                            }
+
+                            // Inserir dados na tabela ItemVenda
+                            List<ItemVendaModel> itens = new List<ItemVendaModel>();
+                            foreach (DataGridViewRow row in dgvItensVenda.Rows)
+                            {
+                                if (row.Cells["ProdutoID"].Value != null &&
+                                    row.Cells["Quantidade"].Value != null &&
+                                    row.Cells["ValorProduto"].Value != null)
+                                {
+                                    var itemVenda = new ItemVendaModel
+                                    {
+                                        ItemVendaID = Guid.NewGuid(),
+                                        VendaID = venda.VendaID,
+                                        ProdutoID = int.Parse(row.Cells["ProdutoID"].Value.ToString()),
+                                        Quantidade = int.Parse(row.Cells["Quantidade"].Value.ToString()),
+                                        PrecoUnitario = decimal.Parse(row.Cells["ValorProduto"].Value.ToString())
+                                    };
+                                    itens.Add(itemVenda);
+                                }
+                            }
+
+                            string itemVendaQuery = @"INSERT INTO ItemVenda (ItemVendaID, VendaID, ProdutoID, Quantidade, PrecoUnitario) VALUES (@ItemVendaID, @VendaID, @ProdutoID, @Quantidade, @PrecoUnitario)";
+                            foreach (var item in itens)
+                            {
+                                using (SqlCommand itemVendaCommand = new SqlCommand(itemVendaQuery, connection, transaction))
+                                {
+                                    itemVendaCommand.Parameters.AddWithValue("@ItemVendaID", item.ItemVendaID);
+                                    itemVendaCommand.Parameters.AddWithValue("@VendaID", item.VendaID);
+                                    itemVendaCommand.Parameters.AddWithValue("@ProdutoID", item.ProdutoID);
+                                    itemVendaCommand.Parameters.AddWithValue("@Quantidade", item.Quantidade);
+                                    itemVendaCommand.Parameters.AddWithValue("@PrecoUnitario", item.PrecoUnitario);
+                                    itemVendaCommand.ExecuteNonQuery();
+                                }
+                            }
+
+>>>>>>> 4d7533ac6658105f916433324377f073e909b48b
                             // Inserir dados na tabela Parcela
                             List<ParcelaModel> parcelas = new List<ParcelaModel>();
                             foreach (DataGridViewRow row in dgvParcelas.Rows)
@@ -469,7 +533,10 @@ foreach (var item in itens)
 
                             // Commit da transação
                             transaction.Commit();
+<<<<<<< HEAD
                             Log("Venda finalizada com sucesso.");//Gerar arquivo de log para registrar as operações realizadas
+=======
+>>>>>>> 4d7533ac6658105f916433324377f073e909b48b
                             MessageBox.Show("Venda finalizada com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Utilitario.LimpaCampo(this);
                             NovoCodigo();
@@ -477,7 +544,10 @@ foreach (var item in itens)
                         catch (Exception ex)
                         {
                             // Rollback da transação em caso de erro
+<<<<<<< HEAD
                             Log($"Erro ao finalizar a venda: {ex.Message}");
+=======
+>>>>>>> 4d7533ac6658105f916433324377f073e909b48b
                             transaction.Rollback();
                             MessageBox.Show($"Erro ao finalizar a venda: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
@@ -486,7 +556,10 @@ foreach (var item in itens)
             }
             catch (Exception ex)
             {
+<<<<<<< HEAD
                 Log($"Erro ao conectar ao banco de dados: {ex.Message}");                
+=======
+>>>>>>> 4d7533ac6658105f916433324377f073e909b48b
                 MessageBox.Show($"Erro ao conectar ao banco de dados: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -557,12 +630,15 @@ foreach (var item in itens)
             {
                 MessageBox.Show("Ocorreu um erro: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+<<<<<<< HEAD
         }
         private void AbrirFrmLocalizarCliente()
         {
             FrmLocalizarCliente frmLocalizarCliente = new FrmLocalizarCliente();
             frmLocalizarCliente.FormChamador = this; // Define o formulário chamador
             frmLocalizarCliente.ShowDialog();
+=======
+>>>>>>> 4d7533ac6658105f916433324377f073e909b48b
         }
 
         private void btnLocalizarCliente_Click(object sender, EventArgs e)
@@ -657,6 +733,7 @@ foreach (var item in itens)
             CalcularSubtotal();
         }
 
+<<<<<<< HEAD
         private void Log(string message)
         {
             File.AppendAllText("log.txt", $"{DateTime.Now}: {message}\n");
@@ -690,6 +767,11 @@ foreach (var item in itens)
         private void button1_Click(object sender, EventArgs e)
         {
             txtVendaIDHasGuid.Text = Utilitario.ConvertHashToGuid(txtVendaID.Text).ToString();
+=======
+        private void button1_Click(object sender, EventArgs e)
+        {
+            GravarVenda();
+>>>>>>> 4d7533ac6658105f916433324377f073e909b48b
         }
     }
 }
