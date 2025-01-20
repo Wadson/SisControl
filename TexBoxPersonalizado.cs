@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,3 +38,44 @@ namespace SisControl
         }
     }
 }
+=======
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace SisControl
+{
+    public partial class TexBoxPersonalizado : UserControl
+    {
+        public TexBoxPersonalizado()
+        {
+            InitializeComponent();
+        }
+        public string Text
+        {
+            get => textBox1.Text; // textBox1 é o controle interno do tipo TextBox
+            set => textBox1.Text = value;
+        }
+        public event EventHandler TextChanged
+        {
+            add => textBox1.TextChanged += value;
+            remove => textBox1.TextChanged -= value;
+        }
+        private void textBox1_Enter(object sender, EventArgs e)
+        {
+            textBox1.BackColor = Color.PowderBlue;
+        }
+
+        private void textBox1_Leave(object sender, EventArgs e)
+        {
+            textBox1.BackColor = Color.White;
+        }
+    }
+}
+>>>>>>> 4d7533ac6658105f916433324377f073e909b48b

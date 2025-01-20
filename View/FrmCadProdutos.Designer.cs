@@ -434,7 +434,11 @@
             this.cmbFabricante.FormattingEnabled = true;
             this.cmbFabricante.Location = new System.Drawing.Point(21, 259);
             this.cmbFabricante.Name = "cmbFabricante";
+<<<<<<< HEAD
             this.cmbFabricante.Size = new System.Drawing.Size(415, 21);
+=======
+            this.cmbFabricante.Size = new System.Drawing.Size(639, 21);
+>>>>>>> 52ded11ebc2146f3d05bb3a76b0841fddc107b63
             this.cmbFabricante.TabIndex = 6;
             this.cmbFabricante.TextChanged += new System.EventHandler(this.cmbFabricante_TextChanged);
             this.cmbFabricante.Enter += new System.EventHandler(this.cmbFabricante_Enter);
@@ -533,7 +537,11 @@
             this.btnLocalizarImagem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLocalizarImagem.Location = new System.Drawing.Point(562, 214);
             this.btnLocalizarImagem.Name = "btnLocalizarImagem";
+<<<<<<< HEAD
             this.btnLocalizarImagem.Size = new System.Drawing.Size(95, 22);
+=======
+            this.btnLocalizarImagem.Size = new System.Drawing.Size(98, 22);
+>>>>>>> 52ded11ebc2146f3d05bb3a76b0841fddc107b63
             this.btnLocalizarImagem.TabIndex = 5;
             this.btnLocalizarImagem.Text = "&Localizar...";
             this.btnLocalizarImagem.UseVisualStyleBackColor = false;

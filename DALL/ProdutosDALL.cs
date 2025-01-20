@@ -40,7 +40,11 @@ namespace SisControl.DALL
             var conn = Conexao.Conex();
             try
             {
+<<<<<<< HEAD
                 SqlCommand sql = new SqlCommand("INSERT INTO Produtos (NomeProduto, Descricao, PrecoCusto, Lucro, PrecoDeVenda, QuantidadeEmEstoque, DataDeEntrada, CategoriaID, FabricanteID, UnidadeDeMedida, Status, DataDeVencimento, Imagem, FornecedorID, Referencia) VALUES (@NomeProduto, @Descricao, @PrecoCusto, @Lucro, @PrecoDeVenda, @QuantidadeEmEstoque, @DataDeEntrada, @CategoriaID, @FabricanteID, @UnidadeDeMedida, @Status, @DataDeVencimento, @Imagem, @FornecedorID, @Referencia)", conn);
+=======
+                SqlCommand sql = new SqlCommand("INSERT INTO Produtos (NomeProduto, Descricao, PrecoCusto, Lucro, PrecoDeVenda, QuantidadeEmEstoque, DataDeEntrada, CategoriaID, FabricanteID, UnidadeDeMedida, Status, DataDeVencimento, Imagem, FornecedorID) VALUES (@NomeProduto, @Descricao, @PrecoCusto, @Lucro, @PrecoDeVenda, @QuantidadeEmEstoque, @DataDeEntrada, @CategoriaID, @FabricanteID, @UnidadeDeMedida, @Status, @DataDeVencimento, @Imagem, @FornecedorID)", conn);
+>>>>>>> 52ded11ebc2146f3d05bb3a76b0841fddc107b63
 
                 sql.Parameters.AddWithValue("@NomeProduto", produto.NomeProduto);
                 sql.Parameters.AddWithValue("@Descricao", produto.Descricao);

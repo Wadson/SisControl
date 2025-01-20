@@ -49,7 +49,22 @@ namespace SisControl.View
         {
             ListarCliente();
         }
+<<<<<<< HEAD
        
+=======
+
+        private void FrmLocalizarCliente_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            ClienteID = Convert.ToInt32(dataGridPesquisar[0, LinhaAtual].Value);            
+            string numeroComZeros = Utilitario.AcrescentarZerosEsquerda(ClienteID, 4);
+
+
+
+            ((FrmVendas)Application.OpenForms["FrmVendas"]).txtClienteID.Text = numeroComZeros;
+            ((FrmVendas)Application.OpenForms["FrmVendas"]).txtNomeCliente.Text = dataGridPesquisar[1, LinhaAtual].Value.ToString();
+        }
+
+>>>>>>> 4d7533ac6658105f916433324377f073e909b48b
         private void txtPesquisa_TextChanged(object sender, EventArgs e)
         {
             string textoPesquisa = txtPesquisa.Text.ToLower();
