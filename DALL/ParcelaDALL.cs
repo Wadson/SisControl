@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
+using System.Data;
 
 namespace SisControl.DALL
 {
@@ -108,6 +109,40 @@ namespace SisControl.DALL
                 }
             }
             return parcelas;
+        }
+        public void ExcluirParcela(int parcelaID)
+        {
+            string query = "DELETE FROM Parcela WHERE ParcelaID = @ParcelaID";
+            using (var conn = Conexao.Conex())
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@ParcelaID", parcelaID);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+        public DataTable ListarParcelas()
+        {
+            var conn = Conexao.Conex();
+            try
+            {
+                SqlCommand comando = new SqlCommand("SELECT * FROM Parcela", conn);
+
+                SqlDataAdapter daUsuario = new SqlDataAdapter();
+                daUsuario.SelectCommand = comando;
+
+                DataTable dtUsuario = new DataTable();
+                daUsuario.Fill(dtUsuario);
+                return dtUsuario;
+            }
+            catch (Exception erro)
+            {
+                throw erro;
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
 
     }

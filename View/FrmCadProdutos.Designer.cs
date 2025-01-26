@@ -524,6 +524,7 @@
             this.txtPrecoDeVenda.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
             this.txtPrecoDeVenda.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.txtPrecoDeVenda.TabIndex = 4;
+            this.txtPrecoDeVenda.Leave += new System.EventHandler(this.txtPrecoDeVenda_Leave);
             // 
             // txtLucro
             // 

@@ -144,9 +144,10 @@ namespace SisControl
 
         private void btnFerramentas_Click(object sender, EventArgs e)
         {
-
+            frmFerramentas.ShowDialog();
         }
-
+        FrmFerramentas frmFerramentas = new FrmFerramentas();
+         
         private void btnSair_Click(object sender, EventArgs e)
         {
             this.Close();

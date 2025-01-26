@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
+using System.Data;
 
 namespace SisControl.DALL
 {
@@ -85,5 +86,40 @@ namespace SisControl.DALL
             }
             return null;
         }
+        public void ExcluirVenda(int vendaID)
+        {
+            string query = "DELETE FROM Venda WHERE VendaID = @VendaID";
+            using (var conn = Conexao.Conex())
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@VendaID", vendaID);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+        public DataTable ListarVenda()
+        {
+            var conn = Conexao.Conex();
+            try
+            {
+                SqlCommand comando = new SqlCommand("SELECT * FROM Venda", conn);
+                
+                SqlDataAdapter daUsuario = new SqlDataAdapter();
+                daUsuario.SelectCommand = comando;
+
+                DataTable dtUsuario = new DataTable();
+                daUsuario.Fill(dtUsuario);
+                return dtUsuario;
+            }
+            catch (Exception erro)
+            {
+                throw erro;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
     }
 }

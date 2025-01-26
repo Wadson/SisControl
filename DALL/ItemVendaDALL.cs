@@ -90,6 +90,41 @@ namespace SisControl.DALL
                 }
             }
             return itens;
-        }       
+        }
+        public void ExcluirItensPorVendaID(int vendaID)
+        {
+            string query = "DELETE FROM ItemVenda WHERE VendaID = @VendaID";
+            using (var conn = Conexao.Conex())
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@VendaID", vendaID);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+        public DataTable ListarItensVenda()
+        {
+            var conn = Conexao.Conex();
+            try
+            {
+                SqlCommand comando = new SqlCommand("SELECT * FROM ItemVenda", conn);
+
+                SqlDataAdapter daUsuario = new SqlDataAdapter();
+                daUsuario.SelectCommand = comando;
+
+                DataTable dtUsuario = new DataTable();
+                daUsuario.Fill(dtUsuario);
+                return dtUsuario;
+            }
+            catch (Exception erro)
+            {
+                throw erro;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
     }
 }

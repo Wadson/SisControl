@@ -14,11 +14,11 @@ namespace SisControl.DALL
 {
     public class ContaReceberDAL
     {
-        private string connectionString = ConfigurationManager.ConnectionStrings["Data Source=NOTEBOOK-DELL\\SQLEXPRESS;Initial Catalog=bdsiscontrol;Integrated Security=True;"].ConnectionString;
+        //private string connectionString = ConfigurationManager.ConnectionStrings["Data Source=NOTEBOOK-DELL\\SQLEXPRESS;Initial Catalog=bdsiscontrol;Integrated Security=True;"].ConnectionString;
 
         public void AddContaReceber(ContaReceberModel contaReceber)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (var connection = Conexao.Conex())
             {
                 string query = @"INSERT INTO ContaReceber (VendaID, ParcelaID, DataRecebimento, ValorRecebido, SaldoRestante Observacao, ContaReceberID) 
                              VALUES (@VendaID, @ParcelaID, @DataRecebimento, @ValorRecebido,@SaldoRestante, @Observacao, @Pago, @ContaReceberID)";
@@ -38,7 +38,7 @@ namespace SisControl.DALL
 
         public void UpdateContaReceber(ContaReceberModel contaReceber)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (var connection = Conexao.Conex())
             {
                 string query = @"UPDATE ContaReceber SET ParcelaID = @ParcelaID, DataRecebimento = @DataRecebimento, ValorRecebido = @ValorRecebido, MetodoRecebimento = @MetodoRecebimento, Observacao = @Observacao 
                              WHERE ContaReceberID = @ContaReceberID";
@@ -57,9 +57,9 @@ namespace SisControl.DALL
             }
         }
 
-        public void DeleteContaReceber(int contaReceberId)
+        public void ExcluirContaReceber(int contaReceberId)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (var connection = Conexao.Conex())
             {
                 string query = "DELETE FROM ContaReceber WHERE ContaReceberID = @ContaReceberID";
                 SqlCommand command = new SqlCommand(query, connection);
@@ -73,7 +73,7 @@ namespace SisControl.DALL
         public List<ContaReceberModel> GetContasReceber(Guid parcelaId)
         {
             List<ContaReceberModel> contasReceber = new List<ContaReceberModel>();
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (var connection = Conexao.Conex())
             {
                 string query = "SELECT * FROM ContaReceber WHERE ParcelaID = @ParcelaID";
                 SqlCommand command = new SqlCommand(query, connection);
@@ -111,7 +111,40 @@ namespace SisControl.DALL
             }
             return contasReceber;
         }
+        public void ExcluirContasReceberPorParcelaID(int parcelaID)
+        {
+            string query = "DELETE FROM ContaReceber WHERE ParcelaID = @ParcelaID";
+            using (var conn = Conexao.Conex())
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@ParcelaID", parcelaID);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+        public DataTable ListarContasReceber()
+        {
+            var conn = Conexao.Conex();
+            try
+            {
+                SqlCommand comando = new SqlCommand("SELECT * FROM ContaReceber", conn);
 
+                SqlDataAdapter daUsuario = new SqlDataAdapter();
+                daUsuario.SelectCommand = comando;
+
+                DataTable dtUsuario = new DataTable();
+                daUsuario.Fill(dtUsuario);
+                return dtUsuario;
+            }
+            catch (Exception erro)
+            {
+                throw erro;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
 
     }
 }

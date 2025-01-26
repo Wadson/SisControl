@@ -115,11 +115,25 @@ namespace SisControl.View
                     precoVenda = precoCusto + lucro;
                 }
 
-                txtPrecoDeVenda.Text = String.Format(CultureInfo.CurrentCulture, "{0:N2}", precoVenda);
+                txtPrecoDeVenda.Text = precoVenda.ToString(CultureInfo.CurrentCulture);
             }
             else
             {
                 txtPrecoDeVenda.Text = string.Empty;
+            }
+        }
+
+        private void CalcularLucro()
+        {
+            if (decimal.TryParse(txtPrecoCusto.Text, out decimal precoCusto) &&
+                decimal.TryParse(txtPrecoDeVenda.Text, out decimal precoVenda))
+            {
+                decimal lucroCalculado = precoVenda - precoCusto;
+                txtLucro.Text = lucroCalculado.ToString(CultureInfo.CurrentCulture);
+            }
+            else
+            {
+                txtLucro.Text = string.Empty;
             }
         }
 
@@ -363,6 +377,11 @@ namespace SisControl.View
                     textBox.Text = string.Empty;
                 });
             }
+        }
+
+        private void txtPrecoDeVenda_Leave(object sender, EventArgs e)
+        {
+            CalcularLucro();
         }
     }
 }

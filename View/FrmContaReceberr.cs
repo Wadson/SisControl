@@ -10,6 +10,7 @@ using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
+using SisControl.DALL;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static SisControl.View.FrmContaReceberr;
 
@@ -580,57 +581,6 @@ INNER JOIN
         }
 
 
-        // Pesquisar o nome do cliente
-        //private void BuscarInformacoesCliente()
-        //{
-        //    try
-        //    {
-        //        // Exemplo de consulta (adapte conforme sua base de dados)
-        //        using (var connection = Conexao.Conex())
-        //        {
-        //            connection.Open();
-
-        //            // Consulta para pegar o ClienteID da Venda
-        //            string query = @"
-        //        SELECT c.ClienteID, c.NomeCliente, SUM(p.SaldoRestante) AS TotalDebito
-        //        FROM Venda v
-        //        JOIN Cliente c ON v.ClienteID = c.ClienteID
-        //        JOIN Parcela p ON v.VendaID = p.VendaID
-        //        WHERE c.ClienteID = @ClienteID
-        //        GROUP BY c.ClienteID, c.NomeCliente";
-
-        //            using (var command = new SqlCommand(query, connection))
-        //            {
-        //                command.Parameters.AddWithValue("@NomeCliente", NomeCliente);
-
-        //                using (var reader = command.ExecuteReader())
-        //                {
-        //                    if (reader.Read())
-        //                    {
-        //                        string nomeCliente = reader["NomeCliente"].ToString();                                
-        //                        decimal totalDebito = reader.IsDBNull(reader.GetOrdinal("TotalDebito")) ? 0 : reader.GetDecimal(reader.GetOrdinal("TotalDebito"));
-
-        //                        // Atualizar as labels com as informações obtidas
-        //                        lblNomeCliente.Text = nomeCliente;
-        //                        lblTotalDebito.Text = $"R$ {totalDebito:F2}";
-        //                    }
-        //                    else
-        //                    {
-        //                        // Caso não encontre o cliente ou o débito
-        //                        lblNomeCliente.Text = "Cliente não encontrado";
-        //                        lblTotalDebito.Text = "R$ 0,00";
-        //                    }
-        //                }
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show($"Erro ao buscar informações do cliente: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //}
-
-
 
 
         private void ListarPagamentosParciais(int parcelaID)
@@ -697,6 +647,57 @@ INNER JOIN
         private void btnReceberConta_Click(object sender, EventArgs e)
         {
             AbrirFormBaixrConta();
+        }
+        private void ExcluirTudo()
+        {
+            VendaDAL vendaDAL = new VendaDAL();
+            if (dgvContasReceber.SelectedRows.Count > 0)
+            {
+                if (MessageBox.Show("Deseja excluir a conta selecionada?", "Excluir conta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    try
+                    {
+                        int parcelaID = Convert.ToInt32(dgvContasReceber.SelectedRows[0].Cells["ParcelaID"].Value);
+                        int vendaID = Convert.ToInt32(dgvContasReceber.SelectedRows[0].Cells["VendaID"].Value);
+
+                        // 1. Excluir os itens de venda associados
+                        ItemVendaDAL itemVendaDAL = new ItemVendaDAL();
+                        itemVendaDAL.ExcluirItensPorVendaID(vendaID);
+
+                        // 2. Excluir pagamentos parciais relacionados
+                        PagamentoParcialDal pagamentoParcialDAL = new PagamentoParcialDal();
+                        pagamentoParcialDAL.ExcluirPagamentosParciaisPorParcelaID(parcelaID);
+
+                        // 3. Excluir contas a receber relacionadas
+                        ContaReceberDAL contaReceberDAL = new ContaReceberDAL();
+                        contaReceberDAL.ExcluirContasReceberPorParcelaID(parcelaID);
+
+                        // 4. Excluir a parcela
+                        ParcelaDAL parcelaDAL = new ParcelaDAL();
+                        parcelaDAL.ExcluirParcela(parcelaID);
+
+                        // 5. Excluir a venda
+                        vendaDAL.ExcluirVenda(vendaID);
+
+                        MessageBox.Show("Conta excluída com sucesso.", "Excluir conta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ListarContaReceber();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Erro ao excluir a conta: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Selecione uma conta para excluir.", "Excluir conta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+
+        private void btnExcluirConta_Click(object sender, EventArgs e)
+        {
+           ExcluirTudo();   
         }
     }
 }

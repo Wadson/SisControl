@@ -9,3 +9,11 @@ git push -u origin main
 
 
 //******baixar  repositorio para o computador********///
+
+
+1. Forçar o push para substituir o remoto
+Use o seguinte comando para forçar o envio das alterações locais para o repositório remoto:
+
+git push -u origin main --force
+
+

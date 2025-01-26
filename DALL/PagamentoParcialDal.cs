@@ -27,7 +27,18 @@ namespace SisControl.DALL
                 }
             }
         }
+        public void ExcluirPagamentoParcial(int pagamentoParcialID)
+        {
+            using (var connection = Conexao.Conex())
+            {
+                string query = "DELETE FROM PagamentosParciais WHERE ParcelaID = @ParcelaID";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@ParcelaID", pagamentoParcialID);
 
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
         public List<PagamentoParcialModel> ObterPagamentosParciaisPorParcela(int parcelaID)
         {
             List<PagamentoParcialModel> pagamentosParciais = new List<PagamentoParcialModel>();
@@ -59,5 +70,40 @@ namespace SisControl.DALL
 
             return pagamentosParciais;
         }
+        public void ExcluirPagamentosParciaisPorParcelaID(int parcelaID)
+        {
+            string query = "DELETE FROM PagamentosParciais WHERE ParcelaID = @ParcelaID";
+            using (var conn = Conexao.Conex())
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@ParcelaID", parcelaID);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+        public DataTable ListarPagamentosParciais()
+        {
+            var conn = Conexao.Conex();
+            try
+            {
+                SqlCommand comando = new SqlCommand("SELECT * FROM PagamentosParciais", conn);
+
+                SqlDataAdapter daUsuario = new SqlDataAdapter();
+                daUsuario.SelectCommand = comando;
+
+                DataTable dtUsuario = new DataTable();
+                daUsuario.Fill(dtUsuario);
+                return dtUsuario;
+            }
+            catch (Exception erro)
+            {
+                throw erro;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
     }
 }

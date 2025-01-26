@@ -61,6 +61,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.lblTotalPago = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.btnExcluirConta = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).BeginInit();
             this.kryptonGroupBox1.Panel.SuspendLayout();
@@ -772,10 +773,71 @@
             this.label9.TabIndex = 624;
             this.label9.Text = "TOTAL PAGO:";
             // 
+            // btnExcluirConta
+            // 
+            this.btnExcluirConta.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.Cluster;
+            this.btnExcluirConta.Location = new System.Drawing.Point(639, 174);
+            this.btnExcluirConta.Name = "btnExcluirConta";
+            this.btnExcluirConta.OverrideDefault.Back.Color1 = System.Drawing.Color.Red;
+            this.btnExcluirConta.OverrideDefault.Back.Color2 = System.Drawing.Color.Red;
+            this.btnExcluirConta.OverrideDefault.Back.ColorAngle = 45F;
+            this.btnExcluirConta.OverrideDefault.Border.Color1 = System.Drawing.Color.Red;
+            this.btnExcluirConta.OverrideDefault.Border.Color2 = System.Drawing.Color.Red;
+            this.btnExcluirConta.OverrideDefault.Border.ColorAngle = 45F;
+            this.btnExcluirConta.OverrideDefault.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnExcluirConta.OverrideDefault.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.btnExcluirConta.OverrideDefault.Border.Rounding = 20;
+            this.btnExcluirConta.OverrideDefault.Border.Width = 1;
+            this.btnExcluirConta.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
+            this.btnExcluirConta.Size = new System.Drawing.Size(113, 35);
+            this.btnExcluirConta.StateCommon.Back.Color1 = System.Drawing.Color.Red;
+            this.btnExcluirConta.StateCommon.Back.Color2 = System.Drawing.Color.Red;
+            this.btnExcluirConta.StateCommon.Back.ColorAngle = 45F;
+            this.btnExcluirConta.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.btnExcluirConta.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnExcluirConta.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnExcluirConta.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.btnExcluirConta.StateCommon.Border.Rounding = 0;
+            this.btnExcluirConta.StateCommon.Border.Width = 1;
+            this.btnExcluirConta.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.btnExcluirConta.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.btnExcluirConta.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcluirConta.StatePressed.Back.Color1 = System.Drawing.Color.Red;
+            this.btnExcluirConta.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnExcluirConta.StatePressed.Back.ColorAngle = 135F;
+            this.btnExcluirConta.StatePressed.Border.Color1 = System.Drawing.Color.Red;
+            this.btnExcluirConta.StatePressed.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnExcluirConta.StatePressed.Border.ColorAngle = 135F;
+            this.btnExcluirConta.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnExcluirConta.StatePressed.Border.Rounding = 20;
+            this.btnExcluirConta.StatePressed.Border.Width = 1;
+            this.btnExcluirConta.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnExcluirConta.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.btnExcluirConta.StateTracking.Back.ColorAngle = 45F;
+            this.btnExcluirConta.StateTracking.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.btnExcluirConta.StateTracking.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnExcluirConta.StateTracking.Border.ColorAngle = 45F;
+            this.btnExcluirConta.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnExcluirConta.StateTracking.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.btnExcluirConta.StateTracking.Border.Rounding = 20;
+            this.btnExcluirConta.StateTracking.Border.Width = 1;
+            this.btnExcluirConta.TabIndex = 626;
+            this.btnExcluirConta.Values.Text = "&Excluir Conta";
+            this.btnExcluirConta.Click += new System.EventHandler(this.btnExcluirConta_Click);
+            // 
             // FrmContaReceberr
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(772, 619);
+            this.Controls.Add(this.btnExcluirConta);
             this.Controls.Add(this.lblTotalPago);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.lblTotalDebito);
@@ -870,5 +932,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblTotalPago;
         private System.Windows.Forms.Label label9;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnExcluirConta;
     }
 }

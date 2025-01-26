@@ -3,8 +3,28 @@
   "WorkspaceRootPath": "D:\\SisControl\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|d:\\siscontrol\\view\\frmcontareceberr.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|solutionrelative:view\\frmcontareceberr.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|d:\\siscontrol\\view\\frmexclusaoorfao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|solutionrelative:view\\frmexclusaoorfao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|d:\\siscontrol\\view\\frmexclusaoorfao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|solutionrelative:view\\frmexclusaoorfao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|d:\\siscontrol\\view\\frmtelaprincipal .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|solutionrelative:view\\frmtelaprincipal .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|d:\\siscontrol\\view\\frmtelaprincipal .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|solutionrelative:view\\frmtelaprincipal .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|d:\\siscontrol\\view\\frmferramentas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|solutionrelative:view\\frmferramentas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|d:\\siscontrol\\dall\\contareceberdall.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|solutionrelative:dall\\contareceberdall.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|D:\\SisControl\\view\\frmcontareceberr.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -18,35 +38,110 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:1792700580:0:{683b7fa4-6a84-40c1-a43b-1803dc159f14}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:6:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:2:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FrmContaReceberr.cs",
-              "DocumentMoniker": "D:\\SisControl\\View\\FrmContaReceberr.cs",
-              "RelativeDocumentMoniker": "View\\FrmContaReceberr.cs",
-              "ToolTip": "D:\\SisControl\\View\\FrmContaReceberr.cs",
-              "RelativeToolTip": "View\\FrmContaReceberr.cs",
-              "ViewState": "AgIAAOoBAAAAAAAAAAD4v/0BAABkAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "FrmTelaPrincipal .cs",
+              "DocumentMoniker": "D:\\SisControl\\View\\FrmTelaPrincipal .cs",
+              "RelativeDocumentMoniker": "View\\FrmTelaPrincipal .cs",
+              "ToolTip": "D:\\SisControl\\View\\FrmTelaPrincipal .cs",
+              "RelativeToolTip": "View\\FrmTelaPrincipal .cs",
+              "ViewState": "AgIAAI0AAAAAAAAAAAAYwJUAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-25T18:03:33.036Z",
+              "WhenOpened": "2025-01-26T13:54:02.714Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ContaReceberDALL.cs",
+              "DocumentMoniker": "D:\\SisControl\\DALL\\ContaReceberDALL.cs",
+              "RelativeDocumentMoniker": "DALL\\ContaReceberDALL.cs",
+              "ToolTip": "D:\\SisControl\\DALL\\ContaReceberDALL.cs",
+              "RelativeToolTip": "DALL\\ContaReceberDALL.cs",
+              "ViewState": "AgIAAHkAAAAAAAAAAAAcwH4AAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-26T13:53:30.279Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FrmFerramentas.cs [Design]",
+              "DocumentMoniker": "D:\\SisControl\\View\\FrmFerramentas.cs",
+              "RelativeDocumentMoniker": "View\\FrmFerramentas.cs",
+              "ToolTip": "D:\\SisControl\\View\\FrmFerramentas.cs [Design]",
+              "RelativeToolTip": "View\\FrmFerramentas.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-26T13:51:35.151Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FrmTelaPrincipal .cs [Design]",
+              "DocumentMoniker": "D:\\SisControl\\View\\FrmTelaPrincipal .cs",
+              "RelativeDocumentMoniker": "View\\FrmTelaPrincipal .cs",
+              "ToolTip": "D:\\SisControl\\View\\FrmTelaPrincipal .cs [Design]",
+              "RelativeToolTip": "View\\FrmTelaPrincipal .cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-26T13:51:05.284Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FrmExclusaoOrfao.cs [Design]",
+              "DocumentMoniker": "D:\\SisControl\\View\\FrmExclusaoOrfao.cs",
+              "RelativeDocumentMoniker": "View\\FrmExclusaoOrfao.cs",
+              "ToolTip": "D:\\SisControl\\View\\FrmExclusaoOrfao.cs [Design]",
+              "RelativeToolTip": "View\\FrmExclusaoOrfao.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-26T13:24:56.887Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "FrmExclusaoOrfao.cs",
+              "DocumentMoniker": "D:\\SisControl\\View\\FrmExclusaoOrfao.cs",
+              "RelativeDocumentMoniker": "View\\FrmExclusaoOrfao.cs",
+              "ToolTip": "D:\\SisControl\\View\\FrmExclusaoOrfao.cs",
+              "RelativeToolTip": "View\\FrmExclusaoOrfao.cs",
+              "ViewState": "AgIAAMYAAAAAAAAAAAAuwNMAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-26T13:55:22.296Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "FrmContaReceberr.cs [Design]",
               "DocumentMoniker": "D:\\SisControl\\View\\FrmContaReceberr.cs",
               "RelativeDocumentMoniker": "View\\FrmContaReceberr.cs",
               "ToolTip": "D:\\SisControl\\View\\FrmContaReceberr.cs [Design]",
               "RelativeToolTip": "View\\FrmContaReceberr.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-25T17:58:29.481Z"
+              "WhenOpened": "2025-01-25T17:58:29.481Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }
