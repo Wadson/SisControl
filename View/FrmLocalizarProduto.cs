@@ -18,6 +18,7 @@ namespace SisControl.View
         public int ProdutoID { get; set; }
         public string NomeProduto { get; set; }
         private decimal PrecoUnitario;
+        private String referencia;
         public Form FormChamador { get; set; }        
 
         public FrmLocalizarProduto()
@@ -125,6 +126,8 @@ namespace SisControl.View
                 // Converte o valor da célula NomeProduto para string
                 ProdutoID  = int.Parse(dataGridPesquisar["ProdutoID", LinhaAtual].Value.ToString());
                 NomeProduto =          dataGridPesquisar["NomeProduto", LinhaAtual].Value.ToString();
+                referencia = dataGridPesquisar["Referencia", LinhaAtual].Value.ToString();
+
                 // Acrescenta zeros à esquerda do ProdutoID
                 string numeroComZeros = Utilitario.AcrescentarZerosEsquerda(ProdutoID, 4);
 
@@ -142,6 +145,7 @@ namespace SisControl.View
                 frmPedido.txtNomeProduto.Text = NomeProduto;
                 frmPedido.txtValorProduto.Text = PrecoUnitario.ToString();
                 frmPedido.txtQuantidade.Text = "1";
+                frmPedido.txtReferencia.Text = referencia;
 
                 // Calcula o subtotal
                 frmPedido.CalcularSubtotal();
@@ -168,16 +172,16 @@ namespace SisControl.View
                 string precoUnitario = row.Cells["PrecoUnitario"].Value.ToString();
 
                 // Obter a instância do FrmVendas (Owner)
-                if (this.Owner is FrmVendas frmVendas)
+                if (this.Owner is FrmPedido frmPedido)
                 {
                     // Preencher os campos do FrmVendas
-                    frmVendas.ProdutoID = int.Parse(produtoId);
-                    frmVendas.txtNomeProduto.Text = nomeProduto;
-                    frmVendas.txtValorProduto.Text = precoUnitario;
-                    frmVendas.txtQuantidade.Text = "1"; // Define a quantidade padrão como 1
+                    frmPedido.ProdutoID = int.Parse(produtoId);
+                    frmPedido.txtNomeProduto.Text = nomeProduto;
+                    frmPedido.txtValorProduto.Text = precoUnitario;
+                    frmPedido.txtQuantidade.Text = "1"; // Define a quantidade padrão como 1
 
                     // Calcular o subtotal
-                    frmVendas.CalcularSubtotal();
+                    frmPedido.CalcularSubtotal();
                 }
 
                 // Fecha o FrmLocalizarProduto
@@ -212,6 +216,11 @@ namespace SisControl.View
             {
                 LinhaAtual = dataGridPesquisar.CurrentRow.Index;
             }
+        }
+
+        private void dataGridPesquisar_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,10 +15,10 @@ namespace SisControl
             try
             {
                 //DESKTOP 
-                //string conn = "Data Source=NOTEBOOK-DELL\\SQLEXPRESS;Initial Catalog=bdsiscontrol;Integrated Security=True;";
-                string conn = "Server=DESKTOP-WR\\SQLEXPRESS;Database=bdsiscontrol;Trusted_Connection=True;";
+                string conn = "Data Source=DESKTOP-WR\\SQLEXPRESS;Initial Catalog=bdsiscontrol;Integrated Security=True;";
+
                 //NOTEBOOK
-                //string conn = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=D:\\Money\\Data\\bdmoney.mdf;Integrated Security=True;";
+                //string conn = "Data Source=NOTEBOOK-DELL\\SQLEXPRESS;Initial Catalog=bdsiscontrol;Integrated Security=True;";
 
                 SqlConnection myConn = new SqlConnection(conn);
                 return myConn;

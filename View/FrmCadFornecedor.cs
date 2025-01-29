@@ -79,28 +79,38 @@ namespace SisControl.View
                 MessageBox.Show("Erro ao Alterar o registro!!! " + erro);
             }
         }
+        
         public void ExcluirRegistro()
         {
             try
             {
                 FornecedorMODEL objetoModel = new FornecedorMODEL();
 
-                objetoModel.FornecedorID = Convert.ToInt32(txtFornecedorID.Text);
+                objetoModel.FornecedorID = Convert.ToInt32(txtFornecedorID.Text.Trim());
                 FornecedorBLL objetoBll = new FornecedorBLL();
 
                 objetoBll.Excluir(objetoModel);
                 MessageBox.Show("Registro Excluído com sucesso!", "Alteração!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                //((FrmManutUsuario)Application.OpenForms["FrmManutUsuario"]).HabilitarTimer(true);// Habilita Timer do outro form Obs: O timer no outro form executa um Método.    
-                
+
+                // Limpa os campos
                 Utilitario.LimpaCampo(this);
                 this.Close();
+                var frmManutFornecedor = Application.OpenForms["FrmManutFornecedor"] as FrmManutFornecedor;
+               
+                if (frmManutFornecedor != null)
+                {
+                    frmManutFornecedor.HabilitarTimer(true);
+                }
+                else
+                {
+                    MessageBox.Show("FrmManutFornecedor não está aberto.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }                
             }
             catch (Exception erro)
             {
-                MessageBox.Show("Erro ao Excluir o registro!!! " + erro);
+                MessageBox.Show("Erro ao Excluir o registro: " + erro.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-      
 
         private void FrmCadFornecedor_Load(object sender, EventArgs e)
         {
@@ -117,10 +127,6 @@ namespace SisControl.View
             }
         }
 
-        private void btnLocalizar_Click(object sender, EventArgs e)
-        {            
-            
-        }
 
         private void btnLocalizar_Click_1(object sender, EventArgs e)
         {

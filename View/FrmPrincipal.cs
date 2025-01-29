@@ -136,39 +136,30 @@ namespace SisControl
 
         private void btnEstorno_Click(object sender, EventArgs e)
         {
-
         }
 
         private void brnPesquisadinamica_Click(object sender, EventArgs e)
         {
-
         }
 
         private void btnFerramentas_Click(object sender, EventArgs e)
         {
-
         }
 
         private void btnGerarBackup_Click(object sender, EventArgs e)
         {
-
         }
 
         private void btnRestauraBackup_Click(object sender, EventArgs e)
         {
-
         }
 
         private void categoriaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FrmManutCategoria frm = new FrmManutCategoria(StatusOperacao);
-            frm.ShowDialog();
+        {           
         }
 
         private void fabricanteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FrmManutFabricante frm = new FrmManutFabricante(StatusOperacao);
-            frm.ShowDialog();
+        {            
         }
     }
 }

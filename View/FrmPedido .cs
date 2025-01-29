@@ -14,6 +14,7 @@ using SisControl;
 using System.IO;
 using ComponentFactory.Krypton.Toolkit;
 using System.Transactions;
+using Microsoft.IdentityModel.Tokens;
 
 
 namespace SisControl.View
@@ -67,6 +68,14 @@ namespace SisControl.View
             txtValorRecebido.Leave += new EventHandler(txtValorRecebido_Leave);
         }
         // Método para excluir a linha selecionada
+
+
+        private void ContarLinhasComDados()
+        {
+            int numeroDeLinhasComDados = dgvItensVenda.Rows.Cast<DataGridViewRow>().Count(row => !row.IsNewRow);            
+            txtQtdItens.Text = numeroDeLinhasComDados.ToString();
+        }
+
         private void ExcluirItemSelecionado()
         {
             if (dgvItensVenda.SelectedRows.Count > 0)
@@ -97,25 +106,77 @@ namespace SisControl.View
             }
         }
 
-
         private void InicializarDataGridViewItensVenda()
         {
             DataTable dt = new DataTable();
 
-            // Definir colunas no DataTable apenas uma vez
-            dt.Columns.Add("ItemVendaID", typeof(int));
-            dt.Columns.Add("ProdutoID", typeof(int));
-            dt.Columns.Add("Quantidade", typeof(int));
-            dt.Columns.Add("ValorProduto", typeof(decimal));
-            dt.Columns.Add("SubTotal", typeof(decimal));
+            // Definir colunas no DataTable
+            dt.Columns.Add("ItemVendaID", typeof(int));         // ID do item (código incremental)
+            dt.Columns.Add("NomeProduto", typeof(string));     // Nome ou descrição do produto
+            dt.Columns.Add("ProdutoID", typeof(int));          // Código do produto
+            dt.Columns.Add("Quantidade", typeof(int));         // Quantidade do produto
+            dt.Columns.Add("ValorProduto", typeof(decimal));   // Valor unitário do produto
+            dt.Columns.Add("SubTotal", typeof(decimal));       // Subtotal (Quantidade x ValorProduto)
 
-            dgvItensVenda.DataSource = dt;           
+            dgvItensVenda.DataSource = dt;
+
+            // Renomear colunas no DataGridView
+            dgvItensVenda.Columns["ItemVendaID"].HeaderText = "Cód. Item";
+            dgvItensVenda.Columns["NomeProduto"].HeaderText = "Descrição do Produto";
+            dgvItensVenda.Columns["ProdutoID"].HeaderText = "Cód. Prod.";
+            dgvItensVenda.Columns["Quantidade"].HeaderText = "Qtd.";
+            dgvItensVenda.Columns["ValorProduto"].HeaderText = "Valor Unitário";
+            dgvItensVenda.Columns["SubTotal"].HeaderText = "Subtotal";
+
+            //dgvItensVenda.RowHeadersVisible = false;
+
+            // Centralizar colunas específicas
+            dgvItensVenda.Columns["Quantidade"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvItensVenda.Columns["ProdutoID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            // Definir tamanho das colunas
+            dgvItensVenda.Columns["ItemVendaID"].Width = 90;
+            dgvItensVenda.Columns["NomeProduto"].Width = 350;
+            dgvItensVenda.Columns["ProdutoID"].Width = 80;
+            dgvItensVenda.Columns["Quantidade"].Width = 50;
+            dgvItensVenda.Columns["ValorProduto"].Width = 90;
+            dgvItensVenda.Columns["SubTotal"].Width = 90;
+
+            // Ocultar a coluna ItemVendaID
+            dgvItensVenda.Columns["ItemVendaID"].Visible = false;
+        }
+        private void PersonalizarGridParcelas()
+        {
+            if (dgvParcelas.Columns.Count == 0)
+                return; // Evita erro se as colunas não estiverem disponíveis ainda
+
+            dgvParcelas.Columns["ParcelaID"].HeaderText = "Cód.Parc";
+            dgvParcelas.Columns["ValorParcela"].HeaderText = "Vlr. Parc.";
+            dgvParcelas.Columns["NumeroParcela"].HeaderText = "Nr.Parc.";
+            dgvParcelas.Columns["DataVencimento"].HeaderText = "Dta. Vcto";
+
+            // Centralizar colunas específicas
+            dgvParcelas.Columns["ParcelaID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvParcelas.Columns["NumeroParcela"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            // Definir tamanho das colunas
+            dgvParcelas.Columns["ParcelaID"].Width = 90;
+            dgvParcelas.Columns["ValorParcela"].Width = 90;
+            dgvParcelas.Columns["NumeroParcela"].Width = 70;
+            dgvParcelas.Columns["DataVencimento"].Width = 100;
+
+            // Ocultar a coluna ParcelaID se necessário
+            dgvParcelas.Columns["ParcelaID"].Visible = false;
+
+            //dgvParcelas.RowHeadersVisible = false;
+
         }
 
         private void IncluirItens()
         {
             try
             {
+                string NomeProduto = txtNomeProduto.Text;
                 int _ProdutoID = ProdutoID;
                 int Quantidade = int.Parse(txtQuantidade.Text);
                 decimal ValorProduto = decimal.Parse(txtValorProduto.Text);
@@ -150,13 +211,13 @@ namespace SisControl.View
                 }
                 else
                 {
-                    // Produto não existe, adicionar nova linha
-                    dt.Rows.Add(nextItemVendaID++, _ProdutoID, Quantidade, ValorProduto, SubTotal);
+                    // Produto não existe, adicionar nova linha na ordem correta
+                    dt.Rows.Add(nextItemVendaID++, NomeProduto, _ProdutoID, Quantidade, ValorProduto, SubTotal);
                 }
 
                 // Atualizar o subtotal total (soma dos subtotais de todos os itens)
                 SomarSubtotal();
-
+                ContarLinhasComDados();
                 // Limpar os campos
                 txtValorProduto.Text = "0,00";
                 txtValorRecebido.Text = "0,00";
@@ -164,47 +225,13 @@ namespace SisControl.View
                 txtQuantidade.Text = "1";
                 txtNomeProduto.Text = "";
                 txtNomeProduto.Select();
+                txtReferencia.Text = "";
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao inserir os dados no datagridview: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro ao inserir os dados no DataGridView: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
-
-        //private void IncluirItens()
-        //{
-        //    try
-        //    {
-        //        int _ProdutoID = ProdutoID;
-        //        int Quantidade = int.Parse(txtQuantidade.Text);
-        //        decimal ValorProduto = decimal.Parse(txtValorProduto.Text);
-        //        decimal SubTotal = decimal.Parse(txtSubTotal.Text);
-
-        //        // Obter a fonte de dados do DataGridView
-        //        DataTable dt = dgvItensVenda.DataSource as DataTable;
-
-        //        // Remover a linha dt.Rows.Clear();
-
-        //        // Adicionar linhas ao DataTable
-        //        for (var i = 0; i < numeroParcelas; i++)
-        //        {
-        //            dt.Rows.Add(nextItemVendaID++, _ProdutoID, Quantidade, ValorProduto, SubTotal);
-        //            SomarSubtotal();
-        //        }
-        //        txtValorProduto.Text = "0,00";
-        //        txtValorRecebido.Text = "0,00";
-        //        txtSubTotal.Text = "0,00";
-        //        txtQuantidade.Text = "1";
-        //        txtNomeProduto.Text = "";
-        //        txtNomeProduto.Select();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("Erro ao inserir os dados no datagridview: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //}
 
 
 
@@ -280,50 +307,7 @@ namespace SisControl.View
             CalcularSubtotal();
         }
 
-        public void ReceberDadosParcelas(DataTable dt)
-        {
-            try
-            {
-                // Verifica se as colunas do DataGridView estão definidas
-                if (dgvParcelas.Columns.Count == 0)
-                {
-                    dgvParcelas.Columns.Add("ParcelaID", "Parcela ID");
-                    dgvParcelas.Columns.Add("ValorParcela", "Valor da Parcela");
-                    dgvParcelas.Columns.Add("NumeroParcela", "Número da Parcela");
-                    dgvParcelas.Columns.Add("DataVencimento", "Data de Vencimento");
-                }
-
-                // Desvincula o DataGridView da fonte de dados
-                dgvParcelas.DataSource = null;
-
-                // Limpa as linhas existentes no DataGridView
-                dgvParcelas.Rows.Clear();
-
-                foreach (DataRow row in dt.Rows)
-                {
-                    DateTime dataVencimento = Convert.ToDateTime(row["DataVencimento"]).Date;
-
-                    // Adiciona linhas no DataGridView
-                    dgvParcelas.Rows.Add(
-                        row["ParcelaID"],
-                        row["ValorParcela"],
-                        row["NumeroParcela"],
-                        row["DataVencimento"],
-                        dataVencimento
-                    );
-                }
-
-                // Configura o formato da célula para mostrar apenas a data
-                foreach (DataGridViewRow dgvRow in dgvParcelas.Rows)
-                {
-                    dgvRow.Cells["DataVencimento"].Value = Convert.ToDateTime(dgvRow.Cells["DataVencimento"].Value).ToString("dd/MM/yyyy");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao receber dados das parcelas: " + ex.Message + "\n" + ex.StackTrace, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+       
         private void LimparFormulario()
         {
             try
@@ -364,38 +348,25 @@ namespace SisControl.View
                 MessageBox.Show($"Erro ao limpar o formulário: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        // Verifica se os datagrids estão vazios
+        private bool ValidarGridsPreenchidos()
+        {
+            // Verifica se o DataGridView de itens da venda está vazio
+            if (dgvItensVenda.Rows.Count == 0)
+            {
+                MessageBox.Show("Nenhum item foi adicionado à venda.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
 
-        //private void LimparFormulario()
-        //{
-        //    try
-        //    {
-        //        // Limpar campos de texto
-        //        txtValorProduto.Text = "0,00";
-        //        txtValorRecebido.Text = "0,00";
-        //        txtSubTotal.Text = "0,00";
-        //        txtQuantidade.Text = "1";
-        //        txtNomeProduto.Text = "";
-        //        txtNomeCliente.Text = "";
+            //// Verifica se o DataGridView de parcelas está vazio
+            //if (dgvParcelas.Rows.Count == 0)
+            //{
+            //    MessageBox.Show("Nenhuma parcela foi gerada.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return false;
+            //}
 
-        //        // Limpar o DataGridView (certifique-se de que ele não esteja com uma fonte de dados ativa)
-        //        if (dgvItensVenda.DataSource is DataTable dt && dgvParcelas.DataSource is DataTable dtt)
-        //        {
-        //            dt.Clear(); // Limpa o DataTable diretamente
-        //            dtt.Clear();
-        //        }
-        //        else
-        //        {
-        //            dgvItensVenda.Rows.Clear(); // Limpa as linhas do DataGridView manualmente
-        //            dgvParcelas.Rows.Clear();
-        //        }
-        //        NovoCodigo();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Log($"Erro ao limpar o formulário: {ex.Message}");
-        //        throw; // Relança o erro para tratamento em um nível superior, se necessário
-        //    }
-        //}
+            return true; // Ambos os DataGridViews possuem dados
+        }
 
         public void GravarVenda()
         {
@@ -465,66 +436,6 @@ namespace SisControl.View
                 MessageBox.Show($"Erro ao conectar ao banco de dados: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
-        //public void GravarVenda()
-        //{
-        //    Log("Iniciando gravação da venda...");
-        //    try
-        //    {
-        //        using (var connection = Conexao.Conex())
-        //        {
-        //            connection.Open();
-        //            using (var transaction = connection.BeginTransaction())
-        //            {
-        //                try
-        //                {
-        //                    Log("Inserindo dados da venda...");
-        //                    InserirVenda(connection, transaction);
-
-        //                    Log("Inserindo itens da venda...");
-        //                    InserirItensVenda(connection, transaction);
-
-        //                    Log("Inserindo parcelas e contas a receber...");
-        //                    InserirParcelasEContasReceber(connection, transaction);
-
-        //                    // Commit da transação
-        //                    Log("Finalizando transação com commit...");
-        //                    transaction.Commit();
-
-        //                    Log("Venda finalizada com sucesso.");
-        //                    MessageBox.Show("Venda finalizada com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-        //                    Utilitario.LimpaCampoKrypton(this);
-        //                    NovoCodigo();
-        //                }
-        //                catch (Exception ex)
-        //                {
-        //                    Log($"Erro durante a execução da venda: {ex.Message}");
-        //                    try
-        //                    {
-        //                        Log("Desfazendo transação (rollback)...");
-        //                        transaction.Rollback();
-        //                    }
-        //                    catch (Exception rbEx)
-        //                    {
-        //                        Log($"Erro ao realizar o rollback: {rbEx.Message}");
-        //                    }
-        //                    finally
-        //                    {
-        //                        transaction.Dispose();
-        //                    }
-        //                    MessageBox.Show($"Erro ao finalizar a venda: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //                }
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Log($"Erro ao conectar ao banco de dados: {ex.Message}");
-        //        MessageBox.Show($"Erro ao conectar ao banco de dados: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    } 
-        //}
 
 
 
@@ -885,7 +796,14 @@ namespace SisControl.View
 
         private void btnFinalizarVenda_Click(object sender, EventArgs e)
         {
-            GravarVenda();
+            // Valida se os DataGridViews estão preenchidos antes de prosseguir
+            if (!ValidarGridsPreenchidos())
+            {
+                return; // Interrompe a execução se a validação falhar
+            }
+
+            // Chama o método GravarVenda somente se a validação for bem-sucedida
+            GravarVenda();            
         }
 
         private void txtQuantidade_Leave(object sender, EventArgs e)
@@ -959,46 +877,51 @@ namespace SisControl.View
             }
         }
 
-        private void btnParcelar_Click_1(object sender, EventArgs e)
+        private void AbrirFormParcelar()
         {
-            // Gerar o ParcelaID
             ParcelaID = Utilitario.GerarNovoCodigoID("ParcelaID", "Parcela");
 
-            // Instanciar o formulário FrmGerarParcelas
-            FrmGerarParcelas gerarparc = new FrmGerarParcelas();
+            FrmGerarParcelas gerarparc = new FrmGerarParcelas
+            {
+                parcelaID = ParcelaID
+            };
 
-            // Definir o ParcelaID no formulário FrmGerarParcelas
-            gerarparc.SetParcelaID(ParcelaID);
+            gerarparc.txtIdVenda.Text = txtVendaID.Text;
+            gerarparc.txtTotal.Text = txtValorTotal.Text;
+            gerarparc.txtNomeCliente.Text = txtNomeCliente.Text;
+            gerarparc.txtQtdParcelas.Text = "2";
 
+            if (gerarparc.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show("Parcelas geradas com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        private void btnParcelar_Click_1(object sender, EventArgs e)
+        {
+            AbrirFormParcelar();
+        }
+        public void ReceberDadosParcelas(DataTable dtParcelas)
+        {
             try
             {
-
-                if (dgvItensVenda.Rows.Count == 0)
+                if (dtParcelas == null || dtParcelas.Rows.Count == 0)
                 {
-                    MessageBox.Show("Nenhum item de venda encontrado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Nenhuma parcela foi gerada.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                gerarparc.txtIdVenda.Text = txtVendaID.Text;
-                gerarparc.txtTotal.Text = txtValorTotal.Text; // dgvItensVenda.CurrentRow.Cells[4].Value.ToString();
-                gerarparc.txtNomeCliente.Text = txtNomeCliente.Text;
-                gerarparc.txtQtdParcelas.Text = 2.ToString();
+                // Atualizar o DataGridView de Parcelas
+                dgvParcelas.DataSource = null; // Desvincular a fonte temporariamente
+                dgvParcelas.DataSource = dtParcelas;
 
-                // Passa o parcelaID como Guid para o formulário de gerar parcelas
-                gerarparc.parcelaID = ParcelaID;
-
-                gerarparc.ShowDialog();
-                gerarparc.Text = "Gerar Parcelas para o Cliente:" + txtNomeCliente.Text;                
-            }
-            catch (FormatException ex)
-            {
-                MessageBox.Show("Erro no formato dos dados: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                PersonalizarGridParcelas();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocorreu um erro: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Erro ao atualizar parcelas: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+       
 
         private void dgvItensVenda_KeyDown(object sender, KeyEventArgs e)
         {
@@ -1025,61 +948,30 @@ namespace SisControl.View
         {
             LimparFormulario();
         }
+
+        private void txtReferencia_Leave(object sender, EventArgs e)
+        {
+            // Obtém o valor digitado no txtReferencia
+            string referencia = txtReferencia.Text.Trim();
+
+            // Chama o método PesquisarPorReferencia passando o valor digitado e os TextBox para os resultados
+            Utilitario.PesquisarProdutoPorReferencia(referencia, txtNomeProduto, txtValorProduto);
+        }
+
+        private void FrmPedido_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F4)
+            {
+                AbrirFrmLocalizarCliente();
+            }
+            if (e.KeyCode == Keys.F5)
+            {
+                LocalizarProduto();
+            }
+            if (e.KeyCode == Keys.F2)
+            {
+                AbrirFormParcelar();
+            }
+        }   
     }
 }
-
-
-/*
- *  private void GerarParcelas()
-        {
-            // Após inserir o item de venda, verificar se radioSim está marcado
-            if (dgvItensVenda.Rows.Count > 0)
-            {
-                try
-                {
-                    int dias = 30;
-                    string nomeCliente = txtNomeCliente.Text;
-                    numeroParcelas = 1;
-                    valorTotal = Convert.ToDecimal(txtValorTotal.Text);
-                    // Definir a data de vencimento para incluir apenas a data, sem a hora
-                    DateTime dataVencimento = Convert.ToDateTime(dtpVencimento.Value).Date;
-                    decimal valorParcela = Math.Round(valorTotal / numeroParcelas, 2); // Arredondar para duas casas decimais
-
-                    // Obter a fonte de dados do DataGridView, se houver
-                    DataTable dt = dgvParcelas.DataSource as DataTable;
-
-                    // Se a fonte de dados estiver vazia, inicialize-a
-                    if (dt == null || dt.Columns.Count == 0)
-                    {
-                        dt = new DataTable();
-
-                        // Definir colunas no DataTable apenas uma vez
-                        dt.Columns.Add("ParcelaID", typeof(int)); // Alterado para int
-                        dt.Columns.Add("ValorParcela", typeof(decimal));
-                        dt.Columns.Add("NumeroParcela", typeof(int));
-                        dt.Columns.Add("DataVencimento", typeof(DateTime));
-
-                        dgvParcelas.DataSource = dt;
-                    }
-                    else
-                    {
-                        // Limpar as linhas do DataTable antes de adicionar novas
-                        dt.Rows.Clear();
-                    }
-
-                    int parcelaID = Utilitario.GerarNovoCodigoID("ParcelaID", "Parcela"); // Gerar um novo ParcelaID para cada parcela
-                                                                                          // Adicionar linhas ao DataTable com novos ParcelaID gerados
-                    for (var i = 0; i < numeroParcelas; i++)
-                    {
-                        dt.Rows.Add(parcelaID, valorParcela, i + 1, dataVencimento.AddDays(i * dias).Date);
-                        parcelaID++;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Erro ao gerar parcelas: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }   
-           
-        }
- * */

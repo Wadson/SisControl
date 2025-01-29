@@ -90,5 +90,16 @@ namespace SisControl.Properties {
                 return ((string)(this["bdsiscontrolConnectionString4"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-WR\\SQLEXPRESS;Initial Catalog=bdsiscontrol;Integrated Securit" +
+            "y=True;TrustServerCertificate=True")]
+        public string bdsiscontrolConnectionString5 {
+            get {
+                return ((string)(this["bdsiscontrolConnectionString5"]));
+            }
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using SisControl.BLL;
+﻿using ComponentFactory.Krypton.Toolkit;
+using SisControl.BLL;
 using SisControl.DALL;
 using System;
 using System.Collections.Generic;
@@ -28,39 +29,17 @@ namespace SisControl.View
         {
             timer1.Enabled = habilitar;
         }
-        public void PersonalizarDataGridView(DataGridView dgv)
+        public void PersonalizarDataGridView(KryptonDataGridView dgv)
         {
-            //// Ajustar colunas automaticamente
-            //dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-
-            // Tornar o grid somente leitura
-            dgv.ReadOnly = true;
-
-            //// Estilo das bordas das células
-            //dgv.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-
-            //// Estilo da seleção das células
-            //dgv.DefaultCellStyle.SelectionBackColor = Color.DarkTurquoise;
-            //dgv.DefaultCellStyle.SelectionForeColor = Color.White;
-
-            ////dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            //dgv.MultiSelect = false;
-            //// Esconder a coluna de cabeçalho de linha
-            ////dgv.RowHeadersVisible = false;
-
-            // Cor do grid
-            //dgv.GridColor = Color.Black;
-
-            this.dataGridPesquisar.Columns[0].Name = "ClienteID"   ;
-            this.dataGridPesquisar.Columns[1].Name = "NomeCliente" ;
-            this.dataGridPesquisar.Columns[2].Name = "Cpf"         ;
-            this.dataGridPesquisar.Columns[3].Name = "Endereco"      ;
-            this.dataGridPesquisar.Columns[4].Name = "Telefone"    ;
-            this.dataGridPesquisar.Columns[5].Name = "Email"        ;
-            this.dataGridPesquisar.Columns[6].Name = "CidadeID"     ;
-            this.dataGridPesquisar.Columns[7].Name = "NomeCidade"         ;
-            this.dataGridPesquisar.Columns[8].Name = "NomeEstado"        ;           
-           
+            this.dataGridPesquisar.Columns[0].Name = "ClienteID";
+            this.dataGridPesquisar.Columns[1].Name = "NomeCliente";
+            this.dataGridPesquisar.Columns[2].Name = "Cpf";
+            this.dataGridPesquisar.Columns[3].Name = "Endereco";
+            this.dataGridPesquisar.Columns[4].Name = "Telefone";
+            this.dataGridPesquisar.Columns[5].Name = "Email";
+            this.dataGridPesquisar.Columns[6].Name = "CidadeID";
+            this.dataGridPesquisar.Columns[7].Name = "NomeCidade";
+            this.dataGridPesquisar.Columns[8].Name = "NomeEstado";
         }
       
         private void CarregaDados()

@@ -53,7 +53,8 @@ namespace SisControl.View
                     StatusOperacao = "ALTERAR";
                     
                     frm.btnNovo.Enabled = false;
-                  
+                    frm.btnSalva.Text = "Alterar";
+
                     frm.ShowDialog();                   
                 }
                 catch (Exception ex)
@@ -95,6 +96,7 @@ namespace SisControl.View
                     frm.txtCnpjCpf.Enabled = false;
                     frm.txtEndereco.Enabled = false;
                     frm.txtTelefone.Enabled = false;
+                    frm.btnSalva.Text = "Excluir";  
                     frm.ShowDialog();
                     // Execução do código desejado
                     //foreach (DataGridViewRow row in dataGridPesquisar.Rows)

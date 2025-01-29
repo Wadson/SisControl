@@ -70,14 +70,36 @@ namespace SisControl.DALL
             var conn = Conexao.Conex();
             try
             {
+                if (conn.State == ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+                // Verificar a existência antes de tentar excluir
+                SqlCommand checkCommand = new SqlCommand("SELECT COUNT(1) FROM Fornecedor WHERE FornecedorID = @FornecedorID", conn);
+                checkCommand.Parameters.AddWithValue("@FornecedorID", fornecedor.FornecedorID);
+
+                int exists = (int)checkCommand.ExecuteScalar();
+                if (exists == 0)
+                {
+                    throw new Exception("Supplier with given ID does not exist.");
+                }
+                //*****************************************************************
+
                 SqlCommand sqlcomando = new SqlCommand("DELETE FROM Fornecedor WHERE  FornecedorID = @FornecedorID", conn);
                 sqlcomando.Parameters.AddWithValue("@FornecedorID", fornecedor.FornecedorID);
-                conn.Open();
+                
                 sqlcomando.ExecuteNonQuery();
+
+                int rowsAffected = sqlcomando.ExecuteNonQuery();
+                if (rowsAffected == 0)
+                {
+                    throw new Exception("Delete command did not affect any rows.");
+                }
+
             }
             catch (Exception erro)
             {
-                throw erro;
+                throw new Exception("Error while deleting supplier: " + erro.Message, erro);
             }
             finally
             {

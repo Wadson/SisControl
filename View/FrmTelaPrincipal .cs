@@ -79,15 +79,11 @@ namespace SisControl
 
        
         private void categoriaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FrmManutCategoria frm = new FrmManutCategoria(StatusOperacao);
-            frm.ShowDialog();
+        {           
         }
 
         private void fabricanteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FrmManutFabricante frm = new FrmManutFabricante(StatusOperacao);
-            frm.ShowDialog();
+        {           
         }
 
         private void btnUsuarios_Click(object sender, EventArgs e)
@@ -125,7 +121,6 @@ namespace SisControl
 
         private void btnContasPagar_Click(object sender, EventArgs e)
         {
-
         }
 
         private void btnContasReceber_Click(object sender, EventArgs e)

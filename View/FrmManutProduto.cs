@@ -1,4 +1,5 @@
-﻿using SisControl.BLL;
+﻿using ComponentFactory.Krypton.Toolkit;
+using SisControl.BLL;
 using SisControl.DALL;
 using System;
 using System.Collections.Generic;
@@ -34,27 +35,15 @@ namespace SisControl.View
             dataGridPesquisar.DataSource = objetoBll.Listar();
             PersonalizarDataGridView(dataGridPesquisar);
         }
-        public void PersonalizarDataGridView(DataGridView dgv)
+        public void PersonalizarDataGridView(KryptonDataGridView dgv)
         {            
             //Alinhar o as colunas
 
             dgv.Columns["ProdutoID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopCenter;
             dgv.Columns["QuantidadeEmEstoque"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopCenter;
                         
-            dgv.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-
-            // Estilo da seleção das células
-            dgv.DefaultCellStyle.SelectionBackColor = Color.DarkTurquoise;
-            dgv.DefaultCellStyle.SelectionForeColor = Color.White;
-
-            dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgv.MultiSelect = false;
-            // Esconder a coluna de cabeçalho de linha
             //dgv.RowHeadersVisible = false;
-
-            // Cor do grid
-            dgv.GridColor = Color.Black;
-
+            
             dgv.Columns[0].Name = "ProdutoID";
             dgv.Columns[1].Name = "NomeProduto";           
             dgv.Columns[2].Name = "PrecoCusto";
@@ -66,9 +55,37 @@ namespace SisControl.View
             dgv.Columns[8].Name = "Imagem";           
             dgv.Columns[9].Name = "Referencia";
 
+
+            // Definir tamanho das colunas
+            dgv.Columns["ProdutoID"].Width = 50;
+            dgv.Columns["NomeProduto"].Width = 250;
+            dgv.Columns["PrecoCusto"].Width = 100;
+            dgv.Columns["Lucro"].Width = 80;
+            dgv.Columns["PrecoDeVenda"].Width = 90;
+            dgv.Columns["QuantidadeEmEstoque"].Width = 70;
+            dgv.Columns["DataDeEntrada"].Width = 90;
+            dgv.Columns["Status"].Width = 70;
+            dgv.Columns["Imagem"].Width = 100;
+            dgv.Columns["Referencia"].Width = 100;
+
+
+            dgv.Columns["ProdutoID"].HeaderText = "Cód. Prod.";
+            dgv.Columns["NomeProduto"].HeaderText = "Descrição do Produto";
+            dgv.Columns["PrecoCusto"].HeaderText = "P. Custo";
+            dgv.Columns["Lucro"].HeaderText = "Lucro.";
+            dgv.Columns["PrecoDeVenda"].HeaderText = "P. Venda";
+            dgv.Columns["QuantidadeEmEstoque"].HeaderText = "Estoque";
+            dgv.Columns["DataDeEntrada"].HeaderText = "Dta. Entrada";
+            dgv.Columns["Status"].HeaderText = "Status";
+            dgv.Columns["Imagem"].HeaderText = "Imagem.";
+            dgv.Columns["Referencia"].HeaderText = "Referência";
+
             // Centralizar colunas de IDs e Quantidade
             dgv.Columns["ProdutoID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgv.Columns["QuantidadeEmEstoque"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;   
+            dgv.Columns["QuantidadeEmEstoque"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            // Ocultar a coluna ItemVendaID
+            dgv.Columns["ProdutoID"].Visible = false;           
 
         }
         private void CarregaDados()

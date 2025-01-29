@@ -75,7 +75,6 @@
             this.btnCadClientes = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnSair = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnProdutos = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.btnContasPagar = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnVendas = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnFerramentas = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
@@ -385,7 +384,6 @@
             this.MenuVertical.Controls.Add(this.btnCadClientes);
             this.MenuVertical.Controls.Add(this.btnSair);
             this.MenuVertical.Controls.Add(this.btnProdutos);
-            this.MenuVertical.Controls.Add(this.btnContasPagar);
             this.MenuVertical.Controls.Add(this.btnVendas);
             this.MenuVertical.Controls.Add(this.btnFerramentas);
             this.MenuVertical.Dock = System.Windows.Forms.DockStyle.Left;
@@ -473,7 +471,7 @@
             // btnRelatorio
             // 
             this.btnRelatorio.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnRelatorio.Location = new System.Drawing.Point(9, 319);
+            this.btnRelatorio.Location = new System.Drawing.Point(9, 279);
             this.btnRelatorio.Name = "btnRelatorio";
             this.btnRelatorio.OverrideDefault.Back.Color1 = System.Drawing.Color.White;
             this.btnRelatorio.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -603,7 +601,7 @@
             // btnContasReceber
             // 
             this.btnContasReceber.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnContasReceber.Location = new System.Drawing.Point(9, 283);
+            this.btnContasReceber.Location = new System.Drawing.Point(9, 243);
             this.btnContasReceber.Name = "btnContasReceber";
             this.btnContasReceber.OverrideDefault.Back.Color1 = System.Drawing.Color.White;
             this.btnContasReceber.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -733,7 +731,7 @@
             // btnSair
             // 
             this.btnSair.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnSair.Location = new System.Drawing.Point(9, 391);
+            this.btnSair.Location = new System.Drawing.Point(9, 351);
             this.btnSair.Name = "btnSair";
             this.btnSair.OverrideDefault.Back.Color1 = System.Drawing.Color.White;
             this.btnSair.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -861,71 +859,6 @@
             this.btnProdutos.Values.Text = "Produtos";
             this.btnProdutos.Click += new System.EventHandler(this.btnProdutos_Click);
             // 
-            // btnContasPagar
-            // 
-            this.btnContasPagar.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnContasPagar.Location = new System.Drawing.Point(9, 247);
-            this.btnContasPagar.Name = "btnContasPagar";
-            this.btnContasPagar.OverrideDefault.Back.Color1 = System.Drawing.Color.White;
-            this.btnContasPagar.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
-            this.btnContasPagar.OverrideDefault.Back.ColorAngle = 45F;
-            this.btnContasPagar.OverrideDefault.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
-            this.btnContasPagar.OverrideDefault.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
-            this.btnContasPagar.OverrideDefault.Border.ColorAngle = 45F;
-            this.btnContasPagar.OverrideDefault.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnContasPagar.OverrideDefault.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.btnContasPagar.OverrideDefault.Border.Rounding = 1;
-            this.btnContasPagar.OverrideDefault.Border.Width = 1;
-            this.btnContasPagar.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnContasPagar.Size = new System.Drawing.Size(190, 30);
-            this.btnContasPagar.StateCommon.Back.Color1 = System.Drawing.Color.White;
-            this.btnContasPagar.StateCommon.Back.Color2 = System.Drawing.Color.White;
-            this.btnContasPagar.StateCommon.Back.ColorAngle = 45F;
-            this.btnContasPagar.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
-            this.btnContasPagar.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
-            this.btnContasPagar.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnContasPagar.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.btnContasPagar.StateCommon.Border.Rounding = 1;
-            this.btnContasPagar.StateCommon.Border.Width = 1;
-            this.btnContasPagar.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
-            this.btnContasPagar.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
-            this.btnContasPagar.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnContasPagar.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
-            this.btnContasPagar.StatePressed.Back.Color2 = System.Drawing.Color.White;
-            this.btnContasPagar.StatePressed.Back.ColorAngle = 135F;
-            this.btnContasPagar.StatePressed.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
-            this.btnContasPagar.StatePressed.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
-            this.btnContasPagar.StatePressed.Border.ColorAngle = 135F;
-            this.btnContasPagar.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnContasPagar.StatePressed.Border.Rounding = 1;
-            this.btnContasPagar.StatePressed.Border.Width = 1;
-            this.btnContasPagar.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
-            this.btnContasPagar.StateTracking.Back.Color2 = System.Drawing.Color.White;
-            this.btnContasPagar.StateTracking.Back.ColorAngle = 45F;
-            this.btnContasPagar.StateTracking.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
-            this.btnContasPagar.StateTracking.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
-            this.btnContasPagar.StateTracking.Border.ColorAngle = 45F;
-            this.btnContasPagar.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnContasPagar.StateTracking.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.btnContasPagar.StateTracking.Border.Rounding = 1;
-            this.btnContasPagar.StateTracking.Border.Width = 1;
-            this.btnContasPagar.StateTracking.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnContasPagar.TabIndex = 560;
-            this.btnContasPagar.Values.ImageStates.ImageCheckedNormal = null;
-            this.btnContasPagar.Values.ImageStates.ImageCheckedPressed = null;
-            this.btnContasPagar.Values.ImageStates.ImageCheckedTracking = null;
-            this.btnContasPagar.Values.ImageStates.ImageNormal = global::SisControl.Properties.Resources.Pagar24;
-            this.btnContasPagar.Values.Text = "Pagar";
-            this.btnContasPagar.Click += new System.EventHandler(this.btnContasPagar_Click);
-            // 
             // btnVendas
             // 
             this.btnVendas.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -994,7 +927,7 @@
             // btnFerramentas
             // 
             this.btnFerramentas.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnFerramentas.Location = new System.Drawing.Point(9, 355);
+            this.btnFerramentas.Location = new System.Drawing.Point(9, 315);
             this.btnFerramentas.Name = "btnFerramentas";
             this.btnFerramentas.OverrideDefault.Back.Color1 = System.Drawing.Color.White;
             this.btnFerramentas.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -1144,7 +1077,6 @@
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnProdutos;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnRelatorio;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnContasReceber;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnContasPagar;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnVendas;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnSair;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnFerramentas;

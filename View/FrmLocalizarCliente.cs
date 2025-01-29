@@ -110,5 +110,10 @@ namespace SisControl.View
                 LinhaAtual = dataGridPesquisar.CurrentRow.Index;
             }
         }
+
+        private void dataGridPesquisar_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

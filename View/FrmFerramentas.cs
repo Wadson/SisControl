@@ -20,5 +20,22 @@ namespace SisControl.View
             FrmExclusaoOrfao frmExclusaoOrfao = new FrmExclusaoOrfao();
             frmExclusaoOrfao.ShowDialog();
         }
+
+        private void txtBackup_Click(object sender, EventArgs e)
+        {
+            FrmBackup frmBackup = new FrmBackup();
+            frmBackup.ShowDialog();
+        }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnRestaurarBackup_Click(object sender, EventArgs e)
+        {
+            FrmRestauraBackup frmRestauraBackup = new FrmRestauraBackup();
+            frmRestauraBackup.ShowDialog();
+        }
     }
 }

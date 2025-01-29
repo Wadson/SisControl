@@ -192,30 +192,7 @@ namespace SisControl
 
             return nextId;
         }
-        //public static int GerarNovoCodigoID(string NomeCampo, string nomeDaTabela)
-        //{
-        //    return GetNextId(NomeCampo ,nomeDaTabela);
-        //}
-        //private static int GetNextId(string NomeCamp, string tableName)
-        //{
-        //    int nextId = 1;
-
-        //    using (var connection = Conexao.Conex())
-        //    {
-        //        string query = $"SELECT MAX({NomeCamp}) FROM {tableName}";
-
-        //        SqlCommand command = new SqlCommand(query, connection);
-
-        //        connection.Open();
-        //        object result = command.ExecuteScalar();
-        //        if (result != DBNull.Value)
-        //        {
-        //            nextId = Convert.ToInt32(result) + 1;
-        //        }
-        //    }
-
-        //    return nextId;
-        //}
+   
         public static decimal RemoverFormatoMoeda(System.Windows.Forms.TextBox textBox)
         {
             // Obtém o texto do TextBox
@@ -346,7 +323,7 @@ namespace SisControl
 
                     if (dataTable.Rows.Count == 0)
                     {
-                        MessageBox.Show("Nenhum resultado encontrado.","Informe.",MessageBoxButtons.OK,MessageBoxIcon.Asterisk);
+                        MessageBox.Show("Nenhum resultado encontrado.", "Informe.", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         dataGridView.DataSource = null; // Limpa o DataGridView
                     }
                     else
@@ -360,6 +337,37 @@ namespace SisControl
                 }
             }
         }
+
+        public static void PesquisarPorCodigoRetornarNome(string query, string parametroCodigo, int codigoPesquisar, Label labelResultado)
+        {
+            using (var connection = Conexao.Conex())
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue(parametroCodigo, codigoPesquisar);
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        labelResultado.Text = reader["Nome"].ToString();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nenhum resultado encontrado.", "Informe.", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        labelResultado.Text = string.Empty; // Limpa o Label
+                    }
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao buscar nome: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
         public static void PesquisarPorNomeMensagemSuprimida(string query, string nomeParametro, string valorParametro, KryptonDataGridView dgv)
         {
             try
@@ -528,7 +536,7 @@ private void FrmMeuFormulario_Load(object sender, EventArgs e)
     }
             */
         }
-        // Método para localizar dados e preencher DataGridView
+        // Método para 7 dados e preencher DataGridView
         public static void LocalizarGeral(DataGridView dataGridView, string query)
         {                      
             using (conn)
@@ -1219,6 +1227,74 @@ private void FrmMeuFormulario_Load(object sender, EventArgs e)
                 }
             }
         }
+
+        // Método para pesquisar com parâmetros
+        public static void PesquisarComParametros(string query, Dictionary<string, object> parametros, DataGridView grid)
+        {
+            using (var connection = Conexao.Conex())
+            {
+                using (var command = new SqlCommand(query, connection))
+                {
+                    if (parametros != null)
+                    {
+                        foreach (var param in parametros)
+                        {
+                            command.Parameters.AddWithValue(param.Key, param.Value ?? DBNull.Value);
+                        }
+                    }
+
+                    var adapter = new SqlDataAdapter(command);
+                    var dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    grid.DataSource = dataTable;
+                }
+            }
+        }
+        // Método para pesquisar com parâmetros FIM
+
+        public static void PesquisarProdutoPorReferencia(string referencia, KryptonTextBox txtNomeProduto, KryptonTextBox txtPrecoProduto)
+        {
+            // Limpa os TextBox antes de realizar a pesquisa
+            txtNomeProduto.Text = string.Empty;
+            txtPrecoProduto.Text = string.Empty;
+
+            using (var conn = Conexao.Conex())
+            {
+                try
+                {
+                    DataTable dt = new DataTable();
+                    SqlCommand comando = new SqlCommand("SELECT NomeProduto, PrecoDeVenda FROM Produtos WHERE Referencia = @Referencia", conn);
+                    comando.Parameters.AddWithValue("@Referencia", referencia);
+
+                    conn.Open();
+
+                    SqlDataAdapter da = new SqlDataAdapter(comando);
+                    da.Fill(dt);
+
+                    if (dt.Rows.Count > 0)
+                    {
+                        txtNomeProduto.Text = dt.Rows[0]["NomeProduto"].ToString();
+                        txtPrecoProduto.Text = dt.Rows[0]["PrecoDeVenda"].ToString();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Referência não encontrada.", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao executar a pesquisa: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
+                }
+            }
+        }
+
     }
 }
 

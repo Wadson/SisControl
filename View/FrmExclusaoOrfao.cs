@@ -18,187 +18,7 @@ namespace SisControl.View
             InitializeComponent();
         }
 
-        private void ExcluirTudo()
-        {
-            VendaDAL vendaDAL = new VendaDAL();
-           
-        }
-        public void ListarVenda()
-        {
-            VendaDAL vendaDAL = new VendaDAL();            
-            dgvVendas.DataSource = vendaDAL.ListarVenda();
-            
-        }
-        public void ListarPagamentosParciais()
-        {
-            PagamentoParcialDal pagamentoParcialDAL = new PagamentoParcialDal();
-            dgvPagamentosParciais.DataSource = pagamentoParcialDAL.ListarPagamentosParciais();
-        }
-        public void ListarContaReceber()
-        {
-            ContaReceberDAL contaReceberDAL = new ContaReceberDAL();
-            dgvContaReceber.DataSource = contaReceberDAL.ListarContasReceber();
-        }
-        public void ListarParcelas()
-        {
-            ParcelaDAL parcelaDAL = new ParcelaDAL();
-            dgvParcelas.DataSource = parcelaDAL.ListarParcelas();
-        }
-        public void ListarItensVenda()
-        {
-            ItemVendaDAL itemVendaDAL = new ItemVendaDAL();
-            dgvItensVenda.DataSource = itemVendaDAL.ListarItensVenda();
-        }
-
-        private void btnExcluirVenda_Click(object sender, EventArgs e)
-        {           
-            if (dgvVendas.SelectedRows.Count > 0)
-            {
-                if (MessageBox.Show("Deseja excluir a conta selecionada?", "Excluir conta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    try
-                    {
-                        int vendaID = Convert.ToInt32(dgvVendas.SelectedRows[0].Cells["VendaID"].Value);
-
-                        // 5. Excluir a venda
-                        VendaDAL vendaDAL = new VendaDAL();
-                        vendaDAL.ExcluirVenda(vendaID);
-
-                        MessageBox.Show("Conta excluída com sucesso.", "Excluir conta", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        dgvVendas.Rows.Clear();
-                        ListarVenda();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Erro ao excluir a conta: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("Selecione uma conta para excluir.", "Excluir conta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-
-
-        }
-
-        private void btnExcluirPagamentoParcial_Click(object sender, EventArgs e)
-        {            
-            if (dgvPagamentosParciais.SelectedRows.Count > 0)
-            {
-                if (MessageBox.Show("Deseja excluir a conta selecionada?", "Excluir conta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    try
-                    {
-                        int PagamentoParcialID = Convert.ToInt32(dgvPagamentosParciais.SelectedRows[0].Cells["PagamentoParcialID"].Value);
-                        // 2. Excluir pagamentos parciais relacionados
-                        PagamentoParcialDal pagamentoParcialDAL = new PagamentoParcialDal();
-                        pagamentoParcialDAL.ExcluirPagamentosParciaisPorParcelaID(PagamentoParcialID);
-
-                        MessageBox.Show("Conta excluída com sucesso.", "Excluir conta", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        dgvPagamentosParciais.Rows.Clear();
-                        ListarPagamentosParciais();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Erro ao excluir a conta: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("Selecione uma conta para excluir.", "Excluir conta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        private void btnExcluirContaReceber_Click(object sender, EventArgs e)
-        {
-            if (dgvContaReceber.SelectedRows.Count > 0)
-            {
-                if (MessageBox.Show("Deseja excluir a conta selecionada?", "Excluir conta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    try
-                    {
-                        int contaReceberID = Convert.ToInt32(dgvContaReceber.SelectedRows[0].Cells["ContaReceberID"].Value);
-                        // 3. Excluir contas a receber relacionadas
-                        ContaReceberDAL contaReceberDAL = new ContaReceberDAL();
-                        contaReceberDAL.ExcluirContasReceberPorParcelaID(contaReceberID);
-
-                        MessageBox.Show("Conta excluída com sucesso.", "Excluir conta", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        dgvContaReceber.Rows.Clear();
-                        ListarContaReceber();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Erro ao excluir a conta: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("Selecione uma conta para excluir.", "Excluir conta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        private void btnExcluirParcelas_Click(object sender, EventArgs e)
-        {
-            if (dgvParcelas.SelectedRows.Count > 0)
-            {
-                if (MessageBox.Show("Deseja excluir a conta selecionada?", "Excluir conta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    try
-                    {
-                        int parcelaID = Convert.ToInt32(dgvParcelas.SelectedRows[0].Cells["ParcelaID"].Value);
-                        // 4. Excluir a parcela
-                        ParcelaDAL parcelaDAL = new ParcelaDAL();
-                        parcelaDAL.ExcluirParcela(parcelaID);
-
-                        MessageBox.Show("Conta excluída com sucesso.", "Excluir conta", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        dgvParcelas.Rows.Clear();
-                        ListarParcelas();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Erro ao excluir a conta: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("Selecione uma conta para excluir.", "Excluir conta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        private void btnExcluirItensVenda_Click(object sender, EventArgs e)
-        {
-            if (dgvParcelas.SelectedRows.Count > 0)
-            {
-                if (MessageBox.Show("Deseja excluir a conta selecionada?", "Excluir conta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    try
-                    {
-                        int ItemVendaID = Convert.ToInt32(dgvItensVenda.SelectedRows[0].Cells["ItemVendaID"].Value);
-                        // 1. Excluir os itens de venda associados
-                        ItemVendaDAL itemVendaDAL = new ItemVendaDAL();
-                        itemVendaDAL.ExcluirItensPorVendaID(ItemVendaID);
-
-                        MessageBox.Show("Conta excluída com sucesso.", "Excluir conta", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        dgvItensVenda.Rows.Clear();
-                        ListarItensVenda();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Erro ao excluir a conta: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("Selecione uma conta para excluir.", "Excluir conta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        private void FrmExclusaoOrfao_Load(object sender, EventArgs e)
+        private void CarregarDados()
         {
             ListarVenda();
             ListarPagamentosParciais();
@@ -207,9 +27,118 @@ namespace SisControl.View
             ListarItensVenda();
         }
 
+        private void FrmExclusaoOrfao_Load(object sender, EventArgs e)
+        {
+            CarregarDados();
+        }
+
+        public void ListarVenda()
+        {
+            dgvVendas.DataSource = new VendaDAL().ListarVenda();
+        }
+        public void ListarPagamentosParciais()
+        {
+            dgvPagamentosParciais.DataSource = new PagamentoParcialDal().ListarPagamentosParciais();
+        }
+        public void ListarContaReceber()
+        {
+            dgvContaReceber.DataSource = new ContaReceberDAL().ListarContasReceber();
+        }
+        public void ListarParcelas()
+        {
+            dgvParcelas.DataSource = new ParcelaDAL().ListarParcelas();
+        }
+        public void ListarItensVenda()
+        {
+            dgvItensVenda.DataSource = new ItemVendaDAL().ListarItensVenda();
+        }
+
+        private void btnExcluirVenda_Click(object sender, EventArgs e)
+        {
+            ExcluirRegistro<int>(dgvVendas, "VendaID", id => new VendaDAL().ExcluirVenda(id), ListarVenda);
+        }
+
+        private void btnExcluirPagamentoParcial_Click(object sender, EventArgs e)
+        {
+            ExcluirRegistro<int>(dgvPagamentosParciais, "PagamentoParcialID", id => new PagamentoParcialDal().ExcluirPagamentosParciaisPorParcelaID(id), ListarPagamentosParciais);
+        }
+
+        private void btnExcluirContaReceber_Click(object sender, EventArgs e)
+        {
+            ExcluirRegistro<int>(dgvContaReceber, "ContaReceberID", id => new ContaReceberDAL().ExcluirContasReceberPorParcelaID(id), ListarContaReceber);
+        }
+
+        private void btnExcluirParcelas_Click(object sender, EventArgs e)
+        {
+            ExcluirRegistro<int>(dgvParcelas, "ParcelaID", id => new ParcelaDAL().ExcluirParcela(id), ListarParcelas);
+        }
+
+        private void btnExcluirItensVenda_Click(object sender, EventArgs e)
+        {
+            ExcluirRegistro<int>(dgvItensVenda, "ItemVendaID", id => new ItemVendaDAL().ExcluirItensPorVendaID(id), ListarItensVenda);
+        }
+
         private void btnSair_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+
+        //****************************************************************************************************
+        private void ExcluirRegistro<T>(DataGridView dgv, string colunaID, Action<int> metodoExclusao, Action listarDados)
+        {
+            if (dgv.SelectedRows.Count > 0)
+            {
+                if (MessageBox.Show("Deseja excluir a conta selecionada?", "Excluir conta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    try
+                    {
+                        int registroID = Convert.ToInt32(dgv.SelectedRows[0].Cells[colunaID].Value);
+                        metodoExclusao(registroID);
+
+                        MessageBox.Show("Conta excluída com sucesso.", "Excluir conta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        // Recarregar os dados
+                        listarDados();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Erro ao excluir a conta: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Selecione uma conta para excluir.", "Excluir conta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        //private void ExcluirRegistro<T>(DataGridView dgv, string colunaID, Action<int> metodoExclusao, Action listarDados)
+        //{
+        //    if (dgv.SelectedRows.Count > 0)
+        //    {
+        //        if (MessageBox.Show("Deseja excluir a conta selecionada?", "Excluir conta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+        //        {
+        //            try
+        //            {
+        //                int registroID = Convert.ToInt32(dgv.SelectedRows[0].Cells[colunaID].Value);
+        //                metodoExclusao(registroID);
+
+        //                MessageBox.Show("Conta excluída com sucesso.", "Excluir conta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //                dgv.Rows.Clear();
+        //                listarDados();
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                MessageBox.Show("Erro ao excluir a conta: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //            }
+        //        }
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Selecione uma conta para excluir.", "Excluir conta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //    }
+        //}
+
     }
 }

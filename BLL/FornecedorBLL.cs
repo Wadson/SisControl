@@ -7,6 +7,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace SisControl.BLL
 {
@@ -42,16 +43,36 @@ namespace SisControl.BLL
             }
         }
 
+        //public void Excluir(FornecedorMODEL fornecedor)
+        //{
+        //    try
+        //    {
+        //        fornecedordal = new FornecedorDALL();
+        //        fornecedordal.excluiFornecedor(fornecedor);
+        //    }
+        //    catch (Exception erro)
+        //    {
+        //        throw erro;
+        //    }
+        //}
+        private void Log(string message)
+        {
+            File.AppendAllText("logExcluirFornecedor.txt", $"{DateTime.Now}: {message}\n");
+        }
         public void Excluir(FornecedorMODEL fornecedor)
         {
             try
             {
+               
+
+                Log($"Iniciando exclusão do fornecedor com ID: {fornecedor.FornecedorID}");
                 fornecedordal = new FornecedorDALL();
                 fornecedordal.excluiFornecedor(fornecedor);
+                Log("Fornecedor excluído com sucesso.");
             }
             catch (Exception erro)
             {
-                throw erro;
+                Log($"Erro ao limpar o formulário: {erro.Message}");                
             }
         }
 

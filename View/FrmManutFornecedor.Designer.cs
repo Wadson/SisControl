@@ -45,6 +45,7 @@
             // 
             // txtPesquisa
             // 
+            this.txtPesquisa.Location = new System.Drawing.Point(96, 60);
             this.txtPesquisa.Size = new System.Drawing.Size(512, 22);
             this.txtPesquisa.TextChanged += new System.EventHandler(this.txtPesquisa_TextChanged);
             // 
@@ -75,6 +76,10 @@
             this.btnAlterar.Location = new System.Drawing.Point(635, 112);
             this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(6, 61);
+            // 
             // timer1
             // 
             this.timer1.Interval = 1000;
@@ -88,12 +93,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridPesquisar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridPesquisar.Location = new System.Drawing.Point(10, 67);
+            this.dataGridPesquisar.Location = new System.Drawing.Point(10, 88);
             this.dataGridPesquisar.MultiSelect = false;
             this.dataGridPesquisar.Name = "dataGridPesquisar";
             this.dataGridPesquisar.ReadOnly = true;
             this.dataGridPesquisar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridPesquisar.Size = new System.Drawing.Size(598, 339);
+            this.dataGridPesquisar.Size = new System.Drawing.Size(598, 318);
             this.dataGridPesquisar.TabIndex = 597;
             // 
             // label28
@@ -102,7 +107,7 @@
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
-            this.label28.Location = new System.Drawing.Point(317, 2);
+            this.label28.Location = new System.Drawing.Point(317, 7);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(144, 24);
             this.label28.TabIndex = 600;
@@ -118,6 +123,7 @@
             this.Name = "FrmManutFornecedor";
             this.Text = "FORNECEDOR";
             this.Load += new System.EventHandler(this.FrmManutFornecedor_Load);
+            this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.btnAlterar, 0);
             this.Controls.SetChildIndex(this.btnNovo, 0);
             this.Controls.SetChildIndex(this.btnExcluir, 0);
