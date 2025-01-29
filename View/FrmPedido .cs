@@ -134,13 +134,19 @@ namespace SisControl.View
             dgvItensVenda.Columns["Quantidade"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvItensVenda.Columns["ProdutoID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            // Definir tamanho das colunas
-            dgvItensVenda.Columns["ItemVendaID"].Width = 90;
-            dgvItensVenda.Columns["NomeProduto"].Width = 350;
-            dgvItensVenda.Columns["ProdutoID"].Width = 80;
-            dgvItensVenda.Columns["Quantidade"].Width = 50;
-            dgvItensVenda.Columns["ValorProduto"].Width = 90;
-            dgvItensVenda.Columns["SubTotal"].Width = 90;
+            //// Definir tamanho das colunas
+            //dgvItensVenda.Columns["ItemVendaID"].Width = 90;
+            //dgvItensVenda.Columns["NomeProduto"].Width = 350;
+            //dgvItensVenda.Columns["ProdutoID"].Width = 80;
+            //dgvItensVenda.Columns["Quantidade"].Width = 50;
+            //dgvItensVenda.Columns["ValorProduto"].Width = 90;
+            //dgvItensVenda.Columns["SubTotal"].Width = 90;
+
+            // Ajustar colunas automaticamente
+            dgvItensVenda.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
+            // Tornar o grid somente leitura
+            dgvItensVenda.ReadOnly = true;
 
             // Ocultar a coluna ItemVendaID
             dgvItensVenda.Columns["ItemVendaID"].Visible = false;
@@ -159,11 +165,17 @@ namespace SisControl.View
             dgvParcelas.Columns["ParcelaID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvParcelas.Columns["NumeroParcela"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            // Definir tamanho das colunas
-            dgvParcelas.Columns["ParcelaID"].Width = 90;
-            dgvParcelas.Columns["ValorParcela"].Width = 90;
-            dgvParcelas.Columns["NumeroParcela"].Width = 70;
-            dgvParcelas.Columns["DataVencimento"].Width = 100;
+            //// Definir tamanho das colunas
+            //dgvParcelas.Columns["ParcelaID"].Width = 90;
+            //dgvParcelas.Columns["ValorParcela"].Width = 90;
+            //dgvParcelas.Columns["NumeroParcela"].Width = 70;
+            //dgvParcelas.Columns["DataVencimento"].Width = 100;
+
+            // Ajustar colunas automaticamente
+            dgvParcelas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
+            // Tornar o grid somente leitura
+            dgvParcelas.ReadOnly = true;
 
             // Ocultar a coluna ParcelaID se necessário
             dgvParcelas.Columns["ParcelaID"].Visible = false;

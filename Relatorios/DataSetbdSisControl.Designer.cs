@@ -38,13 +38,9 @@ namespace SisControl.Relatorios {
         
         private VendaDataTable tableVenda;
         
-        private global::System.Data.DataRelation relationFK__ContaRece__Parce;
-        
         private global::System.Data.DataRelation relationFK__Pagamento__Parce__0880433F;
         
         private global::System.Data.DataRelation relationFK__ItemVenda__Venda;
-        
-        private global::System.Data.DataRelation relationFK__ContaRece__Venda;
         
         private global::System.Data.DataRelation relationFK_Parcela_Venda;
         
@@ -350,10 +346,8 @@ namespace SisControl.Relatorios {
                     this.tableVenda.InitVars();
                 }
             }
-            this.relationFK__ContaRece__Parce = this.Relations["FK__ContaRece__Parce"];
             this.relationFK__Pagamento__Parce__0880433F = this.Relations["FK__Pagamento__Parce__0880433F"];
             this.relationFK__ItemVenda__Venda = this.Relations["FK__ItemVenda__Venda"];
-            this.relationFK__ContaRece__Venda = this.Relations["FK__ContaRece__Venda"];
             this.relationFK_Parcela_Venda = this.Relations["FK_Parcela_Venda"];
             this.relationFK__Venda__ClienteID = this.Relations["FK__Venda__ClienteID"];
         }
@@ -380,10 +374,6 @@ namespace SisControl.Relatorios {
             base.Tables.Add(this.tableProdutos);
             this.tableVenda = new VendaDataTable();
             base.Tables.Add(this.tableVenda);
-            this.relationFK__ContaRece__Parce = new global::System.Data.DataRelation("FK__ContaRece__Parce", new global::System.Data.DataColumn[] {
-                        this.tableParcela.ParcelaIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableContaReceber.ParcelaIDColumn}, false);
-            this.Relations.Add(this.relationFK__ContaRece__Parce);
             this.relationFK__Pagamento__Parce__0880433F = new global::System.Data.DataRelation("FK__Pagamento__Parce__0880433F", new global::System.Data.DataColumn[] {
                         this.tableParcela.ParcelaIDColumn}, new global::System.Data.DataColumn[] {
                         this.tablePagamentosParciais.ParcelaIDColumn}, false);
@@ -392,10 +382,6 @@ namespace SisControl.Relatorios {
                         this.tableVenda.VendaIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableItemVenda.VendaIDColumn}, false);
             this.Relations.Add(this.relationFK__ItemVenda__Venda);
-            this.relationFK__ContaRece__Venda = new global::System.Data.DataRelation("FK__ContaRece__Venda", new global::System.Data.DataColumn[] {
-                        this.tableVenda.VendaIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableContaReceber.VendaIDColumn}, false);
-            this.Relations.Add(this.relationFK__ContaRece__Venda);
             this.relationFK_Parcela_Venda = new global::System.Data.DataRelation("FK_Parcela_Venda", new global::System.Data.DataColumn[] {
                         this.tableVenda.VendaIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableParcela.VendaIDColumn}, false);
@@ -866,21 +852,15 @@ namespace SisControl.Relatorios {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class ContaReceberDataTable : global::System.Data.TypedTableBase<ContaReceberRow> {
             
-            private global::System.Data.DataColumn columnDataRecebimento;
-            
-            private global::System.Data.DataColumn columnValorRecebido;
-            
             private global::System.Data.DataColumn columnSaldoRestante;
             
+            private global::System.Data.DataColumn columnNomeCliente;
+            
+            private global::System.Data.DataColumn columnValorParcela;
+            
+            private global::System.Data.DataColumn columnDataVencimento;
+            
             private global::System.Data.DataColumn columnPago;
-            
-            private global::System.Data.DataColumn columnParcelaID;
-            
-            private global::System.Data.DataColumn columnVendaID;
-            
-            private global::System.Data.DataColumn columnContaReceberID;
-            
-            private global::System.Data.DataColumn columnFormaPgtoID;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -917,22 +897,6 @@ namespace SisControl.Relatorios {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn DataRecebimentoColumn {
-                get {
-                    return this.columnDataRecebimento;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn ValorRecebidoColumn {
-                get {
-                    return this.columnValorRecebido;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn SaldoRestanteColumn {
                 get {
                     return this.columnSaldoRestante;
@@ -941,41 +905,33 @@ namespace SisControl.Relatorios {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn NomeClienteColumn {
+                get {
+                    return this.columnNomeCliente;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ValorParcelaColumn {
+                get {
+                    return this.columnValorParcela;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn DataVencimentoColumn {
+                get {
+                    return this.columnDataVencimento;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn PagoColumn {
                 get {
                     return this.columnPago;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn ParcelaIDColumn {
-                get {
-                    return this.columnParcelaID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn VendaIDColumn {
-                get {
-                    return this.columnVendaID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn ContaReceberIDColumn {
-                get {
-                    return this.columnContaReceberID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn FormaPgtoIDColumn {
-                get {
-                    return this.columnFormaPgtoID;
                 }
             }
             
@@ -1016,33 +972,17 @@ namespace SisControl.Relatorios {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ContaReceberRow AddContaReceberRow(System.DateTime DataRecebimento, decimal ValorRecebido, decimal SaldoRestante, bool Pago, ParcelaRow parentParcelaRowByFK__ContaRece__Parce, VendaRow parentVendaRowByFK__ContaRece__Venda, int ContaReceberID, int FormaPgtoID) {
+            public ContaReceberRow AddContaReceberRow(decimal SaldoRestante, string NomeCliente, decimal ValorParcela, System.DateTime DataVencimento, bool Pago) {
                 ContaReceberRow rowContaReceberRow = ((ContaReceberRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        DataRecebimento,
-                        ValorRecebido,
                         SaldoRestante,
-                        Pago,
-                        null,
-                        null,
-                        ContaReceberID,
-                        FormaPgtoID};
-                if ((parentParcelaRowByFK__ContaRece__Parce != null)) {
-                    columnValuesArray[4] = parentParcelaRowByFK__ContaRece__Parce[6];
-                }
-                if ((parentVendaRowByFK__ContaRece__Venda != null)) {
-                    columnValuesArray[5] = parentVendaRowByFK__ContaRece__Venda[3];
-                }
+                        NomeCliente,
+                        ValorParcela,
+                        DataVencimento,
+                        Pago};
                 rowContaReceberRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowContaReceberRow);
                 return rowContaReceberRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ContaReceberRow FindByContaReceberID(int ContaReceberID) {
-                return ((ContaReceberRow)(this.Rows.Find(new object[] {
-                            ContaReceberID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1062,44 +1002,32 @@ namespace SisControl.Relatorios {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
-                this.columnDataRecebimento = base.Columns["DataRecebimento"];
-                this.columnValorRecebido = base.Columns["ValorRecebido"];
                 this.columnSaldoRestante = base.Columns["SaldoRestante"];
+                this.columnNomeCliente = base.Columns["NomeCliente"];
+                this.columnValorParcela = base.Columns["ValorParcela"];
+                this.columnDataVencimento = base.Columns["DataVencimento"];
                 this.columnPago = base.Columns["Pago"];
-                this.columnParcelaID = base.Columns["ParcelaID"];
-                this.columnVendaID = base.Columns["VendaID"];
-                this.columnContaReceberID = base.Columns["ContaReceberID"];
-                this.columnFormaPgtoID = base.Columns["FormaPgtoID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.columnDataRecebimento = new global::System.Data.DataColumn("DataRecebimento", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDataRecebimento);
-                this.columnValorRecebido = new global::System.Data.DataColumn("ValorRecebido", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnValorRecebido);
                 this.columnSaldoRestante = new global::System.Data.DataColumn("SaldoRestante", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSaldoRestante);
+                this.columnNomeCliente = new global::System.Data.DataColumn("NomeCliente", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNomeCliente);
+                this.columnValorParcela = new global::System.Data.DataColumn("ValorParcela", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnValorParcela);
+                this.columnDataVencimento = new global::System.Data.DataColumn("DataVencimento", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDataVencimento);
                 this.columnPago = new global::System.Data.DataColumn("Pago", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPago);
-                this.columnParcelaID = new global::System.Data.DataColumn("ParcelaID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnParcelaID);
-                this.columnVendaID = new global::System.Data.DataColumn("VendaID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnVendaID);
-                this.columnContaReceberID = new global::System.Data.DataColumn("ContaReceberID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnContaReceberID);
-                this.columnFormaPgtoID = new global::System.Data.DataColumn("FormaPgtoID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFormaPgtoID);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnContaReceberID}, true));
-                this.columnValorRecebido.AllowDBNull = false;
                 this.columnSaldoRestante.AllowDBNull = false;
+                this.columnNomeCliente.AllowDBNull = false;
+                this.columnNomeCliente.MaxLength = 100;
+                this.columnValorParcela.AllowDBNull = false;
+                this.columnDataVencimento.AllowDBNull = false;
                 this.columnPago.AllowDBNull = false;
-                this.columnParcelaID.AllowDBNull = false;
-                this.columnVendaID.AllowDBNull = false;
-                this.columnContaReceberID.AllowDBNull = false;
-                this.columnContaReceberID.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3116,39 +3044,45 @@ namespace SisControl.Relatorios {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public System.DateTime DataRecebimento {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableContaReceber.DataRecebimentoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("O valor da coluna \'DataRecebimento\' na tabela \'ContaReceber\' é DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableContaReceber.DataRecebimentoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal ValorRecebido {
-                get {
-                    return ((decimal)(this[this.tableContaReceber.ValorRecebidoColumn]));
-                }
-                set {
-                    this[this.tableContaReceber.ValorRecebidoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public decimal SaldoRestante {
                 get {
                     return ((decimal)(this[this.tableContaReceber.SaldoRestanteColumn]));
                 }
                 set {
                     this[this.tableContaReceber.SaldoRestanteColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string NomeCliente {
+                get {
+                    return ((string)(this[this.tableContaReceber.NomeClienteColumn]));
+                }
+                set {
+                    this[this.tableContaReceber.NomeClienteColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal ValorParcela {
+                get {
+                    return ((decimal)(this[this.tableContaReceber.ValorParcelaColumn]));
+                }
+                set {
+                    this[this.tableContaReceber.ValorParcelaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public System.DateTime DataVencimento {
+                get {
+                    return ((global::System.DateTime)(this[this.tableContaReceber.DataVencimentoColumn]));
+                }
+                set {
+                    this[this.tableContaReceber.DataVencimentoColumn] = value;
                 }
             }
             
@@ -3161,101 +3095,6 @@ namespace SisControl.Relatorios {
                 set {
                     this[this.tableContaReceber.PagoColumn] = value;
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int ParcelaID {
-                get {
-                    return ((int)(this[this.tableContaReceber.ParcelaIDColumn]));
-                }
-                set {
-                    this[this.tableContaReceber.ParcelaIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int VendaID {
-                get {
-                    return ((int)(this[this.tableContaReceber.VendaIDColumn]));
-                }
-                set {
-                    this[this.tableContaReceber.VendaIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int ContaReceberID {
-                get {
-                    return ((int)(this[this.tableContaReceber.ContaReceberIDColumn]));
-                }
-                set {
-                    this[this.tableContaReceber.ContaReceberIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int FormaPgtoID {
-                get {
-                    try {
-                        return ((int)(this[this.tableContaReceber.FormaPgtoIDColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("O valor da coluna \'FormaPgtoID\' na tabela \'ContaReceber\' é DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableContaReceber.FormaPgtoIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ParcelaRow ParcelaRow {
-                get {
-                    return ((ParcelaRow)(this.GetParentRow(this.Table.ParentRelations["FK__ContaRece__Parce"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__ContaRece__Parce"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public VendaRow VendaRow {
-                get {
-                    return ((VendaRow)(this.GetParentRow(this.Table.ParentRelations["FK__ContaRece__Venda"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__ContaRece__Venda"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsDataRecebimentoNull() {
-                return this.IsNull(this.tableContaReceber.DataRecebimentoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetDataRecebimentoNull() {
-                this[this.tableContaReceber.DataRecebimentoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsFormaPgtoIDNull() {
-                return this.IsNull(this.tableContaReceber.FormaPgtoIDColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetFormaPgtoIDNull() {
-                this[this.tableContaReceber.FormaPgtoIDColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -3700,17 +3539,6 @@ namespace SisControl.Relatorios {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ContaReceberRow[] GetContaReceberRows() {
-                if ((this.Table.ChildRelations["FK__ContaRece__Parce"] == null)) {
-                    return new ContaReceberRow[0];
-                }
-                else {
-                    return ((ContaReceberRow[])(base.GetChildRows(this.Table.ChildRelations["FK__ContaRece__Parce"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public PagamentosParciaisRow[] GetPagamentosParciaisRows() {
                 if ((this.Table.ChildRelations["FK__Pagamento__Parce__0880433F"] == null)) {
                     return new PagamentosParciaisRow[0];
@@ -4030,17 +3858,6 @@ namespace SisControl.Relatorios {
                 }
                 else {
                     return ((ItemVendaRow[])(base.GetChildRows(this.Table.ChildRelations["FK__ItemVenda__Venda"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ContaReceberRow[] GetContaReceberRows() {
-                if ((this.Table.ChildRelations["FK__ContaRece__Venda"] == null)) {
-                    return new ContaReceberRow[0];
-                }
-                else {
-                    return ((ContaReceberRow[])(base.GetChildRows(this.Table.ChildRelations["FK__ContaRece__Venda"])));
                 }
             }
             
@@ -4792,65 +4609,12 @@ SELECT ProdutoID, Quantidade, PrecoUnitario, Subtotal, ItemVendaID, VendaID FROM
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "ContaReceber";
-            tableMapping.ColumnMappings.Add("DataRecebimento", "DataRecebimento");
-            tableMapping.ColumnMappings.Add("ValorRecebido", "ValorRecebido");
             tableMapping.ColumnMappings.Add("SaldoRestante", "SaldoRestante");
+            tableMapping.ColumnMappings.Add("NomeCliente", "NomeCliente");
+            tableMapping.ColumnMappings.Add("ValorParcela", "ValorParcela");
+            tableMapping.ColumnMappings.Add("DataVencimento", "DataVencimento");
             tableMapping.ColumnMappings.Add("Pago", "Pago");
-            tableMapping.ColumnMappings.Add("ParcelaID", "ParcelaID");
-            tableMapping.ColumnMappings.Add("VendaID", "VendaID");
-            tableMapping.ColumnMappings.Add("ContaReceberID", "ContaReceberID");
-            tableMapping.ColumnMappings.Add("FormaPgtoID", "FormaPgtoID");
             this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[ContaReceber] WHERE (((@IsNull_DataRecebimento = 1 AND [DataRecebimento] IS NULL) OR ([DataRecebimento] = @Original_DataRecebimento)) AND ([ValorRecebido] = @Original_ValorRecebido) AND ([SaldoRestante] = @Original_SaldoRestante) AND ([Pago] = @Original_Pago) AND ([ParcelaID] = @Original_ParcelaID) AND ([VendaID] = @Original_VendaID) AND ([ContaReceberID] = @Original_ContaReceberID) AND ((@IsNull_FormaPgtoID = 1 AND [FormaPgtoID] IS NULL) OR ([FormaPgtoID] = @Original_FormaPgtoID)))";
-            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DataRecebimento", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DataRecebimento", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DataRecebimento", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DataRecebimento", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ValorRecebido", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "ValorRecebido", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SaldoRestante", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "SaldoRestante", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Pago", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Pago", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ParcelaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ParcelaID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_VendaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VendaID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ContaReceberID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ContaReceberID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_FormaPgtoID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FormaPgtoID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FormaPgtoID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FormaPgtoID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[ContaReceber] ([DataRecebimento], [ValorRecebido], [SaldoRestante], [Pago], [ParcelaID], [VendaID], [ContaReceberID], [FormaPgtoID]) VALUES (@DataRecebimento, @ValorRecebido, @SaldoRestante, @Pago, @ParcelaID, @VendaID, @ContaReceberID, @FormaPgtoID);
-SELECT DataRecebimento, ValorRecebido, SaldoRestante, Pago, ParcelaID, VendaID, ContaReceberID, FormaPgtoID FROM ContaReceber WHERE (ContaReceberID = @ContaReceberID)";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DataRecebimento", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DataRecebimento", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ValorRecebido", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "ValorRecebido", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SaldoRestante", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "SaldoRestante", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Pago", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Pago", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ParcelaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ParcelaID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VendaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VendaID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ContaReceberID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ContaReceberID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FormaPgtoID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FormaPgtoID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[ContaReceber] SET [DataRecebimento] = @DataRecebimento, [ValorRecebido] = @ValorRecebido, [SaldoRestante] = @SaldoRestante, [Pago] = @Pago, [ParcelaID] = @ParcelaID, [VendaID] = @VendaID, [ContaReceberID] = @ContaReceberID, [FormaPgtoID] = @FormaPgtoID WHERE (((@IsNull_DataRecebimento = 1 AND [DataRecebimento] IS NULL) OR ([DataRecebimento] = @Original_DataRecebimento)) AND ([ValorRecebido] = @Original_ValorRecebido) AND ([SaldoRestante] = @Original_SaldoRestante) AND ([Pago] = @Original_Pago) AND ([ParcelaID] = @Original_ParcelaID) AND ([VendaID] = @Original_VendaID) AND ([ContaReceberID] = @Original_ContaReceberID) AND ((@IsNull_FormaPgtoID = 1 AND [FormaPgtoID] IS NULL) OR ([FormaPgtoID] = @Original_FormaPgtoID)));
-SELECT DataRecebimento, ValorRecebido, SaldoRestante, Pago, ParcelaID, VendaID, ContaReceberID, FormaPgtoID FROM ContaReceber WHERE (ContaReceberID = @ContaReceberID)";
-            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DataRecebimento", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DataRecebimento", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ValorRecebido", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "ValorRecebido", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SaldoRestante", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "SaldoRestante", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Pago", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Pago", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ParcelaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ParcelaID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VendaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VendaID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ContaReceberID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ContaReceberID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FormaPgtoID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FormaPgtoID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DataRecebimento", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DataRecebimento", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DataRecebimento", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DataRecebimento", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ValorRecebido", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "ValorRecebido", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SaldoRestante", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "SaldoRestante", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Pago", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Pago", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ParcelaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ParcelaID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_VendaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VendaID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ContaReceberID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ContaReceberID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_FormaPgtoID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FormaPgtoID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FormaPgtoID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FormaPgtoID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4866,17 +4630,29 @@ SELECT DataRecebimento, ValorRecebido, SaldoRestante, Pago, ParcelaID, VendaID, 
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT DataRecebimento, ValorRecebido, SaldoRestante, Pago, ParcelaID, VendaID, C" +
-                "ontaReceberID, FormaPgtoID FROM dbo.ContaReceber";
+            this._commandCollection[0].CommandText = @"SELECT        Cliente.NomeCliente, Parcela.ValorParcela, Parcela.DataVencimento, Parcela.SaldoRestante, Parcela.Pago
+FROM            Produtos INNER JOIN
+                         ItemVenda ON Produtos.ProdutoID = ItemVenda.ProdutoID INNER JOIN
+                         Venda ON ItemVenda.VendaID = Venda.VendaID INNER JOIN
+                         Parcela ON Venda.VendaID = Parcela.VendaID INNER JOIN
+                         Cliente ON Venda.ClienteID = Cliente.ClienteID
+WHERE        (Parcela.Pago = 0) AND (Cliente.NomeCliente LIKE '%' + @NomeCliente + '%')";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NomeCliente", global::System.Data.SqlDbType.NVarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "NomeCliente", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetbdSisControlo.ContaReceberDataTable dataTable) {
+        public virtual int FillContaPorClienteAberta(DataSetbdSisControlo.ContaReceberDataTable dataTable, string NomeCliente) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((NomeCliente == null)) {
+                throw new global::System.ArgumentNullException("NomeCliente");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(NomeCliente));
+            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -4888,207 +4664,17 @@ SELECT DataRecebimento, ValorRecebido, SaldoRestante, Pago, ParcelaID, VendaID, 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetbdSisControlo.ContaReceberDataTable GetData() {
+        public virtual DataSetbdSisControlo.ContaReceberDataTable GetDataContaPorClienteAberta(string NomeCliente) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((NomeCliente == null)) {
+                throw new global::System.ArgumentNullException("NomeCliente");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(NomeCliente));
+            }
             DataSetbdSisControlo.ContaReceberDataTable dataTable = new DataSetbdSisControlo.ContaReceberDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetbdSisControlo.ContaReceberDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetbdSisControlo dataSet) {
-            return this.Adapter.Update(dataSet, "ContaReceber");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(global::System.Nullable<global::System.DateTime> Original_DataRecebimento, decimal Original_ValorRecebido, decimal Original_SaldoRestante, bool Original_Pago, int Original_ParcelaID, int Original_VendaID, int Original_ContaReceberID, global::System.Nullable<int> Original_FormaPgtoID) {
-            if ((Original_DataRecebimento.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[0].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((System.DateTime)(Original_DataRecebimento.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[0].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((decimal)(Original_ValorRecebido));
-            this.Adapter.DeleteCommand.Parameters[3].Value = ((decimal)(Original_SaldoRestante));
-            this.Adapter.DeleteCommand.Parameters[4].Value = ((bool)(Original_Pago));
-            this.Adapter.DeleteCommand.Parameters[5].Value = ((int)(Original_ParcelaID));
-            this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(Original_VendaID));
-            this.Adapter.DeleteCommand.Parameters[7].Value = ((int)(Original_ContaReceberID));
-            if ((Original_FormaPgtoID.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((int)(Original_FormaPgtoID.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(global::System.Nullable<global::System.DateTime> DataRecebimento, decimal ValorRecebido, decimal SaldoRestante, bool Pago, int ParcelaID, int VendaID, int ContaReceberID, global::System.Nullable<int> FormaPgtoID) {
-            if ((DataRecebimento.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((System.DateTime)(DataRecebimento.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.InsertCommand.Parameters[1].Value = ((decimal)(ValorRecebido));
-            this.Adapter.InsertCommand.Parameters[2].Value = ((decimal)(SaldoRestante));
-            this.Adapter.InsertCommand.Parameters[3].Value = ((bool)(Pago));
-            this.Adapter.InsertCommand.Parameters[4].Value = ((int)(ParcelaID));
-            this.Adapter.InsertCommand.Parameters[5].Value = ((int)(VendaID));
-            this.Adapter.InsertCommand.Parameters[6].Value = ((int)(ContaReceberID));
-            if ((FormaPgtoID.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((int)(FormaPgtoID.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(
-                    global::System.Nullable<global::System.DateTime> DataRecebimento, 
-                    decimal ValorRecebido, 
-                    decimal SaldoRestante, 
-                    bool Pago, 
-                    int ParcelaID, 
-                    int VendaID, 
-                    int ContaReceberID, 
-                    global::System.Nullable<int> FormaPgtoID, 
-                    global::System.Nullable<global::System.DateTime> Original_DataRecebimento, 
-                    decimal Original_ValorRecebido, 
-                    decimal Original_SaldoRestante, 
-                    bool Original_Pago, 
-                    int Original_ParcelaID, 
-                    int Original_VendaID, 
-                    int Original_ContaReceberID, 
-                    global::System.Nullable<int> Original_FormaPgtoID) {
-            if ((DataRecebimento.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((System.DateTime)(DataRecebimento.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((decimal)(ValorRecebido));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((decimal)(SaldoRestante));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((bool)(Pago));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(ParcelaID));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(VendaID));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(ContaReceberID));
-            if ((FormaPgtoID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(FormaPgtoID.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
-            }
-            if ((Original_DataRecebimento.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((System.DateTime)(Original_DataRecebimento.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((decimal)(Original_ValorRecebido));
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((decimal)(Original_SaldoRestante));
-            this.Adapter.UpdateCommand.Parameters[12].Value = ((bool)(Original_Pago));
-            this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(Original_ParcelaID));
-            this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(Original_VendaID));
-            this.Adapter.UpdateCommand.Parameters[15].Value = ((int)(Original_ContaReceberID));
-            if ((Original_FormaPgtoID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((int)(Original_FormaPgtoID.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(global::System.Nullable<global::System.DateTime> DataRecebimento, decimal ValorRecebido, decimal SaldoRestante, bool Pago, int ParcelaID, int VendaID, global::System.Nullable<int> FormaPgtoID, global::System.Nullable<global::System.DateTime> Original_DataRecebimento, decimal Original_ValorRecebido, decimal Original_SaldoRestante, bool Original_Pago, int Original_ParcelaID, int Original_VendaID, int Original_ContaReceberID, global::System.Nullable<int> Original_FormaPgtoID) {
-            return this.Update(DataRecebimento, ValorRecebido, SaldoRestante, Pago, ParcelaID, VendaID, Original_ContaReceberID, FormaPgtoID, Original_DataRecebimento, Original_ValorRecebido, Original_SaldoRestante, Original_Pago, Original_ParcelaID, Original_VendaID, Original_ContaReceberID, Original_FormaPgtoID);
         }
     }
     
@@ -7265,8 +6851,6 @@ SELECT ClienteID, DataVenda, ValorTotal, VendaID, FormaPgtoID FROM Venda WHERE (
         
         private ItemVendaTableAdapter _itemVendaTableAdapter;
         
-        private ContaReceberTableAdapter _contaReceberTableAdapter;
-        
         private ClienteTableAdapter _clienteTableAdapter;
         
         private PagamentosParciaisTableAdapter _pagamentosParciaisTableAdapter;
@@ -7303,20 +6887,6 @@ SELECT ClienteID, DataVenda, ValorTotal, VendaID, FormaPgtoID FROM Venda WHERE (
             }
             set {
                 this._itemVendaTableAdapter = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
-        public ContaReceberTableAdapter ContaReceberTableAdapter {
-            get {
-                return this._contaReceberTableAdapter;
-            }
-            set {
-                this._contaReceberTableAdapter = value;
             }
         }
         
@@ -7413,10 +6983,6 @@ SELECT ClienteID, DataVenda, ValorTotal, VendaID, FormaPgtoID FROM Venda WHERE (
                             && (this._itemVendaTableAdapter.Connection != null))) {
                     return this._itemVendaTableAdapter.Connection;
                 }
-                if (((this._contaReceberTableAdapter != null) 
-                            && (this._contaReceberTableAdapter.Connection != null))) {
-                    return this._contaReceberTableAdapter.Connection;
-                }
                 if (((this._clienteTableAdapter != null) 
                             && (this._clienteTableAdapter.Connection != null))) {
                     return this._clienteTableAdapter.Connection;
@@ -7451,9 +7017,6 @@ SELECT ClienteID, DataVenda, ValorTotal, VendaID, FormaPgtoID FROM Venda WHERE (
             get {
                 int count = 0;
                 if ((this._itemVendaTableAdapter != null)) {
-                    count = (count + 1);
-                }
-                if ((this._contaReceberTableAdapter != null)) {
                     count = (count + 1);
                 }
                 if ((this._clienteTableAdapter != null)) {
@@ -7518,15 +7081,6 @@ SELECT ClienteID, DataVenda, ValorTotal, VendaID, FormaPgtoID FROM Venda WHERE (
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._contaReceberTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.ContaReceber.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._contaReceberTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._pagamentosParciaisTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.PagamentosParciais.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -7587,14 +7141,6 @@ SELECT ClienteID, DataVenda, ValorTotal, VendaID, FormaPgtoID FROM Venda WHERE (
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._contaReceberTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.ContaReceber.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._contaReceberTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._pagamentosParciaisTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.PagamentosParciais.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -7634,14 +7180,6 @@ SELECT ClienteID, DataVenda, ValorTotal, VendaID, FormaPgtoID FROM Venda WHERE (
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._pagamentosParciaisTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._contaReceberTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.ContaReceber.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._contaReceberTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -7721,11 +7259,6 @@ SELECT ClienteID, DataVenda, ValorTotal, VendaID, FormaPgtoID FROM Venda WHERE (
                 throw new global::System.ArgumentException("Todos os TableAdapters gerenciados por um TableAdapterManager devem usar a mesma " +
                         "cadeia de conexão.");
             }
-            if (((this._contaReceberTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._contaReceberTableAdapter.Connection) == false))) {
-                throw new global::System.ArgumentException("Todos os TableAdapters gerenciados por um TableAdapterManager devem usar a mesma " +
-                        "cadeia de conexão.");
-            }
             if (((this._clienteTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._clienteTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("Todos os TableAdapters gerenciados por um TableAdapterManager devem usar a mesma " +
@@ -7790,15 +7323,6 @@ SELECT ClienteID, DataVenda, ValorTotal, VendaID, FormaPgtoID FROM Venda WHERE (
                     if (this._itemVendaTableAdapter.Adapter.AcceptChangesDuringUpdate) {
                         this._itemVendaTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
                         adaptersWithAcceptChangesDuringUpdate.Add(this._itemVendaTableAdapter.Adapter);
-                    }
-                }
-                if ((this._contaReceberTableAdapter != null)) {
-                    revertConnections.Add(this._contaReceberTableAdapter, this._contaReceberTableAdapter.Connection);
-                    this._contaReceberTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._contaReceberTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._contaReceberTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._contaReceberTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._contaReceberTableAdapter.Adapter);
                     }
                 }
                 if ((this._clienteTableAdapter != null)) {
@@ -7907,10 +7431,6 @@ SELECT ClienteID, DataVenda, ValorTotal, VendaID, FormaPgtoID FROM Venda WHERE (
                 if ((this._itemVendaTableAdapter != null)) {
                     this._itemVendaTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._itemVendaTableAdapter]));
                     this._itemVendaTableAdapter.Transaction = null;
-                }
-                if ((this._contaReceberTableAdapter != null)) {
-                    this._contaReceberTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._contaReceberTableAdapter]));
-                    this._contaReceberTableAdapter.Transaction = null;
                 }
                 if ((this._clienteTableAdapter != null)) {
                     this._clienteTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._clienteTableAdapter]));

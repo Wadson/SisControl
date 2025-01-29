@@ -333,6 +333,12 @@
     <Compile Include="View\FrmModeloUI .Designer.cs">
       <DependentUpon>FrmModeloUI .cs</DependentUpon>
     </Compile>
+    <Compile Include="View\FrmRelatorios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmRelatorios.Designer.cs">
+      <DependentUpon>FrmRelatorios.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FrmRestauraBackup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -529,6 +535,9 @@
     <EmbeddedResource Include="View\FrmModeloUI .resx">
       <DependentUpon>FrmModeloUI .cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmRelatorios.resx">
+      <DependentUpon>FrmRelatorios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FrmRestauraBackup.resx">
       <DependentUpon>FrmRestauraBackup.cs</DependentUpon>
     </EmbeddedResource>
@@ -608,6 +617,7 @@
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
+    <None Include="Properties\DataSources\SisControl.Relatorios.RelClienteContaAberta.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

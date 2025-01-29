@@ -76,6 +76,12 @@ namespace SisControl.View
                 // Centralizar coluna
                 dgvContasReceber.Columns["NumeroParcela"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
+
+            // Ajustar colunas automaticamente
+            dgvContasReceber.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
+            // Tornar o grid somente leitura
+            dgvContasReceber.ReadOnly = true;
         }
 
 

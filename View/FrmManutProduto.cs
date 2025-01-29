@@ -36,58 +36,46 @@ namespace SisControl.View
             PersonalizarDataGridView(dataGridPesquisar);
         }
         public void PersonalizarDataGridView(KryptonDataGridView dgv)
-        {            
-            //Alinhar o as colunas
-
-            dgv.Columns["ProdutoID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopCenter;
-            dgv.Columns["QuantidadeEmEstoque"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopCenter;
-                        
-            //dgv.RowHeadersVisible = false;
-            
+        {
+            // Renomear colunas
             dgv.Columns[0].Name = "ProdutoID";
-            dgv.Columns[1].Name = "NomeProduto";           
-            dgv.Columns[2].Name = "PrecoCusto";
+            dgv.Columns[1].Name = "Produto";
+            dgv.Columns[2].Name = "Preco de Custo";
             dgv.Columns[3].Name = "Lucro";
-            dgv.Columns[4].Name = "PrecoDeVenda";
-            dgv.Columns[5].Name = "QuantidadeEmEstoque";
-            dgv.Columns[6].Name = "DataDeEntrada";
-            dgv.Columns[7].Name = "Status";           
-            dgv.Columns[8].Name = "Imagem";           
+            dgv.Columns[4].Name = "Preco De Venda";
+            dgv.Columns[5].Name = "Estoque";
+            dgv.Columns[6].Name = "Dta. Entrada";
+            dgv.Columns[7].Name = "Status";
+            dgv.Columns[8].Name = "Imagem";
             dgv.Columns[9].Name = "Referencia";
 
+            //// Definir tamanho das colunas
+            //dgv.Columns["ProdutoID"].Width = 50;
+            //dgv.Columns["Produto"].Width = 250;
+            //dgv.Columns["Preco de Custo"].Width = 100;
+            //dgv.Columns["Lucro"].Width = 80;
+            //dgv.Columns["Preco de Venda"].Width = 90;
+            //dgv.Columns["Estoque"].Width = 70;
+            //dgv.Columns["Dta. Entrada"].Width = 90;
+            //dgv.Columns["Status"].Width = 70;
+            //dgv.Columns["Imagem"].Width = 100;
+            //dgv.Columns["Referencia"].Width = 100;
 
-            // Definir tamanho das colunas
-            dgv.Columns["ProdutoID"].Width = 50;
-            dgv.Columns["NomeProduto"].Width = 250;
-            dgv.Columns["PrecoCusto"].Width = 100;
-            dgv.Columns["Lucro"].Width = 80;
-            dgv.Columns["PrecoDeVenda"].Width = 90;
-            dgv.Columns["QuantidadeEmEstoque"].Width = 70;
-            dgv.Columns["DataDeEntrada"].Width = 90;
-            dgv.Columns["Status"].Width = 70;
-            dgv.Columns["Imagem"].Width = 100;
-            dgv.Columns["Referencia"].Width = 100;
 
+            // Ajustar colunas automaticamente
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
-            dgv.Columns["ProdutoID"].HeaderText = "Cód. Prod.";
-            dgv.Columns["NomeProduto"].HeaderText = "Descrição do Produto";
-            dgv.Columns["PrecoCusto"].HeaderText = "P. Custo";
-            dgv.Columns["Lucro"].HeaderText = "Lucro.";
-            dgv.Columns["PrecoDeVenda"].HeaderText = "P. Venda";
-            dgv.Columns["QuantidadeEmEstoque"].HeaderText = "Estoque";
-            dgv.Columns["DataDeEntrada"].HeaderText = "Dta. Entrada";
-            dgv.Columns["Status"].HeaderText = "Status";
-            dgv.Columns["Imagem"].HeaderText = "Imagem.";
-            dgv.Columns["Referencia"].HeaderText = "Referência";
+            // Tornar o grid somente leitura
+            dgv.ReadOnly = true;
 
             // Centralizar colunas de IDs e Quantidade
             dgv.Columns["ProdutoID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgv.Columns["QuantidadeEmEstoque"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgv.Columns["Estoque"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            // Ocultar a coluna ItemVendaID
-            dgv.Columns["ProdutoID"].Visible = false;           
-
+            // Ocultar a coluna ProdutoID
+            dgv.Columns["ProdutoID"].Visible = false;
         }
+
         private void CarregaDados()
         {
             FrmCadProdutos frm = new  FrmCadProdutos(StatusOperacao);
@@ -117,12 +105,12 @@ namespace SisControl.View
                         // Exemplo: Acessar a primeira célula de cada linha
                         //  var valor = row.Cells[0].Value;
                         frm.txtProdutoID.Text = dataGridPesquisar.CurrentRow.Cells["ProdutoID"].Value.ToString();
-                        frm.txtNomeProduto.Text = dataGridPesquisar.CurrentRow.Cells["NomeProduto"].Value.ToString();
-                        frm.txtPrecoCusto.Text = dataGridPesquisar.CurrentRow.Cells["PrecoCusto"].Value.ToString();
+                        frm.txtNomeProduto.Text = dataGridPesquisar.CurrentRow.Cells["Produto"].Value.ToString();
+                        frm.txtPrecoCusto.Text = dataGridPesquisar.CurrentRow.Cells["Preco de Custo"].Value.ToString();
                         frm.txtLucro.Text = dataGridPesquisar.CurrentRow.Cells["Lucro"].Value.ToString();
-                        frm.txtPrecoDeVenda.Text = dataGridPesquisar.CurrentRow.Cells["PrecoDeVenda"].Value.ToString();
-                        frm.txtEstoque.Text = dataGridPesquisar.CurrentRow.Cells["QuantidadeEmEstoque"].Value.ToString();                        
-                        frm.dtpDataDeEntrada.Text = dataGridPesquisar.CurrentRow.Cells["DataDeEntrada"].Value.ToString();
+                        frm.txtPrecoDeVenda.Text = dataGridPesquisar.CurrentRow.Cells["Preco de Venda"].Value.ToString();
+                        frm.txtEstoque.Text = dataGridPesquisar.CurrentRow.Cells["Estoque"].Value.ToString();                        
+                        frm.dtpDataDeEntrada.Text = dataGridPesquisar.CurrentRow.Cells["Dta. Entrada"].Value.ToString();
                         frm.cmbStatus.Text = dataGridPesquisar.CurrentRow.Cells["Status"].Value.ToString();
 
                         // Convertendo a imagem do DataGridView para exibi-la no PictureBox
@@ -170,12 +158,12 @@ namespace SisControl.View
                         // Exemplo: Acessar a primeira célula de cada linha
                         //  var valor = row.Cells[0].Value;
                         frm.txtProdutoID.Text = dataGridPesquisar.CurrentRow.Cells["ProdutoID"].Value.ToString();
-                        frm.txtNomeProduto.Text = dataGridPesquisar.CurrentRow.Cells["NomeProduto"].Value.ToString();
-                        frm.txtPrecoCusto.Text = dataGridPesquisar.CurrentRow.Cells["PrecoCusto"].Value.ToString();
+                        frm.txtNomeProduto.Text = dataGridPesquisar.CurrentRow.Cells["Produto"].Value.ToString();
+                        frm.txtPrecoCusto.Text = dataGridPesquisar.CurrentRow.Cells["Preco de Custo"].Value.ToString();
                         frm.txtLucro.Text = dataGridPesquisar.CurrentRow.Cells["Lucro"].Value.ToString();
-                        frm.txtPrecoDeVenda.Text = dataGridPesquisar.CurrentRow.Cells["PrecoDeVenda"].Value.ToString();
-                        frm.txtEstoque.Text = dataGridPesquisar.CurrentRow.Cells["QuantidadeEmEstoque"].Value.ToString();
-                        frm.dtpDataDeEntrada.Text = dataGridPesquisar.CurrentRow.Cells["DataDeEntrada"].Value.ToString();
+                        frm.txtPrecoDeVenda.Text = dataGridPesquisar.CurrentRow.Cells["Preco de Venda"].Value.ToString();
+                        frm.txtEstoque.Text = dataGridPesquisar.CurrentRow.Cells["Estoque"].Value.ToString();
+                        frm.dtpDataDeEntrada.Text = dataGridPesquisar.CurrentRow.Cells["Dta. Entrada"].Value.ToString();
                         frm.cmbStatus.Text = dataGridPesquisar.CurrentRow.Cells["Status"].Value.ToString();
 
                         if (dataGridPesquisar.CurrentRow.Cells["Imagem"].Value != DBNull.Value)

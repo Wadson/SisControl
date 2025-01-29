@@ -31,17 +31,43 @@ namespace SisControl.View
         }
         public void PersonalizarDataGridView(KryptonDataGridView dgv)
         {
-            this.dataGridPesquisar.Columns[0].Name = "ClienteID";
-            this.dataGridPesquisar.Columns[1].Name = "NomeCliente";
-            this.dataGridPesquisar.Columns[2].Name = "Cpf";
-            this.dataGridPesquisar.Columns[3].Name = "Endereco";
-            this.dataGridPesquisar.Columns[4].Name = "Telefone";
-            this.dataGridPesquisar.Columns[5].Name = "Email";
-            this.dataGridPesquisar.Columns[6].Name = "CidadeID";
-            this.dataGridPesquisar.Columns[7].Name = "NomeCidade";
-            this.dataGridPesquisar.Columns[8].Name = "NomeEstado";
+            // Renomear colunas
+           dgv.Columns[0].Name = "ClienteID";
+           dgv.Columns[1].Name = "Cliente";
+           dgv.Columns[2].Name = "Cpf";
+           dgv.Columns[3].Name = "Endereco";
+           dgv.Columns[4].Name = "Telefone";
+           dgv.Columns[5].Name = "Email";
+           dgv.Columns[6].Name = "CidadeID";
+           dgv.Columns[7].Name = "Cidade";
+           dgv.Columns[8].Name = "EstadoID";
+            dgv.Columns[9].Name = "Estado";
+
+            // Ocultar coluna de Código (exemplo: CidadeID)
+            dgv.Columns["CidadeID"].Visible = false;
+            dgv.Columns["ClienteID"].Visible = false;
+            dgv.Columns["EstadoID"].Visible = false;
+            // Definir tamanhos das colunas
+            //this.dataGridPesquisar.Columns["ClienteID"].Width = 100;
+            //this.dataGridPesquisar.Columns["Cliente"].Width = 150;
+            //this.dataGridPesquisar.Columns["Cpf"].Width = 120;
+            //this.dataGridPesquisar.Columns["Endereco"].Width = 250;
+            //this.dataGridPesquisar.Columns["Telefone"].Width = 100;
+            //this.dataGridPesquisar.Columns["Email"].Width = 180;
+            //this.dataGridPesquisar.Columns["Cidade"].Width = 150;
+            //this.dataGridPesquisar.Columns["Estado"].Width = 100;
+
+            // Ajustar colunas automaticamente
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
+            // Tornar o grid somente leitura
+            dgv.ReadOnly = true;
+
+            // Centralizar coluna de Estoque (exemplo: NomeCidade)
+            //this.dataGridPesquisar.Columns["NomeCidade"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
-      
+
+
         private void CarregaDados()
         {
             FrmCadCliente cadCliente = new FrmCadCliente(StatusOperacao);
@@ -70,14 +96,14 @@ namespace SisControl.View
                     {
                         // Exemplo: Acessar a primeira célula de cada linha                        
                         cadCliente.txtClienteID.Text = dataGridPesquisar.CurrentRow.Cells["ClienteID"].Value.ToString();
-                        cadCliente.txtNomeCliente.Text = dataGridPesquisar.CurrentRow.Cells["NomeCliente"].Value.ToString();
+                        cadCliente.txtNomeCliente.Text = dataGridPesquisar.CurrentRow.Cells["Cliente"].Value.ToString();
                         cadCliente.txtCpf.Text = dataGridPesquisar.CurrentRow.Cells["Cpf"].Value.ToString();
                         cadCliente.txtEndereco.Text = dataGridPesquisar.CurrentRow.Cells["Endereco"].Value.ToString();
                         cadCliente.txtTelefone.Text = dataGridPesquisar.CurrentRow.Cells["Telefone"].Value.ToString();
                         cadCliente.txtEmail.Text = dataGridPesquisar.CurrentRow.Cells["Email"].Value.ToString();
                         cadCliente.txtCidadeID.Text = dataGridPesquisar.CurrentRow.Cells["CidadeID"].Value.ToString();
-                        cadCliente.txtNomeCidade.Text = dataGridPesquisar.CurrentRow.Cells["NomeCidade"].Value.ToString();
-                        cadCliente.txtEstadoCliente.Text = dataGridPesquisar.CurrentRow.Cells["NomeEstado"].Value.ToString();
+                        cadCliente.txtNomeCidade.Text = dataGridPesquisar.CurrentRow.Cells["Cidade"].Value.ToString();
+                        cadCliente.txtEstadoCliente.Text = dataGridPesquisar.CurrentRow.Cells["Estado"].Value.ToString();
                         cadCliente.txtCidadeID.Text = dataGridPesquisar.CurrentRow.Cells["CidadeID"].Value.ToString();
                         
                         
@@ -114,14 +140,14 @@ namespace SisControl.View
                         // Exemplo: Acessar a primeira célula de cada linha
                         //  var valor = row.Cells[0].Value;
                         cadCliente.txtClienteID.Text = dataGridPesquisar.CurrentRow.Cells["ClienteID"].Value.ToString();
-                        cadCliente.txtNomeCliente.Text = dataGridPesquisar.CurrentRow.Cells["NomeCliente"].Value.ToString();
+                        cadCliente.txtNomeCliente.Text = dataGridPesquisar.CurrentRow.Cells["Cliente"].Value.ToString();
                         cadCliente.txtCpf.Text = dataGridPesquisar.CurrentRow.Cells["Cpf"].Value.ToString();
                         cadCliente.txtEndereco.Text = dataGridPesquisar.CurrentRow.Cells["Endereco"].Value.ToString();
                         cadCliente.txtTelefone.Text = dataGridPesquisar.CurrentRow.Cells["Telefone"].Value.ToString();
                         cadCliente.txtEmail.Text = dataGridPesquisar.CurrentRow.Cells["Email"].Value.ToString();
                         cadCliente.txtCidadeID.Text = dataGridPesquisar.CurrentRow.Cells["CidadeID"].Value.ToString();
-                        cadCliente.txtNomeCidade.Text = dataGridPesquisar.CurrentRow.Cells["NomeCidade"].Value.ToString();
-                        cadCliente.txtEstadoCliente.Text = dataGridPesquisar.CurrentRow.Cells["NomeEstado"].Value.ToString();
+                        cadCliente.txtNomeCidade.Text = dataGridPesquisar.CurrentRow.Cells["Cidade"].Value.ToString();
+                        cadCliente.txtEstadoCliente.Text = dataGridPesquisar.CurrentRow.Cells["Estado"].Value.ToString();
                         cadCliente.txtCidadeID.Text = dataGridPesquisar.CurrentRow.Cells["CidadeID"].Value.ToString();
 
                         cadCliente.Text = "SISCONTROL - EXCLUSÃO DE REGISTRO";

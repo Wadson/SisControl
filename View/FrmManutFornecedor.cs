@@ -1,4 +1,5 @@
-﻿using SisControl.BLL;
+﻿using ComponentFactory.Krypton.Toolkit;
+using SisControl.BLL;
 using SisControl.DALL;
 using System;
 using System.Collections.Generic;
@@ -41,12 +42,12 @@ namespace SisControl.View
                     // Execução do código desejado
 
                     frm.txtFornecedorID.Text = dataGridPesquisar.CurrentRow.Cells["FornecedorID"].Value.ToString();
-                    frm.txtNomeFornecedor.Text = dataGridPesquisar.CurrentRow.Cells["NomeFornecedor"].Value.ToString();
+                    frm.txtNomeFornecedor.Text = dataGridPesquisar.CurrentRow.Cells["Fornecedor"].Value.ToString();
                     frm.txtCnpjCpf.Text = dataGridPesquisar.CurrentRow.Cells["Cnpj"].Value.ToString();
                     frm.txtEndereco.Text = dataGridPesquisar.CurrentRow.Cells["Endereco"].Value.ToString();
                     frm.txtTelefone.Text = dataGridPesquisar.CurrentRow.Cells["Telefone"].Value.ToString();
                     frm.txtEmail.Text = dataGridPesquisar.CurrentRow.Cells["Email"].Value.ToString();
-                    frm.txtNomeCidade.Text = dataGridPesquisar.CurrentRow.Cells["NomeCidade"].Value.ToString();
+                    frm.txtNomeCidade.Text = dataGridPesquisar.CurrentRow.Cells["Cidade"].Value.ToString();
                     frm.txtCidadeID.Text = dataGridPesquisar.CurrentRow.Cells["CidadeID"].Value.ToString();
 
                     frm.Text = "SISCONTROL - ALTERAR REGISTRO";
@@ -78,12 +79,12 @@ namespace SisControl.View
                     // Exemplo: Acessar a primeira célula de cada linha
                     //  var valor = row.Cells[0].Value;
                     frm.txtFornecedorID.Text = dataGridPesquisar.CurrentRow.Cells["FornecedorID"].Value.ToString();
-                    frm.txtNomeFornecedor.Text = dataGridPesquisar.CurrentRow.Cells["NomeFornecedor"].Value.ToString();
+                    frm.txtNomeFornecedor.Text = dataGridPesquisar.CurrentRow.Cells["Fornecedor"].Value.ToString();
                     frm.txtCnpjCpf.Text = dataGridPesquisar.CurrentRow.Cells["Cnpj"].Value.ToString();
                     frm.txtEndereco.Text = dataGridPesquisar.CurrentRow.Cells["Endereco"].Value.ToString();
                     frm.txtTelefone.Text = dataGridPesquisar.CurrentRow.Cells["Telefone"].Value.ToString();
                     frm.txtEmail.Text = dataGridPesquisar.CurrentRow.Cells["Email"].Value.ToString();
-                    frm.txtNomeCidade.Text = dataGridPesquisar.CurrentRow.Cells["NomeCidade"].Value.ToString();
+                    frm.txtNomeCidade.Text = dataGridPesquisar.CurrentRow.Cells["Cidade"].Value.ToString();
                     frm.txtCidadeID.Text = dataGridPesquisar.CurrentRow.Cells["CidadeID"].Value.ToString();
                     frm.Text = "SISCONTROL - EXCLUSÃO DE REGISTRO";
                     StatusOperacao = "EXCLUSÃO";
@@ -112,7 +113,7 @@ namespace SisControl.View
             }            
         }
        
-        public void PersonalizarDataGridView(DataGridView dgv)
+        public void PersonalizarDataGridView(KryptonDataGridView dgv)
         {
            
             //Alinhar o as colunas
@@ -121,14 +122,21 @@ namespace SisControl.View
             dgv.Columns["CidadeID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopCenter;
                        
 
-            this.dataGridPesquisar.Columns[0].Name = "FornecedorID"   ;
-            this.dataGridPesquisar.Columns[1].Name = "NomeFornecedor" ;
-            this.dataGridPesquisar.Columns[2].Name = "Cnpj"           ;
-            this.dataGridPesquisar.Columns[3].Name = "Endereco"        ;
-            this.dataGridPesquisar.Columns[4].Name = "Telefone"           ;
-            this.dataGridPesquisar.Columns[5].Name = "Email"          ;
-            this.dataGridPesquisar.Columns[6].Name = "CidadeID"            ;
-            this.dataGridPesquisar.Columns[7].Name = "NomeCidade"          ;
+            dgv.Columns[0].Name = "FornecedorID"   ;
+            dgv.Columns[1].Name = "Fornecedor" ;
+            dgv.Columns[2].Name = "Cnpj"           ;
+            dgv.Columns[3].Name = "Endereco"        ;
+            dgv.Columns[4].Name = "Telefone"           ;
+            dgv.Columns[5].Name = "Email"          ;
+            dgv.Columns[6].Name = "CidadeID"            ;
+            dgv.Columns[7].Name = "Cidade"          ;
+
+            dgv.Columns["FornecedorID"].Visible = false;
+            dgv.Columns["CidadeID"].Visible = false;
+
+
+            // Ajustar colunas automaticamente
+            dataGridPesquisar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
         }
         public void ListarFornecedor()

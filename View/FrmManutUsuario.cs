@@ -1,4 +1,5 @@
-﻿using SisControl.BLL;
+﻿using ComponentFactory.Krypton.Toolkit;
+using SisControl.BLL;
 using SisControl.DALL;
 using System;
 using System.Collections.Generic;
@@ -38,10 +39,10 @@ namespace SisControl
                 if(StatusOperacao == "ALTERAR")
                 {
                     cadUsuarios.txtUsarioID.Text =     dataGridPesquisar.CurrentRow.Cells["UsuarioID"].Value.ToString();
-                    cadUsuarios.txtNomeUsuario.Text =      dataGridPesquisar.CurrentRow.Cells["NomeUsuario"].Value.ToString();
+                    cadUsuarios.txtNomeUsuario.Text =      dataGridPesquisar.CurrentRow.Cells["Usuario"].Value.ToString();
                     cadUsuarios.txtEmail.Text =         dataGridPesquisar.CurrentRow.Cells["Email"].Value.ToString();
                     cadUsuarios.txtSenha.Text =         dataGridPesquisar.CurrentRow.Cells["Senha"].Value.ToString();
-                    cadUsuarios.cmbTipoUsuario.Text =    dataGridPesquisar.CurrentRow.Cells["TipoUsuario"].Value.ToString();
+                    cadUsuarios.cmbTipoUsuario.Text =    dataGridPesquisar.CurrentRow.Cells["Tipo de Usuario"].Value.ToString();
 
                     cadUsuarios.Text = "SISCONTROL - ALTERAR REGISTRO";
                     StatusOperacao = "ALTERAR";
@@ -54,10 +55,10 @@ namespace SisControl
                 if (StatusOperacao == "EXCLUSÃO")
                 {
                     cadUsuarios.txtUsarioID.Text = dataGridPesquisar.CurrentRow.Cells["UsuarioID"].Value.ToString();
-                    cadUsuarios.txtNomeUsuario.Text = dataGridPesquisar.CurrentRow.Cells["NomeUsuario"].Value.ToString();
+                    cadUsuarios.txtNomeUsuario.Text = dataGridPesquisar.CurrentRow.Cells["Usuario"].Value.ToString();
                     cadUsuarios.txtEmail.Text = dataGridPesquisar.CurrentRow.Cells["Email"].Value.ToString();
                     cadUsuarios.txtSenha.Text = dataGridPesquisar.CurrentRow.Cells["Senha"].Value.ToString();
-                    cadUsuarios.cmbTipoUsuario.Text = dataGridPesquisar.CurrentRow.Cells["TipoUsuario"].Value.ToString();
+                    cadUsuarios.cmbTipoUsuario.Text = dataGridPesquisar.CurrentRow.Cells["Tipo de Usuario"].Value.ToString();
 
                     cadUsuarios.Text = "SISCONTROL - EXCLUSÃO DE REGISTRO";
                     StatusOperacao = "EXCLUSÃO";
@@ -87,12 +88,9 @@ namespace SisControl
         {
             ListaUsuario();
         }
-        public void PersonalizarDataGridView(DataGridView dgv)
+        public void PersonalizarDataGridView(KryptonDataGridView dgv)
         {          
-
-            //Alinhar o as colunas
-
-            dataGridPesquisar.Columns["UsuarioID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopCenter;
+            //Alinhar o as colunas            
             //dataGridPesquisar.Columns["Estoque"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopCenter;
 
             // Ajustar colunas automaticamente
@@ -104,23 +102,24 @@ namespace SisControl
             // Estilo das bordas das células
             dgv.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
 
-            // Estilo da seleção das células
-            dgv.DefaultCellStyle.SelectionBackColor = Color.DarkTurquoise;
-            dgv.DefaultCellStyle.SelectionForeColor = Color.White;
+            //// Estilo da seleção das células
+            //dgv.DefaultCellStyle.SelectionBackColor = Color.DarkTurquoise;
+            //dgv.DefaultCellStyle.SelectionForeColor = Color.White;
 
             dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgv.MultiSelect = false;
+            //dgv.MultiSelect = false;
             // Esconder a coluna de cabeçalho de linha
             //dgv.RowHeadersVisible = false;
 
             // Cor do grid
-            dgv.GridColor = Color.Black;
+            //dgv.GridColor = Color.Black;
 
-            this.dataGridPesquisar.Columns[0].Name = "UsuarioID"   ;
-            this.dataGridPesquisar.Columns[1].Name = "NomeUsuario" ;
-            this.dataGridPesquisar.Columns[2].Name = "Email"       ;
-            this.dataGridPesquisar.Columns[3].Name = "Senha"        ;
-            this.dataGridPesquisar.Columns[4].Name = "TipoUsuario" ;
+            dgv.Columns[0].Name = "UsuarioID"   ;
+            dgv.Columns[1].Name = "Usuario" ;
+            dgv.Columns[2].Name = "Email"       ;
+            dgv.Columns[3].Name = "Senha"        ;
+            dgv.Columns[4].Name = "Tipo de Usuario" ;
+
             // Ocultar a coluna, mas ainda manter o acesso aos valores
             dataGridPesquisar.Columns["UsuarioID"].Visible = false;
         }

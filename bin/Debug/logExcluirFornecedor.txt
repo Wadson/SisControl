@@ -8,3 +8,5 @@
 26/01/2025 22:23:37: Erro ao limpar o formulário: Error while deleting supplier: Delete command did not affect any rows.
 27/01/2025 06:11:36: Iniciando exclusão do fornecedor com ID: 2
 27/01/2025 06:11:36: Erro ao limpar o formulário: Error while deleting supplier: Delete command did not affect any rows.
+29/01/2025 06:35:48: Iniciando exclusão do fornecedor com ID: 2
+29/01/2025 06:35:48: Erro ao limpar o formulário: Error while deleting supplier: Delete command did not affect any rows.

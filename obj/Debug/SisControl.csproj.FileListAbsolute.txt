@@ -317,3 +317,4 @@ D:\SisControl\bin\Debug\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
 D:\SisControl\bin\Debug\zh-HANS\Microsoft.ReportViewer.WinForms.resources.dll
 D:\SisControl\bin\Debug\zh-HANT\Microsoft.ReportViewer.WinForms.resources.dll
 D:\SisControl\obj\Debug\SisControl.Relatorios.RelClienteContaAberta.resources
+D:\SisControl\obj\Debug\SisControl.View.FrmRelatorios.resources

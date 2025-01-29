@@ -14,6 +14,8 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using ComponentFactory.Krypton.Toolkit;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
+using System.Drawing.Imaging;
+using System.Runtime.InteropServices;
 
 namespace SisControl.View
 {
@@ -152,6 +154,7 @@ namespace SisControl.View
         }
 
 
+
         private void Salvar()
         {
             // Criar uma nova instância de ProdutoMODEL e preencher com os dados do formulário
@@ -205,49 +208,103 @@ namespace SisControl.View
                 MessageBox.Show("Erro ao Excluir o registro!!! " + erro);
             }
         }
-
-
-        public void Alterar()
+        private void Alterar()
         {
             try
             {
-                ProdutosModel objetoProduto = new ProdutosModel();
+                // Criar uma nova instância de ProdutoMODEL e preencher com os dados do formulário
+                ProdutosModel produto = new ProdutosModel
+                {
+                    ProdutoID = int.Parse(txtProdutoID.Text),
+                    NomeProduto = txtNomeProduto.Text,
+                    PrecoCusto = decimal.Parse(txtPrecoCusto.Text),
+                    Lucro = decimal.Parse(txtLucro.Text),
+                    PrecoDeVenda = decimal.Parse(txtPrecoDeVenda.Text),
+                    QuantidadeEmEstoque = int.Parse(txtEstoque.Text),
+                    DataDeEntrada = dtpDataDeEntrada.Value,
+                    Status = cmbStatus.Text,
+                    Referencia = txtReferencia.Text
+                };
 
-                objetoProduto.NomeProduto = txtNomeProduto.Text;
-                objetoProduto.PrecoCusto = decimal.Parse(txtPrecoCusto.Text);
-                objetoProduto.Lucro = decimal.Parse(txtLucro.Text);
-                objetoProduto.PrecoDeVenda = decimal.Parse(txtPrecoDeVenda.Text);
-                objetoProduto.QuantidadeEmEstoque = int.Parse(txtEstoque.Text);
-                objetoProduto.DataDeEntrada = dtpDataDeEntrada.Value;
-                objetoProduto.Status = cmbStatus.Text;               
-
+                // Verificar se há uma imagem carregada
                 if (pictureBoxProduto.Image != null)
                 {
                     using (MemoryStream ms = new MemoryStream())
                     {
-                        pictureBoxProduto.Image.Save(ms, pictureBoxProduto.Image.RawFormat);
-                        objetoProduto.Imagem = ms.ToArray();
+                        // Criar uma nova imagem a partir do PictureBox
+                        Image img = new Bitmap(pictureBoxProduto.Image);
+
+                        // Salvar a imagem no stream como PNG
+                        img.Save(ms, ImageFormat.Png);
+                        produto.Imagem = ms.ToArray();
                     }
                 }
+                else
+                {
+                    produto.Imagem = null;
+                }
 
-                objetoProduto.Referencia = txtReferencia.Text;
-                objetoProduto.ProdutoID = int.Parse(txtProdutoID.Text);
+                // Chamar o método AlterarProduto da BLL
+                ProdutoBLL produtosbll = new ProdutoBLL();
+                produtosbll.Alterar(produto);
 
-                ProdutoBLL produtoBll = new ProdutoBLL();
-                produtoBll.Alterar(objetoProduto);
-
-                MessageBox.Show("Registro Alterado com sucesso!", "Alteração!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                ((FrmManutProduto)Application.OpenForms["FrmManutProduto"]).HabilitarTimer(true);// Habilita Timer do outro form Obs: O timer no outro form executa um Método.    
+                MessageBox.Show("Produto alterado com sucesso!");
                 Utilitario.LimpaCampoKrypton(this);
+                // Limpar o PictureBox
+                pictureBoxProduto.Image = null;
                 this.Close();
+                ((FrmManutProduto)Application.OpenForms["FrmManutProduto"]).HabilitarTimer(true);
             }
-            catch (Exception erro)
+            catch (Exception ex)
             {
-                MessageBox.Show("Erro ao Alterar o registro!!! " + erro);
+                MessageBox.Show("Erro ao Alterar o registro: " + ex.Message);
             }
-        } 
+        }
 
-      
+
+
+
+        //public void Alterar()
+        //{
+        //    try
+        //    {
+        //        ProdutosModel objetoProduto = new ProdutosModel();
+
+        //        objetoProduto.NomeProduto = txtNomeProduto.Text;
+        //        objetoProduto.PrecoCusto = decimal.Parse(txtPrecoCusto.Text);
+        //        objetoProduto.Lucro = decimal.Parse(txtLucro.Text);
+        //        objetoProduto.PrecoDeVenda = decimal.Parse(txtPrecoDeVenda.Text);
+        //        objetoProduto.QuantidadeEmEstoque = int.Parse(txtEstoque.Text);
+        //        objetoProduto.DataDeEntrada = dtpDataDeEntrada.Value;
+        //        objetoProduto.Status = cmbStatus.Text;               
+
+        //        if (pictureBoxProduto.Image != null)
+        //        {
+        //            using (MemoryStream ms = new MemoryStream())
+        //            {
+        //                pictureBoxProduto.Image.Save(ms, pictureBoxProduto.Image.RawFormat);
+        //                objetoProduto.Imagem = ms.ToArray();
+        //            }
+        //        }
+
+        //        objetoProduto.Referencia = txtReferencia.Text;
+        //        objetoProduto.ProdutoID = int.Parse(txtProdutoID.Text);
+
+        //        ProdutoBLL produtoBll = new ProdutoBLL();
+        //        produtoBll.Alterar(objetoProduto);
+
+        //        MessageBox.Show("Registro Alterado com sucesso!", "Alteração!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+        //        ((FrmManutProduto)Application.OpenForms["FrmManutProduto"]).HabilitarTimer(true);// Habilita Timer do outro form Obs: O timer no outro form executa um Método.    
+        //        Utilitario.LimpaCampoKrypton(this);
+        //        this.Close();
+        //    }
+        //    catch (Exception erro)
+        //    {
+        //        MessageBox.Show("Erro ao Alterar o registro!!! " + erro);
+        //    }
+        //} 
+
+
         private void btnSalva_Click(object sender, EventArgs e)
         {
             FrmManutUsuario pesquisausuario = new FrmManutUsuario(StatusOperacao);

@@ -134,7 +134,8 @@ namespace SisControl
 
         private void btnRelatorio_Click(object sender, EventArgs e)
         {
-
+            FrmRelatorios frm = new FrmRelatorios();
+            AbrirFormEnPanel(frm);
         }
 
         private void btnFerramentas_Click(object sender, EventArgs e)

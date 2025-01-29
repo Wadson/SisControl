@@ -79,25 +79,66 @@ namespace SisControl.DALL
             var connection = Conexao.Conex();
             using (connection)
             {
-                var query = "INSERT INTO Produtos (ProdutoID, NomeProduto, PrecoCusto, Lucro, PrecoDeVenda, QuantidadeEmEstoque, DataDeEntrada, Status, Imagem, Referencia ) VALUES (@ProdutoID, @NomeProduto, @PrecoCusto, @Lucro, @PrecoDeVenda, @QuantidadeEmEstoque, @DataDeEntrada, @Status, @Imagem, @Referencia)";
+                var query = "INSERT INTO Produtos (ProdutoID, NomeProduto, PrecoCusto, Lucro, PrecoDeVenda, QuantidadeEmEstoque, DataDeEntrada, Status, Imagem, Referencia) VALUES (@ProdutoID, @NomeProduto, @PrecoCusto, @Lucro, @PrecoDeVenda, @QuantidadeEmEstoque, @DataDeEntrada, @Status, @Imagem, @Referencia)";
                 using (var command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@ProdutoID", produto.ProdutoID);
-                    command.Parameters.AddWithValue("@NomeProduto", produto.NomeProduto);                    
+                    command.Parameters.AddWithValue("@NomeProduto", produto.NomeProduto);
                     command.Parameters.AddWithValue("@PrecoCusto", produto.PrecoCusto);
                     command.Parameters.AddWithValue("@Lucro", produto.Lucro);
                     command.Parameters.AddWithValue("@PrecoDeVenda", produto.PrecoDeVenda);
                     command.Parameters.AddWithValue("@QuantidadeEmEstoque", produto.QuantidadeEmEstoque);
-                    command.Parameters.AddWithValue("@DataDeEntrada", produto.DataDeEntrada);                  
-                    command.Parameters.AddWithValue("@Status", produto.Status);                   
-                    command.Parameters.AddWithValue("@Imagem", produto.Imagem);
+                    command.Parameters.AddWithValue("@DataDeEntrada", produto.DataDeEntrada);
+                    command.Parameters.AddWithValue("@Status", produto.Status);
+
+                    if (produto.Imagem != null)
+                    {
+                        var imgParam = new SqlParameter("@Imagem", SqlDbType.VarBinary, -1);
+                        imgParam.Value = produto.Imagem;
+                        command.Parameters.Add(imgParam);
+                    }
+                    else
+                    {
+                        var imgParam = new SqlParameter("@Imagem", SqlDbType.VarBinary, -1);
+                        imgParam.Value = DBNull.Value;
+                        command.Parameters.Add(imgParam);
+                    }
+
                     command.Parameters.AddWithValue("@Referencia", produto.Referencia);
-                    
+
                     connection.Open();
                     command.ExecuteNonQuery();
                 }
             }
         }
+
+
+        //public void SalvarProduto(ProdutosModel produto)
+        //{
+        //    var connection = Conexao.Conex();
+        //    using (connection)
+        //    {
+        //        var query = "INSERT INTO Produtos (ProdutoID, NomeProduto, PrecoCusto, Lucro, PrecoDeVenda, QuantidadeEmEstoque, DataDeEntrada, Status, Imagem, Referencia ) VALUES (@ProdutoID, @NomeProduto, @PrecoCusto, @Lucro, @PrecoDeVenda, @QuantidadeEmEstoque, @DataDeEntrada, @Status, @Imagem, @Referencia)";
+        //        using (var command = new SqlCommand(query, connection))
+        //        {
+        //            command.Parameters.AddWithValue("@ProdutoID", produto.ProdutoID);
+        //            command.Parameters.AddWithValue("@NomeProduto", produto.NomeProduto);                    
+        //            command.Parameters.AddWithValue("@PrecoCusto", produto.PrecoCusto);
+        //            command.Parameters.AddWithValue("@Lucro", produto.Lucro);
+        //            command.Parameters.AddWithValue("@PrecoDeVenda", produto.PrecoDeVenda);
+        //            command.Parameters.AddWithValue("@QuantidadeEmEstoque", produto.QuantidadeEmEstoque);
+        //            command.Parameters.AddWithValue("@DataDeEntrada", produto.DataDeEntrada);                  
+        //            command.Parameters.AddWithValue("@Status", produto.Status);                   
+        //            command.Parameters.AddWithValue("@Imagem", produto.Imagem);
+        //            command.Parameters.AddWithValue("@Referencia", produto.Referencia);
+
+        //            connection.Open();
+        //            command.ExecuteNonQuery();
+        //        }
+        //    }
+        //}
+
+
         public void AlterarProduto(ProdutosModel produto)
         {
             var connection = Conexao.Conex();
@@ -107,20 +148,59 @@ namespace SisControl.DALL
                 using (var command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@ProdutoID", produto.ProdutoID);
-                    command.Parameters.AddWithValue("@NomeProduto", produto.NomeProduto);                    
+                    command.Parameters.AddWithValue("@NomeProduto", produto.NomeProduto);
                     command.Parameters.AddWithValue("@PrecoCusto", produto.PrecoCusto);
                     command.Parameters.AddWithValue("@Lucro", produto.Lucro);
                     command.Parameters.AddWithValue("@PrecoDeVenda", produto.PrecoDeVenda);
                     command.Parameters.AddWithValue("@QuantidadeEmEstoque", produto.QuantidadeEmEstoque);
-                    command.Parameters.AddWithValue("@DataDeEntrada", produto.DataDeEntrada);                   
-                    command.Parameters.AddWithValue("@Status", produto.Status);                   
-                    command.Parameters.AddWithValue("@Imagem", produto.Imagem);
+                    command.Parameters.AddWithValue("@DataDeEntrada", produto.DataDeEntrada);
+                    command.Parameters.AddWithValue("@Status", produto.Status);
+
+                    if (produto.Imagem != null)
+                    {
+                        var imgParam = new SqlParameter("@Imagem", SqlDbType.VarBinary, -1);
+                        imgParam.Value = produto.Imagem;
+                        command.Parameters.Add(imgParam);
+                    }
+                    else
+                    {
+                        var imgParam = new SqlParameter("@Imagem", SqlDbType.VarBinary, -1);
+                        imgParam.Value = DBNull.Value;
+                        command.Parameters.Add(imgParam);
+                    }
+
                     command.Parameters.AddWithValue("@Referencia", produto.Referencia);
+
                     connection.Open();
                     command.ExecuteNonQuery();
                 }
             }
         }
+
+
+        //public void AlterarProduto(ProdutosModel produto)
+        //{
+        //    var connection = Conexao.Conex();
+        //    using (connection)
+        //    {
+        //        var query = "UPDATE Produtos SET NomeProduto = @NomeProduto, PrecoCusto = @PrecoCusto, Lucro = @Lucro, PrecoDeVenda = @PrecoDeVenda, QuantidadeEmEstoque = @QuantidadeEmEstoque, DataDeEntrada = @DataDeEntrada, Status = @Status, Imagem = @Imagem, Referencia = @Referencia WHERE ProdutoID = @ProdutoID";
+        //        using (var command = new SqlCommand(query, connection))
+        //        {
+        //            command.Parameters.AddWithValue("@ProdutoID", produto.ProdutoID);
+        //            command.Parameters.AddWithValue("@NomeProduto", produto.NomeProduto);                    
+        //            command.Parameters.AddWithValue("@PrecoCusto", produto.PrecoCusto);
+        //            command.Parameters.AddWithValue("@Lucro", produto.Lucro);
+        //            command.Parameters.AddWithValue("@PrecoDeVenda", produto.PrecoDeVenda);
+        //            command.Parameters.AddWithValue("@QuantidadeEmEstoque", produto.QuantidadeEmEstoque);
+        //            command.Parameters.AddWithValue("@DataDeEntrada", produto.DataDeEntrada);                   
+        //            command.Parameters.AddWithValue("@Status", produto.Status);                   
+        //            command.Parameters.AddWithValue("@Imagem", produto.Imagem);
+        //            command.Parameters.AddWithValue("@Referencia", produto.Referencia);
+        //            connection.Open();
+        //            command.ExecuteNonQuery();
+        //        }
+        //    }
+        //}
 
 
         public void ExcluirProduto(ProdutosModel produto)
