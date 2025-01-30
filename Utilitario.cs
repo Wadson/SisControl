@@ -667,7 +667,7 @@ private void FrmMeuFormulario_Load(object sender, EventArgs e)
         }
 
         // Método para somar valores no DataGridView
-        public static decimal SomarValoresDataGridView(DataGridView dataGridView, string columnName)
+        public static decimal SomarValoresDataGridView(KryptonDataGridView dataGridView, string columnName)
         {
             decimal soma = 0;
             foreach (DataGridViewRow row in dataGridView.Rows)

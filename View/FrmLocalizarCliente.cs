@@ -100,6 +100,12 @@ namespace SisControl.View
                     frmContaReceber.txtClienteID.Text = numeroComZeros.ToString();
                     frmContaReceber.txtNomeCliente.Text = nomeCliente;
                 }
+                else if (FormChamador is FrmRelatorios frmRelatorios)
+                {
+                    // Se for, define os textos dos campos txtClienteID e txtNomeCliente de FrmContaReceber.
+                    frmRelatorios.txtClienteID.Text = numeroComZeros.ToString();
+                    frmRelatorios.txtNomeCliente.Text = nomeCliente;
+                }
             }
             else
             {
