@@ -475,12 +475,6 @@
     <Compile Include="View\FrmManutUsuario.Designer.cs">
       <DependentUpon>FrmManutUsuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\FrmPrincipal.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\FrmPrincipal.Designer.cs">
-      <DependentUpon>FrmPrincipal.cs</DependentUpon>
-    </Compile>
     <Compile Include="MODEL\ClienteMODEL.cs" />
     <Compile Include="MODEL\ContaPagarMODEL.cs" />
     <Compile Include="MODEL\ContaReceberMODEL.cs" />
@@ -507,7 +501,7 @@
     <EmbeddedResource Include="Relatorios\RelClienteContaAberta.resx">
       <DependentUpon>RelClienteContaAberta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Relatorios\ReportContaClienteAberta.rdlc" />
+    <EmbeddedResource Include="Relatorios\RelContaPorClienteAberta.rdlc" />
     <EmbeddedResource Include="View\FormPrincipal.resx">
       <DependentUpon>FormPrincipal.cs</DependentUpon>
     </EmbeddedResource>
@@ -600,9 +594,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmManutUsuario.resx">
       <DependentUpon>FrmManutUsuario.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\FrmPrincipal.resx">
-      <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -113,6 +113,7 @@
             this.txtTelefone.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
             this.txtTelefone.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.txtTelefone.TabIndex = 2;
+            this.txtTelefone.Leave += new System.EventHandler(this.txtTelefone_Leave);
             // 
             // txtNomeCliente
             // 
@@ -352,7 +353,8 @@
             this.txtEstadoCliente.StateCommon.Content.Color1 = System.Drawing.Color.Gray;
             this.txtEstadoCliente.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
             this.txtEstadoCliente.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.txtEstadoCliente.TabIndex = 8;
+            this.txtEstadoCliente.TabIndex = 140;
+            this.txtEstadoCliente.TabStop = false;
             // 
             // label20
             // 
@@ -420,7 +422,7 @@
             this.btnSair.StateTracking.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.btnSair.StateTracking.Border.Rounding = 20;
             this.btnSair.StateTracking.Border.Width = 1;
-            this.btnSair.TabIndex = 195;
+            this.btnSair.TabIndex = 10;
             this.btnSair.Values.Text = "&Sair";
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
@@ -480,7 +482,7 @@
             this.btnNovo.StateTracking.Border.Rounding = 20;
             this.btnNovo.StateTracking.Border.Width = 1;
             this.btnNovo.StateTracking.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnNovo.TabIndex = 194;
+            this.btnNovo.TabIndex = 9;
             this.btnNovo.Values.Text = "&Novo";
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
@@ -539,7 +541,7 @@
             this.btnSalvar.StateTracking.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.btnSalvar.StateTracking.Border.Rounding = 20;
             this.btnSalvar.StateTracking.Border.Width = 1;
-            this.btnSalvar.TabIndex = 193;
+            this.btnSalvar.TabIndex = 8;
             this.btnSalvar.Values.Text = "Salvar";
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
@@ -600,7 +602,7 @@
             this.btnLocalizar.StateTracking.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.btnLocalizar.StateTracking.Border.Rounding = 20;
             this.btnLocalizar.StateTracking.Border.Width = 1;
-            this.btnLocalizar.TabIndex = 196;
+            this.btnLocalizar.TabIndex = 7;
             this.btnLocalizar.Values.Image = global::SisControl.Properties.Resources.localizador16;
             this.btnLocalizar.Values.Text = "&Localizar...";
             this.btnLocalizar.Click += new System.EventHandler(this.btnLocalizar_Click);

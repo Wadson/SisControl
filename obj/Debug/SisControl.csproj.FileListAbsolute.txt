@@ -9,7 +9,6 @@ D:\SisControl\obj\Debug\SisControl.View.FrmManutCliente.resources
 D:\SisControl\obj\Debug\SisControl.View.FrmManutFornecedor.resources
 D:\SisControl\obj\Debug\SisControl.View.FrmManutProduto.resources
 D:\SisControl\obj\Debug\SisControl.FrmManutUsuario.resources
-D:\SisControl\obj\Debug\SisControl.FrmPrincipal.resources
 D:\SisControl\obj\Debug\SisControl.Properties.Resources.resources
 D:\SisControl\obj\Debug\SisControl.TexBoxPersonalizado.resources
 D:\SisControl\obj\Debug\SisControl.csproj.GenerateResource.cache
@@ -318,3 +317,4 @@ D:\SisControl\bin\Debug\zh-HANS\Microsoft.ReportViewer.WinForms.resources.dll
 D:\SisControl\bin\Debug\zh-HANT\Microsoft.ReportViewer.WinForms.resources.dll
 D:\SisControl\obj\Debug\SisControl.Relatorios.RelClienteContaAberta.resources
 D:\SisControl\obj\Debug\SisControl.View.FrmRelatorios.resources
+D:\SisControl\bin\Debug\stdole.dll

@@ -7,14 +7,14 @@
     <framework targetVersion="4.7.2" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="SisControl.exe.manifest" size="83801">
+    <dependentAssembly dependencyType="install" codebase="SisControl.exe.manifest" size="84439">
       <assemblyIdentity name="SisControl.exe" version="1.0.0.0" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>QrrfMgXw4sbK1oRX7QJi6zZ/f/szmltr+UBT3M49ntg=</dsig:DigestValue>
+        <dsig:DigestValue>Wga6M4kwfm/dUM+9rZdGTdUAAdv1EuDfyybZRsmo6Mo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

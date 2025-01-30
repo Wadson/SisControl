@@ -19,8 +19,12 @@ namespace SisControl.View
         public FrmLocalizarCliente()
         {
             InitializeComponent();
+
+
             txtPesquisa.TextChanged += txtPesquisa_TextChanged;
-        }      
+            this.dataGridPesquisar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridPesquisar_KeyDown);
+
+        }
         private void InicializaDataGridView()
         {
             //dataGridPesquisar.MultiSelect = false;
@@ -114,6 +118,28 @@ namespace SisControl.View
         private void dataGridPesquisar_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             this.Close();
+        }
+
+        private void txtPesquisa_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                dataGridPesquisar.Focus();
+            }
+        }
+
+        private void dataGridPesquisar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up && dataGridPesquisar.CurrentCell.RowIndex == 0)
+            {
+                txtPesquisa.Focus();
+            }
+            // Adicione a navegação com as setas para cima e para baixo, se ainda não tiver
+
+            if (e.KeyCode == Keys.Enter)
+            {
+                this.Close();
+            }
         }
     }
 }

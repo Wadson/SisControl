@@ -1029,7 +1029,7 @@ private void FrmMeuFormulario_Load(object sender, EventArgs e)
         //// Na classe construtor de inicialização adicione este código:
         public static void FormataTelefone(object sender, KeyPressEventArgs e)
         {
-            TextBox textBoxTelefone = sender as TextBox;
+            KryptonTextBox textBoxTelefone = sender as KryptonTextBox;
 
             if (textBoxTelefone != null)
             {

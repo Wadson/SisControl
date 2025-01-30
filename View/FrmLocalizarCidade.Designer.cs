@@ -47,6 +47,7 @@
             this.txtPesquisa.Location = new System.Drawing.Point(199, 57);
             this.txtPesquisa.Size = new System.Drawing.Size(368, 20);
             this.txtPesquisa.TextChanged += new System.EventHandler(this.txtPesquisa_TextChanged);
+            this.txtPesquisa.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPesquisa_KeyDown);
             // 
             // groupBox1
             // 
@@ -79,6 +80,7 @@
             this.dataGridPesquisar.Size = new System.Drawing.Size(555, 239);
             this.dataGridPesquisar.TabIndex = 602;
             this.dataGridPesquisar.SelectionChanged += new System.EventHandler(this.dataGridPesquisar_SelectionChanged);
+            this.dataGridPesquisar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridPesquisar_KeyDown);
             // 
             // FrmLocalizarCidade
             // 

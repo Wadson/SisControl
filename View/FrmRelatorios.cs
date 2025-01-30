@@ -17,9 +17,7 @@ namespace SisControl.View
         }
 
         private void btnRelContaPorClienteAberta_Click(object sender, EventArgs e)
-        {
-            Relatorios.RelClienteContaAberta frm = new RelClienteContaAberta();
-            frm.Show();
+        {           
         }
     }
 }

@@ -23,6 +23,9 @@ namespace SisControl.View
         public FrmCadCliente( string statusOperação)
         {
             InitializeComponent();
+
+            txtTelefone.KeyPress += new KeyPressEventHandler(Utilitario.FormataTelefone);
+
             this.StatusOperacao = statusOperação;
             Utilitario.ConfigurarEventosDeFoco(this);// Texbox fundo amarelo quando em foco
         }
@@ -179,6 +182,11 @@ namespace SisControl.View
             frmLocalizarCidade.Text = "Localizar Cidade...";
             VariavelGlobal.NomeFormulario = "FrmCadCliente";
             frmLocalizarCidade.ShowDialog();
+            btnSalvar.Focus();
+        }
+
+        private void txtTelefone_Leave(object sender, EventArgs e)
+        {     
         }
     }
 }

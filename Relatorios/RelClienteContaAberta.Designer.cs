@@ -28,25 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.reportViewerRelContaPorClienteAberta = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.components = new System.ComponentModel.Container();
             this.txtNomeCliente = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnGerarRelatorio = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.relClienteContaAbertaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            ((System.ComponentModel.ISupportInitialize)(this.relClienteContaAbertaBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // reportViewerRelContaPorClienteAberta
-            // 
-            this.reportViewerRelContaPorClienteAberta.Location = new System.Drawing.Point(0, 102);
-            this.reportViewerRelContaPorClienteAberta.Name = "reportViewerRelContaPorClienteAberta";
-            this.reportViewerRelContaPorClienteAberta.ServerReport.BearerToken = null;
-            this.reportViewerRelContaPorClienteAberta.Size = new System.Drawing.Size(751, 450);
-            this.reportViewerRelContaPorClienteAberta.TabIndex = 0;
             // 
             // txtNomeCliente
             // 
             this.txtNomeCliente.Location = new System.Drawing.Point(126, 34);
             this.txtNomeCliente.Name = "txtNomeCliente";
-            this.txtNomeCliente.Size = new System.Drawing.Size(419, 30);
+            this.txtNomeCliente.Size = new System.Drawing.Size(433, 30);
             this.txtNomeCliente.StateCommon.Back.Color1 = System.Drawing.Color.White;
             this.txtNomeCliente.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.txtNomeCliente.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -128,16 +123,29 @@
             this.btnGerarRelatorio.StateTracking.Border.Width = 1;
             this.btnGerarRelatorio.TabIndex = 561;
             this.btnGerarRelatorio.Values.Text = "Gerar Relatório";
-            this.btnGerarRelatorio.Click += new System.EventHandler(this.btnGerarRelatorio_Click);
+            // 
+            // relClienteContaAbertaBindingSource
+            // 
+            this.relClienteContaAbertaBindingSource.DataSource = typeof(SisControl.Relatorios.RelClienteContaAberta);
+            // 
+            // reportViewer1
+            // 
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "SisControl.Relatorios.RelContaPorClienteAberta.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(40, 84);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(723, 399);
+            this.reportViewer1.TabIndex = 562;
             // 
             // RelClienteContaAberta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(751, 552);
+            this.ClientSize = new System.Drawing.Size(775, 570);
+            this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.btnGerarRelatorio);
             this.Controls.Add(this.txtNomeCliente);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.reportViewerRelContaPorClienteAberta);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "RelClienteContaAberta";
             this.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -145,16 +153,17 @@
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.Load += new System.EventHandler(this.RelClienteContaAberta_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.relClienteContaAbertaBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewerRelContaPorClienteAberta;
         public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtNomeCliente;
         private System.Windows.Forms.Label label1;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnGerarRelatorio;
+        private System.Windows.Forms.BindingSource relClienteContaAbertaBindingSource;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
     }
 }

@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "D:\\SisControl\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|d:\\siscontrol\\relatorios\\relclientecontaaberta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|solutionrelative:relatorios\\relclientecontaaberta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|d:\\siscontrol\\view\\frmcontareceberr.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|solutionrelative:view\\frmcontareceberr.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|d:\\siscontrol\\relatorios\\datasetbdsiscontrol.xsd||{07AC752B-D2B0-4DCD-AD9C-237BF561A30A}",
-      "RelativeMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|solutionrelative:relatorios\\datasetbdsiscontrol.xsd||{07AC752B-D2B0-4DCD-AD9C-237BF561A30A}"
+      "AbsoluteMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|d:\\siscontrol\\view\\frmrelatorios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|solutionrelative:view\\frmrelatorios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|d:\\siscontrol\\relatorios\\relclientecontaaberta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|solutionrelative:relatorios\\relclientecontaaberta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|d:\\siscontrol\\view\\frmpedido .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|solutionrelative:view\\frmpedido .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|d:\\siscontrol\\view\\frmrelatorios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|solutionrelative:view\\frmrelatorios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,40 +34,52 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "RelClienteContaAberta.cs",
-              "DocumentMoniker": "D:\\SisControl\\Relatorios\\RelClienteContaAberta.cs",
-              "RelativeDocumentMoniker": "Relatorios\\RelClienteContaAberta.cs",
-              "ToolTip": "D:\\SisControl\\Relatorios\\RelClienteContaAberta.cs",
-              "RelativeToolTip": "Relatorios\\RelClienteContaAberta.cs",
-              "ViewState": "AgIAADcAAAAAAAAAAAAAAEcAAABzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-29T09:55:45.677Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "RelClienteContaAberta.cs [Design]",
-              "DocumentMoniker": "D:\\SisControl\\Relatorios\\RelClienteContaAberta.cs",
-              "RelativeDocumentMoniker": "Relatorios\\RelClienteContaAberta.cs",
-              "ToolTip": "D:\\SisControl\\Relatorios\\RelClienteContaAberta.cs [Design]",
-              "RelativeToolTip": "Relatorios\\RelClienteContaAberta.cs [Design]",
+              "Title": "FrmContaReceberr.cs [Design]",
+              "DocumentMoniker": "D:\\SisControl\\View\\FrmContaReceberr.cs",
+              "RelativeDocumentMoniker": "View\\FrmContaReceberr.cs",
+              "ToolTip": "D:\\SisControl\\View\\FrmContaReceberr.cs [Design]",
+              "RelativeToolTip": "View\\FrmContaReceberr.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-29T09:55:42.391Z",
+              "WhenOpened": "2025-01-30T01:57:39.112Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DataSetbdSisControl.xsd",
-              "DocumentMoniker": "D:\\SisControl\\Relatorios\\DataSetbdSisControl.xsd",
-              "RelativeDocumentMoniker": "Relatorios\\DataSetbdSisControl.xsd",
-              "ToolTip": "D:\\SisControl\\Relatorios\\DataSetbdSisControl.xsd",
-              "RelativeToolTip": "Relatorios\\DataSetbdSisControl.xsd",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003579|",
-              "WhenOpened": "2025-01-29T09:38:42.699Z",
+              "DocumentIndex": 2,
+              "Title": "FrmPedido .cs [Design]",
+              "DocumentMoniker": "D:\\SisControl\\View\\FrmPedido .cs",
+              "RelativeDocumentMoniker": "View\\FrmPedido .cs",
+              "ToolTip": "D:\\SisControl\\View\\FrmPedido .cs [Design]",
+              "RelativeToolTip": "View\\FrmPedido .cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-30T01:57:18.43Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FrmRelatorios.cs",
+              "DocumentMoniker": "D:\\SisControl\\View\\FrmRelatorios.cs",
+              "RelativeDocumentMoniker": "View\\FrmRelatorios.cs",
+              "ToolTip": "D:\\SisControl\\View\\FrmRelatorios.cs*",
+              "RelativeToolTip": "View\\FrmRelatorios.cs*",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAAwBMAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-30T01:53:15.693Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FrmRelatorios.cs [Design]",
+              "DocumentMoniker": "D:\\SisControl\\View\\FrmRelatorios.cs",
+              "RelativeDocumentMoniker": "View\\FrmRelatorios.cs",
+              "ToolTip": "D:\\SisControl\\View\\FrmRelatorios.cs [Design]*",
+              "RelativeToolTip": "View\\FrmRelatorios.cs [Design]*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-30T01:53:04.825Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }

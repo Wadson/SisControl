@@ -29,23 +29,41 @@ namespace SisControl.View
 
             _parcela = parcela;
             ListarContaReceber();
-            ConfigurarDgvContasReceber();
-
-            //ConfigurarDgvPagamentosParciais(dgPagamentosParciais);
+            ConfigurarDgvContasReceber();            
 
             // No construtor do formulário ou no método de inicialização
             dgvContasReceber.SelectionChanged += dgvContasReceber_SelectionChanged;
 
         }
 
-        public FrmContaReceberr(FrmPrincipal frmPrincipal, object value)
-        {
-            FrmPrincipal = frmPrincipal;
-            Value = value;
-        }
-
         public FrmContaReceberr()
         {
+        }
+
+        public void PersonalizarDataGridViewPagParciais(KryptonDataGridView dgv)
+        {
+            if (dgv.Columns.Count >= 4)
+            {
+                // Renomear colunas
+                dgv.Columns[0].Name = "PagamentoParcialID";
+                dgv.Columns[1].Name = "ParcelaID";
+                dgv.Columns[2].Name = "ValorPago";
+                dgv.Columns[3].Name = "DataPagamento";
+
+                // Ajustar colunas automaticamente
+                dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
+                // Tornar o grid somente leitura
+                dgv.ReadOnly = true;
+
+                // Ocultar as colunas PagamentoParcialID e ParcelaID
+                dgv.Columns["PagamentoParcialID"].Visible = false;
+                dgv.Columns["ParcelaID"].Visible = false;
+            }
+            else
+            {
+                MessageBox.Show("Erro: O DataGridView não possui colunas suficientes para personalizar.");
+            }
         }
         private void ConfigurarDgvContasReceber()
         {
@@ -89,7 +107,6 @@ namespace SisControl.View
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtProdutoID;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtNomeProduto;
 
-        public FrmPrincipal FrmPrincipal { get; }
         public object Value { get; }
 
 
@@ -393,6 +410,12 @@ WHERE
         private void btnFiltro_Click(object sender, EventArgs e)
         {
             LocalizarConta();
+            if (dgvContasReceber.Rows.Count == 0)
+            {
+                dgPagamentosParciais.DataSource = null;
+                dgPagamentosParciais.DataSource = new List<object>(); // Definir como uma lista vazia
+            }
+
             CalcularTotalDataGrid();
         }
 
@@ -419,8 +442,11 @@ WHERE
                     {
                         int clienteID = Convert.ToInt32(dgvContasReceber.SelectedRows[0].Cells["ClienteID"].Value);
                         // Usar o clienteID para buscar informações adicionais
-
                         lblNomeCliente.Text = dgvContasReceber.SelectedRows[0].Cells["NomeCliente"].Value.ToString();
+
+                        // Listar Pagametnos Parciais através da ParcelaID na linha selecionada no dgvContasReceber
+                        int parcelaID = Convert.ToInt32(dgvContasReceber.SelectedRows[0].Cells["ParcelaID"].Value);
+                        ListarPagamentosParciais(parcelaID);
                     }
                     else
                     {
@@ -472,18 +498,28 @@ WHERE
             try
             {
                 string query = @"SELECT 
-                    PagamentoParcialID,
-                    ParcelaID,
-                    ValorPago,
-                    DataPagamento
-                FROM 
-                    PagamentosParciais
-                WHERE 
-                    ParcelaID = @ParcelaID";
+            PagamentoParcialID,
+            ParcelaID,
+            ValorPago,
+            DataPagamento
+        FROM 
+            PagamentosParciais
+        WHERE 
+            ParcelaID = @ParcelaID";
 
                 string nomeParametro = "@ParcelaID";
                 string valorParametro = parcelaID.ToString();
                 Utilitario.PesquisarPorNomeMensagemSuprimida(query, nomeParametro, valorParametro, dgPagamentosParciais);
+
+                // Verifica se há dados no DataGridView antes de personalizar
+                if (dgPagamentosParciais.Rows.Count > 0)
+                {
+                    PersonalizarDataGridViewPagParciais(dgPagamentosParciais);
+                }
+                else
+                {
+                    return;
+                }
             }
             catch (Exception ex)
             {

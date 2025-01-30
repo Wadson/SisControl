@@ -47,6 +47,7 @@
             this.txtPesquisa.Location = new System.Drawing.Point(199, 50);
             this.txtPesquisa.Size = new System.Drawing.Size(368, 20);
             this.txtPesquisa.TextChanged += new System.EventHandler(this.txtPesquisa_TextChanged);
+            this.txtPesquisa.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPesquisa_KeyDown);
             // 
             // groupBox1
             // 

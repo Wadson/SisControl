@@ -134,14 +134,6 @@ namespace SisControl.View
             dgvItensVenda.Columns["Quantidade"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvItensVenda.Columns["ProdutoID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            //// Definir tamanho das colunas
-            //dgvItensVenda.Columns["ItemVendaID"].Width = 90;
-            //dgvItensVenda.Columns["NomeProduto"].Width = 350;
-            //dgvItensVenda.Columns["ProdutoID"].Width = 80;
-            //dgvItensVenda.Columns["Quantidade"].Width = 50;
-            //dgvItensVenda.Columns["ValorProduto"].Width = 90;
-            //dgvItensVenda.Columns["SubTotal"].Width = 90;
-
             // Ajustar colunas automaticamente
             dgvItensVenda.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
@@ -164,12 +156,6 @@ namespace SisControl.View
             // Centralizar colunas específicas
             dgvParcelas.Columns["ParcelaID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvParcelas.Columns["NumeroParcela"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-            //// Definir tamanho das colunas
-            //dgvParcelas.Columns["ParcelaID"].Width = 90;
-            //dgvParcelas.Columns["ValorParcela"].Width = 90;
-            //dgvParcelas.Columns["NumeroParcela"].Width = 70;
-            //dgvParcelas.Columns["DataVencimento"].Width = 100;
 
             // Ajustar colunas automaticamente
             dgvParcelas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -244,6 +230,76 @@ namespace SisControl.View
                 MessageBox.Show("Erro ao inserir os dados no DataGridView: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void NovoCodigo()
+        {
+            Utilitario.PreencherComboBoxKrypton(cmbFormaPgto, QueryFormaPgto, "NomeFormaPgto", "FormaPgtoID");
+
+            // Gera novos Códigos para as chaves primárias
+            VendaID = Utilitario.GerarNovoCodigoID("VendaID", "Venda");
+            ItemVendaID = Utilitario.GerarNovoCodigoID("ItemVendaID", "ItemVenda");
+            ContaReceberID = Utilitario.GerarNovoCodigoID("ContaReceberID", "ContaReceber");
+            ParcelaID = Utilitario.GerarNovoCodigoID("ParcelaID", "Parcela");
+
+            txtVendaID.Text = VendaID.ToString();
+
+            txtQuantidade.Leave += txtQuantidade_Leave;
+            txtValorProduto.Leave += txtValorProduto_Leave;
+        }
+
+        private void LimparFormulario()
+        {
+            try
+            {
+                ResetarCamposTexto();
+
+                VendaID = 0;
+                ClienteID = 0;
+                ProdutoID = 0;
+                ContaReceberID = 0;
+                ParcelaID = 0;
+                nextItemVendaID = 0;
+
+                LimparDataGridView(dgvItensVenda);
+                LimparDataGridView(dgvParcelas);
+
+                // Chamar NovoCodigo para redefinir o estado inicial
+                NovoCodigo();
+            }
+            catch (Exception ex)
+            {
+                Log($"Erro ao limpar o formulário: {ex.Message}");
+                MessageBox.Show($"Erro ao limpar o formulário: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ResetarCamposTexto()
+        {
+            txtValorProduto.Text = "0,00";
+            txtValorRecebido.Text = "0,00";
+            txtSubTotal.Text = "0,00";
+            txtQuantidade.Text = "1";
+            txtNomeProduto.Text = "";
+            txtNomeCliente.Text = "";
+            txtReferencia.Text = "";
+            txtValorTotal.Text = "0,00";
+            txtFormaPgtoID.Text = "1";
+            txtVendaID.Text = "";
+            txtQtdItens.Text = "0";
+            dtpDataVenda.Value = DateTime.Now;
+            dtpVencimento.Value = DateTime.Now;
+        }
+
+        private void LimparDataGridView(KryptonDataGridView dgv)
+        {
+            if (dgv.DataSource is DataTable dt)
+            {
+                dt.Clear(); // Limpa o DataTable diretamente
+            }
+            else
+            {
+                dgv.Rows.Clear(); // Limpa as linhas manualmente
+            }
+        }
 
 
 
@@ -263,23 +319,7 @@ namespace SisControl.View
             txtValorTotal.Text = somaSubtotal.ToString("N2"); // ou lblSomaSubtotal.Text
         }
 
-        private void NovoCodigo()
-        {
-            Utilitario.PreencherComboBoxKrypton(cmbFormaPgto, QueryFormaPgto, "NomeFormaPgto", "FormaPgtoID");
-            // Definir o item padrão do ComboBox como "Crediário"
-          
-
-            // Gera novos GUIDs para as chaves primárias
-            VendaID = Utilitario.GerarNovoCodigoID("VendaID", "Venda");
-            ItemVendaID = Utilitario.GerarNovoCodigoID("ItemVendaID", "ItemVenda");
-            ContaReceberID = Utilitario.GerarNovoCodigoID("ContaReceberID", "ContaReceber");
-            ParcelaID = Utilitario.GerarNovoCodigoID("ParcelaID", "Parcela");
-
-            txtVendaID.Text = VendaID.ToString();
-
-            txtQuantidade.Leave += txtQuantidade_Leave;
-            txtValorProduto.Leave += txtValorProduto_Leave;
-        }
+       
 
         private void FrmVendas_Load(object sender, EventArgs e)
         {
@@ -319,47 +359,6 @@ namespace SisControl.View
             CalcularSubtotal();
         }
 
-       
-        private void LimparFormulario()
-        {
-            try
-            {
-                // Limpar campos de texto
-                txtValorProduto.Text = "0,00";
-                txtValorRecebido.Text = "0,00";
-                txtSubTotal.Text = "0,00";
-                txtQuantidade.Text = "1";
-                txtNomeProduto.Text = "";
-                txtNomeCliente.Text = "";
-
-                // Limpar o DataGridView (verificando se há uma fonte de dados vinculada)
-                if (dgvItensVenda.DataSource is DataTable dt)
-                {
-                    dt.Clear(); // Limpa o DataTable diretamente
-                }
-                else
-                {
-                    dgvItensVenda.Rows.Clear(); // Limpa as linhas manualmente
-                }
-
-                if (dgvParcelas.DataSource is DataTable dtt)
-                {
-                    dtt.Clear(); // Limpa o DataTable diretamente
-                }
-                else
-                {
-                    dgvParcelas.Rows.Clear(); // Limpa as linhas manualmente
-                }
-
-                // Chamar NovoCodigo para redefinir o estado inicial
-                NovoCodigo();
-            }
-            catch (Exception ex)
-            {
-                Log($"Erro ao limpar o formulário: {ex.Message}");
-                MessageBox.Show($"Erro ao limpar o formulário: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
         // Verifica se os datagrids estão vazios
         private bool ValidarGridsPreenchidos()
         {
@@ -369,14 +368,6 @@ namespace SisControl.View
                 MessageBox.Show("Nenhum item foi adicionado à venda.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-
-            //// Verifica se o DataGridView de parcelas está vazio
-            //if (dgvParcelas.Rows.Count == 0)
-            //{
-            //    MessageBox.Show("Nenhuma parcela foi gerada.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return false;
-            //}
-
             return true; // Ambos os DataGridViews possuem dados
         }
 
@@ -413,6 +404,7 @@ namespace SisControl.View
                             {
                                 Log("Limpando campos e resetando controles...");
                                 LimparFormulario();
+                                
                                 NovoCodigo();
                             }
                             catch (Exception clearEx)

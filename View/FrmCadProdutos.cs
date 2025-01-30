@@ -177,7 +177,7 @@ namespace SisControl.View
             ProdutoBLL produtosbll = new ProdutoBLL();
             produtosbll.Salvar(produto);
 
-            MessageBox.Show("Produto salvo com sucesso!");
+            MessageBox.Show("Produto salvo com sucesso!","Informação!", MessageBoxButtons.OK,MessageBoxIcon.Asterisk);
             Utilitario.LimpaCampoKrypton(this);
             // Limpar o PictureBox
             pictureBoxProduto.Image = null;
@@ -248,7 +248,7 @@ namespace SisControl.View
                 ProdutoBLL produtosbll = new ProdutoBLL();
                 produtosbll.Alterar(produto);
 
-                MessageBox.Show("Produto alterado com sucesso!");
+                MessageBox.Show("Produto alterado com sucesso!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 Utilitario.LimpaCampoKrypton(this);
                 // Limpar o PictureBox
                 pictureBoxProduto.Image = null;

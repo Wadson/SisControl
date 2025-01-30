@@ -26,7 +26,9 @@ namespace SisControl.View
             InitializeComponent();
             
             // Configurar o TextBox para capturar o evento KeyDown
-            txtPesquisa.KeyDown += new KeyEventHandler(dataGridPesquisar_KeyDown);
+            this.txtPesquisa.KeyDown += new KeyEventHandler(dataGridPesquisar_KeyDown);            
+            this.dataGridPesquisar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridPesquisar_KeyDown);
+
 
             // Configurar o DataGridView (apenas exemplo, configure conforme necessário)
             dataGridPesquisar.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -191,6 +193,11 @@ namespace SisControl.View
 
         private void dataGridPesquisar_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode == Keys.Up && dataGridPesquisar.CurrentCell.RowIndex == 0)
+            {
+                txtPesquisa.Focus();
+            }
+
             if (dataGridPesquisar.CurrentRow != null)
             {
                 LinhaAtual = dataGridPesquisar.CurrentRow.Index;
@@ -208,6 +215,16 @@ namespace SisControl.View
                     dataGridPesquisar.Rows[0].Selected = true;
                 }
             }
+            if (e.KeyCode == Keys.Enter)
+            {
+                // Supondo que a seleção está habilitada em FullRowSelect para capturar a linha completa
+                var selectedRow = dataGridPesquisar.CurrentRow;
+                if (selectedRow != null)
+                {
+                    this.Close();
+                }
+            }
+
         }
 
         private void dataGridPesquisar_SelectionChanged(object sender, EventArgs e)
@@ -221,6 +238,14 @@ namespace SisControl.View
         private void dataGridPesquisar_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             this.Close();
+        }
+
+        private void txtPesquisa_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                dataGridPesquisar.Focus();
+            }
         }
     }
 }

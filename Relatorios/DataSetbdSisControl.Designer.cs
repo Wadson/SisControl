@@ -26,7 +26,7 @@ namespace SisControl.Relatorios {
         
         private ItemVendaDataTable tableItemVenda;
         
-        private ContaReceberDataTable tableContaReceber;
+        private TbContaReceberDataTable tableTbContaReceber;
         
         private ClienteDataTable tableCliente;
         
@@ -37,6 +37,8 @@ namespace SisControl.Relatorios {
         private ProdutosDataTable tableProdutos;
         
         private VendaDataTable tableVenda;
+        
+        private DataTableContasEmAbertoGeralDataTable tableDataTableContasEmAbertoGeral;
         
         private global::System.Data.DataRelation relationFK__Pagamento__Parce__0880433F;
         
@@ -77,8 +79,8 @@ namespace SisControl.Relatorios {
                 if ((ds.Tables["ItemVenda"] != null)) {
                     base.Tables.Add(new ItemVendaDataTable(ds.Tables["ItemVenda"]));
                 }
-                if ((ds.Tables["ContaReceber"] != null)) {
-                    base.Tables.Add(new ContaReceberDataTable(ds.Tables["ContaReceber"]));
+                if ((ds.Tables["TbContaReceber"] != null)) {
+                    base.Tables.Add(new TbContaReceberDataTable(ds.Tables["TbContaReceber"]));
                 }
                 if ((ds.Tables["Cliente"] != null)) {
                     base.Tables.Add(new ClienteDataTable(ds.Tables["Cliente"]));
@@ -94,6 +96,9 @@ namespace SisControl.Relatorios {
                 }
                 if ((ds.Tables["Venda"] != null)) {
                     base.Tables.Add(new VendaDataTable(ds.Tables["Venda"]));
+                }
+                if ((ds.Tables["DataTableContasEmAbertoGeral"] != null)) {
+                    base.Tables.Add(new DataTableContasEmAbertoGeralDataTable(ds.Tables["DataTableContasEmAbertoGeral"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -127,9 +132,9 @@ namespace SisControl.Relatorios {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public ContaReceberDataTable ContaReceber {
+        public TbContaReceberDataTable TbContaReceber {
             get {
-                return this.tableContaReceber;
+                return this.tableTbContaReceber;
             }
         }
         
@@ -180,6 +185,16 @@ namespace SisControl.Relatorios {
         public VendaDataTable Venda {
             get {
                 return this.tableVenda;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public DataTableContasEmAbertoGeralDataTable DataTableContasEmAbertoGeral {
+            get {
+                return this.tableDataTableContasEmAbertoGeral;
             }
         }
         
@@ -253,8 +268,8 @@ namespace SisControl.Relatorios {
                 if ((ds.Tables["ItemVenda"] != null)) {
                     base.Tables.Add(new ItemVendaDataTable(ds.Tables["ItemVenda"]));
                 }
-                if ((ds.Tables["ContaReceber"] != null)) {
-                    base.Tables.Add(new ContaReceberDataTable(ds.Tables["ContaReceber"]));
+                if ((ds.Tables["TbContaReceber"] != null)) {
+                    base.Tables.Add(new TbContaReceberDataTable(ds.Tables["TbContaReceber"]));
                 }
                 if ((ds.Tables["Cliente"] != null)) {
                     base.Tables.Add(new ClienteDataTable(ds.Tables["Cliente"]));
@@ -270,6 +285,9 @@ namespace SisControl.Relatorios {
                 }
                 if ((ds.Tables["Venda"] != null)) {
                     base.Tables.Add(new VendaDataTable(ds.Tables["Venda"]));
+                }
+                if ((ds.Tables["DataTableContasEmAbertoGeral"] != null)) {
+                    base.Tables.Add(new DataTableContasEmAbertoGeralDataTable(ds.Tables["DataTableContasEmAbertoGeral"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -310,10 +328,10 @@ namespace SisControl.Relatorios {
                     this.tableItemVenda.InitVars();
                 }
             }
-            this.tableContaReceber = ((ContaReceberDataTable)(base.Tables["ContaReceber"]));
+            this.tableTbContaReceber = ((TbContaReceberDataTable)(base.Tables["TbContaReceber"]));
             if ((initTable == true)) {
-                if ((this.tableContaReceber != null)) {
-                    this.tableContaReceber.InitVars();
+                if ((this.tableTbContaReceber != null)) {
+                    this.tableTbContaReceber.InitVars();
                 }
             }
             this.tableCliente = ((ClienteDataTable)(base.Tables["Cliente"]));
@@ -346,6 +364,12 @@ namespace SisControl.Relatorios {
                     this.tableVenda.InitVars();
                 }
             }
+            this.tableDataTableContasEmAbertoGeral = ((DataTableContasEmAbertoGeralDataTable)(base.Tables["DataTableContasEmAbertoGeral"]));
+            if ((initTable == true)) {
+                if ((this.tableDataTableContasEmAbertoGeral != null)) {
+                    this.tableDataTableContasEmAbertoGeral.InitVars();
+                }
+            }
             this.relationFK__Pagamento__Parce__0880433F = this.Relations["FK__Pagamento__Parce__0880433F"];
             this.relationFK__ItemVenda__Venda = this.Relations["FK__ItemVenda__Venda"];
             this.relationFK_Parcela_Venda = this.Relations["FK_Parcela_Venda"];
@@ -362,8 +386,8 @@ namespace SisControl.Relatorios {
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableItemVenda = new ItemVendaDataTable();
             base.Tables.Add(this.tableItemVenda);
-            this.tableContaReceber = new ContaReceberDataTable();
-            base.Tables.Add(this.tableContaReceber);
+            this.tableTbContaReceber = new TbContaReceberDataTable();
+            base.Tables.Add(this.tableTbContaReceber);
             this.tableCliente = new ClienteDataTable();
             base.Tables.Add(this.tableCliente);
             this.tablePagamentosParciais = new PagamentosParciaisDataTable();
@@ -374,6 +398,8 @@ namespace SisControl.Relatorios {
             base.Tables.Add(this.tableProdutos);
             this.tableVenda = new VendaDataTable();
             base.Tables.Add(this.tableVenda);
+            this.tableDataTableContasEmAbertoGeral = new DataTableContasEmAbertoGeralDataTable();
+            base.Tables.Add(this.tableDataTableContasEmAbertoGeral);
             this.relationFK__Pagamento__Parce__0880433F = new global::System.Data.DataRelation("FK__Pagamento__Parce__0880433F", new global::System.Data.DataColumn[] {
                         this.tableParcela.ParcelaIDColumn}, new global::System.Data.DataColumn[] {
                         this.tablePagamentosParciais.ParcelaIDColumn}, false);
@@ -400,7 +426,7 @@ namespace SisControl.Relatorios {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeContaReceber() {
+        private bool ShouldSerializeTbContaReceber() {
             return false;
         }
         
@@ -431,6 +457,12 @@ namespace SisControl.Relatorios {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private bool ShouldSerializeVenda() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private bool ShouldSerializeDataTableContasEmAbertoGeral() {
             return false;
         }
         
@@ -493,7 +525,7 @@ namespace SisControl.Relatorios {
         public delegate void ItemVendaRowChangeEventHandler(object sender, ItemVendaRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void ContaReceberRowChangeEventHandler(object sender, ContaReceberRowChangeEvent e);
+        public delegate void TbContaReceberRowChangeEventHandler(object sender, TbContaReceberRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public delegate void ClienteRowChangeEventHandler(object sender, ClienteRowChangeEvent e);
@@ -509,6 +541,9 @@ namespace SisControl.Relatorios {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public delegate void VendaRowChangeEventHandler(object sender, VendaRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public delegate void DataTableContasEmAbertoGeralRowChangeEventHandler(object sender, DataTableContasEmAbertoGeralRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -850,7 +885,7 @@ namespace SisControl.Relatorios {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class ContaReceberDataTable : global::System.Data.TypedTableBase<ContaReceberRow> {
+        public partial class TbContaReceberDataTable : global::System.Data.TypedTableBase<TbContaReceberRow> {
             
             private global::System.Data.DataColumn columnSaldoRestante;
             
@@ -864,8 +899,8 @@ namespace SisControl.Relatorios {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ContaReceberDataTable() {
-                this.TableName = "ContaReceber";
+            public TbContaReceberDataTable() {
+                this.TableName = "TbContaReceber";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -873,7 +908,7 @@ namespace SisControl.Relatorios {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal ContaReceberDataTable(global::System.Data.DataTable table) {
+            internal TbContaReceberDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -890,7 +925,7 @@ namespace SisControl.Relatorios {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected ContaReceberDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected TbContaReceberDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -946,49 +981,49 @@ namespace SisControl.Relatorios {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ContaReceberRow this[int index] {
+            public TbContaReceberRow this[int index] {
                 get {
-                    return ((ContaReceberRow)(this.Rows[index]));
+                    return ((TbContaReceberRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event ContaReceberRowChangeEventHandler ContaReceberRowChanging;
+            public event TbContaReceberRowChangeEventHandler TbContaReceberRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event ContaReceberRowChangeEventHandler ContaReceberRowChanged;
+            public event TbContaReceberRowChangeEventHandler TbContaReceberRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event ContaReceberRowChangeEventHandler ContaReceberRowDeleting;
+            public event TbContaReceberRowChangeEventHandler TbContaReceberRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event ContaReceberRowChangeEventHandler ContaReceberRowDeleted;
+            public event TbContaReceberRowChangeEventHandler TbContaReceberRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddContaReceberRow(ContaReceberRow row) {
+            public void AddTbContaReceberRow(TbContaReceberRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ContaReceberRow AddContaReceberRow(decimal SaldoRestante, string NomeCliente, decimal ValorParcela, System.DateTime DataVencimento, bool Pago) {
-                ContaReceberRow rowContaReceberRow = ((ContaReceberRow)(this.NewRow()));
+            public TbContaReceberRow AddTbContaReceberRow(decimal SaldoRestante, string NomeCliente, decimal ValorParcela, System.DateTime DataVencimento, bool Pago) {
+                TbContaReceberRow rowTbContaReceberRow = ((TbContaReceberRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         SaldoRestante,
                         NomeCliente,
                         ValorParcela,
                         DataVencimento,
                         Pago};
-                rowContaReceberRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowContaReceberRow);
-                return rowContaReceberRow;
+                rowTbContaReceberRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowTbContaReceberRow);
+                return rowTbContaReceberRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                ContaReceberDataTable cln = ((ContaReceberDataTable)(base.Clone()));
+                TbContaReceberDataTable cln = ((TbContaReceberDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -996,7 +1031,7 @@ namespace SisControl.Relatorios {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new ContaReceberDataTable();
+                return new TbContaReceberDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1032,28 +1067,28 @@ namespace SisControl.Relatorios {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ContaReceberRow NewContaReceberRow() {
-                return ((ContaReceberRow)(this.NewRow()));
+            public TbContaReceberRow NewTbContaReceberRow() {
+                return ((TbContaReceberRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new ContaReceberRow(builder);
+                return new TbContaReceberRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(ContaReceberRow);
+                return typeof(TbContaReceberRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.ContaReceberRowChanged != null)) {
-                    this.ContaReceberRowChanged(this, new ContaReceberRowChangeEvent(((ContaReceberRow)(e.Row)), e.Action));
+                if ((this.TbContaReceberRowChanged != null)) {
+                    this.TbContaReceberRowChanged(this, new TbContaReceberRowChangeEvent(((TbContaReceberRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1061,8 +1096,8 @@ namespace SisControl.Relatorios {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.ContaReceberRowChanging != null)) {
-                    this.ContaReceberRowChanging(this, new ContaReceberRowChangeEvent(((ContaReceberRow)(e.Row)), e.Action));
+                if ((this.TbContaReceberRowChanging != null)) {
+                    this.TbContaReceberRowChanging(this, new TbContaReceberRowChangeEvent(((TbContaReceberRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1070,8 +1105,8 @@ namespace SisControl.Relatorios {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.ContaReceberRowDeleted != null)) {
-                    this.ContaReceberRowDeleted(this, new ContaReceberRowChangeEvent(((ContaReceberRow)(e.Row)), e.Action));
+                if ((this.TbContaReceberRowDeleted != null)) {
+                    this.TbContaReceberRowDeleted(this, new TbContaReceberRowChangeEvent(((TbContaReceberRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1079,14 +1114,14 @@ namespace SisControl.Relatorios {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.ContaReceberRowDeleting != null)) {
-                    this.ContaReceberRowDeleting(this, new ContaReceberRowChangeEvent(((ContaReceberRow)(e.Row)), e.Action));
+                if ((this.TbContaReceberRowDeleting != null)) {
+                    this.TbContaReceberRowDeleting(this, new TbContaReceberRowChangeEvent(((TbContaReceberRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemoveContaReceberRow(ContaReceberRow row) {
+            public void RemoveTbContaReceberRow(TbContaReceberRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -1113,7 +1148,7 @@ namespace SisControl.Relatorios {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "ContaReceberDataTable";
+                attribute2.FixedValue = "TbContaReceberDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -2903,6 +2938,346 @@ namespace SisControl.Relatorios {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class DataTableContasEmAbertoGeralDataTable : global::System.Data.TypedTableBase<DataTableContasEmAbertoGeralRow> {
+            
+            private global::System.Data.DataColumn columnNomeCliente;
+            
+            private global::System.Data.DataColumn columnValorTotal;
+            
+            private global::System.Data.DataColumn columnNomeProduto;
+            
+            private global::System.Data.DataColumn columnNumeroParcela;
+            
+            private global::System.Data.DataColumn columnValorParcela;
+            
+            private global::System.Data.DataColumn columnDataVencimento;
+            
+            private global::System.Data.DataColumn columnSaldoRestante;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public DataTableContasEmAbertoGeralDataTable() {
+                this.TableName = "DataTableContasEmAbertoGeral";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal DataTableContasEmAbertoGeralDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected DataTableContasEmAbertoGeralDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn NomeClienteColumn {
+                get {
+                    return this.columnNomeCliente;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ValorTotalColumn {
+                get {
+                    return this.columnValorTotal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn NomeProdutoColumn {
+                get {
+                    return this.columnNomeProduto;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn NumeroParcelaColumn {
+                get {
+                    return this.columnNumeroParcela;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ValorParcelaColumn {
+                get {
+                    return this.columnValorParcela;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn DataVencimentoColumn {
+                get {
+                    return this.columnDataVencimento;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn SaldoRestanteColumn {
+                get {
+                    return this.columnSaldoRestante;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public DataTableContasEmAbertoGeralRow this[int index] {
+                get {
+                    return ((DataTableContasEmAbertoGeralRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event DataTableContasEmAbertoGeralRowChangeEventHandler DataTableContasEmAbertoGeralRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event DataTableContasEmAbertoGeralRowChangeEventHandler DataTableContasEmAbertoGeralRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event DataTableContasEmAbertoGeralRowChangeEventHandler DataTableContasEmAbertoGeralRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event DataTableContasEmAbertoGeralRowChangeEventHandler DataTableContasEmAbertoGeralRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void AddDataTableContasEmAbertoGeralRow(DataTableContasEmAbertoGeralRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public DataTableContasEmAbertoGeralRow AddDataTableContasEmAbertoGeralRow(string NomeCliente, decimal ValorTotal, string NomeProduto, int NumeroParcela, decimal ValorParcela, System.DateTime DataVencimento, decimal SaldoRestante) {
+                DataTableContasEmAbertoGeralRow rowDataTableContasEmAbertoGeralRow = ((DataTableContasEmAbertoGeralRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        NomeCliente,
+                        ValorTotal,
+                        NomeProduto,
+                        NumeroParcela,
+                        ValorParcela,
+                        DataVencimento,
+                        SaldoRestante};
+                rowDataTableContasEmAbertoGeralRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowDataTableContasEmAbertoGeralRow);
+                return rowDataTableContasEmAbertoGeralRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                DataTableContasEmAbertoGeralDataTable cln = ((DataTableContasEmAbertoGeralDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new DataTableContasEmAbertoGeralDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal void InitVars() {
+                this.columnNomeCliente = base.Columns["NomeCliente"];
+                this.columnValorTotal = base.Columns["ValorTotal"];
+                this.columnNomeProduto = base.Columns["NomeProduto"];
+                this.columnNumeroParcela = base.Columns["NumeroParcela"];
+                this.columnValorParcela = base.Columns["ValorParcela"];
+                this.columnDataVencimento = base.Columns["DataVencimento"];
+                this.columnSaldoRestante = base.Columns["SaldoRestante"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            private void InitClass() {
+                this.columnNomeCliente = new global::System.Data.DataColumn("NomeCliente", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNomeCliente);
+                this.columnValorTotal = new global::System.Data.DataColumn("ValorTotal", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnValorTotal);
+                this.columnNomeProduto = new global::System.Data.DataColumn("NomeProduto", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNomeProduto);
+                this.columnNumeroParcela = new global::System.Data.DataColumn("NumeroParcela", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNumeroParcela);
+                this.columnValorParcela = new global::System.Data.DataColumn("ValorParcela", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnValorParcela);
+                this.columnDataVencimento = new global::System.Data.DataColumn("DataVencimento", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDataVencimento);
+                this.columnSaldoRestante = new global::System.Data.DataColumn("SaldoRestante", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSaldoRestante);
+                this.columnNomeCliente.AllowDBNull = false;
+                this.columnNomeCliente.MaxLength = 100;
+                this.columnValorTotal.AllowDBNull = false;
+                this.columnNomeProduto.AllowDBNull = false;
+                this.columnNomeProduto.MaxLength = 100;
+                this.columnNumeroParcela.AllowDBNull = false;
+                this.columnValorParcela.AllowDBNull = false;
+                this.columnDataVencimento.AllowDBNull = false;
+                this.columnSaldoRestante.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public DataTableContasEmAbertoGeralRow NewDataTableContasEmAbertoGeralRow() {
+                return ((DataTableContasEmAbertoGeralRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new DataTableContasEmAbertoGeralRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(DataTableContasEmAbertoGeralRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.DataTableContasEmAbertoGeralRowChanged != null)) {
+                    this.DataTableContasEmAbertoGeralRowChanged(this, new DataTableContasEmAbertoGeralRowChangeEvent(((DataTableContasEmAbertoGeralRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.DataTableContasEmAbertoGeralRowChanging != null)) {
+                    this.DataTableContasEmAbertoGeralRowChanging(this, new DataTableContasEmAbertoGeralRowChangeEvent(((DataTableContasEmAbertoGeralRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.DataTableContasEmAbertoGeralRowDeleted != null)) {
+                    this.DataTableContasEmAbertoGeralRowDeleted(this, new DataTableContasEmAbertoGeralRowChangeEvent(((DataTableContasEmAbertoGeralRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.DataTableContasEmAbertoGeralRowDeleting != null)) {
+                    this.DataTableContasEmAbertoGeralRowDeleting(this, new DataTableContasEmAbertoGeralRowChangeEvent(((DataTableContasEmAbertoGeralRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void RemoveDataTableContasEmAbertoGeralRow(DataTableContasEmAbertoGeralRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DataSetbdSisControlo ds = new DataSetbdSisControlo();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "DataTableContasEmAbertoGeralDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class ItemVendaRow : global::System.Data.DataRow {
@@ -3031,25 +3406,25 @@ namespace SisControl.Relatorios {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class ContaReceberRow : global::System.Data.DataRow {
+        public partial class TbContaReceberRow : global::System.Data.DataRow {
             
-            private ContaReceberDataTable tableContaReceber;
+            private TbContaReceberDataTable tableTbContaReceber;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal ContaReceberRow(global::System.Data.DataRowBuilder rb) : 
+            internal TbContaReceberRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableContaReceber = ((ContaReceberDataTable)(this.Table));
+                this.tableTbContaReceber = ((TbContaReceberDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public decimal SaldoRestante {
                 get {
-                    return ((decimal)(this[this.tableContaReceber.SaldoRestanteColumn]));
+                    return ((decimal)(this[this.tableTbContaReceber.SaldoRestanteColumn]));
                 }
                 set {
-                    this[this.tableContaReceber.SaldoRestanteColumn] = value;
+                    this[this.tableTbContaReceber.SaldoRestanteColumn] = value;
                 }
             }
             
@@ -3057,10 +3432,10 @@ namespace SisControl.Relatorios {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string NomeCliente {
                 get {
-                    return ((string)(this[this.tableContaReceber.NomeClienteColumn]));
+                    return ((string)(this[this.tableTbContaReceber.NomeClienteColumn]));
                 }
                 set {
-                    this[this.tableContaReceber.NomeClienteColumn] = value;
+                    this[this.tableTbContaReceber.NomeClienteColumn] = value;
                 }
             }
             
@@ -3068,10 +3443,10 @@ namespace SisControl.Relatorios {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public decimal ValorParcela {
                 get {
-                    return ((decimal)(this[this.tableContaReceber.ValorParcelaColumn]));
+                    return ((decimal)(this[this.tableTbContaReceber.ValorParcelaColumn]));
                 }
                 set {
-                    this[this.tableContaReceber.ValorParcelaColumn] = value;
+                    this[this.tableTbContaReceber.ValorParcelaColumn] = value;
                 }
             }
             
@@ -3079,10 +3454,10 @@ namespace SisControl.Relatorios {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public System.DateTime DataVencimento {
                 get {
-                    return ((global::System.DateTime)(this[this.tableContaReceber.DataVencimentoColumn]));
+                    return ((global::System.DateTime)(this[this.tableTbContaReceber.DataVencimentoColumn]));
                 }
                 set {
-                    this[this.tableContaReceber.DataVencimentoColumn] = value;
+                    this[this.tableTbContaReceber.DataVencimentoColumn] = value;
                 }
             }
             
@@ -3090,10 +3465,10 @@ namespace SisControl.Relatorios {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool Pago {
                 get {
-                    return ((bool)(this[this.tableContaReceber.PagoColumn]));
+                    return ((bool)(this[this.tableTbContaReceber.PagoColumn]));
                 }
                 set {
-                    this[this.tableContaReceber.PagoColumn] = value;
+                    this[this.tableTbContaReceber.PagoColumn] = value;
                 }
             }
         }
@@ -3874,6 +4249,98 @@ namespace SisControl.Relatorios {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class DataTableContasEmAbertoGeralRow : global::System.Data.DataRow {
+            
+            private DataTableContasEmAbertoGeralDataTable tableDataTableContasEmAbertoGeral;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal DataTableContasEmAbertoGeralRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableDataTableContasEmAbertoGeral = ((DataTableContasEmAbertoGeralDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string NomeCliente {
+                get {
+                    return ((string)(this[this.tableDataTableContasEmAbertoGeral.NomeClienteColumn]));
+                }
+                set {
+                    this[this.tableDataTableContasEmAbertoGeral.NomeClienteColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal ValorTotal {
+                get {
+                    return ((decimal)(this[this.tableDataTableContasEmAbertoGeral.ValorTotalColumn]));
+                }
+                set {
+                    this[this.tableDataTableContasEmAbertoGeral.ValorTotalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string NomeProduto {
+                get {
+                    return ((string)(this[this.tableDataTableContasEmAbertoGeral.NomeProdutoColumn]));
+                }
+                set {
+                    this[this.tableDataTableContasEmAbertoGeral.NomeProdutoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int NumeroParcela {
+                get {
+                    return ((int)(this[this.tableDataTableContasEmAbertoGeral.NumeroParcelaColumn]));
+                }
+                set {
+                    this[this.tableDataTableContasEmAbertoGeral.NumeroParcelaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal ValorParcela {
+                get {
+                    return ((decimal)(this[this.tableDataTableContasEmAbertoGeral.ValorParcelaColumn]));
+                }
+                set {
+                    this[this.tableDataTableContasEmAbertoGeral.ValorParcelaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public System.DateTime DataVencimento {
+                get {
+                    return ((global::System.DateTime)(this[this.tableDataTableContasEmAbertoGeral.DataVencimentoColumn]));
+                }
+                set {
+                    this[this.tableDataTableContasEmAbertoGeral.DataVencimentoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal SaldoRestante {
+                get {
+                    return ((decimal)(this[this.tableDataTableContasEmAbertoGeral.SaldoRestanteColumn]));
+                }
+                set {
+                    this[this.tableDataTableContasEmAbertoGeral.SaldoRestanteColumn] = value;
+                }
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -3911,22 +4378,22 @@ namespace SisControl.Relatorios {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class ContaReceberRowChangeEvent : global::System.EventArgs {
+        public class TbContaReceberRowChangeEvent : global::System.EventArgs {
             
-            private ContaReceberRow eventRow;
+            private TbContaReceberRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ContaReceberRowChangeEvent(ContaReceberRow row, global::System.Data.DataRowAction action) {
+            public TbContaReceberRowChangeEvent(TbContaReceberRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ContaReceberRow Row {
+            public TbContaReceberRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -4097,6 +4564,40 @@ namespace SisControl.Relatorios {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public VendaRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public class DataTableContasEmAbertoGeralRowChangeEvent : global::System.EventArgs {
+            
+            private DataTableContasEmAbertoGeralRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public DataTableContasEmAbertoGeralRowChangeEvent(DataTableContasEmAbertoGeralRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public DataTableContasEmAbertoGeralRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -4497,7 +4998,7 @@ SELECT ProdutoID, Quantidade, PrecoUnitario, Subtotal, ItemVendaID, VendaID FROM
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class ContaReceberTableAdapter : global::System.ComponentModel.Component {
+    public partial class TbContaReceberTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -4511,7 +5012,7 @@ SELECT ProdutoID, Quantidade, PrecoUnitario, Subtotal, ItemVendaID, VendaID FROM
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public ContaReceberTableAdapter() {
+        public TbContaReceberTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -4608,7 +5109,7 @@ SELECT ProdutoID, Quantidade, PrecoUnitario, Subtotal, ItemVendaID, VendaID FROM
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "ContaReceber";
+            tableMapping.DataSetTable = "TbContaReceber";
             tableMapping.ColumnMappings.Add("SaldoRestante", "SaldoRestante");
             tableMapping.ColumnMappings.Add("NomeCliente", "NomeCliente");
             tableMapping.ColumnMappings.Add("ValorParcela", "ValorParcela");
@@ -4627,7 +5128,7 @@ SELECT ProdutoID, Quantidade, PrecoUnitario, Subtotal, ItemVendaID, VendaID FROM
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT        Cliente.NomeCliente, Parcela.ValorParcela, Parcela.DataVencimento, Parcela.SaldoRestante, Parcela.Pago
@@ -4639,13 +5140,26 @@ FROM            Produtos INNER JOIN
 WHERE        (Parcela.Pago = 0) AND (Cliente.NomeCliente LIKE '%' + @NomeCliente + '%')";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NomeCliente", global::System.Data.SqlDbType.NVarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "NomeCliente", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = @"SELECT        Cliente.NomeCliente, Produtos.NomeProduto, Venda.VendaID, ItemVenda.Quantidade, ItemVenda.PrecoUnitario, ItemVenda.Subtotal, Parcela.NumeroParcela, Parcela.DataVencimento, Parcela.ValorParcela, 
+                         Parcela.SaldoRestante, Parcela.Pago, ContaReceber.DataRecebimento, ContaReceber.ValorRecebido
+FROM            Produtos INNER JOIN
+                         ItemVenda ON Produtos.ProdutoID = ItemVenda.ProdutoID INNER JOIN
+                         Venda ON ItemVenda.VendaID = Venda.VendaID INNER JOIN
+                         Parcela ON Venda.VendaID = Parcela.VendaID INNER JOIN
+                         Cliente ON Venda.ClienteID = Cliente.ClienteID INNER JOIN
+                         ContaReceber ON Venda.VendaID = ContaReceber.VendaID AND Parcela.ParcelaID = ContaReceber.ParcelaID
+WHERE        (Parcela.Pago = 0) AND (Cliente.NomeCliente LIKE '%' + @NomeCliente + '%')";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NomeCliente", global::System.Data.SqlDbType.NVarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "NomeCliente", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int FillContaPorClienteAberta(DataSetbdSisControlo.ContaReceberDataTable dataTable, string NomeCliente) {
+        public virtual int FillContaPorClienteAberta(DataSetbdSisControlo.TbContaReceberDataTable dataTable, string NomeCliente) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((NomeCliente == null)) {
                 throw new global::System.ArgumentNullException("NomeCliente");
@@ -4664,7 +5178,7 @@ WHERE        (Parcela.Pago = 0) AND (Cliente.NomeCliente LIKE '%' + @NomeCliente
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetbdSisControlo.ContaReceberDataTable GetDataContaPorClienteAberta(string NomeCliente) {
+        public virtual DataSetbdSisControlo.TbContaReceberDataTable GetDataContaPorClienteAberta(string NomeCliente) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((NomeCliente == null)) {
                 throw new global::System.ArgumentNullException("NomeCliente");
@@ -4672,7 +5186,43 @@ WHERE        (Parcela.Pago = 0) AND (Cliente.NomeCliente LIKE '%' + @NomeCliente
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(NomeCliente));
             }
-            DataSetbdSisControlo.ContaReceberDataTable dataTable = new DataSetbdSisControlo.ContaReceberDataTable();
+            DataSetbdSisControlo.TbContaReceberDataTable dataTable = new DataSetbdSisControlo.TbContaReceberDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillBy(DataSetbdSisControlo.TbContaReceberDataTable dataTable, string NomeCliente) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((NomeCliente == null)) {
+                throw new global::System.ArgumentNullException("NomeCliente");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(NomeCliente));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DataSetbdSisControlo.TbContaReceberDataTable GetDataBy(string NomeCliente) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((NomeCliente == null)) {
+                throw new global::System.ArgumentNullException("NomeCliente");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(NomeCliente));
+            }
+            DataSetbdSisControlo.TbContaReceberDataTable dataTable = new DataSetbdSisControlo.TbContaReceberDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -6834,6 +7384,187 @@ SELECT ClienteID, DataVenda, ValorTotal, VendaID, FormaPgtoID FROM Venda WHERE (
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(int ClienteID, System.DateTime DataVenda, decimal ValorTotal, global::System.Nullable<int> FormaPgtoID, int Original_ClienteID, System.DateTime Original_DataVenda, decimal Original_ValorTotal, int Original_VendaID, global::System.Nullable<int> Original_FormaPgtoID) {
             return this.Update(ClienteID, DataVenda, ValorTotal, Original_VendaID, FormaPgtoID, Original_ClienteID, Original_DataVenda, Original_ValorTotal, Original_VendaID, Original_FormaPgtoID);
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class DataTableContasEmAbertoGeralTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public DataTableContasEmAbertoGeralTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "DataTableContasEmAbertoGeral";
+            tableMapping.ColumnMappings.Add("NomeCliente", "NomeCliente");
+            tableMapping.ColumnMappings.Add("ValorTotal", "ValorTotal");
+            tableMapping.ColumnMappings.Add("NomeProduto", "NomeProduto");
+            tableMapping.ColumnMappings.Add("NumeroParcela", "NumeroParcela");
+            tableMapping.ColumnMappings.Add("ValorParcela", "ValorParcela");
+            tableMapping.ColumnMappings.Add("DataVencimento", "DataVencimento");
+            tableMapping.ColumnMappings.Add("SaldoRestante", "SaldoRestante");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::SisControl.Properties.Settings.Default.bdsiscontrolConnectionString5;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = @"SELECT        Cliente.NomeCliente, Venda.ValorTotal, Produtos_1.NomeProduto, Parcela.NumeroParcela, Parcela.ValorParcela, Parcela.DataVencimento, Parcela.SaldoRestante
+FROM            Produtos INNER JOIN
+                         ItemVenda ON Produtos.ProdutoID = ItemVenda.ProdutoID INNER JOIN
+                         Venda ON ItemVenda.VendaID = Venda.VendaID INNER JOIN
+                         Cliente ON Venda.ClienteID = Cliente.ClienteID INNER JOIN
+                         Parcela INNER JOIN
+                         ContaReceber ON Parcela.ParcelaID = ContaReceber.ParcelaID ON Venda.VendaID = Parcela.VendaID AND Venda.VendaID = ContaReceber.VendaID INNER JOIN
+                         Produtos AS Produtos_1 ON ItemVenda.ProdutoID = Produtos_1.ProdutoID
+WHERE        (Parcela.Pago = 0)";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(DataSetbdSisControlo.DataTableContasEmAbertoGeralDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual DataSetbdSisControlo.DataTableContasEmAbertoGeralDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            DataSetbdSisControlo.DataTableContasEmAbertoGeralDataTable dataTable = new DataSetbdSisControlo.DataTableContasEmAbertoGeralDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
         }
     }
     

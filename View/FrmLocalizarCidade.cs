@@ -100,6 +100,28 @@ namespace SisControl.View
                 LinhaAtual = dataGridPesquisar.CurrentRow.Index;
             }
         }
+
+        private void txtPesquisa_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                dataGridPesquisar.Focus();
+            }
+        }
+
+        private void dataGridPesquisar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up && dataGridPesquisar.CurrentCell.RowIndex == 0)
+            {
+                txtPesquisa.Focus();
+            }
+            // Adicione a navegação com as setas para cima e para baixo, se ainda não tiver
+
+            if (e.KeyCode == Keys.Enter)
+            {
+                this.Close();
+            }
+        }
     }
 }
 /*
