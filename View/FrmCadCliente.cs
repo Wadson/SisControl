@@ -19,7 +19,8 @@ namespace SisControl.View
         private string QueryClientes = "SELECT MAX(ClienteID)  FROM Cliente";
         private string StatusOperacao;
         private int ClienteID;
-        
+        public string formChamador { get; set; }
+
         public FrmCadCliente( string statusOperação)
         {
             InitializeComponent();
@@ -179,7 +180,8 @@ namespace SisControl.View
         private void btnLocalizar_Click(object sender, EventArgs e)
         {
             FrmLocalizarCidade frmLocalizarCidade = new FrmLocalizarCidade();
-            frmLocalizarCidade.Text = "Localizar Cidade...";
+            frmLocalizarCidade.Text = "Localizar Cidade...";   
+            formChamador = "FrmCadCliente";
             VariavelGlobal.NomeFormulario = "FrmCadCliente";
             frmLocalizarCidade.ShowDialog();
             btnSalvar.Focus();

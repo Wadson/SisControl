@@ -131,10 +131,9 @@ namespace SisControl.View
         private void btnLocalizar_Click_1(object sender, EventArgs e)
         {
             FrmLocalizarCidade frmLocalizarCidade = new FrmLocalizarCidade();
-            frmLocalizarCidade.Text = "Localizar Fornecedor...";
-            VariavelGlobal.NomeFormulario = "FrmCadFornecedor";
+            frmLocalizarCidade.Text = "Localizar Fornecedor...";            
             frmLocalizarCidade.ShowDialog();
-
+            VariavelGlobal.NomeFormulario = "FrmCadFornecedor";
             string numeroComZeros = Utilitario.AcrescentarZerosEsquerda(FornecedorID, 6);
             FornecedorID = int.Parse(numeroComZeros);
             txtFornecedorID.Text = FornecedorID.ToString();

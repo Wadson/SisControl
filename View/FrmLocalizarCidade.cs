@@ -9,12 +9,14 @@ using System.Drawing;
 using System.Drawing.Text;
 using System.Text;
 using System.Windows.Forms;
+using static SisControl.FrmModeloForm;
 
 namespace SisControl.View
 {
     public partial class FrmLocalizarCidade : SisControl.FrmBasePesquisa
     {
         protected int LinhaAtual = -1;
+        FrmModeloForm frmModeloForm;
         public FrmLocalizarCidade()
         {
             InitializeComponent();
@@ -54,6 +56,7 @@ namespace SisControl.View
        
         private void FrmLocalizarCidade_FormClosing(object sender, FormClosingEventArgs e)
         {
+            frmModeloForm = new FrmModeloForm();
             if (dataGridPesquisar.Rows.Count == 0 || dataGridPesquisar.CurrentRow == null)
             {
                 // O DataGridView está vazio, então saia do método

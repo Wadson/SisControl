@@ -33,7 +33,7 @@ namespace SisControl
         {
             foreach (Control c in container.Controls)
             {
-                if (c is TextBox textBox)
+                if (c is KryptonTextBox textBox)
                 {
                     textBox.Enter += TextBox_Enter;
                     textBox.Leave += TextBox_Leave;
@@ -64,7 +64,7 @@ namespace SisControl
 
         private static void TextBox_Enter(object sender, EventArgs e)
         {
-            if (sender is TextBox textBox)
+            if (sender is KryptonTextBox textBox)
             {
                 textBox.BackColor = Color.Yellow;//Color.LightBlue; // Define a cor de fundo como azul claro quando em foco
             }
@@ -72,7 +72,7 @@ namespace SisControl
 
         private static void TextBox_Leave(object sender, EventArgs e)
         {
-            if (sender is TextBox textBox)
+            if (sender is KryptonTextBox textBox)
             {
                 textBox.BackColor = Color.White; // Define a cor de fundo como branco quando perde o foco
             }

@@ -140,9 +140,10 @@ namespace SisControl
 
         private void btnFerramentas_Click(object sender, EventArgs e)
         {
-            frmFerramentas.ShowDialog();
+            FrmFerramentas frm = new FrmFerramentas();
+            AbrirFormEnPanel(frm);  
         }
-        FrmFerramentas frmFerramentas = new FrmFerramentas();
+        
          
         private void btnSair_Click(object sender, EventArgs e)
         {
@@ -153,6 +154,12 @@ namespace SisControl
         {
             FrmModeloUI frmModeloUI = new FrmModeloUI();
             frmModeloUI.ShowDialog();
+        }
+
+        private void sobreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Sobre frmSobre = new Sobre();
+            frmSobre.ShowDialog();
         }
     }
 }

@@ -27,15 +27,21 @@ namespace SisControl.View
             frmBackup.ShowDialog();
         }
 
-        private void btnSair_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void btnRestaurarBackup_Click(object sender, EventArgs e)
         {
             FrmRestauraBackup frmRestauraBackup = new FrmRestauraBackup();
             frmRestauraBackup.ShowDialog();
+        }
+
+        private void btnRelatorio_Click(object sender, EventArgs e)
+        {
+            Relatorios.RelClienteContaAberta frmRelatorio = new Relatorios.RelClienteContaAberta();
+            frmRelatorio.ShowDialog();
+        }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
