@@ -36,8 +36,7 @@ namespace SisControl.DALL
                                 PrecoDeVenda = reader.GetDecimal(reader.GetOrdinal("PrecoDeVenda")),
                                 QuantidadeEmEstoque = reader.GetInt32(reader.GetOrdinal("QuantidadeEmEstoque")),
                                 DataDeEntrada = reader.GetDateTime(reader.GetOrdinal("DataDeEntrada")),                              
-                                Status = reader.GetString(reader.GetOrdinal("Status")),                               
-                                Imagem = (byte[])reader.GetValue(reader.GetOrdinal("Imagem")),
+                                Status = reader.GetString(reader.GetOrdinal("Status")),                                                               
                                 Referencia = reader.GetString(reader.GetOrdinal("Referencia")), 
                                 
                             };
@@ -55,7 +54,7 @@ namespace SisControl.DALL
             var conn = Conexao.Conex();
             try
             {
-                SqlCommand comando = new SqlCommand("SELECT ProdutoID, NomeProduto, PrecoCusto, Lucro, PrecoDeVenda, QuantidadeEmEstoque, DataDeEntrada, Status, Imagem, Referencia FROM Produtos", conn);              
+                SqlCommand comando = new SqlCommand("SELECT ProdutoID, NomeProduto, PrecoCusto, Lucro, PrecoDeVenda, QuantidadeEmEstoque, DataDeEntrada, Status, Referencia FROM Produtos", conn);              
 
                 SqlDataAdapter daProduto = new SqlDataAdapter();
                 daProduto.SelectCommand = comando;
@@ -79,7 +78,7 @@ namespace SisControl.DALL
             var connection = Conexao.Conex();
             using (connection)
             {
-                var query = "INSERT INTO Produtos (ProdutoID, NomeProduto, PrecoCusto, Lucro, PrecoDeVenda, QuantidadeEmEstoque, DataDeEntrada, Status, Imagem, Referencia) VALUES (@ProdutoID, @NomeProduto, @PrecoCusto, @Lucro, @PrecoDeVenda, @QuantidadeEmEstoque, @DataDeEntrada, @Status, @Imagem, @Referencia)";
+                var query = "INSERT INTO Produtos (ProdutoID, NomeProduto, PrecoCusto, Lucro, PrecoDeVenda, QuantidadeEmEstoque, DataDeEntrada, Status, Referencia) VALUES (@ProdutoID, @NomeProduto, @PrecoCusto, @Lucro, @PrecoDeVenda, @QuantidadeEmEstoque, @DataDeEntrada, @Status, @Referencia)";
                 using (var command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@ProdutoID", produto.ProdutoID);
@@ -91,18 +90,6 @@ namespace SisControl.DALL
                     command.Parameters.AddWithValue("@DataDeEntrada", produto.DataDeEntrada);
                     command.Parameters.AddWithValue("@Status", produto.Status);
 
-                    if (produto.Imagem != null)
-                    {
-                        var imgParam = new SqlParameter("@Imagem", SqlDbType.VarBinary, -1);
-                        imgParam.Value = produto.Imagem;
-                        command.Parameters.Add(imgParam);
-                    }
-                    else
-                    {
-                        var imgParam = new SqlParameter("@Imagem", SqlDbType.VarBinary, -1);
-                        imgParam.Value = DBNull.Value;
-                        command.Parameters.Add(imgParam);
-                    }
 
                     command.Parameters.AddWithValue("@Referencia", produto.Referencia);
 
@@ -113,30 +100,7 @@ namespace SisControl.DALL
         }
 
 
-        //public void SalvarProduto(ProdutosModel produto)
-        //{
-        //    var connection = Conexao.Conex();
-        //    using (connection)
-        //    {
-        //        var query = "INSERT INTO Produtos (ProdutoID, NomeProduto, PrecoCusto, Lucro, PrecoDeVenda, QuantidadeEmEstoque, DataDeEntrada, Status, Imagem, Referencia ) VALUES (@ProdutoID, @NomeProduto, @PrecoCusto, @Lucro, @PrecoDeVenda, @QuantidadeEmEstoque, @DataDeEntrada, @Status, @Imagem, @Referencia)";
-        //        using (var command = new SqlCommand(query, connection))
-        //        {
-        //            command.Parameters.AddWithValue("@ProdutoID", produto.ProdutoID);
-        //            command.Parameters.AddWithValue("@NomeProduto", produto.NomeProduto);                    
-        //            command.Parameters.AddWithValue("@PrecoCusto", produto.PrecoCusto);
-        //            command.Parameters.AddWithValue("@Lucro", produto.Lucro);
-        //            command.Parameters.AddWithValue("@PrecoDeVenda", produto.PrecoDeVenda);
-        //            command.Parameters.AddWithValue("@QuantidadeEmEstoque", produto.QuantidadeEmEstoque);
-        //            command.Parameters.AddWithValue("@DataDeEntrada", produto.DataDeEntrada);                  
-        //            command.Parameters.AddWithValue("@Status", produto.Status);                   
-        //            command.Parameters.AddWithValue("@Imagem", produto.Imagem);
-        //            command.Parameters.AddWithValue("@Referencia", produto.Referencia);
-
-        //            connection.Open();
-        //            command.ExecuteNonQuery();
-        //        }
-        //    }
-        //}
+      
 
 
         public void AlterarProduto(ProdutosModel produto)
@@ -144,7 +108,7 @@ namespace SisControl.DALL
             var connection = Conexao.Conex();
             using (connection)
             {
-                var query = "UPDATE Produtos SET NomeProduto = @NomeProduto, PrecoCusto = @PrecoCusto, Lucro = @Lucro, PrecoDeVenda = @PrecoDeVenda, QuantidadeEmEstoque = @QuantidadeEmEstoque, DataDeEntrada = @DataDeEntrada, Status = @Status, Imagem = @Imagem, Referencia = @Referencia WHERE ProdutoID = @ProdutoID";
+                var query = "UPDATE Produtos SET NomeProduto = @NomeProduto, PrecoCusto = @PrecoCusto, Lucro = @Lucro, PrecoDeVenda = @PrecoDeVenda, QuantidadeEmEstoque = @QuantidadeEmEstoque, DataDeEntrada = @DataDeEntrada, Status = @Status, Referencia = @Referencia WHERE ProdutoID = @ProdutoID";
                 using (var command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@ProdutoID", produto.ProdutoID);
@@ -156,19 +120,6 @@ namespace SisControl.DALL
                     command.Parameters.AddWithValue("@DataDeEntrada", produto.DataDeEntrada);
                     command.Parameters.AddWithValue("@Status", produto.Status);
 
-                    if (produto.Imagem != null)
-                    {
-                        var imgParam = new SqlParameter("@Imagem", SqlDbType.VarBinary, -1);
-                        imgParam.Value = produto.Imagem;
-                        command.Parameters.Add(imgParam);
-                    }
-                    else
-                    {
-                        var imgParam = new SqlParameter("@Imagem", SqlDbType.VarBinary, -1);
-                        imgParam.Value = DBNull.Value;
-                        command.Parameters.Add(imgParam);
-                    }
-
                     command.Parameters.AddWithValue("@Referencia", produto.Referencia);
 
                     connection.Open();
@@ -177,31 +128,7 @@ namespace SisControl.DALL
             }
         }
 
-
-        //public void AlterarProduto(ProdutosModel produto)
-        //{
-        //    var connection = Conexao.Conex();
-        //    using (connection)
-        //    {
-        //        var query = "UPDATE Produtos SET NomeProduto = @NomeProduto, PrecoCusto = @PrecoCusto, Lucro = @Lucro, PrecoDeVenda = @PrecoDeVenda, QuantidadeEmEstoque = @QuantidadeEmEstoque, DataDeEntrada = @DataDeEntrada, Status = @Status, Imagem = @Imagem, Referencia = @Referencia WHERE ProdutoID = @ProdutoID";
-        //        using (var command = new SqlCommand(query, connection))
-        //        {
-        //            command.Parameters.AddWithValue("@ProdutoID", produto.ProdutoID);
-        //            command.Parameters.AddWithValue("@NomeProduto", produto.NomeProduto);                    
-        //            command.Parameters.AddWithValue("@PrecoCusto", produto.PrecoCusto);
-        //            command.Parameters.AddWithValue("@Lucro", produto.Lucro);
-        //            command.Parameters.AddWithValue("@PrecoDeVenda", produto.PrecoDeVenda);
-        //            command.Parameters.AddWithValue("@QuantidadeEmEstoque", produto.QuantidadeEmEstoque);
-        //            command.Parameters.AddWithValue("@DataDeEntrada", produto.DataDeEntrada);                   
-        //            command.Parameters.AddWithValue("@Status", produto.Status);                   
-        //            command.Parameters.AddWithValue("@Imagem", produto.Imagem);
-        //            command.Parameters.AddWithValue("@Referencia", produto.Referencia);
-        //            connection.Open();
-        //            command.ExecuteNonQuery();
-        //        }
-        //    }
-        //}
-
+       
 
         public void ExcluirProduto(ProdutosModel produto)
         {
@@ -240,12 +167,6 @@ namespace SisControl.DALL
                     obj_Produto.QuantidadeEmEstoque = Convert.ToInt32(datareader["QuantidadeEmEstoque"]);
                     obj_Produto.DataDeEntrada = Convert.ToDateTime(datareader["DataEntrada"]);
                     obj_Produto.Status = datareader["Status"].ToString();
-
-                    if (datareader["Imagem"] != DBNull.Value)
-                    {
-                        obj_Produto.Imagem = (byte[])datareader["Imagem"];
-                    }
-
                     obj_Produto.Referencia = datareader["Referencia"].ToString();
                 }
                 return obj_Produto;
@@ -266,7 +187,7 @@ namespace SisControl.DALL
             try
             {
 
-                SqlCommand sql = new SqlCommand("SELECT ProdutoID, NomeProduto, PrecoCusto, Lucro, PrecoDeVenda, QuantidadeEmEstoque, DataDeEtrada, Status, Imagem, Referencia FROM Produto WHERE NomeProduto LIKE '" + pesquisa + "%' ", conn);
+                SqlCommand sql = new SqlCommand("SELECT ProdutoID, NomeProduto, PrecoCusto, Lucro, PrecoDeVenda, QuantidadeEmEstoque, DataDeEtrada, Status, Referencia FROM Produto WHERE NomeProduto LIKE '" + pesquisa + "%' ", conn);
                 conn.Open();
                 SqlDataReader datareader;
                 ProdutosModel obj_Produto = new ProdutosModel();
@@ -281,12 +202,7 @@ namespace SisControl.DALL
                     obj_Produto.PrecoDeVenda = Convert.ToDecimal(datareader["PrecoDeVenda"]);
                     obj_Produto.QuantidadeEmEstoque = Convert.ToInt32(datareader["QuantidadeEmEstoque"]);
                     obj_Produto.DataDeEntrada = Convert.ToDateTime(datareader["DataEntrada"]);
-                    obj_Produto.Status = datareader["Status"].ToString();
-
-                    if (datareader["Imagem"] != DBNull.Value)
-                    {
-                        obj_Produto.Imagem = (byte[])datareader["Imagem"];
-                    }
+                    obj_Produto.Status = datareader["Status"].ToString();                
 
                     obj_Produto.Referencia = datareader["Referencia"].ToString();
                 }

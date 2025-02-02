@@ -33,14 +33,14 @@ namespace SisControl.View
             try
             {
                 // Calcular o total dos valores Não pagos na coluna "SaldoRestante"
-                decimal totalEmAberto = Utilitario.SomarValoresDataGrid(dgvPesquisar, "SaldoRestante");
+                decimal totalEmAberto = Utilitario.SomarValoresDataGrid(dgvContasReceber, "SaldoRestante");
 
                 // Atualizar a label com o total calculado
                 lblTotal.Text = $"R$ {totalEmAberto:F2}";
 
 
                 // Calcular o total dos valores na coluna "ValorParcela"
-                decimal totalPago = Utilitario.SomarValoresDataGrid(dgvPesquisar, "ValorRecebido");
+                decimal totalPago = Utilitario.SomarValoresDataGrid(dgvContasReceber, "ValorRecebido");
 
                 // Atualizar a label com o total calculado
                 lblTotalRecebido.Text = $"R$ {totalPago:F2}";
@@ -55,52 +55,51 @@ namespace SisControl.View
         private void PersonalizarDataGridView(DataTable dataTable)
         {
             // Define o DataTable como a fonte de dados do DataGridView
-            dgvPesquisar.DataSource = dataTable;
+            dgvContasReceber.DataSource = dataTable;
 
             // Renomeia as colunas
-            dgvPesquisar.Columns["NomeCliente"].HeaderText = "Cliente";
-            dgvPesquisar.Columns["NumeroParcela"].HeaderText = "Parcela";
-            dgvPesquisar.Columns["ValorParcela"].HeaderText = "Valor Parcela";
-            dgvPesquisar.Columns["DataVencimento"].HeaderText = "Data Vencimento";
-            dgvPesquisar.Columns["SaldoRestante"].HeaderText = "Saldo Restante";
-            dgvPesquisar.Columns["ValorRecebido"].HeaderText = "Valor Recebido";
-            dgvPesquisar.Columns["DataRecebimento"].HeaderText = "Data Recebimento";
-            dgvPesquisar.Columns["Pago"].HeaderText = "Pago";
-            dgvPesquisar.Columns["VendaID"].HeaderText = "Venda ID";
+            dgvContasReceber.Columns["NomeCliente"].HeaderText = "Cliente";
+            dgvContasReceber.Columns["NumeroParcela"].HeaderText = "Parcela";
+            dgvContasReceber.Columns["ValorParcela"].HeaderText = "Valor Parcela";
+            dgvContasReceber.Columns["DataVencimento"].HeaderText = "Data Vencimento";
+            dgvContasReceber.Columns["SaldoRestante"].HeaderText = "Saldo Restante";
+            dgvContasReceber.Columns["ValorRecebido"].HeaderText = "Valor Recebido";            
+            dgvContasReceber.Columns["Pago"].HeaderText = "Pago";
+            dgvContasReceber.Columns["VendaID"].HeaderText = "Venda ID";
 
             // Oculta as colunas de CódigoID (se necessário)
-            dgvPesquisar.Columns["VendaID"].Visible = false;
+            dgvContasReceber.Columns["VendaID"].Visible = false;
 
             // Formata as colunas de valores no formato de moeda ("N2")            
-            dgvPesquisar.Columns["ValorParcela"].DefaultCellStyle.Format = "N2";
-            dgvPesquisar.Columns["SaldoRestante"].DefaultCellStyle.Format = "N2";
-            dgvPesquisar.Columns["ValorRecebido"].DefaultCellStyle.Format = "N2";
+            dgvContasReceber.Columns["ValorParcela"].DefaultCellStyle.Format = "N2";
+            dgvContasReceber.Columns["SaldoRestante"].DefaultCellStyle.Format = "N2";
+            dgvContasReceber.Columns["ValorRecebido"].DefaultCellStyle.Format = "N2";
 
             // Redimensiona automaticamente as colunas para ajustar ao conteúdo
-            dgvPesquisar.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            dgvContasReceber.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
 
             // Alinhamento das colunas de valores
-            dgvPesquisar.Columns["ValorParcela"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgvPesquisar.Columns["SaldoRestante"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgvPesquisar.Columns["ValorRecebido"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgvPesquisar.Columns["NumeroParcela"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvContasReceber.Columns["ValorParcela"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvContasReceber.Columns["SaldoRestante"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvContasReceber.Columns["ValorRecebido"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvContasReceber.Columns["NumeroParcela"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             // Configura o DataGridView para exibir a coluna "Pago" como um checkbox
-            dgvPesquisar.Columns["Pago"].ValueType = typeof(bool);
+            dgvContasReceber.Columns["Pago"].ValueType = typeof(bool);
 
             // Habilita a seleção de linha inteira (FullRowSelect)
-            dgvPesquisar.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvContasReceber.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             // Centralização dos cabeçalhos de todas as colunas
-            foreach (DataGridViewColumn column in dgvPesquisar.Columns)
+            foreach (DataGridViewColumn column in dgvContasReceber.Columns)
             {
                 column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
 
             // Colore as colunas de valores
-            dgvPesquisar.Columns["ValorParcela"].DefaultCellStyle.BackColor = System.Drawing.Color.LightGreen;
-            dgvPesquisar.Columns["SaldoRestante"].DefaultCellStyle.BackColor = System.Drawing.Color.LightGreen;
-            dgvPesquisar.Columns["ValorRecebido"].DefaultCellStyle.BackColor = System.Drawing.Color.LightBlue;
+            dgvContasReceber.Columns["ValorParcela"].DefaultCellStyle.BackColor = System.Drawing.Color.LightGreen;
+            dgvContasReceber.Columns["SaldoRestante"].DefaultCellStyle.BackColor = System.Drawing.Color.LightGreen;
+            dgvContasReceber.Columns["ValorRecebido"].DefaultCellStyle.BackColor = System.Drawing.Color.LightBlue;
         }
 
 
@@ -108,21 +107,22 @@ namespace SisControl.View
         public DataTable PesquisarPorStatusGeral(bool pago)
         {
             string query = @"
-                            SELECT
-                                Cliente.NomeCliente, 
-                                Parcela.NumeroParcela,
-                                Parcela.ValorParcela, 
-                                Parcela.DataVencimento, 
-                                ContaReceber.SaldoRestante, 
-                                Parcela.ValorRecebido, 
-                                ContaReceber.DataRecebimento, 
-                                ContaReceber.Pago,
-                                Parcela.VendaID
-                            FROM ContaReceber 
-                            INNER JOIN Parcela ON ContaReceber.ParcelaID = Parcela.ParcelaID
-                            INNER JOIN Venda ON Parcela.VendaID = Venda.VendaID
-                            INNER JOIN Cliente ON Venda.ClienteID = Cliente.ClienteID
-                            WHERE ContaReceber.Pago = @Pago";
+                 SELECT
+                    Parcela.ParcelaID,   
+                    Parcela.ValorParcela, 
+                    Parcela.NumeroParcela,   
+                    Parcela.SaldoRestante,     
+                    Parcela.DataVencimento, 
+                    Parcela.VendaID,           
+                    Parcela.Pago,              
+                    Parcela.ValorRecebido,         
+                    Cliente.ClienteID,              
+                    Cliente.NomeCliente            
+                FROM Parcela                          
+                INNER JOIN Venda ON Parcela.VendaID = Venda.VendaID
+                INNER JOIN Cliente ON Venda.ClienteID = Cliente.ClienteID
+                WHERE Parcela.Pago = @Pago";
+
             using (var connection = Conexao.Conex())
             {
                 using (SqlCommand command = new SqlCommand(query, connection))
@@ -146,20 +146,20 @@ namespace SisControl.View
         public DataTable PesquisarPorNomeClienteEStatus(string nomeCliente, bool pago)
         {
             string query = @"
-                            SELECT
-                            Cliente.NomeCliente, 
-                            Parcela.NumeroParcela,
-                            Parcela.ValorParcela, 
-                            Parcela.DataVencimento, 
-                            ContaReceber.SaldoRestante, 
-                            Parcela.ValorRecebido, 
-                            ContaReceber.DataRecebimento, 
-                            ContaReceber.Pago,
-                            Parcela.VendaID
-                        FROM ContaReceber 
-                        INNER JOIN Parcela ON ContaReceber.ParcelaID = Parcela.ParcelaID
-                        INNER JOIN Venda ON Parcela.VendaID = Venda.VendaID
-                        INNER JOIN Cliente ON Venda.ClienteID = Cliente.ClienteID
+                 SELECT
+                    Parcela.ParcelaID,   
+                    Parcela.ValorParcela, 
+                    Parcela.NumeroParcela,   
+                    Parcela.SaldoRestante,     
+                    Parcela.DataVencimento, 
+                    Parcela.VendaID,           
+                    Parcela.Pago,              
+                    Parcela.ValorRecebido,         
+                    Cliente.ClienteID,              
+                    Cliente.NomeCliente            
+                FROM Parcela                          
+                INNER JOIN Venda ON Parcela.VendaID = Venda.VendaID
+                INNER JOIN Cliente ON Venda.ClienteID = Cliente.ClienteID
                                 WHERE Cliente.NomeCliente = @NomeCliente AND Parcela.Pago = @Pago";
 
             using (var connection = Conexao.Conex())
@@ -184,20 +184,20 @@ namespace SisControl.View
         public DataTable PesquisarPorPeriodoEStatus(DateTime dataInicial, DateTime dataFinal, bool pago)
         {
             string query = @"
-                            SELECT
-                            Cliente.NomeCliente, 
-                            Parcela.NumeroParcela,
-                            Parcela.ValorParcela, 
-                            Parcela.DataVencimento, 
-                            ContaReceber.SaldoRestante, 
-                            Parcela.ValorRecebido, 
-                            ContaReceber.DataRecebimento, 
-                            ContaReceber.Pago,
-                            Parcela.VendaID
-                        FROM ContaReceber 
-                        INNER JOIN Parcela ON ContaReceber.ParcelaID = Parcela.ParcelaID
-                        INNER JOIN Venda ON Parcela.VendaID = Venda.VendaID
-                        INNER JOIN Cliente ON Venda.ClienteID = Cliente.ClienteID
+                SELECT
+                    Parcela.ParcelaID,   
+                    Parcela.ValorParcela, 
+                    Parcela.NumeroParcela,   
+                    Parcela.SaldoRestante,     
+                    Parcela.DataVencimento, 
+                    Parcela.VendaID,           
+                    Parcela.Pago,              
+                    Parcela.ValorRecebido,         
+                    Cliente.ClienteID,              
+                    Cliente.NomeCliente            
+                FROM Parcela                          
+                INNER JOIN Venda ON Parcela.VendaID = Venda.VendaID
+                INNER JOIN Cliente ON Venda.ClienteID = Cliente.ClienteID
                                 WHERE Parcela.DataVencimento BETWEEN @DataInicial AND @DataFinal AND Parcela.Pago = @Pago";
 
             using (var connection = Conexao.Conex())
@@ -224,20 +224,20 @@ namespace SisControl.View
         public DataTable PesquisarContasVencidas(DateTime dataVencimento)
         {
             string query = @"
-                            SELECT
-                                Cliente.NomeCliente, 
-                                Parcela.NumeroParcela,
-                                Parcela.ValorParcela, 
-                                Parcela.DataVencimento, 
-                                ContaReceber.SaldoRestante, 
-                                Parcela.ValorRecebido, 
-                                ContaReceber.DataRecebimento, 
-                                ContaReceber.Pago,
-                                Parcela.VendaID
-                            FROM ContaReceber 
-                            INNER JOIN Parcela ON ContaReceber.ParcelaID = Parcela.ParcelaID
-                            INNER JOIN Venda ON Parcela.VendaID = Venda.VendaID
-                            INNER JOIN Cliente ON Venda.ClienteID = Cliente.ClienteID
+                SELECT                    
+                    Parcela.ParcelaID,   
+                    Parcela.ValorParcela, 
+                    Parcela.NumeroParcela,   
+                    Parcela.SaldoRestante,     
+                    Parcela.DataVencimento, 
+                    Parcela.VendaID,           
+                    Parcela.Pago,              
+                    Parcela.ValorRecebido,         
+                    Cliente.ClienteID,              
+                    Cliente.NomeCliente            
+                FROM Parcela                          
+                INNER JOIN Venda ON Parcela.VendaID = Venda.VendaID
+                INNER JOIN Cliente ON Venda.ClienteID = Cliente.ClienteID
                                     WHERE Parcela.DataVencimento <= @DataVencimento";
 
             using (var connection = Conexao.Conex())
@@ -263,20 +263,20 @@ namespace SisControl.View
         public DataTable PesquisarContasNaoVencidas(DateTime dataVencimento)
         {
             string query = @"
-                            SELECT
-                                Cliente.NomeCliente, 
-                                Parcela.NumeroParcela,
-                                Parcela.ValorParcela, 
-                                Parcela.DataVencimento, 
-                                ContaReceber.SaldoRestante, 
-                                Parcela.ValorRecebido, 
-                                ContaReceber.DataRecebimento, 
-                                ContaReceber.Pago,
-                                Parcela.VendaID
-                            FROM ContaReceber 
-                            INNER JOIN Parcela ON ContaReceber.ParcelaID = Parcela.ParcelaID
-                            INNER JOIN Venda ON Parcela.VendaID = Venda.VendaID
-                            INNER JOIN Cliente ON Venda.ClienteID = Cliente.ClienteID
+                SELECT
+                    Parcela.ParcelaID,   
+                    Parcela.ValorParcela, 
+                    Parcela.NumeroParcela,   
+                    Parcela.SaldoRestante,     
+                    Parcela.DataVencimento, 
+                    Parcela.VendaID,           
+                    Parcela.Pago,              
+                    Parcela.ValorRecebido,         
+                    Cliente.ClienteID,              
+                    Cliente.NomeCliente            
+                FROM Parcela                          
+                INNER JOIN Venda ON Parcela.VendaID = Venda.VendaID
+                INNER JOIN Cliente ON Venda.ClienteID = Cliente.ClienteID
                                             WHERE Parcela.DataVencimento >= @DataVencimento";
 
             using (var connection = Conexao.Conex())
@@ -314,20 +314,20 @@ namespace SisControl.View
                     var planilha = pacote.Workbook.Worksheets.Add("Dados");
 
                     // Preenche o cabeçalho (primeira linha)
-                    for (int col = 0; col < dgvPesquisar.Columns.Count; col++)
+                    for (int col = 0; col < dgvContasReceber.Columns.Count; col++)
                     {
-                        planilha.Cells[1, col + 1].Value = dgvPesquisar.Columns[col].HeaderText;
+                        planilha.Cells[1, col + 1].Value = dgvContasReceber.Columns[col].HeaderText;
                     }
 
                     // Preenche os dados
-                    for (int row = 0; row < dgvPesquisar.Rows.Count; row++)
+                    for (int row = 0; row < dgvContasReceber.Rows.Count; row++)
                     {
-                        for (int col = 0; col < dgvPesquisar.Columns.Count; col++)
+                        for (int col = 0; col < dgvContasReceber.Columns.Count; col++)
                         {
                             // Verifica se a célula não é nula
-                            if (dgvPesquisar.Rows[row].Cells[col].Value != null)
+                            if (dgvContasReceber.Rows[row].Cells[col].Value != null)
                             {
-                                planilha.Cells[row + 2, col + 1].Value = dgvPesquisar.Rows[row].Cells[col].Value.ToString();
+                                planilha.Cells[row + 2, col + 1].Value = dgvContasReceber.Rows[row].Cells[col].Value.ToString();
                             }
                         }
                     }
@@ -382,7 +382,7 @@ namespace SisControl.View
         private void btnFiltro_Click(object sender, EventArgs e)
         {
             // Limpa o DataGridView antes de aplicar um novo filtro
-            dgvPesquisar.DataSource = null;
+            dgvContasReceber.DataSource = null;
             dgvItensVenda.DataSource = null;
 
             // Obtém o método selecionado no ComboBox
@@ -437,7 +437,7 @@ namespace SisControl.View
             // Exibe o resultado no DataGridView
             if (resultado != null)
             {
-                dgvPesquisar.DataSource = resultado;
+                dgvContasReceber.DataSource = resultado;
                 dgvItensVenda.DataSource = null; // Limpa o DataGridView de Itens de Venda
             }
             else
@@ -458,13 +458,16 @@ namespace SisControl.View
 
         private void AbrirFrmLocalizarCliente()
         {
-            FrmLocalizarCliente frmLocalizarCliente = new FrmLocalizarCliente();
-            frmLocalizarCliente.FormChamador = this; // Define o formulário chamador
+                 // Cria uma instância do frmLocalizarCliente e define o Owner como o FrmPedidoVendaNovo
+            FrmLocalizarCliente frmLocalizarCliente = new FrmLocalizarCliente(this)
+            {
+                Owner = this
+            };
             frmLocalizarCliente.ShowDialog();
+            frmLocalizarCliente.Text = "Localizar Clientes";
         }
         private void btnPesquisar_Click(object sender, EventArgs e)
-        {
-            AbrirFrmLocalizarCliente();
+        {            
         }
         public void ExportarParaPDF(KryptonDataGridView dgv, string caminhoArquivo)
         {
@@ -518,7 +521,7 @@ namespace SisControl.View
 
             if (salvar.ShowDialog() == DialogResult.OK)
             {
-                ExportarParaPDF(dgvPesquisar, salvar.FileName);                
+                ExportarParaPDF(dgvContasReceber, salvar.FileName);                
             }
         }
 
@@ -529,9 +532,9 @@ namespace SisControl.View
 
         private void dgvPesquisar_SelectionChanged(object sender, EventArgs e)
         {
-            if (dgvPesquisar.SelectedRows.Count > 0)
+            if (dgvContasReceber.SelectedRows.Count > 0)
             {
-                int vendaID = Convert.ToInt32(dgvPesquisar.SelectedRows[0].Cells["VendaID"].Value);
+                int vendaID = Convert.ToInt32(dgvContasReceber.SelectedRows[0].Cells["VendaID"].Value);
                 CarregarItensVenda(vendaID);
             }
         }
@@ -561,7 +564,7 @@ namespace SisControl.View
         private void CarregarItensVenda(int vendaID)
         {
             string query = @"SELECT Produtos.Referencia, Produtos.NomeProduto, ItemVenda.Quantidade, 
-                            ItemVenda.PrecoUnitario, ItemVenda.Subtotal, Produtos.Imagem
+                            ItemVenda.PrecoUnitario, ItemVenda.Subtotal
                      FROM ItemVenda 
                      INNER JOIN Produtos ON ItemVenda.ProdutoID = Produtos.ProdutoID 
                      WHERE VendaID = @VendaID";
@@ -578,6 +581,17 @@ namespace SisControl.View
                 // Personalize o DataGridView após definir a fonte de dados
                 PersonalizarDataGridView();
             }
+        }
+
+
+        private void btnLocalizarCliente_Click(object sender, EventArgs e)
+        {
+            AbrirFrmLocalizarCliente();
+        }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
     }

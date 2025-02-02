@@ -677,6 +677,7 @@
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.Text = "Cadastro de Clientes";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmCadCliente_FormClosed);
             this.Load += new System.EventHandler(this.FrmCadCliente_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

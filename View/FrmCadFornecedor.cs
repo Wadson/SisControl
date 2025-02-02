@@ -130,13 +130,15 @@ namespace SisControl.View
 
         private void btnLocalizar_Click_1(object sender, EventArgs e)
         {
-            FrmLocalizarCidade frmLocalizarCidade = new FrmLocalizarCidade();
-            frmLocalizarCidade.Text = "Localizar Fornecedor...";            
+            FrmLocalizarCidade frmLocalizarCidade = new FrmLocalizarCidade(this);
+            frmLocalizarCidade.Text = "Localizar Fornecedor...";        
+            
             frmLocalizarCidade.ShowDialog();
-            VariavelGlobal.NomeFormulario = "FrmCadFornecedor";
+
             string numeroComZeros = Utilitario.AcrescentarZerosEsquerda(FornecedorID, 6);
             FornecedorID = int.Parse(numeroComZeros);
             txtFornecedorID.Text = FornecedorID.ToString();
+            btnSalva.Focus();           
         }
 
         private void btnSalva_Click(object sender, EventArgs e)
@@ -181,6 +183,10 @@ namespace SisControl.View
         private void btnSair_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void FrmCadFornecedor_FormClosed(object sender, FormClosedEventArgs e)
+        {           
         }
     }
 }

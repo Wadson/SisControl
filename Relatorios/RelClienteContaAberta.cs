@@ -2,7 +2,7 @@
 using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Data.SqlServerCe;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace SisControl.Relatorios
@@ -31,6 +31,8 @@ namespace SisControl.Relatorios
             reportViewer1.LocalReport.DataSources.Clear();  // Evita duplicação
             reportViewer1.LocalReport.DataSources.Add(fonteDados);
             reportViewer1.RefreshReport();
+            this.reportViewer2.RefreshReport();
+            this.reportViewer2.RefreshReport();
         }
 
         private void btnGerarRelatorio_Click_1(object sender, EventArgs e)

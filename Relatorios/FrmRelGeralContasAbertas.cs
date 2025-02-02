@@ -14,5 +14,11 @@ namespace SisControl.Relatorios
         {
             InitializeComponent();
         }
+
+        private void FrmRelGeralContasAbertas_Load(object sender, EventArgs e)
+        {
+
+            this.reportViewer1.RefreshReport();
+        }
     }
 }

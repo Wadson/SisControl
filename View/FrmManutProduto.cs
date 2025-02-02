@@ -45,23 +45,9 @@ namespace SisControl.View
             dgv.Columns[4].Name = "Preco De Venda";
             dgv.Columns[5].Name = "Estoque";
             dgv.Columns[6].Name = "Dta. Entrada";
-            dgv.Columns[7].Name = "Status";
-            dgv.Columns[8].Name = "Imagem";
-            dgv.Columns[9].Name = "Referencia";
-
-            //// Definir tamanho das colunas
-            //dgv.Columns["ProdutoID"].Width = 50;
-            //dgv.Columns["Produto"].Width = 250;
-            //dgv.Columns["Preco de Custo"].Width = 100;
-            //dgv.Columns["Lucro"].Width = 80;
-            //dgv.Columns["Preco de Venda"].Width = 90;
-            //dgv.Columns["Estoque"].Width = 70;
-            //dgv.Columns["Dta. Entrada"].Width = 90;
-            //dgv.Columns["Status"].Width = 70;
-            //dgv.Columns["Imagem"].Width = 100;
-            //dgv.Columns["Referencia"].Width = 100;
-
-
+            dgv.Columns[7].Name = "Status";            
+            dgv.Columns[8].Name = "Referencia";
+          
             // Ajustar colunas automaticamente
             dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
@@ -112,19 +98,7 @@ namespace SisControl.View
                         frm.txtEstoque.Text = dataGridPesquisar.CurrentRow.Cells["Estoque"].Value.ToString();                        
                         frm.dtpDataDeEntrada.Text = dataGridPesquisar.CurrentRow.Cells["Dta. Entrada"].Value.ToString();
                         frm.cmbStatus.Text = dataGridPesquisar.CurrentRow.Cells["Status"].Value.ToString();
-
-                        // Convertendo a imagem do DataGridView para exibi-la no PictureBox
-                        if (dataGridPesquisar.CurrentRow.Cells["Imagem"].Value != DBNull.Value)
-                        {
-                            byte[] imageBytes = (byte[])dataGridPesquisar.CurrentRow.Cells["Imagem"].Value;
-
-                            using (MemoryStream ms = new MemoryStream(imageBytes))
-                            {
-                                frm.pictureBoxProduto.Image = System.Drawing.Image.FromStream(ms);
-                            }
-                        }
-
-                        frm.txtReferencia.Text = dataGridPesquisar.CurrentRow.Cells["Referencia"].Value.ToString();                        
+                        frm.txtReferencia.Text = dataGridPesquisar.CurrentRow.Cells["Referencia"].Value.ToString();                       
                         
 
                         frm.Text = "SISCONTROL - ALTERAR REGISTRO";
@@ -165,18 +139,6 @@ namespace SisControl.View
                         frm.txtEstoque.Text = dataGridPesquisar.CurrentRow.Cells["Estoque"].Value.ToString();
                         frm.dtpDataDeEntrada.Text = dataGridPesquisar.CurrentRow.Cells["Dta. Entrada"].Value.ToString();
                         frm.cmbStatus.Text = dataGridPesquisar.CurrentRow.Cells["Status"].Value.ToString();
-
-                        if (dataGridPesquisar.CurrentRow.Cells["Imagem"].Value != DBNull.Value)
-                        {
-                            byte[] imageBytes = (byte[])dataGridPesquisar.CurrentRow.Cells["Imagem"].Value;
-
-                            using (MemoryStream ms = new MemoryStream(imageBytes))
-                            {
-                                frm.pictureBoxProduto.Image = System.Drawing.Image.FromStream(ms);
-                            }
-                        }
-
-
                         frm.txtReferencia.Text = dataGridPesquisar.CurrentRow.Cells["Referencia"].Value.ToString();
 
                         frm.Text = "SISCONTROL - EXCLUSÃO DE REGISTRO";

@@ -658,11 +658,7 @@ private void FrmMeuFormulario_Load(object sender, EventArgs e)
                 else if (c is KryptonGroupBox groupBox)
                 {
                     LimpaCampo(groupBox); // Recursivamente limpar os controles dentro do groupBox
-                }
-                else if (c is KryptonDataGridView dataGridView)
-                {
-                    dataGridView.Rows.Clear(); // Limpar todas as linhas do DataGridView
-                }
+                }               
             }
         }
 

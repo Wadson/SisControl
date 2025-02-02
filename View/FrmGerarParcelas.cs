@@ -8,10 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
+using System.Data.SqlClient;
+using SisControl.DALL;
+using static SisControl.View.FrmContaReceberr;
 
 namespace SisControl.View
 {
-    public partial class FrmGerarParcelas : FrmModeloForm  
+    public partial class FrmGerarParcelas : FrmModeloForm
     {
         public int clienteID;
         public int vendaID;
@@ -21,14 +24,25 @@ namespace SisControl.View
         public string nomeCliente = "";
         public DateTime dataVencimento;
         private string QueryParcela = "SELECT MAX(ParcelaID)  FROM Parcela";
-        public FrmGerarParcelas()
+
+        private Form _formChamador;
+        public FrmGerarParcelas(Form formChamador, int vendaID, decimal valorTotal)
         {
             InitializeComponent();
-            
+            _formChamador = formChamador;
+            this.VendaID = vendaID;
+            this.ValorTotal = valorTotal;
+
             this.valorTotal = valorTotal;
             this.numeroParcelas = numeroParcelas;
-            this.parcelas = new List<ParcelaModel>();           
+            this.parcelas = new List<ParcelaModel>();
         }
+
+
+        private int VendaID;
+        private decimal ValorTotal;
+
+
         public int parcelaID { get; set; }
 
         // Método público para definir o valor de parcelaID
@@ -97,16 +111,7 @@ namespace SisControl.View
 
                 // Personalizar o DataGridView
                 PersonalizarDataGridParcelas();
-                // Passar os dados para o FrmPedido
-                FrmPedido frmPedidos = Application.OpenForms.OfType<FrmPedido>().FirstOrDefault();
-                if (frmPedidos != null)
-                {
-                    frmPedidos.ReceberDadosParcelas(dt);
-                }
-                else
-                {
-                    MessageBox.Show("FrmPedido não está aberto.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                // Passar os dados para o FrmPedido               
             }
             catch (Exception ex)
             {
@@ -114,72 +119,26 @@ namespace SisControl.View
             }
         }
 
-        //private void GerarParcelas()
-        //{
-        //    try
-        //    {
-        //        int dias = Convert.ToInt32(txtDias.Text);
-        //        string nomeCliente = txtNomeCliente.Text;
-        //        int numeroParcelas = Convert.ToInt32(txtQtdParcelas.Text);
-        //        decimal valorTotal = Convert.ToDecimal(txtTotal.Text);
-        //        DateTime dataVencimento = Convert.ToDateTime(dtPrimeiraParc.Value).Date;
-        //        decimal valorParcela = Math.Round(valorTotal / numeroParcelas, 2);
-
-        //        DataTable dt = dataGrid_Parcelas.DataSource as DataTable;
-
-        //        if (dt == null || dt.Columns.Count == 0)
-        //        {
-        //            dt = new DataTable();
-        //            dt.Columns.Add("ParcelaID", typeof(int));
-        //            dt.Columns.Add("ValorParcela", typeof(decimal));
-        //            dt.Columns.Add("NumeroParcela", typeof(int));
-        //            dt.Columns.Add("DataVencimento", typeof(DateTime));
-
-        //            dataGrid_Parcelas.DataSource = dt;
-        //        }
-        //        else
-        //        {
-        //            // Desvincula Temporariamente
-        //            dataGrid_Parcelas.DataSource = null;
-
-        //            dt.Rows.Clear();
-
-        //            // Reassocia a fonte de dados
-        //            dataGrid_Parcelas.DataSource = dt;
-        //        }
-
-        //        int parcelaID = Utilitario.GerarNovoCodigoID("ParcelaID", "Parcela");
-        //        for (var i = 0; i < numeroParcelas; i++)
-        //        {
-        //            dt.Rows.Add(parcelaID, valorParcela, i + 1, dataVencimento.AddDays(i * dias).Date);
-        //            parcelaID++;
-        //        }
-
-        //        FrmPedido frmPedidos = Application.OpenForms.OfType<FrmPedido>().FirstOrDefault();
-
-        //        if (frmPedidos != null)
-        //        {
-        //            frmPedidos.ReceberDadosParcelas(dt);
-        //        }
-        //        else
-        //        {
-        //            MessageBox.Show("FrmVendas não está aberto.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("Erro ao gerar parcelas: " + ex.Message + "\n" + ex.StackTrace, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //}
-
-
-        public List<ParcelaModel> ObterParcelas()
+        private void SalvarParcelas()
         {
-            return parcelas;
-        }
+            using (var connection = Conexao.Conex()) // Obtém a conexão do SQL Server Express
+            {
+                connection.Open();
+                using (var transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        InserirParcelas(connection, transaction); // Insere as parcelas dentro da transação
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        MessageBox.Show("Erro ao salvar parcelas: " + ex.Message);
+                    }
+                }
+            }
 
-        private void btnSair_Click(object sender, EventArgs e)
-        {           
         }
 
         private void kryptonTextBox1_Leave(object sender, EventArgs e)
@@ -197,9 +156,62 @@ namespace SisControl.View
             this.Close();
         }
 
+        private void FrmGerarParcelas_Load(object sender, EventArgs e)
+        {
+            txtTotal.Text = ValorTotal.ToString("N2");
+        }
+
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            SalvarParcelas();
+        }
+
         private void btnGerarParcelas_Click(object sender, EventArgs e)
         {
             GerarParcelas();
         }
+
+
+        public void InserirParcelas(SqlConnection connection, SqlTransaction transaction)
+        {
+            List<ParcelaModel> parcelas = new List<ParcelaModel>();
+
+            if (dgvParcelas.Rows.Count == 0 || dgvParcelas.Rows.Cast<DataGridViewRow>().All(r => r.IsNewRow))
+            {
+                return; // Se não houver parcelas, sai do método
+            }
+
+            // Loop através das linhas do DataGridView
+            foreach (DataGridViewRow row in dgvParcelas.Rows)
+            {
+                if (row.Cells["DataVencimento"].Value != null &&
+                    row.Cells["ValorParcela"].Value != null &&
+                    row.Cells["NumeroParcela"].Value != null)
+                {
+                    var parcela = new ParcelaModel
+                    {
+                        // Se a coluna ParcelaID for auto-incremento, não precisa preencher aqui
+                        VendaID = VendaID,
+                        NumeroParcela = Convert.ToInt32(row.Cells["NumeroParcela"].Value),
+                        DataVencimento = Convert.ToDateTime(row.Cells["DataVencimento"].Value),
+                        ValorParcela = Convert.ToDecimal(row.Cells["ValorParcela"].Value),
+                        ValorRecebido = 0,
+                        SaldoRestante = Convert.ToDecimal(row.Cells["ValorParcela"].Value),
+                        Pago = false
+                    };
+
+                    parcelas.Add(parcela);
+                }
+            }
+
+            // Insere todas as parcelas no banco de dados dentro da transação
+            ParcelaDAL dal = new ParcelaDAL(); // Criar uma instância da classe ParcelaDal
+            foreach (var parcela in parcelas)
+            {
+                dal.InsertParcela(parcela, connection, transaction);
+            }
+
+        }
+
     }
 }

@@ -1,10 +1,5 @@
 ﻿using SisControl.DALL;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace SisControl.View
@@ -13,30 +8,35 @@ namespace SisControl.View
     {
         private int ClienteID;
         protected int LinhaAtual = -1;
-        public Form FormChamador { get; set; }
         public int numeroComZeros { get; set; }
         public string nomeCliente { get; set; }
-        public FrmLocalizarCliente()
+
+        private Form _formChamador;
+        public FrmLocalizarCliente(Form formChamador)
         {
             InitializeComponent();
 
-
+            _formChamador = formChamador;
+            dataGridPesquisar.SelectionChanged += dataGridPesquisar_SelectionChanged;
             txtPesquisa.TextChanged += txtPesquisa_TextChanged;
             this.dataGridPesquisar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridPesquisar_KeyDown);
-
+            this.txtPesquisa.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPesquisa_KeyDown);
         }
+
+        public new int ObterLinhaAtual()
+        {
+            return LinhaAtual;
+        }
+
         private void InicializaDataGridView()
         {
-            //dataGridPesquisar.MultiSelect = false;
-
-            //Configuração das linhas do DataGridView
-
-            //Redimensiona o tamanho das colunas do DataGridView 
+            // Redimensiona o tamanho das colunas do DataGridView 
             dataGridPesquisar.Columns[0].Width = 100;
             dataGridPesquisar.Columns[1].Width = 200;
             dataGridPesquisar.Columns[2].Width = 110;
             dataGridPesquisar.Columns[3].Width = 110;
         }
+
         public void ListarCliente()
         {
             ClienteDALL dao = new ClienteDALL();
@@ -49,7 +49,7 @@ namespace SisControl.View
         {
             ListarCliente();
         }
-       
+
         private void txtPesquisa_TextChanged(object sender, EventArgs e)
         {
             string textoPesquisa = txtPesquisa.Text.ToLower();
@@ -74,44 +74,63 @@ namespace SisControl.View
 
         private void FrmLocalizarCliente_FormClosed(object sender, FormClosedEventArgs e)
         {
-            // Verifique se há linhas no dataGridPesquisar e se a linha atual é válida.
-            if (dataGridPesquisar.Rows.Count > 0 && LinhaAtual >= 0 && LinhaAtual < dataGridPesquisar.Rows.Count)
+            SelecionarCliente(); // Seleciona o cliente no dataGridPesquisar
+        }
+
+        private bool isSelectingProduct = false;
+
+        private void SelecionarCliente()
+        {
+            if (isSelectingProduct) return;
+            isSelectingProduct = true;
+
+            try
             {
-                // Obtém o ID do cliente da célula [0, LinhaAtual] do dataGridPesquisar e converte para inteiro.
-                ClienteID = Convert.ToInt32(dataGridPesquisar[0, LinhaAtual].Value);
-
-                // Acrescenta zeros à esquerda do ID do cliente até que ele tenha 4 dígitos.
-                numeroComZeros = int.Parse(Utilitario.AcrescentarZerosEsquerda(ClienteID, 4));
-
-                // Obtém o nome do cliente da célula [1, LinhaAtual] do dataGridPesquisar e converte para string.
-                nomeCliente = dataGridPesquisar[1, LinhaAtual].Value.ToString();
-
-                // Verifica se o formulário chamador é uma instância de FrmVendas.
-                if (FormChamador is FrmPedido frmPedido)
+                if (LinhaAtual < 0 || LinhaAtual >= dataGridPesquisar.Rows.Count)
                 {
-                    // Se for, define os textos dos campos txtClienteID e txtNomeCliente de FrmVendas.
-                    frmPedido.ClienteID = numeroComZeros;
-                    frmPedido.txtNomeCliente.Text = nomeCliente;
+                    MessageBox.Show("Linha inválida.");
+                    return;
                 }
-                // Verifica se o formulário chamador é uma instância de FrmContaReceber.
-                else if (FormChamador is FrmContaReceberr frmContaReceber)
+
+                if (dataGridPesquisar["ClienteID", LinhaAtual]?.Value == null ||
+                    dataGridPesquisar["NomeCliente", LinhaAtual]?.Value == null)
                 {
-                    // Se for, define os textos dos campos txtClienteID e txtNomeCliente de FrmContaReceber.
-                    frmContaReceber.txtClienteID.Text = numeroComZeros.ToString();
-                    frmContaReceber.txtNomeCliente.Text = nomeCliente;
+                    MessageBox.Show("Dados do cliente inválidos.");
+                    return;
                 }
-                else if (FormChamador is FrmRelatorios frmRelatorios)
+
+                ClienteID = int.Parse(dataGridPesquisar["ClienteID", LinhaAtual].Value.ToString());
+                nomeCliente = dataGridPesquisar["NomeCliente", LinhaAtual].Value.ToString();
+
+                if (this.Owner is FrmPedidoVendaNovo frmPedidoVendaNovo)
                 {
-                    // Se for, define os textos dos campos txtClienteID e txtNomeCliente de FrmContaReceber.
-                    frmRelatorios.txtClienteID.Text = numeroComZeros.ToString();
+                    frmPedidoVendaNovo.ClienteID = ClienteID;
+                    frmPedidoVendaNovo.txtNomeCliente.Text = nomeCliente;
+                }
+                else if (this.Owner is FrmContaReceberr frmContaReceberr)
+                {
+                    frmContaReceberr.txtClienteID.Text = ClienteID.ToString();
+                    frmContaReceberr.txtNomeCliente.Text = nomeCliente;
+                }
+                else if (this.Owner is FrmRelatorios frmRelatorios)
+                {
+                    frmRelatorios.txtClienteID.Text = ClienteID.ToString();
                     frmRelatorios.txtNomeCliente.Text = nomeCliente;
                 }
+                else
+                {
+                    MessageBox.Show("O formulário chamador não é reconhecido.");
+                }
+
+                this.Close();
             }
-            else
+            finally
             {
-                MessageBox.Show("Nenhum cliente encontrado para selecionar.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                isSelectingProduct = false;
             }
         }
+
+
 
         private void dataGridPesquisar_SelectionChanged(object sender, EventArgs e)
         {
@@ -131,6 +150,10 @@ namespace SisControl.View
             if (e.KeyCode == Keys.Down)
             {
                 dataGridPesquisar.Focus();
+                if (dataGridPesquisar.Rows.Count > 0)
+                {
+                    dataGridPesquisar.CurrentCell = dataGridPesquisar.Rows[0].Cells[0];
+                }
             }
         }
 
@@ -140,12 +163,17 @@ namespace SisControl.View
             {
                 txtPesquisa.Focus();
             }
-            // Adicione a navegação com as setas para cima e para baixo, se ainda não tiver
-
-            if (e.KeyCode == Keys.Enter)
+            else if (e.KeyCode == Keys.Enter)
             {
-                this.Close();
+                e.SuppressKeyPress = true; // Evita o "beep" do Enter no DataGridView
+
+                if (dataGridPesquisar.CurrentRow != null)
+                {
+                    LinhaAtual = dataGridPesquisar.CurrentRow.Index; // Atualiza a linha atual corretamente
+                    SelecionarCliente();
+                }
             }
         }
+
     }
 }

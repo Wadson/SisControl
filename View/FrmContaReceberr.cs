@@ -11,6 +11,7 @@ using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
+using Microsoft.Win32;
 using SisControl.DALL;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static SisControl.View.FrmContaReceberr;
@@ -23,7 +24,7 @@ namespace SisControl.View
         private FrmBaixarConta frmBaixarConta;
         public int vendaID { get; set; }
 
-        public FrmContaReceberr(FrmContaReceberr formChamador, Parcela parcela)
+        public FrmContaReceberr(Parcela parcela)
         {
             InitializeComponent();
 
@@ -134,47 +135,46 @@ namespace SisControl.View
         }
         private void AbrirFrmLocalizarCliente()
         {
-            if (!Application.OpenForms.OfType<FrmLocalizarCliente>().Any())
+            // Cria uma instância do frmLocalizarCliente e define o Owner como o FrmPedidoVendaNovo
+            FrmLocalizarCliente frmLocalizarCliente = new FrmLocalizarCliente(this)
             {
-                FrmLocalizarCliente frmLocalizarCliente = new FrmLocalizarCliente();
-                frmLocalizarCliente.FormChamador = this; // Define o formulário chamador
-                frmLocalizarCliente.ShowDialog();
-            }
+                Owner = this
+            };
+            frmLocalizarCliente.ShowDialog();
+            frmLocalizarCliente.Text = "Localizar Clientes";
         }
 
 
         private void LocalizarContaPorPeriodo()
         {
             string query = @"
-SELECT
-    Parcela.ParcelaID,                -- ID da parcela
-    Parcela.ValorParcela,             -- Valor da parcela
-    Parcela.NumeroParcela,            -- Número da parcela
-    ContaReceber.SaldoRestante,       -- Saldo restante da parcela
-    Parcela.DataVencimento,           -- Data de vencimento da parcela
-    Parcela.VendaID,                  -- ID da venda associada
-    ContaReceber.Pago,                -- Status de pagamento
-    Parcela.ValorRecebido,            -- Valor recebido da parcela
-    ContaReceber.DataRecebimento,     -- Data de recebimento da conta
-    Cliente.ClienteID,                -- Adicionando o ClienteID
-    Cliente.NomeCliente               -- Nome do cliente
-FROM
-    ContaReceber                      -- Tabela principal para pagamentos
-INNER JOIN
-    Parcela                           -- Relação entre parcelas e pagamentos
-    ON ContaReceber.ParcelaID = Parcela.ParcelaID
-INNER JOIN
-    Venda                             -- Relação entre vendas e parcelas
-    ON Parcela.VendaID = Venda.VendaID
-INNER JOIN
-    Cliente                           -- Relação entre Cliente e ContaReceber
-    ON Venda.ClienteID = Cliente.ClienteID
-WHERE 
-    Parcela.DataVencimento BETWEEN @DataVencimentoInicio AND @DataVencimentoFim  -- Filtrar por período de vencimento
-    AND Parcela.Pago = 0            -- Filtrar apenas parcelas não pagas
-ORDER BY 
-    Parcela.DataVencimento DESC;      -- Ordenar por data de vencimento em ordem decrescente
-";
+                                SELECT
+                                    Parcela.ParcelaID,                -- ID da parcela
+                                    Parcela.ValorParcela,             -- Valor da parcela
+                                    Parcela.NumeroParcela,            -- Número da parcela
+                                    Parcela.SaldoRestante,            -- Saldo restante da parcela
+                                    Parcela.DataVencimento,           -- Data de vencimento da parcela
+                                    Parcela.VendaID,                  -- ID da venda associada
+                                    Parcela.Pago,                -- Status de pagamento
+                                    Parcela.ValorRecebido,            -- Valor recebido da parcela    
+                                    Cliente.ClienteID,                -- Adicionando o ClienteID
+                                    Cliente.NomeCliente               -- Nome do cliente
+                                FROM
+                                    ContaReceber                      -- Tabela principal para pagamentos
+                                INNER JOIN
+                                    Parcela                           -- Relação entre parcelas e pagamentos   
+                                INNER JOIN
+                                    Venda                             -- Relação entre vendas e parcelas
+                                    ON Parcela.VendaID = Venda.VendaID
+                                INNER JOIN
+                                    Cliente                           -- Relação entre Cliente e ContaReceber
+                                    ON Venda.ClienteID = Cliente.ClienteID
+                                WHERE 
+                                    Parcela.DataVencimento BETWEEN @DataVencimentoInicio AND @DataVencimentoFim  -- Filtrar por período de vencimento
+                                    AND Parcela.Pago = 0            -- Filtrar apenas parcelas não pagas
+                                ORDER BY 
+                                    Parcela.DataVencimento DESC;      -- Ordenar por data de vencimento em ordem decrescente
+                                ";
 
 
 
@@ -212,32 +212,22 @@ ORDER BY
         public void ListarContaReceber()
         {
             string query = @"
-SELECT
-    Parcela.ParcelaID,                -- ID da parcela
-    Parcela.ValorParcela,             -- Valor da parcela
-    Parcela.NumeroParcela,            -- Número da parcela
-    ContaReceber.SaldoRestante,       -- Saldo restante da parcela
-    Parcela.DataVencimento,           -- Data de vencimento da parcela
-    Parcela.VendaID,                  -- ID da venda associada
-    ContaReceber.Pago,                -- Status de pagamento
-    Parcela.ValorRecebido,            -- Valor recebido da parcela
-    ContaReceber.DataRecebimento,     -- Data de recebimento da conta
-    Cliente.ClienteID,                -- Adicionando o ClienteID
-    Cliente.NomeCliente               -- Nome do cliente
-FROM
-    ContaReceber                      -- Tabela principal para pagamentos
-INNER JOIN
-    Parcela                           -- Relação entre parcelas e pagamentos
-    ON ContaReceber.ParcelaID = Parcela.ParcelaID
-INNER JOIN
-    Venda                             -- Relação entre vendas e parcelas
-    ON Parcela.VendaID = Venda.VendaID
-INNER JOIN
-    Cliente                           -- Relação entre Cliente e ContaReceber
-    ON Venda.ClienteID = Cliente.ClienteID
-WHERE 
-    ContaReceber.Pago = 0";
-
+                SELECT
+                    Parcela.ParcelaID,   
+                    Parcela.ValorParcela, 
+                    Parcela.NumeroParcela,   
+                    Parcela.SaldoRestante,     
+                    Parcela.DataVencimento, 
+                    Parcela.VendaID,           
+                    Parcela.Pago,              
+                    Parcela.ValorRecebido,         
+                    Cliente.ClienteID,              
+                    Cliente.NomeCliente            
+                FROM Parcela                          
+                INNER JOIN Venda ON Parcela.VendaID = Venda.VendaID
+                INNER JOIN Cliente ON Venda.ClienteID = Cliente.ClienteID
+                
+                WHERE Parcela.Pago = 0";
 
 
             string nomeParametro = "@ClienteID";
@@ -377,7 +367,7 @@ WHERE
                 gbStatus.Visible = true;
                 gbNome.Visible = false;
                 gbPeriodo.Visible = false;
-                btnFiltro.Location = new Point(430, 96);
+                btnFiltro.Location = new Point(430, 96);                
             }
             else if (selectedText == "Período")
             {
@@ -385,7 +375,7 @@ WHERE
                 gbPeriodo.Visible = true;
                 gbStatus.Visible = false;
                 gbNome.Visible = false;
-                btnFiltro.Location = new Point(609, 96);
+                btnFiltro.Location = new Point(609, 96);                
             }
             else if (selectedText == "Nome")
             {
@@ -401,7 +391,10 @@ WHERE
                 gbStatus.Visible = false;
                 gbPeriodo.Visible = false;
                 gbNome.Visible = false;
-                ListarContaReceber();
+                ListarContaReceber();               
+                
+                Utilitario.LimpaCampoKrypton(this);
+                LimparDataGrid();
             }
         }
 
@@ -412,8 +405,8 @@ WHERE
             LocalizarConta();
             if (dgvContasReceber.Rows.Count == 0)
             {
-                dgPagamentosParciais.DataSource = null;
-                dgPagamentosParciais.DataSource = new List<object>(); // Definir como uma lista vazia
+                dgvPagamentosParciais.DataSource = null;
+                dgvPagamentosParciais.DataSource = new List<object>(); // Definir como uma lista vazia
             }
 
             CalcularTotalDataGrid();
@@ -422,13 +415,6 @@ WHERE
         private void btnSair_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void btnLocalizarCliente_Click(object sender, EventArgs e)
-        {
-            FrmLocalizarCliente frmLocalizarCliente = new FrmLocalizarCliente();
-            frmLocalizarCliente.FormChamador = this; // Define o formulário chamador
-            frmLocalizarCliente.ShowDialog();
         }
         private void dgvContasReceber_SelectionChanged(object sender, EventArgs e)
         {
@@ -509,12 +495,12 @@ WHERE
 
                 string nomeParametro = "@ParcelaID";
                 string valorParametro = parcelaID.ToString();
-                Utilitario.PesquisarPorNomeMensagemSuprimida(query, nomeParametro, valorParametro, dgPagamentosParciais);
+                Utilitario.PesquisarPorNomeMensagemSuprimida(query, nomeParametro, valorParametro, dgvPagamentosParciais);
 
                 // Verifica se há dados no DataGridView antes de personalizar
-                if (dgPagamentosParciais.Rows.Count > 0)
+                if (dgvPagamentosParciais.Rows.Count > 0)
                 {
-                    PersonalizarDataGridViewPagParciais(dgPagamentosParciais);
+                    PersonalizarDataGridViewPagParciais(dgvPagamentosParciais);
                 }
                 else
                 {
@@ -594,10 +580,10 @@ WHERE
 
                         // 4. Excluir a parcela
                         ParcelaDAL parcelaDAL = new ParcelaDAL();
-                        parcelaDAL.ExcluirParcela(parcelaID);
+                        parcelaDAL.DeleteParcela(parcelaID);
 
                         // 5. Excluir a venda
-                        vendaDAL.ExcluirVenda(vendaID);
+                        vendaDAL.DeleteVenda(vendaID);
 
                         MessageBox.Show("Conta excluída com sucesso.", "Excluir conta", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         ListarContaReceber();
@@ -620,10 +606,17 @@ WHERE
             ExcluirTudo();
         }
 
+        private void LimparDataGrid()
+        {
+            dgvContasReceber.DataSource = null;
+            dgvPagamentosParciais.DataSource = null;
+            dgvPagamentosParciais.Rows.Clear();
+            dgvContasReceber.Rows.Clear();
+        }
 
         private void LocalizarContaPorNome()
         {
-            string clausulaWhere = "ContaReceber.Pago = 0 AND Cliente.NomeCliente = @NomeCliente";
+            string clausulaWhere = "Parcela.Pago = 0 AND Cliente.NomeCliente = @NomeCliente";
             var parametros = new Dictionary<string, object>
             {
                    { "@NomeCliente", txtNomeCliente.Text }
@@ -656,32 +649,73 @@ WHERE
         private void LocalizarContas(string clausulaWhere, Dictionary<string, object> parametros, DataGridView grid)
         {
             string query = $@"
-                                SELECT
-                                    Parcela.ParcelaID,                -- ID da parcela
-                                    Parcela.ValorParcela,             -- Valor da parcela
-                                    Parcela.NumeroParcela,            -- Número da parcela
-                                    ContaReceber.SaldoRestante,       -- Saldo restante da parcela
-                                    Parcela.DataVencimento,           -- Data de vencimento da parcela
-                                    Parcela.VendaID,                  -- ID da venda associada
-                                    ContaReceber.Pago,                -- Status de pagamento
-                                    Parcela.ValorRecebido,            -- Valor recebido da parcela
-                                    ContaReceber.DataRecebimento,     -- Data de recebimento da conta
-                                    Cliente.ClienteID,                -- Adicionando o ClienteID
-                                    Cliente.NomeCliente               -- Nome do cliente
-                                FROM
-                                    ContaReceber                      -- Tabela principal para pagamentos
-                                INNER JOIN
-                                    Parcela                           -- Relação entre parcelas e pagamentos
-                                    ON ContaReceber.ParcelaID = Parcela.ParcelaID
-                                INNER JOIN
-                                    Venda                             -- Relação entre vendas e parcelas
-                                    ON Parcela.VendaID = Venda.VendaID
-                                INNER JOIN
-                                    Cliente                           -- Relação entre Cliente e ContaReceber
-                                    ON Venda.ClienteID = Cliente.ClienteID
+                SELECT
+                    Parcela.ParcelaID,   
+                    Parcela.ValorParcela, 
+                    Parcela.NumeroParcela,   
+                    Parcela.SaldoRestante,     
+                    Parcela.DataVencimento, 
+                    Parcela.VendaID,           
+                    Parcela.Pago,              
+                    Parcela.ValorRecebido,         
+                    Cliente.ClienteID,              
+                    Cliente.NomeCliente            
+                FROM Parcela                          
+                INNER JOIN Venda ON Parcela.VendaID = Venda.VendaID
+                INNER JOIN Cliente ON Venda.ClienteID = Cliente.ClienteID
                                 {(string.IsNullOrWhiteSpace(clausulaWhere) ? "" : "WHERE " + clausulaWhere)}";
 
             Utilitario.PesquisarComParametros(query, parametros, grid);
+        }
+
+
+            // 6️ Pagamento das Parcelas
+            //O pagamento das parcelas deve ser feito em outra tela de Contas a Receber.
+            //Quando uma parcela for paga, insira um registro em ContaReceber.
+
+
+        private void RegistrarPagamento(int parcelaID, decimal valorPago)
+        {
+            using (var connection = Conexao.Conex())
+            {
+                connection.Open();
+                using (var transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        string updateParcela = "UPDATE Parcela SET ValorRecebido += @ValorPago, SaldoRestante -= @ValorPago, Pago = CASE WHEN SaldoRestante = 0 THEN 1 ELSE 0 END WHERE ParcelaID = @ParcelaID";
+                        using (SqlCommand cmd = new SqlCommand(updateParcela, connection, transaction))
+                        {
+                            cmd.Parameters.Add("@ParcelaID", SqlDbType.Int).Value = parcelaID;
+                            cmd.Parameters.Add("@ValorPago", SqlDbType.Decimal).Value = valorPago;
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        string insertConta = "INSERT INTO ContaReceber (VendaID, ParcelaID, DataRecebimento, ValorRecebido, SaldoRestante, Pago) VALUES (@VendaID, @ParcelaID, @DataRecebimento, @ValorRecebido, @SaldoRestante, @Pago)";
+                        using (SqlCommand cmd = new SqlCommand(insertConta, connection, transaction))
+                        {
+                            cmd.Parameters.Add("@VendaID", SqlDbType.Int).Value = vendaID;
+                            cmd.Parameters.Add("@ParcelaID", SqlDbType.Int).Value = parcelaID;
+                            cmd.Parameters.Add("@DataRecebimento", SqlDbType.DateTime).Value = DateTime.Now;
+                            cmd.Parameters.Add("@ValorRecebido", SqlDbType.Decimal).Value = valorPago;
+                            cmd.Parameters.Add("@SaldoRestante", SqlDbType.Decimal).Value = 0;
+                            cmd.Parameters.Add("@Pago", SqlDbType.Bit).Value = true;
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        transaction.Commit();
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                    }
+                }
+            }
+        }
+
+        private void btnLocalizarCliente_Click(object sender, EventArgs e)
+        {
+            AbrirFrmLocalizarCliente();
         }
     }
 }

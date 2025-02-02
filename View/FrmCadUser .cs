@@ -26,6 +26,7 @@ namespace SisControl
             InitializeComponent();
             this.StatusOperacao = statusOperacao;
             Utilitario.ConfigurarEventosDeFoco(this);
+            Utilitario.ConfigurarEventosDeFocoKrypton(this);
         }
        
         public void SalvarRegistro()

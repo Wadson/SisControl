@@ -115,8 +115,10 @@ namespace SisControl
 
         private void btnVendas_Click(object sender, EventArgs e)
         {
-            FrmPedido frm = new FrmPedido();
-            AbrirFormEnPanel(frm); 
+            //FrmPedido frm = new FrmPedido();
+            //AbrirFormEnPanel(frm); 
+            FrmPedidoVendaNovo frm = new FrmPedidoVendaNovo();
+            AbrirFormEnPanel(frm);
         }
 
         private void btnContasPagar_Click(object sender, EventArgs e)
@@ -128,7 +130,7 @@ namespace SisControl
            // Suponha que você tenha uma instância de Parcela
             Parcela parcela = new Parcela();           
             // Chama o construtor de FrmContaReceberr com os parâmetros necessários
-            FrmContaReceberr frm = new FrmContaReceberr(_frmContaReceberr, parcela); 
+            FrmContaReceberr frm = new FrmContaReceberr(parcela); 
             AbrirFormEnPanel(frm);                 
         }
 

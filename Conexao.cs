@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration; // Adicione este namespace
 
 namespace SisControl
 {
@@ -14,20 +15,17 @@ namespace SisControl
         {
             try
             {
-                //DESKTOP 
-                string conn = "Data Source=DESKTOP-WR\\SQLEXPRESS;Initial Catalog=bdsiscontrol;Integrated Security=True;";
-
-                //NOTEBOOK
-                //string conn = "Data Source=NOTEBOOK-DELL\\SQLEXPRESS;Initial Catalog=bdsiscontrol;Integrated Security=True;";
-
+                string conn = ConfigurationManager.ConnectionStrings["ConexaoBD"].ConnectionString;
                 SqlConnection myConn = new SqlConnection(conn);
                 return myConn;
             }
-            catch (SqlException ex) // SqlException
+            catch (SqlException ex)
             {
                 throw new Exception(ex.Message);
             }
         }
+
+
         public static SqlDataReader Sql_DataReader(string queryString)
         {
             var conexao = Conexao.Conex();

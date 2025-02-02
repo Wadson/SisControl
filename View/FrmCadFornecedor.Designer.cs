@@ -618,6 +618,7 @@
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.Text = "Cadastro de Fornecedor";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmCadFornecedor_FormClosed);
             this.Load += new System.EventHandler(this.FrmCadFornecedor_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

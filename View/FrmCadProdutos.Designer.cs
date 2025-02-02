@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBoxProduto = new System.Windows.Forms.PictureBox();
             this.btnSair = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnNovo = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnSalva = new ComponentFactory.Krypton.Toolkit.KryptonButton();
@@ -45,7 +44,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.btnLocalizarImagem = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.cmbStatus = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.txtEstoque = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.txtPrecoDeVenda = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
@@ -53,20 +51,10 @@
             this.txtPrecoCusto = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.txtReferencia = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.txtNomeProduto = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProduto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbStatus)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBoxProduto
-            // 
-            this.pictureBoxProduto.Location = new System.Drawing.Point(550, 108);
-            this.pictureBoxProduto.Name = "pictureBoxProduto";
-            this.pictureBoxProduto.Size = new System.Drawing.Size(207, 196);
-            this.pictureBoxProduto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxProduto.TabIndex = 172;
-            this.pictureBoxProduto.TabStop = false;
             // 
             // btnSair
             // 
@@ -314,7 +302,6 @@
             // 
             // kryptonPanel1
             // 
-            this.kryptonPanel1.Controls.Add(this.label28);
             this.kryptonPanel1.Controls.Add(this.label29);
             this.kryptonPanel1.Controls.Add(this.dtpDataDeEntrada);
             this.kryptonPanel1.Controls.Add(this.txtProdutoID);
@@ -322,7 +309,7 @@
             this.kryptonPanel1.Location = new System.Drawing.Point(21, 8);
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.SeparatorLowProfile;
-            this.kryptonPanel1.Size = new System.Drawing.Size(736, 61);
+            this.kryptonPanel1.Size = new System.Drawing.Size(532, 61);
             this.kryptonPanel1.TabIndex = 245;
             // 
             // label28
@@ -330,7 +317,7 @@
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
-            this.label28.Location = new System.Drawing.Point(226, 1);
+            this.label28.Location = new System.Drawing.Point(133, 14);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(255, 24);
             this.label28.TabIndex = 246;
@@ -342,7 +329,7 @@
             this.label29.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
             this.label29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
-            this.label29.Location = new System.Drawing.Point(566, 8);
+            this.label29.Location = new System.Drawing.Point(374, 8);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(138, 16);
             this.label29.TabIndex = 246;
@@ -351,7 +338,7 @@
             // dtpDataDeEntrada
             // 
             this.dtpDataDeEntrada.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDataDeEntrada.Location = new System.Drawing.Point(569, 27);
+            this.dtpDataDeEntrada.Location = new System.Drawing.Point(377, 27);
             this.dtpDataDeEntrada.Name = "dtpDataDeEntrada";
             this.dtpDataDeEntrada.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.dtpDataDeEntrada.Size = new System.Drawing.Size(145, 25);
@@ -407,67 +394,6 @@
             this.label11.Size = new System.Drawing.Size(73, 16);
             this.label11.TabIndex = 600;
             this.label11.Text = "ESTOQUE";
-            // 
-            // btnLocalizarImagem
-            // 
-            this.btnLocalizarImagem.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.Cluster;
-            this.btnLocalizarImagem.Location = new System.Drawing.Point(550, 71);
-            this.btnLocalizarImagem.Name = "btnLocalizarImagem";
-            this.btnLocalizarImagem.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
-            this.btnLocalizarImagem.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
-            this.btnLocalizarImagem.OverrideDefault.Back.ColorAngle = 45F;
-            this.btnLocalizarImagem.OverrideDefault.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
-            this.btnLocalizarImagem.OverrideDefault.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
-            this.btnLocalizarImagem.OverrideDefault.Border.ColorAngle = 45F;
-            this.btnLocalizarImagem.OverrideDefault.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnLocalizarImagem.OverrideDefault.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.btnLocalizarImagem.OverrideDefault.Border.Rounding = 20;
-            this.btnLocalizarImagem.OverrideDefault.Border.Width = 1;
-            this.btnLocalizarImagem.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
-            this.btnLocalizarImagem.Size = new System.Drawing.Size(207, 35);
-            this.btnLocalizarImagem.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
-            this.btnLocalizarImagem.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
-            this.btnLocalizarImagem.StateCommon.Back.ColorAngle = 45F;
-            this.btnLocalizarImagem.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
-            this.btnLocalizarImagem.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
-            this.btnLocalizarImagem.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnLocalizarImagem.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.btnLocalizarImagem.StateCommon.Border.Rounding = 0;
-            this.btnLocalizarImagem.StateCommon.Border.Width = 1;
-            this.btnLocalizarImagem.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnLocalizarImagem.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnLocalizarImagem.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLocalizarImagem.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
-            this.btnLocalizarImagem.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
-            this.btnLocalizarImagem.StatePressed.Back.ColorAngle = 135F;
-            this.btnLocalizarImagem.StatePressed.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
-            this.btnLocalizarImagem.StatePressed.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
-            this.btnLocalizarImagem.StatePressed.Border.ColorAngle = 135F;
-            this.btnLocalizarImagem.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnLocalizarImagem.StatePressed.Border.Rounding = 20;
-            this.btnLocalizarImagem.StatePressed.Border.Width = 1;
-            this.btnLocalizarImagem.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
-            this.btnLocalizarImagem.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
-            this.btnLocalizarImagem.StateTracking.Back.ColorAngle = 45F;
-            this.btnLocalizarImagem.StateTracking.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
-            this.btnLocalizarImagem.StateTracking.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
-            this.btnLocalizarImagem.StateTracking.Border.ColorAngle = 45F;
-            this.btnLocalizarImagem.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnLocalizarImagem.StateTracking.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.btnLocalizarImagem.StateTracking.Border.Rounding = 20;
-            this.btnLocalizarImagem.StateTracking.Border.Width = 1;
-            this.btnLocalizarImagem.TabIndex = 146;
-            this.btnLocalizarImagem.TabStop = false;
-            this.btnLocalizarImagem.Values.Text = "&Localizar Imagem";
-            this.btnLocalizarImagem.Click += new System.EventHandler(this.btnLocalizarImagem_Click);
             // 
             // cmbStatus
             // 
@@ -611,7 +537,8 @@
             // FrmCadProdutos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(766, 336);
+            this.ClientSize = new System.Drawing.Size(575, 336);
+            this.Controls.Add(this.label28);
             this.Controls.Add(this.txtEstoque);
             this.Controls.Add(this.txtPrecoDeVenda);
             this.Controls.Add(this.txtLucro);
@@ -620,7 +547,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtReferencia);
             this.Controls.Add(this.txtNomeProduto);
-            this.Controls.Add(this.btnLocalizarImagem);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
@@ -631,7 +557,6 @@
             this.Controls.Add(this.label21);
             this.Controls.Add(this.label25);
             this.Controls.Add(this.label27);
-            this.Controls.Add(this.pictureBoxProduto);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmCadProdutos";
@@ -643,7 +568,6 @@
             this.Text = "SisControl - Cadastro de Produtos";
             this.Load += new System.EventHandler(this.FrmCadProdutos_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmCadProdutos_KeyDown);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProduto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
@@ -654,7 +578,6 @@
         }
 
         #endregion
-        public System.Windows.Forms.PictureBox pictureBoxProduto;
         public ComponentFactory.Krypton.Toolkit.KryptonButton btnSair;
         public ComponentFactory.Krypton.Toolkit.KryptonButton btnNovo;
         public ComponentFactory.Krypton.Toolkit.KryptonButton btnSalva;
@@ -670,7 +593,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label11;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnLocalizarImagem;
         public ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker dtpDataDeEntrada;
         public ComponentFactory.Krypton.Toolkit.KryptonComboBox cmbStatus;
         public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtEstoque;

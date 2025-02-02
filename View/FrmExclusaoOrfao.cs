@@ -55,7 +55,7 @@ namespace SisControl.View
 
         private void btnExcluirVenda_Click(object sender, EventArgs e)
         {
-            ExcluirRegistro<int>(dgvVendas, "VendaID", id => new VendaDAL().ExcluirVenda(id), ListarVenda);
+            ExcluirRegistro<int>(dgvVendas, "VendaID", id => new VendaDAL().DeleteVenda(id), ListarVenda);
         }
 
         private void btnExcluirPagamentoParcial_Click(object sender, EventArgs e)
@@ -70,7 +70,7 @@ namespace SisControl.View
 
         private void btnExcluirParcelas_Click(object sender, EventArgs e)
         {
-            ExcluirRegistro<int>(dgvParcelas, "ParcelaID", id => new ParcelaDAL().ExcluirParcela(id), ListarParcelas);
+            ExcluirRegistro<int>(dgvParcelas, "ParcelaID", id => new ParcelaDAL().DeleteParcela(id), ListarParcelas);
         }
 
         private void btnExcluirItensVenda_Click(object sender, EventArgs e)

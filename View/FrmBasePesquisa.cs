@@ -17,8 +17,7 @@ namespace SisControl
         public FrmBasePesquisa()
         {
             InitializeComponent();
-        }
-       
+        }      
         private void txtPesquisa_Enter(object sender, EventArgs e)
         {
             txtPesquisa.BackColor = Color.AliceBlue;

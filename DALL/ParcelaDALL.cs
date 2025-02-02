@@ -1,59 +1,43 @@
 ﻿using SisControl.MODEL;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
+
 
 namespace SisControl.DALL
 {
     public class ParcelaDAL
-    {       
-        public void AddParcela(ParcelaModel parcela)
-        {
-            using (var connection = Conexao.Conex())
-            {
-                string query = @"INSERT INTO Parcela (ParcelaID, VendaID, NumeroParcela, DataVencimento, ValorParcela, ValorRecebido, SaldoRestante, Pago) 
-                             VALUES (@ParcelaID, @VendaID, @NumeroParcela, @DataVencimento, @ValorParcela, @ValorRecebido, @SaldoRestante, @Pago)";
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@VendaID", parcela.VendaID);
-                command.Parameters.AddWithValue("@NumeroParcela", parcela.NumeroParcela);
-                command.Parameters.AddWithValue("@DataVencimento", parcela.DataVencimento);
-                command.Parameters.AddWithValue("@ValorParcela", parcela.ValorParcela);
-                command.Parameters.AddWithValue("@ValorRecebido", parcela.ValorRecebido);                
-                command.Parameters.AddWithValue("@SaldoRestante", parcela.SaldoRestante);
-                command.Parameters.AddWithValue("@ParcelaID", parcela.ParcelaID);
-                command.Parameters.AddWithValue("@Pago", parcela.Pago);
-
-                connection.Open();
-                command.ExecuteNonQuery();
-            }
-        }
-
+    {
+        // Método para adicionar uma parcela
+      
+        // Método para atualizar uma parcela
         public void UpdateParcela(ParcelaModel parcela)
         {
             using (var connection = Conexao.Conex())
             {
-                string query = @"UPDATE Parcela SET DataVencimento = @DataVencimento, ValorParcela = @ValorParcela, StatusParcela = @StatusParcela, FormaPagamento = @FormaPagamento 
+                string query = @"UPDATE Parcela SET DataVencimento = @DataVencimento, ValorParcela = @ValorParcela, 
+                             ValorRecebido = @ValorRecebido, SaldoRestante = @SaldoRestante, Pago = @Pago 
                              WHERE ParcelaID = @ParcelaID";
                 SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@VendaID", parcela.VendaID);
-                command.Parameters.AddWithValue("@NumeroParcela", parcela.NumeroParcela);
                 command.Parameters.AddWithValue("@DataVencimento", parcela.DataVencimento);
                 command.Parameters.AddWithValue("@ValorParcela", parcela.ValorParcela);
                 command.Parameters.AddWithValue("@ValorRecebido", parcela.ValorRecebido);
                 command.Parameters.AddWithValue("@SaldoRestante", parcela.SaldoRestante);
-                command.Parameters.AddWithValue("@ParcelaID", parcela.ParcelaID);
                 command.Parameters.AddWithValue("@Pago", parcela.Pago);
+                command.Parameters.AddWithValue("@ParcelaID", parcela.ParcelaID);
 
                 connection.Open();
                 command.ExecuteNonQuery();
             }
         }
 
+        // Método para excluir uma parcela
         public void DeleteParcela(int parcelaId)
         {
             using (var connection = Conexao.Conex())
@@ -67,6 +51,7 @@ namespace SisControl.DALL
             }
         }
 
+        // Método para obter parcelas por VendaID
         public List<ParcelaModel> GetParcelas(int vendaId)
         {
             List<ParcelaModel> parcelas = new List<ParcelaModel>();
@@ -81,69 +66,65 @@ namespace SisControl.DALL
                 {
                     while (reader.Read())
                     {
-                        int parcelaID;
-                        int vendaID;
-
-                        // Verificar e converter ParcelaID e VendaID
-                        if (int.TryParse(reader["ParcelaID"].ToString(), out parcelaID) &&
-                            int.TryParse(reader["VendaID"].ToString(), out vendaID))
+                        parcelas.Add(new ParcelaModel
                         {
-                            parcelas.Add(new ParcelaModel
-                            {
-                                ParcelaID = parcelaID,
-                                VendaID = vendaID,
-                                NumeroParcela = (int)reader["NumeroParcela"],
-                                DataVencimento = (DateTime)reader["DataVencimento"],
-                                ValorParcela = (decimal)reader["ValorParcela"],
-                                ValorRecebido = (decimal)reader["ValorRecebido"],
-                                SaldoRestante = (decimal)reader["SaldoRestante"],
-                                Pago = (bool)reader["Pago"]
-                            });
-                        }
-                        else
-                        {
-                            // Lidando com falha de conversão
-                            throw new Exception("Falha ao converter ParcelaID ou VendaID para Guid.");
-                        }
+                            ParcelaID = Convert.ToInt32(reader["ParcelaID"]),
+                            VendaID = Convert.ToInt32(reader["VendaID"]),
+                            NumeroParcela = Convert.ToInt32(reader["NumeroParcela"]),
+                            DataVencimento = Convert.ToDateTime(reader["DataVencimento"]),
+                            ValorParcela = Convert.ToDecimal(reader["ValorParcela"]),
+                            ValorRecebido = Convert.ToDecimal(reader["ValorRecebido"]),
+                            SaldoRestante = Convert.ToDecimal(reader["SaldoRestante"]),
+                            Pago = Convert.ToBoolean(reader["Pago"])
+                        });
                     }
                 }
             }
             return parcelas;
         }
-        public void ExcluirParcela(int parcelaID)
-        {
-            string query = "DELETE FROM Parcela WHERE ParcelaID = @ParcelaID";
-            using (var conn = Conexao.Conex())
-            {
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@ParcelaID", parcelaID);
-                conn.Open();
-                cmd.ExecuteNonQuery();
-            }
-        }
+
+        // Método para listar todas as parcelas
         public DataTable ListarParcelas()
         {
-            var conn = Conexao.Conex();
-            try
+            using (var conn = Conexao.Conex())
             {
                 SqlCommand comando = new SqlCommand("SELECT * FROM Parcela", conn);
-
-                SqlDataAdapter daUsuario = new SqlDataAdapter();
-                daUsuario.SelectCommand = comando;
-
-                DataTable dtUsuario = new DataTable();
-                daUsuario.Fill(dtUsuario);
-                return dtUsuario;
-            }
-            catch (Exception erro)
-            {
-                throw erro;
-            }
-            finally
-            {
-                conn.Close();
+                SqlDataAdapter daParcela = new SqlDataAdapter(comando);
+                DataTable dtParcela = new DataTable();
+                daParcela.Fill(dtParcela);
+                return dtParcela;
             }
         }
+
+        // Método para salvar múltiplas parcelas
+
+        public void InsertParcela(ParcelaModel parcela, SqlConnection connection, SqlTransaction transaction)
+        {
+            try
+            {
+                string query = @"INSERT INTO Parcela (VendaID, NumeroParcela, DataVencimento, ValorParcela, ValorRecebido, SaldoRestante, Pago) 
+                         VALUES (@VendaID, @NumeroParcela, @DataVencimento, @ValorParcela, @ValorRecebido, @SaldoRestante, @Pago)";
+
+                using (SqlCommand cmd = new SqlCommand(query, connection, transaction))
+                {
+                    cmd.Parameters.AddWithValue("@VendaID", parcela.VendaID);
+                    cmd.Parameters.AddWithValue("@NumeroParcela", parcela.NumeroParcela);
+                    cmd.Parameters.AddWithValue("@DataVencimento", parcela.DataVencimento);
+                    cmd.Parameters.AddWithValue("@ValorParcela", parcela.ValorParcela);
+                    cmd.Parameters.AddWithValue("@ValorRecebido", parcela.ValorRecebido);
+                    cmd.Parameters.AddWithValue("@SaldoRestante", parcela.SaldoRestante);
+                    cmd.Parameters.AddWithValue("@Pago", parcela.Pago);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erro ao salvar parcela: {ex.Message}");
+            }
+        }
+
+
 
     }
 }

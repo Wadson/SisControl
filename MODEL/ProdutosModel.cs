@@ -17,8 +17,5 @@ namespace SisControl.MODEL
         public int QuantidadeEmEstoque { get; set; }
         public DateTime DataDeEntrada { get; set; } 
         public string Status { get; set; }
-        public byte[] Imagem { get; set; }
-       
-        
     }
 }

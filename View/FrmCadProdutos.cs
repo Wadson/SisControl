@@ -168,8 +168,7 @@ namespace SisControl.View
                 QuantidadeEmEstoque = int.Parse(txtEstoque.Text),
                 DataDeEntrada = dtpDataDeEntrada.Value,
                 Status = cmbStatus.Text,
-
-                Imagem = ImageToByteArray(pictureBoxProduto.Image), // Exemplo de conversão para byte array               
+                          
                 Referencia = txtReferencia.Text
             };
 
@@ -178,9 +177,7 @@ namespace SisControl.View
             produtosbll.Salvar(produto);
 
             MessageBox.Show("Produto salvo com sucesso!","Informação!", MessageBoxButtons.OK,MessageBoxIcon.Asterisk);
-            Utilitario.LimpaCampoKrypton(this);
-            // Limpar o PictureBox
-            pictureBoxProduto.Image = null;
+            Utilitario.LimpaCampoKrypton(this);           
             int NovoCodigo = Utilitario.GerarProximoCodigo(QueryProdutos);//RetornaCodigoContaMaisUm(QueryUsuario).ToString();
             string numeroComZeros = Utilitario.AcrescentarZerosEsquerda(NovoCodigo, 4);
             txtProdutoID.Text = numeroComZeros;
@@ -226,32 +223,12 @@ namespace SisControl.View
                     Referencia = txtReferencia.Text
                 };
 
-                // Verificar se há uma imagem carregada
-                if (pictureBoxProduto.Image != null)
-                {
-                    using (MemoryStream ms = new MemoryStream())
-                    {
-                        // Criar uma nova imagem a partir do PictureBox
-                        Image img = new Bitmap(pictureBoxProduto.Image);
-
-                        // Salvar a imagem no stream como PNG
-                        img.Save(ms, ImageFormat.Png);
-                        produto.Imagem = ms.ToArray();
-                    }
-                }
-                else
-                {
-                    produto.Imagem = null;
-                }
-
                 // Chamar o método AlterarProduto da BLL
                 ProdutoBLL produtosbll = new ProdutoBLL();
                 produtosbll.Alterar(produto);
 
                 MessageBox.Show("Produto alterado com sucesso!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                Utilitario.LimpaCampoKrypton(this);
-                // Limpar o PictureBox
-                pictureBoxProduto.Image = null;
+                Utilitario.LimpaCampoKrypton(this);            
                 this.Close();
                 ((FrmManutProduto)Application.OpenForms["FrmManutProduto"]).HabilitarTimer(true);
             }
@@ -260,49 +237,6 @@ namespace SisControl.View
                 MessageBox.Show("Erro ao Alterar o registro: " + ex.Message);
             }
         }
-
-
-
-
-        //public void Alterar()
-        //{
-        //    try
-        //    {
-        //        ProdutosModel objetoProduto = new ProdutosModel();
-
-        //        objetoProduto.NomeProduto = txtNomeProduto.Text;
-        //        objetoProduto.PrecoCusto = decimal.Parse(txtPrecoCusto.Text);
-        //        objetoProduto.Lucro = decimal.Parse(txtLucro.Text);
-        //        objetoProduto.PrecoDeVenda = decimal.Parse(txtPrecoDeVenda.Text);
-        //        objetoProduto.QuantidadeEmEstoque = int.Parse(txtEstoque.Text);
-        //        objetoProduto.DataDeEntrada = dtpDataDeEntrada.Value;
-        //        objetoProduto.Status = cmbStatus.Text;               
-
-        //        if (pictureBoxProduto.Image != null)
-        //        {
-        //            using (MemoryStream ms = new MemoryStream())
-        //            {
-        //                pictureBoxProduto.Image.Save(ms, pictureBoxProduto.Image.RawFormat);
-        //                objetoProduto.Imagem = ms.ToArray();
-        //            }
-        //        }
-
-        //        objetoProduto.Referencia = txtReferencia.Text;
-        //        objetoProduto.ProdutoID = int.Parse(txtProdutoID.Text);
-
-        //        ProdutoBLL produtoBll = new ProdutoBLL();
-        //        produtoBll.Alterar(objetoProduto);
-
-        //        MessageBox.Show("Registro Alterado com sucesso!", "Alteração!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-        //        ((FrmManutProduto)Application.OpenForms["FrmManutProduto"]).HabilitarTimer(true);// Habilita Timer do outro form Obs: O timer no outro form executa um Método.    
-        //        Utilitario.LimpaCampoKrypton(this);
-        //        this.Close();
-        //    }
-        //    catch (Exception erro)
-        //    {
-        //        MessageBox.Show("Erro ao Alterar o registro!!! " + erro);
-        //    }
-        //} 
 
 
         private void btnSalva_Click(object sender, EventArgs e)
@@ -346,33 +280,10 @@ namespace SisControl.View
         }
       
 
-
         private void btnLocalizarImagem_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
-
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                pictureBoxProduto.Image = new Bitmap(openFileDialog.FileName);
-            }
+        {           
         }
           
-
-        private byte[] ImageToByteArray(Image image)
-        {
-            if (image == null)
-            {
-                return null; // Ou retorne um array vazio: return new byte[0];
-            }
-
-            using (var ms = new MemoryStream())
-            {
-                image.Save(ms, image.RawFormat);
-                return ms.ToArray();
-            }
-        }
-
         private void txtPrecoCusto_Leave(object sender, EventArgs e)
         {
             txtPrecoCusto.BackColor = Color.White;

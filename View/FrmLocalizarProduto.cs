@@ -47,18 +47,6 @@ namespace SisControl.View
             dataGridPesquisar.Columns[5].Width = 100;
             dataGridPesquisar.Columns[6].Width = 110;
             dataGridPesquisar.Columns[7].Width = 110;
-
-            //this.dataGridPesquisar.Columns[0].Name = "Cód.Prod.";
-            //this.dataGridPesquisar.Columns[1].Name = "Produto";
-            //this.dataGridPesquisar.Columns[2].Name = "Custo (R$)";
-            //this.dataGridPesquisar.Columns[3].Name = "Lucro (R$)";
-            //this.dataGridPesquisar.Columns[4].Name = "Prc. Venda  (R$)";
-            //this.dataGridPesquisar.Columns[5].Name = "Estoque";
-            //this.dataGridPesquisar.Columns[6].Name = "Dta Entrada";
-            //this.dataGridPesquisar.Columns[7].Name = "Status";
-            //this.dataGridPesquisar.Columns[8].Name = "Imagem";
-            //this.dataGridPesquisar.Columns[9].Name = "Referência";
-
         }
         public new int ObterLinhaAtual()
         {
@@ -98,9 +86,9 @@ namespace SisControl.View
 
         // No FrmLocalizarProduto, após selecionar o produto e fechar o formulário
         private bool isSelectingProduct = false;
-       
+
         private void SelecionarProduto()
-{
+        {
             // Verifica se o processo de seleção de produto já está em andamento
             if (isSelectingProduct) return;
             isSelectingProduct = true;
@@ -115,7 +103,7 @@ namespace SisControl.View
                     MessageBox.Show("Linha inválida.");
                     return;
                 }
-                                // Verifica e obtém os valores das células NomeProduto e PrecoDeVenda
+                // Verifica e obtém os valores das células NomeProduto e PrecoDeVenda
                 if (dataGridPesquisar["NomeProduto", LinhaAtual]?.Value == null ||
                     dataGridPesquisar["PrecoDeVenda", LinhaAtual]?.Value == null ||
                     !decimal.TryParse(dataGridPesquisar["PrecoDeVenda", LinhaAtual].Value.ToString(), out PrecoUnitario))
@@ -126,31 +114,32 @@ namespace SisControl.View
                 }
 
                 // Converte o valor da célula NomeProduto para string
-                ProdutoID  = int.Parse(dataGridPesquisar["ProdutoID", LinhaAtual].Value.ToString());
-                NomeProduto =          dataGridPesquisar["NomeProduto", LinhaAtual].Value.ToString();
+                ProdutoID = int.Parse(dataGridPesquisar["ProdutoID", LinhaAtual].Value.ToString());
+                NomeProduto = dataGridPesquisar["NomeProduto", LinhaAtual].Value.ToString();
                 referencia = dataGridPesquisar["Referencia", LinhaAtual].Value.ToString();
 
                 // Acrescenta zeros à esquerda do ProdutoID
                 string numeroComZeros = Utilitario.AcrescentarZerosEsquerda(ProdutoID, 4);
 
                 // Obtém a instância do formulário FrmPedido (ou usa uma existente)
-                FrmPedido frmPedido = (FrmPedido)this.Owner;
-                if (frmPedido == null)
+
+                FrmPedidoVendaNovo frmPedidoVendaNovo = (FrmPedidoVendaNovo)this.Owner;
+                if (frmPedidoVendaNovo == null)
                 {
                     // Caso a instância de FrmPedido não esteja disponível, exibe uma mensagem de erro
                     MessageBox.Show("A instância de FrmPedido não está disponível.");
                     return;
                 }
 
+
                 // Preenche os campos no formulário FrmPedido com os dados do produto
-                frmPedido.ProdutoID = ProdutoID;
-                frmPedido.txtNomeProduto.Text = NomeProduto;
-                frmPedido.txtValorProduto.Text = PrecoUnitario.ToString();
-                frmPedido.txtQuantidade.Text = "1";
-                frmPedido.txtReferencia.Text = referencia;
+                frmPedidoVendaNovo.ProdutoID = ProdutoID;
+                frmPedidoVendaNovo.txtNomeProduto.Text = NomeProduto;
+                frmPedidoVendaNovo.txtValorProduto.Text = PrecoUnitario.ToString();
+                frmPedidoVendaNovo.txtQuantidade.Text = "1";                
 
                 // Calcula o subtotal
-                frmPedido.CalcularSubtotal();
+                frmPedidoVendaNovo.CalcularSubtotal();
 
                 // Fecha o formulário FrmLocalizarProduto
                 this.Close();
@@ -161,8 +150,8 @@ namespace SisControl.View
                 isSelectingProduct = false;
             }
         }
-   // Alterado em 23/01/2025***************ACIMA
-   
+        // Alterado em 23/01/2025***************ACIMA
+
         private void dataGridPesquisa_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             // Verifica se a linha clicada é válida
@@ -174,16 +163,16 @@ namespace SisControl.View
                 string precoUnitario = row.Cells["PrecoUnitario"].Value.ToString();
 
                 // Obter a instância do FrmVendas (Owner)
-                if (this.Owner is FrmPedido frmPedido)
+                if (this.Owner is FrmPedidoVendaNovo frmPedidoVendaNovo)
                 {
                     // Preencher os campos do FrmVendas
-                    frmPedido.ProdutoID = int.Parse(produtoId);
-                    frmPedido.txtNomeProduto.Text = nomeProduto;
-                    frmPedido.txtValorProduto.Text = precoUnitario;
-                    frmPedido.txtQuantidade.Text = "1"; // Define a quantidade padrão como 1
+                    frmPedidoVendaNovo.ProdutoID = int.Parse(produtoId);
+                    frmPedidoVendaNovo.txtNomeProduto.Text = nomeProduto;
+                    frmPedidoVendaNovo.txtValorProduto.Text = precoUnitario;
+                    frmPedidoVendaNovo.txtQuantidade.Text = "1"; // Define a quantidade padrão como 1
 
                     // Calcular o subtotal
-                    frmPedido.CalcularSubtotal();
+                    frmPedidoVendaNovo.CalcularSubtotal();
                 }
 
                 // Fecha o FrmLocalizarProduto

@@ -16,11 +16,7 @@ namespace SisControl
         public FrmModeloForm()
         {
             InitializeComponent();
-        }
-        public static class VariavelGlobal
-        {
-            public static string NomeFormulario = "";
-        }
+        }      
         private void FrmModeloForm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)

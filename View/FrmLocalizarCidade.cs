@@ -14,20 +14,17 @@ using static SisControl.FrmModeloForm;
 namespace SisControl.View
 {
     public partial class FrmLocalizarCidade : SisControl.FrmBasePesquisa
-    {
-        protected int LinhaAtual = -1;
-        FrmModeloForm frmModeloForm;
-        public FrmLocalizarCidade()
+    {       
+        private Form _formChamador;
+        protected int LinhaAtual = -1;        
+        public FrmLocalizarCidade(Form formChamador)
         {
             InitializeComponent();
-
+            _formChamador = formChamador;
             // Configurar o DataGridView (apenas exemplo, configure conforme necessário)
             dataGridPesquisar.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
-        public new int ObterLinhaAtual()
-        {
-            return LinhaAtual;
-        }
+       
         public void ListarCidade()
         {
             CidadeDALL dao = new CidadeDALL();
@@ -56,29 +53,32 @@ namespace SisControl.View
        
         private void FrmLocalizarCidade_FormClosing(object sender, FormClosingEventArgs e)
         {
-            frmModeloForm = new FrmModeloForm();
+           
             if (dataGridPesquisar.Rows.Count == 0 || dataGridPesquisar.CurrentRow == null)
             {
                 // O DataGridView está vazio, então saia do método
                 return;
             }
 
-            if (VariavelGlobal.NomeFormulario == "FrmCadCliente")
+            if (_formChamador is FrmCadCliente)
             {
                 LinhaAtual = dataGridPesquisar.CurrentRow.Index;
                 //((FrmVendas)Application.OpenForms["FrmVendas"]).txtIdCliente.Text = dataGridPesquisa[0, linhaAtual].Value.ToString();
                 ((FrmCadCliente)Application.OpenForms["FrmCadCliente"]).txtCidadeID.Text = dataGridPesquisar[0, LinhaAtual].Value?.ToString();
                 ((FrmCadCliente)Application.OpenForms["FrmCadCliente"]).txtNomeCidade.Text = dataGridPesquisar[1, LinhaAtual].Value?.ToString();
                 ((FrmCadCliente)Application.OpenForms["FrmCadCliente"]).txtEstadoCliente.Text = dataGridPesquisar[3, LinhaAtual].Value?.ToString();
+                // Limpar a variável global após o uso                
             }
-            if (VariavelGlobal.NomeFormulario == "FrmCadFornecedor")
+            if (_formChamador is FrmCadFornecedor)
             {
                 LinhaAtual = dataGridPesquisar.CurrentRow.Index;
 
                 ((FrmCadFornecedor)Application.OpenForms["FrmCadFornecedor"]).txtCidadeID.Text = dataGridPesquisar[0, LinhaAtual].Value?.ToString();
                 ((FrmCadFornecedor)Application.OpenForms["FrmCadFornecedor"]).txtNomeCidade.Text = dataGridPesquisar[1, LinhaAtual].Value?.ToString();
                 ((FrmCadFornecedor)Application.OpenForms["FrmCadFornecedor"]).txtEstado.Text = dataGridPesquisar[3, LinhaAtual].Value?.ToString();
+                // Limpar a variável global após o uso                
             }
+           
         }
 
         private void txtPesquisa_TextChanged(object sender, EventArgs e)
