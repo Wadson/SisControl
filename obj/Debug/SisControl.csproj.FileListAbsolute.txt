@@ -105,7 +105,6 @@ D:\SisControl\obj\Debug\SisControl.FrmCadUser.resources
 D:\SisControl\obj\Debug\SisControl.FrmModeloUI.resources
 D:\SisControl\obj\Debug\SisControl.FrmUsuario.resources
 D:\SisControl\obj\Debug\SisControl.FrmModeloForm.resources
-D:\SisControl\obj\Debug\SisControl.View.FrmPedido.resources
 D:\SisControl\obj\Debug\SisControl.View.FrmContaReceberr.resources
 D:\SisControl\obj\Debug\SisControl.FrmBaixarConta.resources
 D:\SisControl\obj\Debug\SisControl.View.FormPrincipal.resources
@@ -325,7 +324,6 @@ D:\SisControl\bin\Debug\System.Drawing.Common.pdb
 D:\SisControl\bin\Debug\System.Drawing.Common.xml
 D:\SisControl\obj\Debug\SisControl.View.Sobre.resources
 D:\SisControl\obj\Debug\SisControl.Relatorios.FrmRelGeralContasAbertas.resources
-D:\SisControl\obj\Debug\SisControl.Relatorios.FrmRelatorioPersonalizado.resources
 C:\SisControl\bin\Debug\SqlServerTypes\x64\msvcr120.dll
 C:\SisControl\bin\Debug\SqlServerTypes\x64\SqlServerSpatial140.dll
 C:\SisControl\bin\Debug\SqlServerTypes\x86\msvcr120.dll
@@ -521,3 +519,4 @@ C:\SisControl\obj\Debug\SisControl.csproj.Up2Date
 C:\SisControl\obj\Debug\SisControl.exe
 C:\SisControl\obj\Debug\SisControl.pdb
 C:\SisControl\obj\Debug\SisControl.View.FrmPedidoVendaNovo.resources
+D:\SisControl\obj\Debug\SisControl.View.FrmPedidoVendaNovo.resources

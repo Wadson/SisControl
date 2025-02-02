@@ -69,7 +69,8 @@ namespace SisControl.View
 
             // Oculta as colunas de CódigoID (se necessário)
             dgvContasReceber.Columns["VendaID"].Visible = false;
-
+            dgvContasReceber.Columns["ParcelaID"].Visible = false;
+            dgvContasReceber.Columns["ClienteID"].Visible = false;
             // Formata as colunas de valores no formato de moeda ("N2")            
             dgvContasReceber.Columns["ValorParcela"].DefaultCellStyle.Format = "N2";
             dgvContasReceber.Columns["SaldoRestante"].DefaultCellStyle.Format = "N2";

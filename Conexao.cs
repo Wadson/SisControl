@@ -15,7 +15,7 @@ namespace SisControl
         {
             try
             {
-                string conn = ConfigurationManager.ConnectionStrings["ConexaoBD"].ConnectionString;
+                string conn = ConfigurationManager.ConnectionStrings["ConexaoDB"].ConnectionString;
                 SqlConnection myConn = new SqlConnection(conn);
                 return myConn;
             }

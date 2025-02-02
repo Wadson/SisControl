@@ -287,6 +287,11 @@
     <Compile Include="DALL\ProdutosDal.cs" />
     <Compile Include="DALL\UsuarioDALL.cs" />
     <Compile Include="DALL\VendaDALL.cs" />
+    <Compile Include="DataSetBdSisControl.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetBdSisControl.xsd</DependentUpon>
+    </Compile>
     <Compile Include="MODEL\CidadeMODEL.cs" />
     <Compile Include="MODEL\PagamentoParcialModel.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -639,6 +644,17 @@
     </None>
     <None Include="bdsiscontrolDataSet1.xss">
       <DependentUpon>bdsiscontrolDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetBdSisControl.xsc">
+      <DependentUpon>DataSetBdSisControl.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetBdSisControl.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetBdSisControl.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSetBdSisControl.xss">
+      <DependentUpon>DataSetBdSisControl.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
