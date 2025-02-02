@@ -98,24 +98,30 @@ namespace SisControl.DALL
 
         // Método para salvar múltiplas parcelas
 
-        public void InsertParcela(ParcelaModel parcela, SqlConnection connection, SqlTransaction transaction)
+        public void InsertParcela(ParcelaModel parcela)
         {
             try
             {
-                string query = @"INSERT INTO Parcela (VendaID, NumeroParcela, DataVencimento, ValorParcela, ValorRecebido, SaldoRestante, Pago) 
-                         VALUES (@VendaID, @NumeroParcela, @DataVencimento, @ValorParcela, @ValorRecebido, @SaldoRestante, @Pago)";
-
-                using (SqlCommand cmd = new SqlCommand(query, connection, transaction))
+                using (SqlConnection connection = Conexao.Conex()) // Obtém a conexão do SQL Server Express
                 {
-                    cmd.Parameters.AddWithValue("@VendaID", parcela.VendaID);
-                    cmd.Parameters.AddWithValue("@NumeroParcela", parcela.NumeroParcela);
-                    cmd.Parameters.AddWithValue("@DataVencimento", parcela.DataVencimento);
-                    cmd.Parameters.AddWithValue("@ValorParcela", parcela.ValorParcela);
-                    cmd.Parameters.AddWithValue("@ValorRecebido", parcela.ValorRecebido);
-                    cmd.Parameters.AddWithValue("@SaldoRestante", parcela.SaldoRestante);
-                    cmd.Parameters.AddWithValue("@Pago", parcela.Pago);
+                    connection.Open();
+                    using (SqlCommand cmd = new SqlCommand(@"
+                INSERT INTO Parcela 
+                (ParcelaID, VendaID, NumeroParcela, DataVencimento, ValorParcela, ValorRecebido, SaldoRestante, Pago) 
+                VALUES 
+                (@ParcelaID, @VendaID, @NumeroParcela, @DataVencimento, @ValorParcela, @ValorRecebido, @SaldoRestante, @Pago)", connection))
+                    {
+                        cmd.Parameters.AddWithValue("@ParcelaID", parcela.ParcelaID);
+                        cmd.Parameters.AddWithValue("@VendaID", parcela.VendaID);
+                        cmd.Parameters.AddWithValue("@NumeroParcela", parcela.NumeroParcela);
+                        cmd.Parameters.AddWithValue("@DataVencimento", parcela.DataVencimento);
+                        cmd.Parameters.AddWithValue("@ValorParcela", parcela.ValorParcela);
+                        cmd.Parameters.AddWithValue("@ValorRecebido", parcela.ValorRecebido);
+                        cmd.Parameters.AddWithValue("@SaldoRestante", parcela.SaldoRestante);
+                        cmd.Parameters.AddWithValue("@Pago", parcela.Pago);
 
-                    cmd.ExecuteNonQuery();
+                        cmd.ExecuteNonQuery();
+                    }
                 }
             }
             catch (Exception ex)
@@ -123,6 +129,7 @@ namespace SisControl.DALL
                 throw new Exception($"Erro ao salvar parcela: {ex.Message}");
             }
         }
+
 
 
 

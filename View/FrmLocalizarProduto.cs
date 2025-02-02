@@ -71,11 +71,11 @@ namespace SisControl.View
 
             if (rbtCodigo.Checked)
             {
-                dataGridPesquisar.DataSource = dao.PesquisarPorCodigo(nome);
+                dataGridPesquisar.DataSource = dao.PesquisarProdutoPorCodido(nome);
             }
             else
             {
-                dataGridPesquisar.DataSource = dao.PesquisarPorNome(nome);
+                dataGridPesquisar.DataSource = dao.PesquisarProdutoPorNome(nome);
             }
         }
 

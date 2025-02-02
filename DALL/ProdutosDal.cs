@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
+using System.Windows.Forms;
 
 namespace SisControl.DALL
 {
@@ -151,7 +152,7 @@ namespace SisControl.DALL
             try
             {
 
-                SqlCommand sql = new SqlCommand("SELECT * FROM Produto WHERE ProdutoID LIKE '" + pesquisa + "%' ", conn);
+                SqlCommand sql = new SqlCommand("SELECT * FROM Produtos WHERE ProdutoID LIKE '" + pesquisa + "%' ", conn);
                 conn.Open();
                 SqlDataReader datareader;
                 ProdutosModel obj_Produto = new ProdutosModel();
@@ -165,7 +166,7 @@ namespace SisControl.DALL
                     obj_Produto.Lucro = Convert.ToDecimal(datareader["Lucro"]);
                     obj_Produto.PrecoDeVenda = Convert.ToDecimal(datareader["PrecoDeVenda"]);
                     obj_Produto.QuantidadeEmEstoque = Convert.ToInt32(datareader["QuantidadeEmEstoque"]);
-                    obj_Produto.DataDeEntrada = Convert.ToDateTime(datareader["DataEntrada"]);
+                    obj_Produto.DataDeEntrada = Convert.ToDateTime(datareader["DataDeEntrada"]);
                     obj_Produto.Status = datareader["Status"].ToString();
                     obj_Produto.Referencia = datareader["Referencia"].ToString();
                 }
@@ -181,42 +182,100 @@ namespace SisControl.DALL
             }
         }
 
-        public ProdutosModel PesquisarPorNome(string pesquisa)
+        //public ProdutosModel PesquisarPorNome(string pesquisa)
+        //{
+        //    var conn = Conexao.Conex();
+        //    try
+        //    {
+
+        //        SqlCommand sql = new SqlCommand("SELECT ProdutoID, NomeProduto, PrecoCusto, Lucro, PrecoDeVenda, QuantidadeEmEstoque, DataDeEntrada, Status, Referencia FROM Produtos WHERE NomeProduto LIKE @NomeProduto", conn);
+        //        conn.Open();
+        //        SqlDataReader datareader;
+        //        ProdutosModel obj_Produto = new ProdutosModel();
+
+        //        datareader = sql.ExecuteReader(CommandBehavior.CloseConnection);
+        //        while (datareader.Read())
+        //        {
+        //            obj_Produto.ProdutoID = Convert.ToInt32(datareader["ProdutoID"]);
+        //            obj_Produto.NomeProduto = datareader["NomeProduto"].ToString();
+        //            obj_Produto.PrecoCusto = Convert.ToDecimal(datareader["PrecoCusto"]);
+        //            obj_Produto.Lucro = Convert.ToDecimal(datareader["Lucro"]);
+        //            obj_Produto.PrecoDeVenda = Convert.ToDecimal(datareader["PrecoDeVenda"]);
+        //            obj_Produto.QuantidadeEmEstoque = Convert.ToInt32(datareader["QuantidadeEmEstoque"]);
+        //            obj_Produto.DataDeEntrada = Convert.ToDateTime(datareader["DataDeEntrada"]);
+        //            obj_Produto.Status = datareader["Status"].ToString();                
+
+        //            obj_Produto.Referencia = datareader["Referencia"].ToString();
+        //        }
+        //        return obj_Produto;
+        //    }
+        //    catch (Exception erro)
+        //    {
+        //        throw erro;
+        //    }
+        //    finally
+        //    {
+        //        conn.Close();
+        //    }
+        //}
+
+        public DataTable PesquisarProdutoPorNome(string nome)
         {
             var conn = Conexao.Conex();
             try
             {
+                DataTable dt = new DataTable();
 
-                SqlCommand sql = new SqlCommand("SELECT ProdutoID, NomeProduto, PrecoCusto, Lucro, PrecoDeVenda, QuantidadeEmEstoque, DataDeEtrada, Status, Referencia FROM Produto WHERE NomeProduto LIKE '" + pesquisa + "%' ", conn);
+                string sqlconn = "SELECT TOP (30) ProdutoID, NomeProduto, PrecoCusto, Lucro, PrecoDeVenda, QuantidadeEmEstoque, DataDeEntrada, Status, Referencia FROM Produtos WHERE NomeProduto LIKE @NomeProduto";
+
+
+                //string sqlconn = "SELECT TOP (30) * FROM Cliente WHERE NomeCliente LIKE @NomeCliente";
+                SqlCommand cmd = new SqlCommand(sqlconn, conn);
+                cmd.Parameters.AddWithValue("@NomeProduto", nome);
                 conn.Open();
-                SqlDataReader datareader;
-                ProdutosModel obj_Produto = new ProdutosModel();
-
-                datareader = sql.ExecuteReader(CommandBehavior.CloseConnection);
-                while (datareader.Read())
-                {
-                    obj_Produto.ProdutoID = Convert.ToInt32(datareader["ProdutoID"]);
-                    obj_Produto.NomeProduto = datareader["NomeProduto"].ToString();
-                    obj_Produto.PrecoCusto = Convert.ToDecimal(datareader["PrecoCusto"]);
-                    obj_Produto.Lucro = Convert.ToDecimal(datareader["Lucro"]);
-                    obj_Produto.PrecoDeVenda = Convert.ToDecimal(datareader["PrecoDeVenda"]);
-                    obj_Produto.QuantidadeEmEstoque = Convert.ToInt32(datareader["QuantidadeEmEstoque"]);
-                    obj_Produto.DataDeEntrada = Convert.ToDateTime(datareader["DataEntrada"]);
-                    obj_Produto.Status = datareader["Status"].ToString();                
-
-                    obj_Produto.Referencia = datareader["Referencia"].ToString();
-                }
-                return obj_Produto;
-            }
-            catch (Exception erro)
-            {
-                throw erro;
-            }
-            finally
-            {
+                cmd.ExecuteNonQuery();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
                 conn.Close();
+                conn.Dispose();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao executar a pesquisa: " + ex);
+                return null;
             }
         }
+        public DataTable PesquisarProdutoPorCodido(string codigo)
+        {
+            var conn = Conexao.Conex();
+            try
+            {
+                DataTable dt = new DataTable();
+
+                string sqlconn = "SELECT TOP (30) ProdutoID, NomeProduto, PrecoCusto, Lucro, PrecoDeVenda, QuantidadeEmEstoque, DataDeEntrada, Status, Referencia FROM Produtos WHERE ProdutoID LIKE @ProdutoID";
+
+
+                //string sqlconn = "SELECT TOP (30) * FROM Cliente WHERE NomeCliente LIKE @NomeCliente";
+                SqlCommand cmd = new SqlCommand(sqlconn, conn);
+                cmd.Parameters.AddWithValue("@ProdutoID", codigo);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+                conn.Close();
+                conn.Dispose();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao executar a pesquisa: " + ex);
+                return null;
+            }
+        }
+
+
+
     }
 }
 //Exemplo de como usar o DataTable

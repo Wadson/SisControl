@@ -72,7 +72,7 @@ namespace SisControl.BLL
             try
             {
                 produtodall = new ProdutosDal();
-                produtodall.PesquisarPorNome(ParametroNome);
+                produtodall.PesquisarProdutoPorNome(ParametroNome);
             }
             catch (SqlException erro)
             {
@@ -84,7 +84,7 @@ namespace SisControl.BLL
             try
             {
                 produtodall = new ProdutosDal();
-                produtodall.PesquisarPorNome(ParametroCodigo);
+                produtodall.PesquisarProdutoPorCodido(ParametroCodigo);
             }
             catch (SqlException erro)
             {

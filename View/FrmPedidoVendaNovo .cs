@@ -63,6 +63,7 @@ namespace SisControl.View
 
             // Configura o evento de clique no DataGridView
             dgvItensVenda.CellClick += dgvItensVenda_CellClick;
+            
 
             txtQuantidade.Leave += new EventHandler(txtQuantidade_Leave);
             txtValorProduto.Leave += new EventHandler(txtValorProduto_Leave); 
@@ -249,6 +250,7 @@ namespace SisControl.View
 
             txtQuantidade.Leave += txtQuantidade_Leave;
             txtValorProduto.Leave += txtValorProduto_Leave;
+            txtNomeCliente.Select();
         }
 
         private void LimparFormulario()
@@ -321,11 +323,26 @@ namespace SisControl.View
             txtValorTotal.Text = somaSubtotal.ToString("N2"); // ou lblSomaSubtotal.Text
         }
 
-       
 
+        private void Habilitabotoes()
+        {
+            if (radiobtnAVista.Checked)
+            {
+                // Se for à vista, habilita o botão FinalizarVenda e desabilita o Parcelar
+                btnFinalizarVenda.Enabled = true;
+                btnParcelar.Enabled = false;
+            }
+            else if (radiobtnParcelado.Checked)
+            {
+                // Se for parcelado, habilita o botão Parcelar e desabilita o FinalizarVenda
+                btnFinalizarVenda.Enabled = false;
+                btnParcelar.Enabled = true;
+            }
+        }
         private void FrmVendas_Load(object sender, EventArgs e)
         {
-            NovoCodigo();            
+            NovoCodigo();
+           Habilitabotoes();
         }
         public void ToMoney(KryptonTextBox text, string format = "N")
         {
@@ -452,25 +469,24 @@ namespace SisControl.View
 
         private void txtNomeCliente_KeyUp(object sender, KeyEventArgs e)
         {
-            string textoDigitado = txtNomeCliente.Text;
+            //string textoDigitado = txtNomeCliente.Text;
 
-            // Abre o formulário de pesquisa se ao menos uma letra for digitada
-            if (!string.IsNullOrWhiteSpace(textoDigitado))
-            {
-                FrmLocalizarCliente frmLocalizar = new FrmLocalizarCliente(this)
-                {
-                    txtPesquisa = { Text = textoDigitado } // Passa as letras digitadas
-                };
+            //// Abre o formulário de pesquisa se ao menos uma letra for digitada
+            //if (!string.IsNullOrWhiteSpace(textoDigitado))
+            //{
+            //    FrmLocalizarCliente frmLocalizar = new FrmLocalizarCliente(this)
+            //    {
+            //        txtPesquisa = { Text = textoDigitado } // Passa as letras digitadas
+            //    };
 
-                frmLocalizar.ShowDialog(); // Exibe o formulário como modal
+            //    frmLocalizar.ShowDialog(); // Exibe o formulário como modal
 
-                // Atualiza o campo com o cliente selecionado
-                if (!string.IsNullOrWhiteSpace(frmLocalizar.nomeCliente))
-                {
-                    txtNomeCliente.Text = frmLocalizar.nomeCliente;
-                    ClienteID = Convert.ToInt16(frmLocalizar.numeroComZeros);
-                }
-            }
+            //    // Atualiza o campo com o cliente selecionado
+            //    if (!string.IsNullOrWhiteSpace(frmLocalizar.nomeCliente))
+            //    {
+            //        txtNomeCliente.Text = frmLocalizar.nomeCliente;                   
+            //    }
+            //}
         }
 
         private void txtQuantidade_Leave_1(object sender, EventArgs e)
@@ -611,23 +627,7 @@ namespace SisControl.View
                 MessageBox.Show("Parcelas geradas com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        private void btnParcelar_Click_1(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtValorTotal.Text) || decimal.Parse(txtValorTotal.Text) <= 0)
-            {
-                MessageBox.Show("Informe um valor válido para a venda.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            using (FrmGerarParcelas formParcelas = new FrmGerarParcelas(this, VendaID, decimal.Parse(txtValorTotal.Text)))
-            {
-                if (formParcelas.ShowDialog() == DialogResult.OK)
-                {
-                    MessageBox.Show("Parcelas geradas com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-        }
-
+       
         private void dgvItensVenda_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete)
@@ -691,83 +691,97 @@ namespace SisControl.View
 
         private void btnFinalizarVenda_Click(object sender, EventArgs e)
         {
-            // Criar objeto de venda
-            if (radiobtnAVista.Checked == true)
+            FinalizarVenda();          
+        }
+        private void btnParcelar_Click_1(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtValorTotal.Text) || decimal.Parse(txtValorTotal.Text) <= 0)
+            {
+                MessageBox.Show("Informe um valor válido para a venda.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Salva a venda antes de abrir o formulário de parcelas
+            if (FinalizarVenda())
+            {
+                // Abre a tela FrmGerarParcelas para gerar as parcelas
+                using (FrmGerarParcelas formParcelas = new FrmGerarParcelas(this, VendaID, decimal.Parse(txtValorTotal.Text)))
+                {
+                    if (formParcelas.ShowDialog() == DialogResult.OK)
+                    {
+                        MessageBox.Show("Parcelas geradas e venda finalizada com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LimparDataGridView(dgvItensVenda);
+                        NovoCodigo();
+                    }
+                }
+            }          
+        }
+
+        public bool FinalizarVenda()
+        {
+            // Verifica a forma de pagamento
+            if (radiobtnAVista.Checked)
             {
                 formaPgto = "A Vista";
             }
-            else if (radiobtnParcelado.Checked == true)
+            else if (radiobtnParcelado.Checked)
             {
                 formaPgto = "Parcelado";
             }
             else
             {
                 MessageBox.Show("Selecione a forma de pagamento.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return false;
             }
+
+            // Gera um novo ID para a venda
+            VendaID = Utilitario.GerarNovoCodigoID("VendaID", "Venda");
+
+            // Criar objeto de venda com o ID gerado
             VendaModel venda = new VendaModel
             {
-                VendaID = VendaID,
+                VendaID = VendaID, // Define o ID gerado manualmente
                 ClienteID = ClienteID,
                 DataVenda = DateTime.Now,
                 ValorTotal = Convert.ToDecimal(txtValorTotal.Text),
                 FormaPgto = formaPgto,
             };
 
-            // Salvar a venda e obter o ID gerado
+            // Salvar a venda no banco de dados usando o ID gerado
             VendaDAL vendaDAL = new VendaDAL();
             vendaDAL.AddVenda(venda);
 
-            // Verifica se a venda foi salva com sucesso
+            // Verifica se a venda foi salva corretamente
             if (VendaID <= 0)
             {
                 MessageBox.Show("Erro ao salvar a venda!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return false;
             }
 
-            // Salvar Itens da Venda
+            // Salvar os itens da venda
             SalvarItensVenda(VendaID);
 
-            // Gerar parcelas conforme forma de pagamento
-            if (radiobtnAVista.Checked == true)
+            // Se for à vista, gera apenas uma parcela e finaliza a venda
+            if (radiobtnAVista.Checked)
             {
                 SalvarParcela(VendaID, venda.ValorTotal, formaPgto);
                 MessageBox.Show("Venda finalizada com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close(); // Fechar a tela de vendas
+                LimparDataGridView(dgvItensVenda);
+                return true;
             }
-            else if (radiobtnParcelado.Checked == true)
-            {
-                // Abrir a tela de geração de parcelas
-                FrmGerarParcelas frmParcelas = new FrmGerarParcelas(this, venda.VendaID, venda.ValorTotal);
-                frmParcelas.ShowDialog();
-                MessageBox.Show("Venda finalizada com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close(); // Fechar a tela de vendas após finalizar tudo
-            }
+
+            return true;
         }
 
-        private void SalvarItensVenda(int vendaID)
-        {
-            ItemVendaDAL itemVendaDAL = new ItemVendaDAL();
-            foreach (DataGridViewRow row in dgvItensVenda.Rows)
-            {
-                if (row.Cells["ProdutoID"].Value != null && row.Cells["Quantidade"].Value != null &&
-                    row.Cells["ValorProduto"].Value != null && row.Cells["Subtotal"].Value != null)
-                {
-                    ItemVendaModel itemVenda = new ItemVendaModel
-                    {
-                        VendaID = vendaID,
-                        ProdutoID = Convert.ToInt32(row.Cells["ProdutoID"].Value),
-                        Quantidade = Convert.ToInt32(row.Cells["Quantidade"].Value),
-                        PrecoUnitario = Convert.ToDecimal(row.Cells["ValorProduto"].Value),
-                        Subtotal = Convert.ToDecimal(row.Cells["Subtotal"].Value),
-                        ItemVendaID = ItemVendaID++, // Incrementa o ID do item    
-                    };
 
-                    itemVendaDAL.AddItemVenda(itemVenda);
-                    
-                }
-            }
-        }
+
+
+
+
+
+
+
+
 
         private void SalvarParcela(int vendaID, decimal valorTotal, string formaPagamento)
         {
@@ -776,7 +790,6 @@ namespace SisControl.View
             try
             {
                 ParcelaDAL parcelaDAL = new ParcelaDAL();
-                VendaDAL vendaDAL = new VendaDAL();
 
                 // Cria uma única parcela com vencimento imediato e a forma de pagamento definida
                 ParcelaModel parcela = new ParcelaModel
@@ -788,11 +801,10 @@ namespace SisControl.View
                     ValorParcela = valorTotal,
                     ValorRecebido = valorRecebido,
                     SaldoRestante = valorTotal - valorRecebido,
-                    Pago = valorRecebido >= valorTotal ? true : false // Definir o valor de Pago
+                    Pago = valorRecebido >= valorTotal // Define como pago se o valor recebido for suficiente
                 };
 
-                List<ParcelaModel> parcelas = new List<ParcelaModel> { parcela };
-                vendaDAL.InserirParcelas(parcela);
+                parcelaDAL.InsertParcela(parcela);
 
                 MessageBox.Show("Parcela salva com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -805,6 +817,40 @@ namespace SisControl.View
 
 
 
+        private void SalvarItensVenda(int vendaID)
+        {
+            ItemVendaDAL itemVendaDAL = new ItemVendaDAL();
+
+            foreach (DataGridViewRow row in dgvItensVenda.Rows)
+            {
+                if (row.Cells["ItemVendaID"].Value != null &&
+                    row.Cells["ProdutoID"].Value != null && row.Cells["Quantidade"].Value != null &&
+                    row.Cells["ValorProduto"].Value != null && row.Cells["Subtotal"].Value != null)
+                {
+                    ItemVendaModel itemVenda = new ItemVendaModel
+                    {
+                        ItemVendaID = Convert.ToInt32(row.Cells["ItemVendaID"].Value),
+                        VendaID = vendaID,
+                        ProdutoID = Convert.ToInt32(row.Cells["ProdutoID"].Value),
+                        Quantidade = Convert.ToInt32(row.Cells["Quantidade"].Value),
+                        PrecoUnitario = Convert.ToDecimal(row.Cells["ValorProduto"].Value),
+                        Subtotal = Convert.ToDecimal(row.Cells["Subtotal"].Value)
+                    };
+
+                    itemVendaDAL.AddItemVenda(itemVenda);
+                }
+            }
+        }
+
+        private void radiobtnAVista_CheckedChanged(object sender, EventArgs e)
+        {
+            Habilitabotoes();
+        }
+
+        private void radiobtnParcelado_CheckedChanged(object sender, EventArgs e)
+        {
+           Habilitabotoes();
+        }
     }
 }
 

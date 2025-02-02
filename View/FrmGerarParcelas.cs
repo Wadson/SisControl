@@ -24,6 +24,7 @@ namespace SisControl.View
         public string nomeCliente = "";
         public DateTime dataVencimento;
         private string QueryParcela = "SELECT MAX(ParcelaID)  FROM Parcela";
+        FrmPedidoVendaNovo frmPedidoVenda = new FrmPedidoVendaNovo();
 
         private Form _formChamador;
         public FrmGerarParcelas(Form formChamador, int vendaID, decimal valorTotal)
@@ -119,28 +120,8 @@ namespace SisControl.View
             }
         }
 
-        private void SalvarParcelas()
-        {
-            using (var connection = Conexao.Conex()) // Obtém a conexão do SQL Server Express
-            {
-                connection.Open();
-                using (var transaction = connection.BeginTransaction())
-                {
-                    try
-                    {
-                        InserirParcelas(connection, transaction); // Insere as parcelas dentro da transação
-                        transaction.Commit();
-                    }
-                    catch (Exception ex)
-                    {
-                        transaction.Rollback();
-                        MessageBox.Show("Erro ao salvar parcelas: " + ex.Message);
-                    }
-                }
-            }
 
-        }
-
+      
         private void kryptonTextBox1_Leave(object sender, EventArgs e)
         {
             GerarParcelas();
@@ -160,18 +141,88 @@ namespace SisControl.View
         {
             txtTotal.Text = ValorTotal.ToString("N2");
         }
+        //private void SalvarParcelas()
+        //{
+        //    using (var connection = Conexao.Conex()) // Obtém a conexão do SQL Server Express
+        //    {
+        //        connection.Open();
+        //        using (var transaction = connection.BeginTransaction())
+        //        {
+        //            try
+        //            {
+        //                // Antes de inserir parcelas, verificar se a venda já foi salva
+        //                if (!VendaExiste(frmPedidoVenda.VendaID, connection, transaction))
+        //                {
+        //                    throw new Exception("A venda ainda não foi salva no banco de dados.");
+        //                }
+
+        //                InserirParcelas(connection, transaction); // Insere as parcelas dentro da transação
+        //                transaction.Commit();
+
+        //                // Fecha a tela e retorna OK
+        //                this.DialogResult = DialogResult.OK;
+        //                this.Close();
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                transaction.Rollback();
+        //                MessageBox.Show("Erro ao salvar parcelas: " + ex.Message);
+        //            }
+        //        }
+        //    }
+        //}
+        //private bool VendaExiste(int vendaID, SqlConnection connection, SqlTransaction transaction)
+        //{
+        //    using (SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM Venda WHERE VendaID = @VendaID", connection, transaction))
+        //    {
+        //        cmd.Parameters.AddWithValue("@VendaID", vendaID);
+        //        return (int)cmd.ExecuteScalar() > 0;
+        //    }
+        //}
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
+            //// Primeiro, garantir que a venda e os itens sejam salvos antes de inserir as parcelas
+            //if (frmPedidoVenda.VendaID <= 0)
+            //{
+            //    frmPedidoVenda.SalvarVendaEItens();
+            //}
+
+            // Agora, podemos salvar as parcelas
             SalvarParcelas();
+
         }
 
         private void btnGerarParcelas_Click(object sender, EventArgs e)
         {
             GerarParcelas();
         }
+        private void SalvarParcelas()
+        {
+            using (var connection = Conexao.Conex()) // Obtém a conexão do SQL Server Express
+            {
+                connection.Open();
+                using (var transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        InserirParcelas(connection, transaction); // Insere as parcelas dentro da transação
+                        transaction.Commit();
 
+                        // Fecha a tela e retorna OK
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        MessageBox.Show("Erro ao salvar parcelas: " + ex.Message);
+                    }
+                }
+            }
+        }
 
+       
         public void InserirParcelas(SqlConnection connection, SqlTransaction transaction)
         {
             List<ParcelaModel> parcelas = new List<ParcelaModel>();
@@ -184,7 +235,8 @@ namespace SisControl.View
             // Loop através das linhas do DataGridView
             foreach (DataGridViewRow row in dgvParcelas.Rows)
             {
-                if (row.Cells["DataVencimento"].Value != null &&
+                if (row.Cells["ParcelaID"].Value != null &&
+                    row.Cells["DataVencimento"].Value != null &&
                     row.Cells["ValorParcela"].Value != null &&
                     row.Cells["NumeroParcela"].Value != null)
                 {
@@ -192,6 +244,7 @@ namespace SisControl.View
                     {
                         // Se a coluna ParcelaID for auto-incremento, não precisa preencher aqui
                         VendaID = VendaID,
+                        ParcelaID = Convert.ToInt32(row.Cells["ParcelaID"].Value),
                         NumeroParcela = Convert.ToInt32(row.Cells["NumeroParcela"].Value),
                         DataVencimento = Convert.ToDateTime(row.Cells["DataVencimento"].Value),
                         ValorParcela = Convert.ToDecimal(row.Cells["ValorParcela"].Value),
@@ -208,7 +261,7 @@ namespace SisControl.View
             ParcelaDAL dal = new ParcelaDAL(); // Criar uma instância da classe ParcelaDal
             foreach (var parcela in parcelas)
             {
-                dal.InsertParcela(parcela, connection, transaction);
+                dal.InsertParcela(parcela);
             }
 
         }

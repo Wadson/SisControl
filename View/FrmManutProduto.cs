@@ -174,7 +174,7 @@ namespace SisControl.View
             string nome = "%" + txtPesquisa.Text + "%";
             ProdutosDal objetoDal = new ProdutosDal();
 
-            dataGridPesquisar.DataSource = objetoDal.PesquisarPorNome(nome);
+            dataGridPesquisar.DataSource = objetoDal.PesquisarProdutoPorNome(nome);
             PersonalizarDataGridView(dataGridPesquisar);
         }
 
