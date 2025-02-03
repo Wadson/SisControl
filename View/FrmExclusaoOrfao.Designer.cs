@@ -30,10 +30,8 @@
         {
             this.dgvVendas = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.dgvPagamentosParciais = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.dgvContaReceber = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.dgvItensVenda = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.dgvParcelas = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.btnExcluirContaReceber = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnExcluirPagamentoParcial = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnExcluirVenda = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnExcluirParcelas = new ComponentFactory.Krypton.Toolkit.KryptonButton();
@@ -46,7 +44,6 @@
             this.btnSair = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVendas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPagamentosParciais)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvContaReceber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItensVenda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvParcelas)).BeginInit();
             this.SuspendLayout();
@@ -77,19 +74,6 @@
             this.dgvPagamentosParciais.Size = new System.Drawing.Size(249, 154);
             this.dgvPagamentosParciais.TabIndex = 597;
             // 
-            // dgvContaReceber
-            // 
-            this.dgvContaReceber.AllowUserToAddRows = false;
-            this.dgvContaReceber.AllowUserToDeleteRows = false;
-            this.dgvContaReceber.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvContaReceber.Location = new System.Drawing.Point(509, 82);
-            this.dgvContaReceber.MultiSelect = false;
-            this.dgvContaReceber.Name = "dgvContaReceber";
-            this.dgvContaReceber.ReadOnly = true;
-            this.dgvContaReceber.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvContaReceber.Size = new System.Drawing.Size(249, 154);
-            this.dgvContaReceber.TabIndex = 598;
-            // 
             // dgvItensVenda
             // 
             this.dgvItensVenda.AllowUserToAddRows = false;
@@ -115,66 +99,6 @@
             this.dgvParcelas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvParcelas.Size = new System.Drawing.Size(249, 154);
             this.dgvParcelas.TabIndex = 600;
-            // 
-            // btnExcluirContaReceber
-            // 
-            this.btnExcluirContaReceber.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.Cluster;
-            this.btnExcluirContaReceber.Location = new System.Drawing.Point(645, 237);
-            this.btnExcluirContaReceber.Name = "btnExcluirContaReceber";
-            this.btnExcluirContaReceber.OverrideDefault.Back.Color1 = System.Drawing.Color.Red;
-            this.btnExcluirContaReceber.OverrideDefault.Back.Color2 = System.Drawing.Color.Red;
-            this.btnExcluirContaReceber.OverrideDefault.Back.ColorAngle = 45F;
-            this.btnExcluirContaReceber.OverrideDefault.Border.Color1 = System.Drawing.Color.Red;
-            this.btnExcluirContaReceber.OverrideDefault.Border.Color2 = System.Drawing.Color.Red;
-            this.btnExcluirContaReceber.OverrideDefault.Border.ColorAngle = 45F;
-            this.btnExcluirContaReceber.OverrideDefault.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnExcluirContaReceber.OverrideDefault.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.btnExcluirContaReceber.OverrideDefault.Border.Rounding = 20;
-            this.btnExcluirContaReceber.OverrideDefault.Border.Width = 1;
-            this.btnExcluirContaReceber.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
-            this.btnExcluirContaReceber.Size = new System.Drawing.Size(113, 25);
-            this.btnExcluirContaReceber.StateCommon.Back.Color1 = System.Drawing.Color.Red;
-            this.btnExcluirContaReceber.StateCommon.Back.Color2 = System.Drawing.Color.Red;
-            this.btnExcluirContaReceber.StateCommon.Back.ColorAngle = 45F;
-            this.btnExcluirContaReceber.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
-            this.btnExcluirContaReceber.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
-            this.btnExcluirContaReceber.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnExcluirContaReceber.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.btnExcluirContaReceber.StateCommon.Border.Rounding = 0;
-            this.btnExcluirContaReceber.StateCommon.Border.Width = 1;
-            this.btnExcluirContaReceber.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnExcluirContaReceber.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnExcluirContaReceber.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcluirContaReceber.StatePressed.Back.Color1 = System.Drawing.Color.Red;
-            this.btnExcluirContaReceber.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
-            this.btnExcluirContaReceber.StatePressed.Back.ColorAngle = 135F;
-            this.btnExcluirContaReceber.StatePressed.Border.Color1 = System.Drawing.Color.Red;
-            this.btnExcluirContaReceber.StatePressed.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
-            this.btnExcluirContaReceber.StatePressed.Border.ColorAngle = 135F;
-            this.btnExcluirContaReceber.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnExcluirContaReceber.StatePressed.Border.Rounding = 20;
-            this.btnExcluirContaReceber.StatePressed.Border.Width = 1;
-            this.btnExcluirContaReceber.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
-            this.btnExcluirContaReceber.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
-            this.btnExcluirContaReceber.StateTracking.Back.ColorAngle = 45F;
-            this.btnExcluirContaReceber.StateTracking.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
-            this.btnExcluirContaReceber.StateTracking.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
-            this.btnExcluirContaReceber.StateTracking.Border.ColorAngle = 45F;
-            this.btnExcluirContaReceber.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnExcluirContaReceber.StateTracking.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.btnExcluirContaReceber.StateTracking.Border.Rounding = 20;
-            this.btnExcluirContaReceber.StateTracking.Border.Width = 1;
-            this.btnExcluirContaReceber.TabIndex = 627;
-            this.btnExcluirContaReceber.Values.Text = "&Excluir";
-            this.btnExcluirContaReceber.Click += new System.EventHandler(this.btnExcluirContaReceber_Click);
             // 
             // btnExcluirPagamentoParcial
             // 
@@ -556,10 +480,8 @@
             this.Controls.Add(this.btnExcluirParcelas);
             this.Controls.Add(this.btnExcluirVenda);
             this.Controls.Add(this.btnExcluirPagamentoParcial);
-            this.Controls.Add(this.btnExcluirContaReceber);
             this.Controls.Add(this.dgvParcelas);
             this.Controls.Add(this.dgvItensVenda);
-            this.Controls.Add(this.dgvContaReceber);
             this.Controls.Add(this.dgvPagamentosParciais);
             this.Controls.Add(this.dgvVendas);
             this.Name = "FrmExclusaoOrfao";
@@ -572,7 +494,6 @@
             this.Load += new System.EventHandler(this.FrmExclusaoOrfao_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvVendas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPagamentosParciais)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvContaReceber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItensVenda)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvParcelas)).EndInit();
             this.ResumeLayout(false);
@@ -583,10 +504,8 @@
         #endregion
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView dgvVendas;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView dgvPagamentosParciais;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridView dgvContaReceber;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView dgvItensVenda;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView dgvParcelas;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnExcluirContaReceber;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnExcluirPagamentoParcial;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnExcluirVenda;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnExcluirParcelas;

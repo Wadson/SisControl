@@ -18,12 +18,6 @@ namespace SisControl.MODEL
         public bool Pago { get; set; }
         public string FormaPagamento { get; set; }
 
-        public VendaModel Venda { get; set; }
-        public List<ContaReceberModel> ContasReceber { get; set; }
-
-        public ParcelaModel()
-        {
-            ContasReceber = new List<ContaReceberModel>();
-        }
+        public VendaModel Venda { get; set; }       
     }
 }

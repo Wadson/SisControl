@@ -147,34 +147,17 @@ namespace SisControl.View
 
         private void LocalizarContaPorPeriodo()
         {
-            string query = @"
-                                SELECT
-                                    Parcela.ParcelaID,                -- ID da parcela
-                                    Parcela.ValorParcela,             -- Valor da parcela
-                                    Parcela.NumeroParcela,            -- Número da parcela
-                                    Parcela.SaldoRestante,            -- Saldo restante da parcela
-                                    Parcela.DataVencimento,           -- Data de vencimento da parcela
-                                    Parcela.VendaID,                  -- ID da venda associada
-                                    Parcela.Pago,                -- Status de pagamento
-                                    Parcela.ValorRecebido,            -- Valor recebido da parcela    
-                                    Cliente.ClienteID,                -- Adicionando o ClienteID
-                                    Cliente.NomeCliente               -- Nome do cliente
-                                FROM
-                                    ContaReceber                      -- Tabela principal para pagamentos
-                                INNER JOIN
-                                    Parcela                           -- Relação entre parcelas e pagamentos   
-                                INNER JOIN
-                                    Venda                             -- Relação entre vendas e parcelas
-                                    ON Parcela.VendaID = Venda.VendaID
-                                INNER JOIN
-                                    Cliente                           -- Relação entre Cliente e ContaReceber
-                                    ON Venda.ClienteID = Cliente.ClienteID
-                                WHERE 
-                                    Parcela.DataVencimento BETWEEN @DataVencimentoInicio AND @DataVencimentoFim  -- Filtrar por período de vencimento
-                                    AND Parcela.Pago = 0            -- Filtrar apenas parcelas não pagas
-                                ORDER BY 
-                                    Parcela.DataVencimento DESC;      -- Ordenar por data de vencimento em ordem decrescente
-                                ";
+            string query = @"SELECT Parcela.ParcelaID, Parcela.ValorParcela,  Parcela.NumeroParcela, Parcela.SaldoRestante,  Parcela.DataVencimento,           
+                        Parcela.VendaID, Parcela.Pago, Parcela.ValorRecebido, Cliente.ClienteID, Cliente.NomeCliente               
+                    FROM  Parcela               
+                    INNER JOIN Parcela                          
+                    INNER JOIN Venda                            
+                        ON Parcela.VendaID = Venda.VendaID
+                    INNER JOIN Cliente                           
+                        ON Venda.ClienteID = Cliente.ClienteID
+                    WHERE  Parcela.DataVencimento BETWEEN @DataVencimentoInicio AND @DataVencimentoFim  -- Filtrar por período de vencimento
+                        AND Parcela.Pago = 0            -- Filtrar apenas parcelas não pagas
+                    ORDER BY  Parcela.DataVencimento DESC;      -- Ordenar por data de vencimento em ordem decrescente";
 
 
 
@@ -247,8 +230,7 @@ namespace SisControl.View
             using (connection)
             {
                 // Construir a consulta SQL com filtros opcionais
-                string query = @"SELECT Parcela.*, ContaReceber.* FROM ContaReceber INNER JOIN
-                         Parcela ON ContaReceber.ParcelaID = Parcela.ParcelaID;
+                string query = @"SELECT * Parcela;
 ";
 
                 SqlCommand command = new SqlCommand(query, connection);
@@ -288,13 +270,13 @@ namespace SisControl.View
                             cmdParcelas.ExecuteNonQuery();
                         }
 
-                        // Atualizar a tabela ContaReceber
-                        string queryContaReceber = @"UPDATE ContaReceber
-                                             SET DataRecebimento = @DataRecebimento,
-                                                 ValorRecebido = @ValorRecebido,
-                                                 Pago = CASE WHEN SaldoRestante - @ValorRecebido <= 0 THEN 1 ELSE 0 END,
-                                                 FormaPgtoID = @FormaPgtoID
-                                             WHERE ParcelaID = @ParcelaID";
+                        // Atualizar a tabela Parcela
+                        string queryContaReceber = @"UPDATE Parcela
+                                        SET DataVencimento = @DataRecebimento, 
+                                            ValorRecebido = @ValorRecebido, 
+                                            Pago = CASE WHEN SaldoRestante - @ValorRecebido <= 0 THEN 1 ELSE 0 END, 
+                                            FormaPagamento = @FormaPgtoID
+                                        WHERE ParcelaID = @ParcelaID;";
 
                         using (SqlCommand cmdContaReceber = new SqlCommand(queryContaReceber, conn, transaction))
                         {
@@ -573,11 +555,7 @@ namespace SisControl.View
                         // 2. Excluir pagamentos parciais relacionados
                         PagamentoParcialDal pagamentoParcialDAL = new PagamentoParcialDal();
                         pagamentoParcialDAL.ExcluirPagamentosParciaisPorParcelaID(parcelaID);
-
-                        // 3. Excluir contas a receber relacionadas
-                        ContaReceberDAL contaReceberDAL = new ContaReceberDAL();
-                        contaReceberDAL.ExcluirContasReceberPorParcelaID(parcelaID);
-
+                                              
                         // 4. Excluir a parcela
                         ParcelaDAL parcelaDAL = new ParcelaDAL();
                         parcelaDAL.DeleteParcela(parcelaID);
@@ -671,7 +649,7 @@ namespace SisControl.View
 
             // 6️ Pagamento das Parcelas
             //O pagamento das parcelas deve ser feito em outra tela de Contas a Receber.
-            //Quando uma parcela for paga, insira um registro em ContaReceber.
+            //Quando uma parcela for paga, marque o campo Pago = 0;
 
 
         private void RegistrarPagamento(int parcelaID, decimal valorPago)
@@ -688,18 +666,6 @@ namespace SisControl.View
                         {
                             cmd.Parameters.Add("@ParcelaID", SqlDbType.Int).Value = parcelaID;
                             cmd.Parameters.Add("@ValorPago", SqlDbType.Decimal).Value = valorPago;
-                            cmd.ExecuteNonQuery();
-                        }
-
-                        string insertConta = "INSERT INTO ContaReceber (VendaID, ParcelaID, DataRecebimento, ValorRecebido, SaldoRestante, Pago) VALUES (@VendaID, @ParcelaID, @DataRecebimento, @ValorRecebido, @SaldoRestante, @Pago)";
-                        using (SqlCommand cmd = new SqlCommand(insertConta, connection, transaction))
-                        {
-                            cmd.Parameters.Add("@VendaID", SqlDbType.Int).Value = vendaID;
-                            cmd.Parameters.Add("@ParcelaID", SqlDbType.Int).Value = parcelaID;
-                            cmd.Parameters.Add("@DataRecebimento", SqlDbType.DateTime).Value = DateTime.Now;
-                            cmd.Parameters.Add("@ValorRecebido", SqlDbType.Decimal).Value = valorPago;
-                            cmd.Parameters.Add("@SaldoRestante", SqlDbType.Decimal).Value = 0;
-                            cmd.Parameters.Add("@Pago", SqlDbType.Bit).Value = true;
                             cmd.ExecuteNonQuery();
                         }
 

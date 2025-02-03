@@ -26,8 +26,7 @@ namespace SisControl.View
     {
         private string QueryVendas = "SELECT MAX(VendaID) FROM Venda";
         private string QueryItensVenda = "SELECT MAX(ItemVendaID) FROM ItemVenda";
-        private string QueryParcela = "SELECT MAX(ParcelaID) FROM Parcela";
-        private string QueryContaReceber = "SELECT MAX(ContaReceberID) FROM ContaReceber";
+        private string QueryParcela = "SELECT MAX(ParcelaID) FROM Parcela";        
         private string QueryFormaPgto = "SELECT NomeFormaPgto, FormaPgtoID FROM FormaPgto";
         
         private int nextItemVendaID;
@@ -242,8 +241,7 @@ namespace SisControl.View
         {
             // Gera novos Códigos para as chaves primárias
             VendaID = Utilitario.GerarNovoCodigoID("VendaID", "Venda");
-            ItemVendaID = Utilitario.GerarNovoCodigoID("ItemVendaID", "ItemVenda");
-            ContaReceberID = Utilitario.GerarNovoCodigoID("ContaReceberID", "ContaReceber");
+            ItemVendaID = Utilitario.GerarNovoCodigoID("ItemVendaID", "ItemVenda");           
             ParcelaID = Utilitario.GerarNovoCodigoID("ParcelaID", "Parcela");
 
             txtVendaID.Text = VendaID.ToString();
@@ -764,7 +762,7 @@ namespace SisControl.View
             // Se for à vista, gera apenas uma parcela e finaliza a venda
             if (radiobtnAVista.Checked)
             {
-                SalvarParcela(VendaID, venda.ValorTotal, formaPgto);
+                SalvarParcela(VendaID, venda.ValorTotal);
                 MessageBox.Show("Venda finalizada com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LimparDataGridView(dgvItensVenda);
                 return true;
@@ -773,19 +771,9 @@ namespace SisControl.View
             return true;
         }
 
-
-
-
-
-
-
-
-
-
-
-        private void SalvarParcela(int vendaID, decimal valorTotal, string formaPagamento)
+        private void SalvarParcela(int vendaID, decimal valorTotal)
         {
-            decimal valorRecebido = decimal.Parse(txtValorRecebido.Text);
+            decimal valorRecebido = decimal.Parse(txtValorTotal.Text);
 
             try
             {
@@ -813,9 +801,6 @@ namespace SisControl.View
                 MessageBox.Show($"Erro ao salvar a parcela: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
-
 
         private void SalvarItensVenda(int vendaID)
         {

@@ -34,7 +34,7 @@
             // reportViewer1
             // 
             this.reportViewer1.DocumentMapWidth = 26;
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "SisControl.Relatorios.ReportGeralAberta.rdlc";
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "SisControl.Relatorios.ReportClienteAbertaGeral.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(12, 54);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;

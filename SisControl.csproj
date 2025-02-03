@@ -264,12 +264,10 @@
     </Compile>
     <Compile Include="BLL\CidadeBLL.cs" />
     <Compile Include="BLL\ClienteBLL.cs" />
-    <Compile Include="BLL\ContaReceberBLL.cs" />
     <Compile Include="BLL\FornecedorBLL.cs" />
     <Compile Include="BLL\ItensVendaBLL.cs" />
     <Compile Include="BLL\PagamentoParcialBll.cs" />
     <Compile Include="BLL\ProdutoBLL.cs" />
-    <Compile Include="BLL\RegistroPagamentoBLL.cs" />
     <Compile Include="BLL\UsuarioBLL.cs" />
     <Compile Include="BLL\VendaBLL.cs" />
     <Compile Include="Conexao.cs" />
@@ -278,20 +276,13 @@
     </Compile>
     <Compile Include="DALL\CidadeDALL.cs" />
     <Compile Include="DALL\ClienteDALL.cs" />
-    <Compile Include="DALL\ContaReceberDALL.cs" />
     <Compile Include="DALL\FornecedorDALL.cs" />
     <Compile Include="DALL\ItemVendaDALL.cs" />
-    <Compile Include="DALL\PagamentoDALL.cs" />
     <Compile Include="DALL\PagamentoParcialDal.cs" />
     <Compile Include="DALL\ParcelaDALL.cs" />
     <Compile Include="DALL\ProdutosDal.cs" />
     <Compile Include="DALL\UsuarioDALL.cs" />
     <Compile Include="DALL\VendaDALL.cs" />
-    <Compile Include="DataSetBdSisControl.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataSetBdSisControl.xsd</DependentUpon>
-    </Compile>
     <Compile Include="MODEL\CidadeMODEL.cs" />
     <Compile Include="MODEL\PagamentoParcialModel.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -503,7 +494,6 @@
       <DependentUpon>FrmManutUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="MODEL\ClienteMODEL.cs" />
-    <Compile Include="MODEL\ContaReceberMODEL.cs" />
     <Compile Include="MODEL\FornecedorMODEL.cs" />
     <Compile Include="MODEL\ItemVendaMODEL.cs" />
     <Compile Include="MODEL\PagamentoMODEL.cs" />
@@ -530,6 +520,7 @@
     <EmbeddedResource Include="Relatorios\RelClienteContaAberta.resx">
       <DependentUpon>RelClienteContaAberta.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\ReportClienteAbertaGeral.rdlc" />
     <EmbeddedResource Include="View\FormPrincipal.resx">
       <DependentUpon>FormPrincipal.cs</DependentUpon>
     </EmbeddedResource>
@@ -644,17 +635,6 @@
     </None>
     <None Include="bdsiscontrolDataSet1.xss">
       <DependentUpon>bdsiscontrolDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="DataSetBdSisControl.xsc">
-      <DependentUpon>DataSetBdSisControl.xsd</DependentUpon>
-    </None>
-    <None Include="DataSetBdSisControl.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSetBdSisControl.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DataSetBdSisControl.xss">
-      <DependentUpon>DataSetBdSisControl.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />

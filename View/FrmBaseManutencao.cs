@@ -27,7 +27,7 @@ namespace SisControl
         public string QueryFornecedor = "SELECT MAX(FornecedorID) FROM Fornecedor";
         public string QueryCliente = "SELECT MAX(ClienteID) FROM Cliente";
         public string QueryCentro = "SELECT MAX(CategoriaID) FROM Categoria";
-        public string QueryContasReceber = "SELECT MAX(ContaReceberID) FROM ContaReceber";
+        
 
         public string NomeUsuario { get; set; }
         public string NivelAcesso { get; set; }

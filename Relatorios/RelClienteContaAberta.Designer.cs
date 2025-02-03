@@ -194,6 +194,7 @@
             // 
             // reportViewer2
             // 
+            this.reportViewer2.LocalReport.ReportEmbeddedResource = "SisControl.Relatorios.ReportClienteAbertaGeral.rdlc";
             this.reportViewer2.Location = new System.Drawing.Point(24, 84);
             this.reportViewer2.Name = "reportViewer2";
             this.reportViewer2.ServerReport.BearerToken = null;

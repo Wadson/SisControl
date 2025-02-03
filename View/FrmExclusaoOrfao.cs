@@ -21,8 +21,7 @@ namespace SisControl.View
         private void CarregarDados()
         {
             ListarVenda();
-            ListarPagamentosParciais();
-            ListarContaReceber();
+            ListarPagamentosParciais();           
             ListarParcelas();
             ListarItensVenda();
         }
@@ -39,11 +38,7 @@ namespace SisControl.View
         public void ListarPagamentosParciais()
         {
             dgvPagamentosParciais.DataSource = new PagamentoParcialDal().ListarPagamentosParciais();
-        }
-        public void ListarContaReceber()
-        {
-            dgvContaReceber.DataSource = new ContaReceberDAL().ListarContasReceber();
-        }
+        }       
         public void ListarParcelas()
         {
             dgvParcelas.DataSource = new ParcelaDAL().ListarParcelas();
@@ -61,11 +56,6 @@ namespace SisControl.View
         private void btnExcluirPagamentoParcial_Click(object sender, EventArgs e)
         {
             ExcluirRegistro<int>(dgvPagamentosParciais, "PagamentoParcialID", id => new PagamentoParcialDal().ExcluirPagamentosParciaisPorParcelaID(id), ListarPagamentosParciais);
-        }
-
-        private void btnExcluirContaReceber_Click(object sender, EventArgs e)
-        {
-            ExcluirRegistro<int>(dgvContaReceber, "ContaReceberID", id => new ContaReceberDAL().ExcluirContasReceberPorParcelaID(id), ListarContaReceber);
         }
 
         private void btnExcluirParcelas_Click(object sender, EventArgs e)
