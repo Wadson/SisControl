@@ -55,7 +55,7 @@ namespace SisControl.DALL
             var conn = Conexao.Conex();
             try
             {
-                SqlCommand comando = new SqlCommand("SELECT ProdutoID, NomeProduto, PrecoCusto, Lucro, PrecoDeVenda, QuantidadeEmEstoque, DataDeEntrada, Status, Referencia FROM Produtos", conn);              
+                SqlCommand comando = new SqlCommand("SELECT ProdutoID, Referencia, NomeProduto, PrecoCusto, Lucro, PrecoDeVenda, QuantidadeEmEstoque, DataDeEntrada, Status FROM Produtos", conn);              
 
                 SqlDataAdapter daProduto = new SqlDataAdapter();
                 daProduto.SelectCommand = comando;
@@ -235,7 +235,7 @@ namespace SisControl.DALL
         {
             using (var conn = Conexao.Conex())
             {
-                string sql = "UPDATE Produto SET QuantidadeEstoque = QuantidadeEstoque + @Quantidade WHERE ProdutoID = @ProdutoID";
+                string sql = "UPDATE Produtos SET QuantidadeEmEstoque = QuantidadeEmEstoque + @Quantidade WHERE ProdutoID = @ProdutoID";
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@Quantidade", quantidade);
                 cmd.Parameters.AddWithValue("@ProdutoID", produtoID);

@@ -66,6 +66,7 @@ namespace SisControl.View
 
             int produtoID = Convert.ToInt32(txtProdutoID.Text);
             decimal lucro = precoVenda - precoCusto;
+            DateTime dataRegistro = dtpDataDeEntrada.Value;
 
             // Atualiza o estoque
             ProdutosDal produtoDal = new ProdutosDal();
@@ -87,31 +88,27 @@ namespace SisControl.View
             MessageBox.Show("Entrada de estoque registrada com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }
-         
-        private void PopularCombobox()
-        {
-            //using (var conn = Conexao.Conex())
-            //{
-            //    string sql = "SELECT ProdutoID, Nome FROM Produto";
-            //    SqlDataAdapter da = new SqlDataAdapter(sql, conn);
-            //    DataTable dt = new DataTable();
-            //    da.Fill(dt);
 
-            //    cmbProduto.DataSource = dt;
-            //    cmbProduto.DisplayMember = "Nome";
-            //    cmbProduto.ValueMember = "ProdutoID";
-            //}
-        }
-
+       
         private void FrmEntradaEstoque_Load(object sender, EventArgs e)
         {
-
         }
 
         private void btnNovo_Click(object sender, EventArgs e)
         {
             Utilitario.LimpaCampoKrypton(this);
             txtNomeProduto.Focus();
+        }
+
+        private void txtReferencia_Leave(object sender, EventArgs e)
+        {
+            string referencia = txtReferencia.Text;
+            Utilitario.PesquisarProdutoPorReferencia2(referencia, txtReferencia, txtNomeProduto, txtProdutoID);
+        }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -1291,6 +1291,53 @@ private void FrmMeuFormulario_Load(object sender, EventArgs e)
             }
         }
 
+
+        public static void PesquisarProdutoPorReferencia2(string referencia, KryptonTextBox texboxReferencia, KryptonTextBox texboxNome, KryptonTextBox texboxProdutoID)
+        {
+            // Evita a pesquisa vazia se o campo estiver em branco
+            if (string.IsNullOrWhiteSpace(referencia))
+            {
+                texboxNome.Clear();
+                texboxProdutoID.Clear();
+                return;
+            }
+
+            // Query para buscar o ProdutoID e o NomeProduto pela referência
+            string query = "SELECT ProdutoID, NomeProduto FROM Produtos WHERE Referencia = @Referencia";
+
+            try
+            {
+                using (SqlConnection conexao = Conexao.Conex())
+                {
+                    conexao.Open();
+                    SqlCommand comando = new SqlCommand(query, conexao);
+                    comando.Parameters.AddWithValue("@Referencia", referencia);
+
+                    // Executa a consulta e obtém o resultado
+                    using (SqlDataReader reader = comando.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            // Preenche os campos de NomeProduto e ProdutoID
+                            texboxProdutoID.Text = reader["ProdutoID"].ToString();
+                            texboxNome.Text = reader["NomeProduto"].ToString();
+                        }
+                        else
+                        {
+                            // Caso não encontre, limpar os campos
+                            texboxNome.Clear();
+                            texboxProdutoID.Clear();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao buscar o produto: " + ex.Message);
+            }
+        }
+
+
     }
 }
 

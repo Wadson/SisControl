@@ -9,15 +9,15 @@ namespace SisControl.DALL
 {
     internal class HistoricoProdutoDALL
     {
-        
 
-        // Método para inserir um novo histórico de preço
+
         public void InserirHistorico(BLL.HistoricoPrecoBLL historico)
         {
             using (var conn = Conexao.Conex())
             {
-                string sql = "INSERT INTO HistoricoPreco (ProdutoID, DataRegistro, PrecoCusto, Lucro, PrecoVenda, DataRegistro) " +
-                             "VALUES (@ProdutoID, @DataRegistro, @PrecoCusto, @Lucro, @PrecoVenda, GETDATE())";
+                // A consulta não inclui o HistoricoID, pois ele é auto-incremento
+                string sql = "INSERT INTO HistoricoPreco (ProdutoID, DataRegistro, PrecoCusto, Lucro, PrecoVenda) " +
+                             "VALUES (@ProdutoID, @DataRegistro, @PrecoCusto, @Lucro, @PrecoVenda)";
 
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@ProdutoID", historico.ProdutoID);
@@ -30,6 +30,7 @@ namespace SisControl.DALL
                 cmd.ExecuteNonQuery();
             }
         }
+
 
         // Método para obter o histórico de um produto específico
         public List<BLL.HistoricoPrecoBLL> ObterHistoricoPorProduto(int produtoID)

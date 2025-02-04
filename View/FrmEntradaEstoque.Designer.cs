@@ -60,7 +60,7 @@
             this.label28.BackColor = System.Drawing.Color.Transparent;
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
-            this.label28.Location = new System.Drawing.Point(92, 6);
+            this.label28.Location = new System.Drawing.Point(216, 10);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(217, 24);
             this.label28.TabIndex = 615;
@@ -161,13 +161,14 @@
             this.txtReferencia.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
             this.txtReferencia.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.txtReferencia.TabIndex = 602;
+            this.txtReferencia.Leave += new System.EventHandler(this.txtReferencia_Leave);
             // 
             // txtNomeProduto
             // 
             this.txtNomeProduto.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtNomeProduto.Location = new System.Drawing.Point(109, 108);
+            this.txtNomeProduto.Location = new System.Drawing.Point(12, 108);
             this.txtNomeProduto.Name = "txtNomeProduto";
-            this.txtNomeProduto.Size = new System.Drawing.Size(449, 30);
+            this.txtNomeProduto.Size = new System.Drawing.Size(546, 30);
             this.txtNomeProduto.StateCommon.Back.Color1 = System.Drawing.Color.White;
             this.txtNomeProduto.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.txtNomeProduto.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -222,11 +223,13 @@
             this.kryptonPanel1.Controls.Add(this.label29);
             this.kryptonPanel1.Controls.Add(this.dtpDataDeEntrada);
             this.kryptonPanel1.Controls.Add(this.label28);
+            this.kryptonPanel1.Controls.Add(this.txtProdutoID);
+            this.kryptonPanel1.Controls.Add(this.label23);
             this.kryptonPanel1.Location = new System.Drawing.Point(-7, 3);
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.kryptonPanel1.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.TabDockAutoHidden;
-            this.kryptonPanel1.Size = new System.Drawing.Size(700, 47);
+            this.kryptonPanel1.Size = new System.Drawing.Size(700, 64);
             this.kryptonPanel1.TabIndex = 614;
             // 
             // label29
@@ -235,7 +238,7 @@
             this.label29.BackColor = System.Drawing.Color.Transparent;
             this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
             this.label29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
-            this.label29.Location = new System.Drawing.Point(347, 15);
+            this.label29.Location = new System.Drawing.Point(576, 16);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(104, 16);
             this.label29.TabIndex = 246;
@@ -244,7 +247,7 @@
             // dtpDataDeEntrada
             // 
             this.dtpDataDeEntrada.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDataDeEntrada.Location = new System.Drawing.Point(453, 11);
+            this.dtpDataDeEntrada.Location = new System.Drawing.Point(571, 36);
             this.dtpDataDeEntrada.Name = "dtpDataDeEntrada";
             this.dtpDataDeEntrada.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.dtpDataDeEntrada.Size = new System.Drawing.Size(112, 25);
@@ -259,7 +262,7 @@
             // 
             // txtProdutoID
             // 
-            this.txtProdutoID.Location = new System.Drawing.Point(14, 108);
+            this.txtProdutoID.Location = new System.Drawing.Point(19, 31);
             this.txtProdutoID.Name = "txtProdutoID";
             this.txtProdutoID.ReadOnly = true;
             this.txtProdutoID.Size = new System.Drawing.Size(90, 30);
@@ -284,7 +287,7 @@
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
-            this.label23.Location = new System.Drawing.Point(27, 84);
+            this.label23.Location = new System.Drawing.Point(32, 7);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(69, 16);
             this.label23.TabIndex = 239;
@@ -347,6 +350,7 @@
             this.btnSair.StateTracking.Border.Width = 1;
             this.btnSair.TabIndex = 609;
             this.btnSair.Values.Text = "&Sair";
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
             // btnNovo
             // 
@@ -483,7 +487,7 @@
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
             this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
-            this.label25.Location = new System.Drawing.Point(114, 84);
+            this.label25.Location = new System.Drawing.Point(23, 89);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(121, 16);
             this.label25.TabIndex = 611;
@@ -584,8 +588,6 @@
             this.Controls.Add(this.btnLocalizarProduto);
             this.Controls.Add(this.txtQuantidade);
             this.Controls.Add(this.txtPrecoDeVenda);
-            this.Controls.Add(this.txtProdutoID);
-            this.Controls.Add(this.label23);
             this.Controls.Add(this.txtLucro);
             this.Controls.Add(this.txtPrecoCusto);
             this.Controls.Add(this.txtReferencia);

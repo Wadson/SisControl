@@ -39,14 +39,15 @@ namespace SisControl.View
         {
             // Renomear colunas
             dgv.Columns[0].Name = "ProdutoID";
-            dgv.Columns[1].Name = "Produto";
-            dgv.Columns[2].Name = "Preco de Custo";
-            dgv.Columns[3].Name = "Lucro";
-            dgv.Columns[4].Name = "Preco De Venda";
-            dgv.Columns[5].Name = "Estoque";
-            dgv.Columns[6].Name = "Dta. Entrada";
-            dgv.Columns[7].Name = "Status";            
-            dgv.Columns[8].Name = "Referencia";
+            dgv.Columns[1].Name = "Referencia";
+            dgv.Columns[2].Name = "Produto";
+            dgv.Columns[3].Name = "Preco de Custo";
+            dgv.Columns[4].Name = "Lucro";
+            dgv.Columns[5].Name = "Preco De Venda";
+            dgv.Columns[6].Name = "Estoque";
+            dgv.Columns[7].Name = "Dta. Entrada";
+            dgv.Columns[8].Name = "Status";            
+            
           
             // Ajustar colunas automaticamente
             dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;

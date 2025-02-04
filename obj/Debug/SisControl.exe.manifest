@@ -139,14 +139,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EnvDTE.dll" size="256032">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EnvDTE.dll" size="256040">
       <assemblyIdentity name="EnvDTE" version="8.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>9sMHCNrxdqd76Jr90VBg1cGr+3uVFdJIDtrPRomkxjg=</dsig:DigestValue>
+        <dsig:DigestValue>7qdNwiKU3ZoMZr3UU2ddTiqmLVpQj3lQNUqUO2d6/cQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -1003,14 +1003,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SisControl.exe" size="1685424">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SisControl.exe" size="1686960">
       <assemblyIdentity name="SisControl" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>2q8reL4p06RGqYAHmrcQwqgwRrBZXE87zJOnF8HnROU=</dsig:DigestValue>
+        <dsig:DigestValue>b8XBq2RCp9u9FBL1mC0Ovq0LukJNlGAcb56lstvA1Xc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -1341,13 +1341,13 @@
       <dsig:DigestValue>g9QqPSkzxtsk849i8aQiNUgyEDtAZWqqWehb+rOnGkA=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SisControl.exe.config" size="5550">
+  <file name="SisControl.exe.config" size="3586">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>k0BWRSb19kaiF3FYGJfCiQ3dUDQd4D7eBxvp9aUe0WI=</dsig:DigestValue>
+      <dsig:DigestValue>3eoe5bkdT7damUBSlxhiQrQ+n1b5eKJlx6fNhk7VVF0=</dsig:DigestValue>
     </hash>
   </file>
   <file name="SqlServerTypes\readme.htm" size="2369">

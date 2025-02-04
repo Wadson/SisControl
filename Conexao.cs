@@ -1,84 +1,103 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Configuration; // Adicione este namespace
 
 namespace SisControl
 {
     internal class Conexao
     {
+        // Método para obter a string de conexão dinamicamente
+        private static string GetConnectionString()
+        {
+            string nomeServidor = Environment.MachineName + @"\SQLEXPRESS"; // Obtém o nome do computador
+            string connString = $@"Data Source={nomeServidor};Initial Catalog=bdsiscontrol;Integrated Security=True;";
+
+            // Verifica se a string de conexão no App.config precisa ser atualizada
+            var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            var settings = config.ConnectionStrings.ConnectionStrings["ConexaoDB"];
+
+            if (settings == null)
+            {
+                config.ConnectionStrings.ConnectionStrings.Add(new ConnectionStringSettings("ConexaoDB", connString, "Microsoft.Data.SqlClient"));
+            }
+            else if (settings.ConnectionString != connString)
+            {
+                settings.ConnectionString = connString;
+            }
+
+            config.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("connectionStrings");
+
+            return connString;
+        }
+
         public static SqlConnection Conex()
         {
             try
             {
-                string conn = ConfigurationManager.ConnectionStrings["ConexaoDB"].ConnectionString;
+                string conn = GetConnectionString(); // Obtém a string de conexão
                 SqlConnection myConn = new SqlConnection(conn);
                 return myConn;
             }
             catch (SqlException ex)
             {
-                throw new Exception(ex.Message);
+                throw new Exception("Erro ao conectar ao banco de dados: " + ex.Message);
             }
         }
 
-
         public static SqlDataReader Sql_DataReader(string queryString)
         {
-            var conexao = Conexao.Conex();
+            var conexao = Conex();
             conexao.Open();
 
-            SqlCommand comando = new SqlCommand();
-            comando.CommandText = queryString;
-            comando.Connection = conexao;
-
+            SqlCommand comando = new SqlCommand(queryString, conexao);
             SqlDataReader reader = comando.ExecuteReader();
+
             return reader;
         }
 
         public static DataTable SQL_data_adapter(string query_String)
         {
             DataTable DataTableC = new DataTable();
-            var conexao = Conexao.Conex();
+            var conexao = Conex();
 
             try
             {
                 conexao.Open();
                 SqlDataAdapter adapter = new SqlDataAdapter(query_String, conexao);
-
                 adapter.Fill(DataTableC);
-
-                conexao.Dispose();
-                adapter.Dispose();
             }
-            catch
+            catch (Exception ex)
             {
+                throw new Exception("Erro ao executar consulta: " + ex.Message);
             }
+            finally
+            {
+                conexao.Close();
+            }
+
             return DataTableC;
         }
+
         public static bool execute_NON_query(string query_String, string ParametroBase, string parametroReal)
         {
             try
             {
-                var conexao = Conexao.Conex();
-
-                conexao.Open();
-
-                SqlCommand comando = new SqlCommand(query_String, conexao);
-
-                comando.Parameters.AddWithValue(ParametroBase, parametroReal);
-                comando.ExecuteNonQuery();
-
-                conexao.Dispose();
-                comando.Dispose();
+                using (var conexao = Conex())
+                {
+                    conexao.Open();
+                    using (SqlCommand comando = new SqlCommand(query_String, conexao))
+                    {
+                        comando.Parameters.AddWithValue(ParametroBase, parametroReal);
+                        comando.ExecuteNonQuery();
+                    }
+                }
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
-                return false;
+                throw new Exception("Erro ao executar comando SQL: " + ex.Message);
             }
         }
     }
