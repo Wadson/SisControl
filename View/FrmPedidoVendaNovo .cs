@@ -17,6 +17,7 @@ using System.Transactions;
 using Microsoft.IdentityModel.Tokens;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.RefAndLookup;
 using SisControl.DALL;
+using SisControl.BLL;
 
 
 
@@ -805,6 +806,7 @@ namespace SisControl.View
         private void SalvarItensVenda(int vendaID)
         {
             ItemVendaDAL itemVendaDAL = new ItemVendaDAL();
+            DALL.ProdutosDal produtoDAL = new DALL.ProdutosDal(); // Instância para atualizar o estoque
 
             foreach (DataGridViewRow row in dgvItensVenda.Rows)
             {
@@ -812,20 +814,29 @@ namespace SisControl.View
                     row.Cells["ProdutoID"].Value != null && row.Cells["Quantidade"].Value != null &&
                     row.Cells["ValorProduto"].Value != null && row.Cells["Subtotal"].Value != null)
                 {
+                    int produtoID = Convert.ToInt32(row.Cells["ProdutoID"].Value);
+                    int quantidadeVendida = Convert.ToInt32(row.Cells["Quantidade"].Value);
+
+                    // Criando o objeto ItemVenda
                     ItemVendaModel itemVenda = new ItemVendaModel
                     {
                         ItemVendaID = Convert.ToInt32(row.Cells["ItemVendaID"].Value),
                         VendaID = vendaID,
-                        ProdutoID = Convert.ToInt32(row.Cells["ProdutoID"].Value),
-                        Quantidade = Convert.ToInt32(row.Cells["Quantidade"].Value),
+                        ProdutoID = produtoID,
+                        Quantidade = quantidadeVendida,
                         PrecoUnitario = Convert.ToDecimal(row.Cells["ValorProduto"].Value),
                         Subtotal = Convert.ToDecimal(row.Cells["Subtotal"].Value)
                     };
 
+                    // Salvar item da venda no banco de dados
                     itemVendaDAL.AddItemVenda(itemVenda);
+
+                    // Atualizar o estoque do produto
+                    produtoDAL.AtualizarEstoqueVenda(produtoID, quantidadeVendida);
                 }
             }
         }
+
 
         private void radiobtnAVista_CheckedChanged(object sender, EventArgs e)
         {
@@ -836,6 +847,17 @@ namespace SisControl.View
         {
            Habilitabotoes();
         }
+
+        private void txtNomeProduto_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
+/*
+ * 4. Melhorias Futuras
+Exibir um alerta se o estoque ficar abaixo de um limite mínimo.
+Impedir vendas caso o estoque seja insuficiente.
+
+ * */

@@ -1,4 +1,5 @@
 ﻿using SisControl.DALL;
+using SisControl.Relatorios;
 using System;
 using System.Windows.Forms;
 
@@ -116,6 +117,11 @@ namespace SisControl.View
                 {
                     frmRelatorios.txtClienteID.Text = ClienteID.ToString();
                     frmRelatorios.txtNomeCliente.Text = nomeCliente;
+                }
+                else if (this.Owner is RelClienteContaAberta frmRelGeralContasAbertas)
+                {
+                    //frmRelGeralContasAbertas.txtClienteID.Text = ClienteID.ToString();
+                    frmRelGeralContasAbertas.txtNomeCliente.Text = nomeCliente;
                 }
                 else
                 {

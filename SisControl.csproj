@@ -257,6 +257,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="bdsiscontrolDataSet1.cs">
+      <DependentUpon>bdsiscontrolDataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="bdsiscontrolDataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -265,6 +268,7 @@
     <Compile Include="BLL\CidadeBLL.cs" />
     <Compile Include="BLL\ClienteBLL.cs" />
     <Compile Include="BLL\FornecedorBLL.cs" />
+    <Compile Include="BLL\HistoricoPrecoBLL.cs" />
     <Compile Include="BLL\ItensVendaBLL.cs" />
     <Compile Include="BLL\PagamentoParcialBll.cs" />
     <Compile Include="BLL\ProdutoBLL.cs" />
@@ -277,6 +281,7 @@
     <Compile Include="DALL\CidadeDALL.cs" />
     <Compile Include="DALL\ClienteDALL.cs" />
     <Compile Include="DALL\FornecedorDALL.cs" />
+    <Compile Include="DALL\HistoricoProdutoDALL.cs" />
     <Compile Include="DALL\ItemVendaDALL.cs" />
     <Compile Include="DALL\PagamentoParcialDal.cs" />
     <Compile Include="DALL\ParcelaDALL.cs" />
@@ -289,6 +294,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\FrmMenuRelatorio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\FrmMenuRelatorio.Designer.cs">
+      <DependentUpon>FrmMenuRelatorio.cs</DependentUpon>
     </Compile>
     <Compile Include="Relatorios\FrmRelGeralContasAbertas.cs">
       <SubType>Form</SubType>
@@ -326,6 +337,12 @@
     </Compile>
     <Compile Include="View\FrmContaReceberr.Designer.cs">
       <DependentUpon>FrmContaReceberr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FrmEntradaEstoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmEntradaEstoque.Designer.cs">
+      <DependentUpon>FrmEntradaEstoque.cs</DependentUpon>
     </Compile>
     <Compile Include="View\FrmExclusaoOrfao.cs">
       <SubType>Form</SubType>
@@ -514,13 +531,17 @@
     <Compile Include="View\Sobre.Designer.cs">
       <DependentUpon>Sobre.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Relatorios\FrmMenuRelatorio.resx">
+      <DependentUpon>FrmMenuRelatorio.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\FrmRelGeralContasAbertas.resx">
       <DependentUpon>FrmRelGeralContasAbertas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\RelClienteContaAberta.resx">
       <DependentUpon>RelClienteContaAberta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Relatorios\ReportClienteAbertaGeral.rdlc" />
+    <EmbeddedResource Include="Relatorios\RelClienteItemCompra.rdlc" />
+    <EmbeddedResource Include="Relatorios\RelGeral.rdlc" />
     <EmbeddedResource Include="View\FormPrincipal.resx">
       <DependentUpon>FormPrincipal.cs</DependentUpon>
     </EmbeddedResource>
@@ -532,6 +553,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmContaReceberr.resx">
       <DependentUpon>FrmContaReceberr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmEntradaEstoque.resx">
+      <DependentUpon>FrmEntradaEstoque.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmExclusaoOrfao.resx">
       <DependentUpon>FrmExclusaoOrfao.cs</DependentUpon>

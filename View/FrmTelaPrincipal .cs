@@ -163,5 +163,11 @@ namespace SisControl
             Sobre frmSobre = new Sobre();
             frmSobre.ShowDialog();
         }
+
+        private void entradaDeEstoqueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmEntradaEstoque frmEntradaEstoque = new FrmEntradaEstoque();
+            frmEntradaEstoque.ShowDialog();
+        }
     }
 }

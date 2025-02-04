@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SisControl.Relatorios;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -35,8 +36,8 @@ namespace SisControl.View
 
         private void btnRelatorio_Click(object sender, EventArgs e)
         {
-            Relatorios.RelClienteContaAberta frmRelatorio = new Relatorios.RelClienteContaAberta();
-            frmRelatorio.ShowDialog();
+            FrmMenuRelatorio frmMenuRelatorio = new FrmMenuRelatorio();
+            frmMenuRelatorio.ShowDialog();
         }
 
         private void btnSair_Click(object sender, EventArgs e)

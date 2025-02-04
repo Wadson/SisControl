@@ -28,18 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.bdsiscontrolDataSet = new SisControl.bdsiscontrolDataSet();
+            this.dataTableConsultaGeralAbertaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataTableConsultaGeralAbertaTableAdapter = new SisControl.bdsiscontrolDataSetTableAdapters.DataTableConsultaGeralAbertaTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsiscontrolDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataTableConsultaGeralAbertaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // reportViewer1
             // 
-            this.reportViewer1.DocumentMapWidth = 26;
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "SisControl.Relatorios.ReportClienteAbertaGeral.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(12, 54);
+            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            reportDataSource1.Name = "DataSet1";
+            reportDataSource1.Value = this.dataTableConsultaGeralAbertaBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "SisControl.Relatorios.RelGeral.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(798, 386);
+            this.reportViewer1.Size = new System.Drawing.Size(834, 461);
             this.reportViewer1.TabIndex = 0;
+            // 
+            // bdsiscontrolDataSet
+            // 
+            this.bdsiscontrolDataSet.DataSetName = "bdsiscontrolDataSet";
+            this.bdsiscontrolDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dataTableConsultaGeralAbertaBindingSource
+            // 
+            this.dataTableConsultaGeralAbertaBindingSource.DataMember = "DataTableConsultaGeralAberta";
+            this.dataTableConsultaGeralAbertaBindingSource.DataSource = this.bdsiscontrolDataSet;
+            // 
+            // dataTableConsultaGeralAbertaTableAdapter
+            // 
+            this.dataTableConsultaGeralAbertaTableAdapter.ClearBeforeFill = true;
             // 
             // FrmRelGeralContasAbertas
             // 
@@ -53,6 +77,8 @@
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.Load += new System.EventHandler(this.FrmRelGeralContasAbertas_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.bdsiscontrolDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataTableConsultaGeralAbertaBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -60,5 +86,8 @@
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private bdsiscontrolDataSet bdsiscontrolDataSet;
+        private System.Windows.Forms.BindingSource dataTableConsultaGeralAbertaBindingSource;
+        private bdsiscontrolDataSetTableAdapters.DataTableConsultaGeralAbertaTableAdapter dataTableConsultaGeralAbertaTableAdapter;
     }
 }

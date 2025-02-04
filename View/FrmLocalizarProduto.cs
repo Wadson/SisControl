@@ -122,24 +122,25 @@ namespace SisControl.View
                 string numeroComZeros = Utilitario.AcrescentarZerosEsquerda(ProdutoID, 4);
 
                 // Obtém a instância do formulário FrmPedido (ou usa uma existente)
-
-                FrmPedidoVendaNovo frmPedidoVendaNovo = (FrmPedidoVendaNovo)this.Owner;
-                if (frmPedidoVendaNovo == null)
+                if (this.Owner is FrmPedidoVendaNovo frmPedidoVendaNovo)
                 {
-                    // Caso a instância de FrmPedido não esteja disponível, exibe uma mensagem de erro
-                    MessageBox.Show("A instância de FrmPedido não está disponível.");
-                    return;
+                    // Preenche os campos no formulário FrmPedido com os dados do produto
+                    frmPedidoVendaNovo.ProdutoID = ProdutoID;
+                    frmPedidoVendaNovo.txtNomeProduto.Text = NomeProduto;
+                    frmPedidoVendaNovo.txtValorProduto.Text = PrecoUnitario.ToString();
+                    frmPedidoVendaNovo.txtQuantidade.Text = "1";
+
+                    // Calcula o subtotal
+                    frmPedidoVendaNovo.CalcularSubtotal();
                 }
+                if (this.Owner is FrmEntradaEstoque frmEntradaEstoque)
+                {
+                    // Preenche os campos no formulário FrmPedido com os dados do produto
+                    frmEntradaEstoque.txtProdutoID.Text = ProdutoID.ToString();
+                    frmEntradaEstoque.txtNomeProduto.Text = NomeProduto;
+                    
+                }              
 
-
-                // Preenche os campos no formulário FrmPedido com os dados do produto
-                frmPedidoVendaNovo.ProdutoID = ProdutoID;
-                frmPedidoVendaNovo.txtNomeProduto.Text = NomeProduto;
-                frmPedidoVendaNovo.txtValorProduto.Text = PrecoUnitario.ToString();
-                frmPedidoVendaNovo.txtQuantidade.Text = "1";                
-
-                // Calcula o subtotal
-                frmPedidoVendaNovo.CalcularSubtotal();
 
                 // Fecha o formulário FrmLocalizarProduto
                 this.Close();

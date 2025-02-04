@@ -100,8 +100,21 @@ namespace SisControl.DALL
             }
         }
 
+        public void AtualizarEstoqueVenda(int produtoID, int quantidadeVendida)
+        {
+            using (var conn = Conexao.Conex())
+            {
+                string sql = "UPDATE Produtos SET QuantidadeEmEstoque = QuantidadeEmEstoque - @QuantidadeEmVendida WHERE ProdutoID = @ProdutoID";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@QuantidadeEmVendida", quantidadeVendida);
+                cmd.Parameters.AddWithValue("@ProdutoID", produtoID);
 
-      
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+
 
 
         public void AlterarProduto(ProdutosModel produto)
@@ -152,7 +165,7 @@ namespace SisControl.DALL
             try
             {
 
-                SqlCommand sql = new SqlCommand("SELECT * FROM Produtos WHERE ProdutoID LIKE '" + pesquisa + "%' ", conn);
+                SqlCommand sql = new SqlCommand("SELECT * FROM Produtos WHERE Referencia LIKE '" + pesquisa + "%' ", conn);
                 conn.Open();
                 SqlDataReader datareader;
                 ProdutosModel obj_Produto = new ProdutosModel();
@@ -218,6 +231,19 @@ namespace SisControl.DALL
         //        conn.Close();
         //    }
         //}
+        public void AtualizarEstoque(int produtoID, int quantidade)
+        {
+            using (var conn = Conexao.Conex())
+            {
+                string sql = "UPDATE Produto SET QuantidadeEstoque = QuantidadeEstoque + @Quantidade WHERE ProdutoID = @ProdutoID";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@Quantidade", quantidade);
+                cmd.Parameters.AddWithValue("@ProdutoID", produtoID);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
 
         public DataTable PesquisarProdutoPorNome(string nome)
         {

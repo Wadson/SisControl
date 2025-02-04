@@ -83,6 +83,7 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.panelContenedor = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.entradaDeEstoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -237,7 +238,8 @@
             this.clienteToolStripMenuItem1,
             this.fornecedorToolStripMenuItem1,
             this.produtoToolStripMenuItem1,
-            this.fabricanteToolStripMenuItem});
+            this.fabricanteToolStripMenuItem,
+            this.entradaDeEstoqueToolStripMenuItem});
             this.manutençãoDeCadastrosToolStripMenuItem.Name = "manutençãoDeCadastrosToolStripMenuItem";
             this.manutençãoDeCadastrosToolStripMenuItem.Size = new System.Drawing.Size(157, 20);
             this.manutençãoDeCadastrosToolStripMenuItem.Text = "&Manutenção de Cadastros";
@@ -245,31 +247,31 @@
             // usuárioToolStripMenuItem2
             // 
             this.usuárioToolStripMenuItem2.Name = "usuárioToolStripMenuItem2";
-            this.usuárioToolStripMenuItem2.Size = new System.Drawing.Size(134, 22);
+            this.usuárioToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
             this.usuárioToolStripMenuItem2.Text = "&Usuário";
             // 
             // clienteToolStripMenuItem1
             // 
             this.clienteToolStripMenuItem1.Name = "clienteToolStripMenuItem1";
-            this.clienteToolStripMenuItem1.Size = new System.Drawing.Size(134, 22);
+            this.clienteToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.clienteToolStripMenuItem1.Text = "&Cliente";
             // 
             // fornecedorToolStripMenuItem1
             // 
             this.fornecedorToolStripMenuItem1.Name = "fornecedorToolStripMenuItem1";
-            this.fornecedorToolStripMenuItem1.Size = new System.Drawing.Size(134, 22);
+            this.fornecedorToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.fornecedorToolStripMenuItem1.Text = "&Fornecedor";
             // 
             // produtoToolStripMenuItem1
             // 
             this.produtoToolStripMenuItem1.Name = "produtoToolStripMenuItem1";
-            this.produtoToolStripMenuItem1.Size = new System.Drawing.Size(134, 22);
+            this.produtoToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.produtoToolStripMenuItem1.Text = "&Produto";
             // 
             // fabricanteToolStripMenuItem
             // 
             this.fabricanteToolStripMenuItem.Name = "fabricanteToolStripMenuItem";
-            this.fabricanteToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.fabricanteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.fabricanteToolStripMenuItem.Text = "&Fabricante";
             this.fabricanteToolStripMenuItem.Click += new System.EventHandler(this.fabricanteToolStripMenuItem_Click);
             // 
@@ -1014,6 +1016,13 @@
             this.panelContenedor.Size = new System.Drawing.Size(1023, 617);
             this.panelContenedor.TabIndex = 555;
             // 
+            // entradaDeEstoqueToolStripMenuItem
+            // 
+            this.entradaDeEstoqueToolStripMenuItem.Name = "entradaDeEstoqueToolStripMenuItem";
+            this.entradaDeEstoqueToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.entradaDeEstoqueToolStripMenuItem.Text = "Entrada de Estoque";
+            this.entradaDeEstoqueToolStripMenuItem.Click += new System.EventHandler(this.entradaDeEstoqueToolStripMenuItem_Click);
+            // 
             // FrmTelaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1105,6 +1114,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolStripMenuItem ajudaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sobreToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem entradaDeEstoqueToolStripMenuItem;
     }
 }
 
