@@ -12,6 +12,7 @@ using System.Text;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
 using Image = System.Drawing.Image;
+using ComponentFactory.Krypton.Toolkit;
 
 namespace SisControl.View
 {
@@ -221,6 +222,12 @@ namespace SisControl.View
                 e.Value = valor.ToString("C", CultureInfo.CurrentCulture);
                 e.FormattingApplied = true;
             }
+        }
+
+        private void btnEstoque_Click(object sender, EventArgs e)
+        {
+            FrmEntradaEstoque frm = new FrmEntradaEstoque();
+            frm.ShowDialog();
         }
     }
 }

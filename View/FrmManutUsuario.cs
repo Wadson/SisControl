@@ -10,6 +10,7 @@ using System.Drawing;
 using System.Security.Policy;
 using System.Text;
 using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
 
 namespace SisControl
 {

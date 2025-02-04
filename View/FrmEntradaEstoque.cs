@@ -86,7 +86,9 @@ namespace SisControl.View
             historicoDAL.InserirHistorico(historico);
 
             MessageBox.Show("Entrada de estoque registrada com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Close();
+            ((FrmManutProduto)Application.OpenForms["FrmManutProduto"]).HabilitarTimer(true);
+            Utilitario.LimpaCampoKrypton(this);
+            txtReferencia.Focus();
         }
 
        

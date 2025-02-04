@@ -1,24 +1,7 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\SisControl\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|C:\\SisControl\\view\\frmentradaestoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|solutionrelative:view\\frmentradaestoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|C:\\SisControl\\view\\frmentradaestoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|solutionrelative:view\\frmentradaestoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|c:\\siscontrol\\dall\\historicoprodutodall.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|solutionrelative:dall\\historicoprodutodall.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|c:\\siscontrol\\view\\frmmanutproduto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|solutionrelative:view\\frmmanutproduto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "WorkspaceRootPath": "D:\\SisControl\\",
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -26,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,78 +21,11 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:5:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:6:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
-            },
-            {
-              "$type": "Bookmark",
               "Name": "ST:11:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:10:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:8:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
-            },
-            {
-              "$type": "Bookmark",
               "Name": "ST:1068738024:0:{bf84ea66-d821-4dba-b1b1-2777d8574775}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "HistoricoProdutoDALL.cs",
-              "DocumentMoniker": "C:\\SisControl\\DALL\\HistoricoProdutoDALL.cs",
-              "RelativeDocumentMoniker": "DALL\\HistoricoProdutoDALL.cs",
-              "ToolTip": "C:\\SisControl\\DALL\\HistoricoProdutoDALL.cs",
-              "RelativeToolTip": "DALL\\HistoricoProdutoDALL.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAewB0AAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-04T03:03:31.398Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "FrmManutProduto.cs",
-              "DocumentMoniker": "C:\\SisControl\\View\\FrmManutProduto.cs",
-              "RelativeDocumentMoniker": "View\\FrmManutProduto.cs",
-              "ToolTip": "C:\\SisControl\\View\\FrmManutProduto.cs",
-              "RelativeToolTip": "View\\FrmManutProduto.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAA0wDAAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-04T02:59:55.602Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FrmEntradaEstoque.cs",
-              "DocumentMoniker": "C:\\SisControl\\View\\FrmEntradaEstoque.cs",
-              "RelativeDocumentMoniker": "View\\FrmEntradaEstoque.cs",
-              "ToolTip": "C:\\SisControl\\View\\FrmEntradaEstoque.cs",
-              "RelativeToolTip": "View\\FrmEntradaEstoque.cs",
-              "ViewState": "AgIAADYAAAAAAAAAAIA0wEgAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-03T23:00:02.543Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "FrmEntradaEstoque.cs [Design]",
-              "DocumentMoniker": "C:\\SisControl\\View\\FrmEntradaEstoque.cs",
-              "RelativeDocumentMoniker": "View\\FrmEntradaEstoque.cs",
-              "ToolTip": "C:\\SisControl\\View\\FrmEntradaEstoque.cs [Design]",
-              "RelativeToolTip": "View\\FrmEntradaEstoque.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-03T22:58:51.069Z",
-              "EditorCaption": " [Design]"
             }
           ]
         }

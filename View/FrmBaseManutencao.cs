@@ -8,10 +8,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
 
 namespace SisControl
 {
-    public partial class FrmBaseManutencao : Form
+    public partial class FrmBaseManutencao : KryptonForm
     {
         public FrmBaseManutencao()
         {
@@ -263,6 +264,5 @@ namespace SisControl
         {
             this.Close();
         }
-      
     }
 }
