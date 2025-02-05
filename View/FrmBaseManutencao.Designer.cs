@@ -29,41 +29,37 @@
         private void InitializeComponent()
         {
             this.txtPesquisa = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnNovo = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnAlterar = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnExcluir = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnSair = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rbtDescricao = new System.Windows.Forms.RadioButton();
+            this.rbtCodigo = new System.Windows.Forms.RadioButton();
+            this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
+            this.kryptonPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtPesquisa
             // 
             this.txtPesquisa.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPesquisa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(112)))), ((int)(((byte)(156)))));
+            this.txtPesquisa.BackColor = System.Drawing.Color.PaleTurquoise;
             this.txtPesquisa.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtPesquisa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisa.ForeColor = System.Drawing.Color.White;
-            this.txtPesquisa.Location = new System.Drawing.Point(96, 66);
+            this.txtPesquisa.ForeColor = System.Drawing.Color.OrangeRed;
+            this.txtPesquisa.Location = new System.Drawing.Point(164, 19);
             this.txtPesquisa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPesquisa.Name = "txtPesquisa";
-            this.txtPesquisa.Size = new System.Drawing.Size(544, 22);
+            this.txtPesquisa.Size = new System.Drawing.Size(480, 22);
             this.txtPesquisa.TabIndex = 425;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(6, 64);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 20);
-            this.label1.TabIndex = 428;
-            this.label1.Text = "Localizar...";
             // 
             // btnNovo
             // 
             this.btnNovo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNovo.Location = new System.Drawing.Point(656, 66);
+            this.btnNovo.Location = new System.Drawing.Point(656, 99);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnNovo.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -122,7 +118,7 @@
             // btnAlterar
             // 
             this.btnAlterar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAlterar.Location = new System.Drawing.Point(656, 115);
+            this.btnAlterar.Location = new System.Drawing.Point(656, 148);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnAlterar.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
@@ -182,7 +178,7 @@
             // btnExcluir
             // 
             this.btnExcluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExcluir.Location = new System.Drawing.Point(656, 164);
+            this.btnExcluir.Location = new System.Drawing.Point(656, 197);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.OverrideDefault.Back.Color1 = System.Drawing.Color.Red;
             this.btnExcluir.OverrideDefault.Back.Color2 = System.Drawing.Color.Red;
@@ -243,7 +239,7 @@
             // btnSair
             // 
             this.btnSair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSair.Location = new System.Drawing.Point(656, 359);
+            this.btnSair.Location = new System.Drawing.Point(656, 375);
             this.btnSair.Name = "btnSair";
             this.btnSair.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnSair.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -300,32 +296,91 @@
             this.btnSair.Values.Text = "&Sair";
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rbtDescricao);
+            this.groupBox1.Controls.Add(this.rbtCodigo);
+            this.groupBox1.ForeColor = System.Drawing.Color.Black;
+            this.groupBox1.Location = new System.Drawing.Point(10, 1);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox1.Size = new System.Drawing.Size(150, 42);
+            this.groupBox1.TabIndex = 434;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Filtro:";
+            // 
+            // rbtDescricao
+            // 
+            this.rbtDescricao.AutoSize = true;
+            this.rbtDescricao.Checked = true;
+            this.rbtDescricao.Location = new System.Drawing.Point(72, 15);
+            this.rbtDescricao.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.rbtDescricao.Name = "rbtDescricao";
+            this.rbtDescricao.Size = new System.Drawing.Size(73, 17);
+            this.rbtDescricao.TabIndex = 5;
+            this.rbtDescricao.TabStop = true;
+            this.rbtDescricao.Text = "Descrição";
+            this.rbtDescricao.UseVisualStyleBackColor = true;
+            this.rbtDescricao.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rbtDescricao_KeyDown);
+            // 
+            // rbtCodigo
+            // 
+            this.rbtCodigo.AutoSize = true;
+            this.rbtCodigo.Location = new System.Drawing.Point(6, 15);
+            this.rbtCodigo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.rbtCodigo.Name = "rbtCodigo";
+            this.rbtCodigo.Size = new System.Drawing.Size(58, 17);
+            this.rbtCodigo.TabIndex = 4;
+            this.rbtCodigo.Text = "Código";
+            this.rbtCodigo.UseVisualStyleBackColor = true;
+            this.rbtCodigo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rbtCodigo_KeyDown);
+            // 
+            // kryptonPanel1
+            // 
+            this.kryptonPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.kryptonPanel1.Controls.Add(this.groupBox1);
+            this.kryptonPanel1.Controls.Add(this.txtPesquisa);
+            this.kryptonPanel1.Location = new System.Drawing.Point(1, 48);
+            this.kryptonPanel1.Name = "kryptonPanel1";
+            this.kryptonPanel1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
+            this.kryptonPanel1.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.TabDock;
+            this.kryptonPanel1.Size = new System.Drawing.Size(783, 47);
+            this.kryptonPanel1.TabIndex = 435;
+            // 
             // FrmBaseManutencao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(785, 430);
+            this.Controls.Add(this.kryptonPanel1);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnNovo);
             this.Controls.Add(this.btnAlterar);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtPesquisa);
             this.Name = "FrmBaseManutencao";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmBaseManutencao";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
+            this.kryptonPanel1.ResumeLayout(false);
+            this.kryptonPanel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
         public System.Windows.Forms.TextBox txtPesquisa;
-        public System.Windows.Forms.Label label1;
         public ComponentFactory.Krypton.Toolkit.KryptonButton btnNovo;
         public ComponentFactory.Krypton.Toolkit.KryptonButton btnAlterar;
         public ComponentFactory.Krypton.Toolkit.KryptonButton btnExcluir;
         public ComponentFactory.Krypton.Toolkit.KryptonButton btnSair;
+        public System.Windows.Forms.GroupBox groupBox1;
+        public System.Windows.Forms.RadioButton rbtDescricao;
+        public System.Windows.Forms.RadioButton rbtCodigo;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel1;
     }
 }

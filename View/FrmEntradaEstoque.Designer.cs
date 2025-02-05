@@ -84,6 +84,7 @@
             this.txtQuantidade.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
             this.txtQuantidade.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.txtQuantidade.TabIndex = 606;
+            this.txtQuantidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtPrecoDeVenda
             // 

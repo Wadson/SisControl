@@ -1003,14 +1003,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SisControl.exe" size="1701296">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SisControl.exe" size="1465776">
       <assemblyIdentity name="SisControl" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>9GgaaCIbTltS2CW4ohY20cIEmko4hM7lKlsOpyCcl5c=</dsig:DigestValue>
+        <dsig:DigestValue>dyVRISIbw4abZgWVGFrG7D389nY0qmLzpwb9r6r7kBU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -21,7 +21,8 @@ namespace SisControl.View
         {
             this.StatusOperacao = statusOperacao;
             InitializeComponent();
-            Utilitario.ConfigurarEventosDeFoco(this);// Texbox fundo amarelo quando em foco
+            // Utiliza a classe Utilitario para adicionar os efeitos de foco a todos os TextBoxes no formulário
+            Utilitario.AdicionarEfeitoFocoEmTodos(this);
         }
         public void SalvarRegistro()
         {

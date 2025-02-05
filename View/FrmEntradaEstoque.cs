@@ -16,6 +16,8 @@ namespace SisControl.View
         public FrmEntradaEstoque()
         {
             InitializeComponent();
+            // Utiliza a classe Utilitario para adicionar os efeitos de foco a todos os TextBoxes no formulário
+            Utilitario.AdicionarEfeitoFocoEmTodos(this);
         }
               
         private void AbrirFrmLocalizarProduto()

@@ -29,54 +29,30 @@ namespace SisControl
 
         }
         // Mudar a Cor dos Texbox inicio
-        public static void ConfigurarEventosDeFoco(Control container)
+        public static void AdicionarEfeitoFocoEmTodos(Control container)
         {
-            foreach (Control c in container.Controls)
+            foreach (Control control in container.Controls)
             {
-                if (c is KryptonTextBox textBox)
+                if (control is KryptonTextBox kryptonTextBox)
                 {
-                    textBox.Enter += TextBox_Enter;
-                    textBox.Leave += TextBox_Leave;
+                    AdicionarEfeitoFoco(kryptonTextBox);
                 }
-                else if (c is Panel panel || c is GroupBox groupBox)
+
+                // Verifica se o controle contém outros controles (como em um Panel ou GroupBox)
+                if (control.HasChildren)
                 {
-                    // Configurar recursivamente para controles dentro de Painéis e GroupBoxes
-                    ConfigurarEventosDeFoco(c);
-                }
-            }
-        }
-        public static void ConfigurarEventosDeFocoKrypton( Control container)
-        {
-            foreach (Control c in container.Controls)
-            {
-                if (c is KryptonTextBox textBox)
-                {
-                    textBox.Enter += TextBox_Enter;
-                    textBox.Leave += TextBox_Leave;
-                }
-                else if (c is KryptonPanel panel || c is KryptonGroupBox groupBox)
-                {
-                    // Configurar recursivamente para controles dentro de Painéis e GroupBoxes
-                    ConfigurarEventosDeFoco(c);
+                    AdicionarEfeitoFocoEmTodos(control);
                 }
             }
         }
 
-        private static void TextBox_Enter(object sender, EventArgs e)
+        private static void AdicionarEfeitoFoco(KryptonTextBox kryptonTextBox)
         {
-            if (sender is KryptonTextBox textBox)
-            {
-                textBox.BackColor = Color.Yellow;//Color.LightBlue; // Define a cor de fundo como azul claro quando em foco
-            }
+            kryptonTextBox.Enter += (s, e) => kryptonTextBox.StateActive.Back.Color1 = System.Drawing.Color.PaleTurquoise;
+            kryptonTextBox.Leave += (s, e) => kryptonTextBox.StateActive.Back.Color1 = kryptonTextBox.StateCommon.Back.Color1;
         }
 
-        private static void TextBox_Leave(object sender, EventArgs e)
-        {
-            if (sender is KryptonTextBox textBox)
-            {
-                textBox.BackColor = Color.White; // Define a cor de fundo como branco quando perde o foco
-            }
-        }
+
         //FIM ACIMA
         public static string BuscarResultadoPorQuery(string query, int codigo)
         {

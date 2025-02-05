@@ -60,6 +60,14 @@ namespace SisControl.View
             dgv.Columns["ProdutoID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgv.Columns["Estoque"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
+            dgv.Columns["Preco De Venda"].DefaultCellStyle.Font = new Font("Arial", 10F, FontStyle.Italic); // Fonte Arial, 12, Negrito
+            dgv.Columns["Preco De Venda"].DefaultCellStyle.ForeColor = System.Drawing.Color.DarkGreen; // Cor da fonte: Verde Escuro
+            dgv.Columns["Preco De Venda"].DefaultCellStyle.Format = "N2"; // Formato de moeda
+            dgv.Columns["Preco De Venda"].DefaultCellStyle.BackColor = System.Drawing.Color.LightBlue; // Cor de fundo Azul Claro
+            dgv.Columns["Preco De Venda"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight; // Alinhamento à direita
+
+
+
             // Ocultar a coluna ProdutoID
             dgv.Columns["ProdutoID"].Visible = false;
         }
@@ -174,9 +182,16 @@ namespace SisControl.View
         private void txtPesquisa_TextChanged(object sender, EventArgs e)
         {
             string nome = "%" + txtPesquisa.Text + "%";
-            ProdutosDal objetoDal = new ProdutosDal();
+            ProdutosDal dao = new ProdutosDal();
 
-            dataGridPesquisar.DataSource = objetoDal.PesquisarProdutoPorNome(nome);
+            if (rbtCodigo.Checked)
+            {
+                dataGridPesquisar.DataSource = dao.PesquisarProdutoPorCodido(nome);
+            }
+            else
+            {
+                dataGridPesquisar.DataSource = dao.PesquisarProdutoPorNome(nome);
+            }
             PersonalizarDataGridView(dataGridPesquisar);
         }
 

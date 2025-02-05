@@ -16,7 +16,7 @@ namespace SisControl
     {
         public FrmBaseManutencao()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
 
         public string RetornoEvitaDuplicado { get; set; }
@@ -263,6 +263,18 @@ namespace SisControl
         private void btnSair_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void rbtDescricao_KeyDown(object sender, KeyEventArgs e)
+        {
+            txtPesquisa.Text = "";
+            txtPesquisa.Focus();
+        }
+
+        private void rbtCodigo_KeyDown(object sender, KeyEventArgs e)
+        {
+            txtPesquisa.Text = "";
+            txtPesquisa.Focus();
         }
     }
 }

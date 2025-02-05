@@ -25,8 +25,8 @@ namespace SisControl
         {
             InitializeComponent();
             this.StatusOperacao = statusOperacao;
-            Utilitario.ConfigurarEventosDeFoco(this);
-            Utilitario.ConfigurarEventosDeFocoKrypton(this);
+            // Utiliza a classe Utilitario para adicionar os efeitos de foco a todos os TextBoxes no formulário
+            Utilitario.AdicionarEfeitoFocoEmTodos(this);
         }
        
         public void SalvarRegistro()

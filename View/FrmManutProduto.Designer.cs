@@ -33,17 +33,19 @@
             this.dataGridPesquisar = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.label28 = new System.Windows.Forms.Label();
             this.btnEstoque = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPesquisar)).BeginInit();
             this.SuspendLayout();
             // 
             // txtPesquisa
             // 
-            this.txtPesquisa.Size = new System.Drawing.Size(512, 22);
+            this.txtPesquisa.Location = new System.Drawing.Point(181, 21);
+            this.txtPesquisa.Size = new System.Drawing.Size(427, 22);
             this.txtPesquisa.TextChanged += new System.EventHandler(this.txtPesquisa_TextChanged);
             // 
             // btnNovo
             // 
-            this.btnNovo.Location = new System.Drawing.Point(635, 67);
+            this.btnNovo.Location = new System.Drawing.Point(635, 106);
             this.btnNovo.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnNovo.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.btnNovo.OverrideDefault.Back.ColorAngle = 45F;
@@ -98,7 +100,7 @@
             // 
             // btnAlterar
             // 
-            this.btnAlterar.Location = new System.Drawing.Point(635, 112);
+            this.btnAlterar.Location = new System.Drawing.Point(635, 151);
             this.btnAlterar.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnAlterar.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnAlterar.OverrideDefault.Back.ColorAngle = 45F;
@@ -154,7 +156,7 @@
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Location = new System.Drawing.Point(635, 157);
+            this.btnExcluir.Location = new System.Drawing.Point(635, 196);
             this.btnExcluir.OverrideDefault.Back.Color1 = System.Drawing.Color.Red;
             this.btnExcluir.OverrideDefault.Back.Color2 = System.Drawing.Color.Red;
             this.btnExcluir.OverrideDefault.Back.ColorAngle = 45F;
@@ -211,7 +213,7 @@
             // 
             // btnSair
             // 
-            this.btnSair.Location = new System.Drawing.Point(635, 369);
+            this.btnSair.Location = new System.Drawing.Point(635, 382);
             this.btnSair.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnSair.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.btnSair.OverrideDefault.Back.ColorAngle = 45F;
@@ -277,12 +279,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridPesquisar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridPesquisar.Location = new System.Drawing.Point(10, 67);
+            this.dataGridPesquisar.Location = new System.Drawing.Point(10, 105);
             this.dataGridPesquisar.MultiSelect = false;
             this.dataGridPesquisar.Name = "dataGridPesquisar";
             this.dataGridPesquisar.ReadOnly = true;
             this.dataGridPesquisar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridPesquisar.Size = new System.Drawing.Size(598, 339);
+            this.dataGridPesquisar.Size = new System.Drawing.Size(598, 320);
             this.dataGridPesquisar.TabIndex = 597;
             // 
             // label28
@@ -300,7 +302,7 @@
             // btnEstoque
             // 
             this.btnEstoque.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEstoque.Location = new System.Drawing.Point(635, 206);
+            this.btnEstoque.Location = new System.Drawing.Point(635, 245);
             this.btnEstoque.Name = "btnEstoque";
             this.btnEstoque.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnEstoque.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
@@ -369,15 +371,15 @@
             this.Name = "FrmManutProduto";
             this.Text = "PRODUTOS";
             this.Load += new System.EventHandler(this.FrmManutProduto_Load);
-            this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.btnAlterar, 0);
             this.Controls.SetChildIndex(this.btnNovo, 0);
             this.Controls.SetChildIndex(this.btnExcluir, 0);
-            this.Controls.SetChildIndex(this.txtPesquisa, 0);
             this.Controls.SetChildIndex(this.btnSair, 0);
             this.Controls.SetChildIndex(this.dataGridPesquisar, 0);
             this.Controls.SetChildIndex(this.label28, 0);
             this.Controls.SetChildIndex(this.btnEstoque, 0);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPesquisar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

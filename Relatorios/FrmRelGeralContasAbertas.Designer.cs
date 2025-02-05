@@ -31,10 +31,10 @@
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.bdsiscontrolDataSet = new SisControl.bdsiscontrolDataSet();
+            
             this.dataTableConsultaGeralAbertaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataTableConsultaGeralAbertaTableAdapter = new SisControl.bdsiscontrolDataSetTableAdapters.DataTableConsultaGeralAbertaTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsiscontrolDataSet)).BeginInit();
+           
+           
             ((System.ComponentModel.ISupportInitialize)(this.dataTableConsultaGeralAbertaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,17 +53,15 @@
             // 
             // bdsiscontrolDataSet
             // 
-            this.bdsiscontrolDataSet.DataSetName = "bdsiscontrolDataSet";
-            this.bdsiscontrolDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+           
             // 
             // dataTableConsultaGeralAbertaBindingSource
             // 
-            this.dataTableConsultaGeralAbertaBindingSource.DataMember = "DataTableConsultaGeralAberta";
-            this.dataTableConsultaGeralAbertaBindingSource.DataSource = this.bdsiscontrolDataSet;
+            this.dataTableConsultaGeralAbertaBindingSource.DataMember = "DataTableConsultaGeralAberta";           
             // 
             // dataTableConsultaGeralAbertaTableAdapter
             // 
-            this.dataTableConsultaGeralAbertaTableAdapter.ClearBeforeFill = true;
+           
             // 
             // FrmRelGeralContasAbertas
             // 
@@ -77,7 +75,6 @@
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.Load += new System.EventHandler(this.FrmRelGeralContasAbertas_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.bdsiscontrolDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTableConsultaGeralAbertaBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -86,8 +83,8 @@
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private bdsiscontrolDataSet bdsiscontrolDataSet;
+       
         private System.Windows.Forms.BindingSource dataTableConsultaGeralAbertaBindingSource;
-        private bdsiscontrolDataSetTableAdapters.DataTableConsultaGeralAbertaTableAdapter dataTableConsultaGeralAbertaTableAdapter;
+       
     }
 }

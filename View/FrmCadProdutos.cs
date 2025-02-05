@@ -30,14 +30,14 @@ namespace SisControl.View
         {
             InitializeComponent();
 
+            // Utiliza a classe Utilitario para adicionar os efeitos de foco a todos os TextBoxes no formulário
+            Utilitario.AdicionarEfeitoFocoEmTodos(this);
 
             this.txtPrecoCusto.Enter += new System.EventHandler(this.txtPrecoCusto_Enter);
             this.txtPrecoCusto.Leave += new System.EventHandler(this.txtPrecoCusto_Leave);
             this.txtLucro.Enter += new System.EventHandler(this.txtLucro_Enter);
             this.txtLucro.Leave += new System.EventHandler(this.txtLucro_Leave);
 
-            Utilitario.ConfigurarEventosDeFoco(this);
-            
 
             this.StatusOperacao = statusOperacao;
         }
@@ -165,7 +165,7 @@ namespace SisControl.View
                 PrecoCusto = decimal.Parse(txtPrecoCusto.Text),
                 Lucro = decimal.Parse(txtLucro.Text),
                 PrecoDeVenda = decimal.Parse(txtPrecoDeVenda.Text),
-                QuantidadeEmEstoque = int.Parse(txtEstoque.Text),
+                Estoque = int.Parse(txtEstoque.Text),
                 DataDeEntrada = dtpDataDeEntrada.Value,
                 Status = cmbStatus.Text,
                           
@@ -217,7 +217,7 @@ namespace SisControl.View
                     PrecoCusto = decimal.Parse(txtPrecoCusto.Text),
                     Lucro = decimal.Parse(txtLucro.Text),
                     PrecoDeVenda = decimal.Parse(txtPrecoDeVenda.Text),
-                    QuantidadeEmEstoque = int.Parse(txtEstoque.Text),
+                    Estoque = int.Parse(txtEstoque.Text),
                     DataDeEntrada = dtpDataDeEntrada.Value,
                     Status = cmbStatus.Text,
                     Referencia = txtReferencia.Text

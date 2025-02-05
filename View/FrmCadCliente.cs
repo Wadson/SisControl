@@ -28,7 +28,8 @@ namespace SisControl.View
             txtTelefone.KeyPress += new KeyPressEventHandler(Utilitario.FormataTelefone);
 
             this.StatusOperacao = statusOperação;
-            Utilitario.ConfigurarEventosDeFoco(this);// Texbox fundo amarelo quando em foco
+            // Utiliza a classe Utilitario para adicionar os efeitos de foco a todos os TextBoxes no formulário
+            Utilitario.AdicionarEfeitoFocoEmTodos(this);
         }
         public void AlterarRegistro()
         {
