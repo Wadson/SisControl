@@ -264,6 +264,14 @@
             this.btnSair.StateTracking.Border.Width = 1;
             this.btnSair.Values.Text = "&Sair";
             // 
+            // rbtDescricao
+            // 
+            this.rbtDescricao.CheckedChanged += new System.EventHandler(this.rbtDescricao_CheckedChanged);
+            // 
+            // rbtCodigo
+            // 
+            this.rbtCodigo.CheckedChanged += new System.EventHandler(this.rbtCodigo_CheckedChanged);
+            // 
             // timer1
             // 
             this.timer1.Interval = 1000;

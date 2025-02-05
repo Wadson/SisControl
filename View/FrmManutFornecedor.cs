@@ -26,7 +26,8 @@ namespace SisControl.View
 
             if (StatusOperacao == "NOVO")
             {
-                frm.Text = "SISCONTROL - NOVO CADASTRO DE FORNECEDOR";                
+                frm.lblStatus.Text = "NOVO CADASTRO DE FORNECEDOR";   
+                frm.lblStatus.ForeColor = Color.FromArgb(8, 142, 254);
                 frm.ShowDialog();
             }
             if (StatusOperacao == "ALTERAR")
@@ -51,7 +52,8 @@ namespace SisControl.View
                     frm.txtNomeCidade.Text = dataGridPesquisar.CurrentRow.Cells["Cidade"].Value.ToString();
                     frm.txtCidadeID.Text = dataGridPesquisar.CurrentRow.Cells["CidadeID"].Value.ToString();
 
-                    frm.Text = "SISCONTROL - ALTERAR REGISTRO";
+                    frm.lblStatus.Text = "ALTERAR CADASTRO";
+                    frm.lblStatus.ForeColor = Color.Orange;
                     StatusOperacao = "ALTERAR";
                     
                     frm.btnNovo.Enabled = false;
@@ -87,7 +89,8 @@ namespace SisControl.View
                     frm.txtEmail.Text = dataGridPesquisar.CurrentRow.Cells["Email"].Value.ToString();
                     frm.txtNomeCidade.Text = dataGridPesquisar.CurrentRow.Cells["Cidade"].Value.ToString();
                     frm.txtCidadeID.Text = dataGridPesquisar.CurrentRow.Cells["CidadeID"].Value.ToString();
-                    frm.Text = "SISCONTROL - EXCLUSÃO DE REGISTRO";
+                    frm.lblStatus.Text = "EXCLUSÃO DE REGISTRO!";
+                    frm.lblStatus.ForeColor = Color.Red;
                     StatusOperacao = "EXCLUSÃO";
                    
                     frm.btnNovo.Enabled = false;
@@ -99,12 +102,7 @@ namespace SisControl.View
                     frm.txtEndereco.Enabled = false;
                     frm.txtTelefone.Enabled = false;
                     frm.btnSalva.Text = "Excluir";  
-                    frm.ShowDialog();
-                    // Execução do código desejado
-                    //foreach (DataGridViewRow row in dataGridPesquisar.Rows)
-                    //{
-
-                    //}                    
+                    frm.ShowDialog();                                     
                 }
                 catch (Exception ex)
                 {
@@ -156,10 +154,19 @@ namespace SisControl.View
         }
         private void txtPesquisa_TextChanged(object sender, EventArgs e)
         {
-            string nome = "%" + txtPesquisa.Text + "%";
-            FornecedorDALL fornecedorDAL = new FornecedorDALL();
+            string textoPesquisa = txtPesquisa.Text.ToLower();
 
-            dataGridPesquisar.DataSource = fornecedorDAL.PesquisarPorNome(nome);
+            string nome = "%" + txtPesquisa.Text + "%";
+            FornecedorDALL dao = new FornecedorDALL();
+
+            if (rbtCodigo.Checked)
+            {               
+                dataGridPesquisar.DataSource = dao.PesquisarPorCodigo(nome);
+            }
+            else
+            {               
+                dataGridPesquisar.DataSource = dao.PesquisarPorNome(nome);
+            }
         }
 
         private void FrmManutFornecedor_Load(object sender, EventArgs e)
@@ -185,6 +192,18 @@ namespace SisControl.View
         {
             StatusOperacao = "NOVO";
             CarregaDados();
+        }
+
+        private void rbtCodigo_CheckedChanged(object sender, EventArgs e)
+        {
+            txtPesquisa.Text = "";
+            txtPesquisa.Focus();
+        }
+
+        private void rbtDescricao_CheckedChanged(object sender, EventArgs e)
+        {
+            txtPesquisa.Text = "";
+            txtPesquisa.Focus();
         }
     }
 }

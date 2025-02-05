@@ -690,7 +690,21 @@ namespace SisControl.View
 
         private void btnFinalizarVenda_Click(object sender, EventArgs e)
         {
-            FinalizarVenda();          
+            if (VendaID == 0)
+            {
+                MessageBox.Show("Por favor, informe o ID da venda.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (dgvItensVenda.Rows.Count == 0)
+            {
+                MessageBox.Show("Por favor, adicione itens à venda.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                FinalizarVenda();
+            }
+                     
         }
         private void btnParcelar_Click_1(object sender, EventArgs e)
         {

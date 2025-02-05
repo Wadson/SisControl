@@ -263,6 +263,14 @@
             this.btnSair.StateTracking.Border.Width = 1;
             this.btnSair.Values.Text = "&Sair";
             // 
+            // rbtDescricao
+            // 
+            this.rbtDescricao.CheckedChanged += new System.EventHandler(this.rbtDescricao_CheckedChanged);
+            // 
+            // rbtCodigo
+            // 
+            this.rbtCodigo.CheckedChanged += new System.EventHandler(this.rbtCodigo_CheckedChanged);
+            // 
             // timer1
             // 
             this.timer1.Interval = 1000;
@@ -290,7 +298,7 @@
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
-            this.label28.Location = new System.Drawing.Point(317, 2);
+            this.label28.Location = new System.Drawing.Point(331, 2);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(101, 24);
             this.label28.TabIndex = 602;

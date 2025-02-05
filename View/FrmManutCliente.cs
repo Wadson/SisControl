@@ -87,7 +87,8 @@ namespace SisControl.View
 
             if (StatusOperacao == "NOVO")
             {
-                cadCliente.Text = "SISCONTROL - NOVO CADASTRO DE CLIENTE";
+                cadCliente.lblStatus.Text = "NOVO CADASTRO DE CLIENTE";
+                cadCliente.lblStatus.ForeColor = Color.FromArgb(8, 142, 254);
                 StatusOperacao = "NOVO";
                 cadCliente.ShowDialog();
 
@@ -119,7 +120,8 @@ namespace SisControl.View
                         cadCliente.txtEstadoCliente.Text = dataGridPesquisar.CurrentRow.Cells["NomeEstado"].Value.ToString();
                         cadCliente.txtCidadeID.Text = dataGridPesquisar.CurrentRow.Cells["CidadeID"].Value.ToString();
 
-                        cadCliente.Text = "SISCONTROL - ALTERAR REGISTRO";
+                        cadCliente.lblStatus.Text = "ALTERAR REGISTRO";
+                        cadCliente.lblStatus.ForeColor = Color.Orange;
                         StatusOperacao = "ALTERAR";
                         cadCliente.btnSalvar.Text = "Alterar";
                         cadCliente.btnNovo.Enabled = false;
@@ -160,7 +162,8 @@ namespace SisControl.View
                         cadCliente.txtEstadoCliente.Text = dataGridPesquisar.CurrentRow.Cells["NomeEstado"].Value.ToString();
                         cadCliente.txtCidadeID.Text = dataGridPesquisar.CurrentRow.Cells["CidadeID"].Value.ToString();
 
-                        cadCliente.Text = "SISCONTROL - EXCLUSÃO DE REGISTRO";
+                        cadCliente.lblStatus.Text = "EXCLUSÃO DE REGISTRO!";
+                        cadCliente.lblStatus.ForeColor = Color.Red;
                         StatusOperacao = "EXCLUSÃO";
                         cadCliente.btnSalvar.Text = "Excluir";
                         cadCliente.btnNovo.Enabled = false;
@@ -223,16 +226,36 @@ namespace SisControl.View
 
         private void txtPesquisa_TextChanged(object sender, EventArgs e)
         {
-            string nome = "%" + txtPesquisa.Text + "%";
-            ClienteDALL clienteDao = new ClienteDALL();
+            string textoPesquisa = txtPesquisa.Text.ToLower();
 
-            dataGridPesquisar.DataSource = clienteDao.PesquisarPorNome(nome);
-            PersonalizarDataGridView();
+            string nome = "%" + txtPesquisa.Text + "%";
+            ClienteDALL dao = new ClienteDALL();
+
+            if (rbtCodigo.Checked)
+            {               
+                dataGridPesquisar.DataSource = dao.PesquisarPorCodigo(nome);
+            }
+            else
+            {               
+                dataGridPesquisar.DataSource = dao.PesquisarPorNome(nome);
+            }
         }
 
         private void FrmManutCliente_Load(object sender, EventArgs e)
         {
             ListarCliente();
+        }
+
+        private void rbtCodigo_CheckedChanged(object sender, EventArgs e)
+        {
+            txtPesquisa.Text = "";
+            txtPesquisa.Focus();
+        }
+
+        private void rbtDescricao_CheckedChanged(object sender, EventArgs e)
+        {
+            txtPesquisa.Text = "";
+            txtPesquisa.Focus();
         }
     }
 }

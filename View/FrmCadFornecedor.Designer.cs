@@ -50,12 +50,15 @@
             this.txtEndereco = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.txtNomeFornecedor = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.txtFornecedorID = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.label28 = new System.Windows.Forms.Label();
+            this.lblStatus = new System.Windows.Forms.Label();
+            this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
+            this.kryptonPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtCidadeID
             // 
-            this.txtCidadeID.Location = new System.Drawing.Point(24, 277);
+            this.txtCidadeID.Location = new System.Drawing.Point(24, 261);
             this.txtCidadeID.Name = "txtCidadeID";
             this.txtCidadeID.ReadOnly = true;
             this.txtCidadeID.Size = new System.Drawing.Size(71, 30);
@@ -76,7 +79,7 @@
             // 
             // btnLocalizar
             // 
-            this.btnLocalizar.Location = new System.Drawing.Point(533, 271);
+            this.btnLocalizar.Location = new System.Drawing.Point(533, 255);
             this.btnLocalizar.Name = "btnLocalizar";
             this.btnLocalizar.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnLocalizar.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -138,7 +141,7 @@
             // 
             // btnSair
             // 
-            this.btnSair.Location = new System.Drawing.Point(435, 419);
+            this.btnSair.Location = new System.Drawing.Point(435, 375);
             this.btnSair.Name = "btnSair";
             this.btnSair.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnSair.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -197,7 +200,7 @@
             // 
             // btnNovo
             // 
-            this.btnNovo.Location = new System.Drawing.Point(283, 419);
+            this.btnNovo.Location = new System.Drawing.Point(283, 375);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnNovo.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
@@ -257,7 +260,7 @@
             // 
             // btnSalva
             // 
-            this.btnSalva.Location = new System.Drawing.Point(131, 419);
+            this.btnSalva.Location = new System.Drawing.Point(131, 375);
             this.btnSalva.Name = "btnSalva";
             this.btnSalva.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnSalva.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -319,7 +322,7 @@
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
             this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
-            this.label20.Location = new System.Drawing.Point(36, 323);
+            this.label20.Location = new System.Drawing.Point(36, 298);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(66, 16);
             this.label20.TabIndex = 211;
@@ -328,7 +331,7 @@
             // txtEstado
             // 
             this.txtEstado.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtEstado.Location = new System.Drawing.Point(24, 341);
+            this.txtEstado.Location = new System.Drawing.Point(24, 316);
             this.txtEstado.Name = "txtEstado";
             this.txtEstado.Size = new System.Drawing.Size(630, 30);
             this.txtEstado.StateCommon.Back.Color1 = System.Drawing.Color.White;
@@ -351,7 +354,7 @@
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
             this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
-            this.label19.Location = new System.Drawing.Point(30, 258);
+            this.label19.Location = new System.Drawing.Point(30, 242);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(60, 16);
             this.label19.TabIndex = 210;
@@ -362,7 +365,7 @@
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
             this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
-            this.label18.Location = new System.Drawing.Point(28, 196);
+            this.label18.Location = new System.Drawing.Point(28, 187);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(53, 16);
             this.label18.TabIndex = 209;
@@ -373,7 +376,7 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
-            this.label14.Location = new System.Drawing.Point(128, 296);
+            this.label14.Location = new System.Drawing.Point(128, 280);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(0, 16);
             this.label14.TabIndex = 215;
@@ -383,7 +386,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
-            this.label10.Location = new System.Drawing.Point(32, 13);
+            this.label10.Location = new System.Drawing.Point(42, 6);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(69, 16);
             this.label10.TabIndex = 212;
@@ -394,7 +397,7 @@
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
             this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
-            this.label17.Location = new System.Drawing.Point(337, 196);
+            this.label17.Location = new System.Drawing.Point(337, 187);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(81, 16);
             this.label17.TabIndex = 208;
@@ -414,7 +417,7 @@
             // txtNomeCidade
             // 
             this.txtNomeCidade.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtNomeCidade.Location = new System.Drawing.Point(98, 276);
+            this.txtNomeCidade.Location = new System.Drawing.Point(98, 260);
             this.txtNomeCidade.Name = "txtNomeCidade";
             this.txtNomeCidade.Size = new System.Drawing.Size(429, 30);
             this.txtNomeCidade.StateCommon.Back.Color1 = System.Drawing.Color.White;
@@ -447,7 +450,7 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
-            this.label13.Location = new System.Drawing.Point(32, 140);
+            this.label13.Location = new System.Drawing.Point(32, 132);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(86, 16);
             this.label13.TabIndex = 214;
@@ -456,7 +459,7 @@
             // txtEmail
             // 
             this.txtEmail.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.txtEmail.Location = new System.Drawing.Point(22, 215);
+            this.txtEmail.Location = new System.Drawing.Point(22, 206);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(302, 30);
             this.txtEmail.StateCommon.Back.Color1 = System.Drawing.Color.White;
@@ -476,7 +479,7 @@
             // txtTelefone
             // 
             this.txtTelefone.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtTelefone.Location = new System.Drawing.Point(330, 215);
+            this.txtTelefone.Location = new System.Drawing.Point(330, 206);
             this.txtTelefone.Name = "txtTelefone";
             this.txtTelefone.Size = new System.Drawing.Size(324, 30);
             this.txtTelefone.StateCommon.Back.Color1 = System.Drawing.Color.White;
@@ -514,7 +517,7 @@
             // 
             // txtEndereco
             // 
-            this.txtEndereco.Location = new System.Drawing.Point(22, 158);
+            this.txtEndereco.Location = new System.Drawing.Point(22, 150);
             this.txtEndereco.Name = "txtEndereco";
             this.txtEndereco.Size = new System.Drawing.Size(632, 30);
             this.txtEndereco.StateCommon.Back.Color1 = System.Drawing.Color.White;
@@ -553,7 +556,7 @@
             // 
             // txtFornecedorID
             // 
-            this.txtFornecedorID.Location = new System.Drawing.Point(22, 32);
+            this.txtFornecedorID.Location = new System.Drawing.Point(32, 25);
             this.txtFornecedorID.Name = "txtFornecedorID";
             this.txtFornecedorID.ReadOnly = true;
             this.txtFornecedorID.Size = new System.Drawing.Size(94, 30);
@@ -572,22 +575,34 @@
             this.txtFornecedorID.TabIndex = 217;
             this.txtFornecedorID.TabStop = false;
             // 
-            // label28
+            // lblStatus
             // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
-            this.label28.Location = new System.Drawing.Point(215, -5);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(284, 24);
-            this.label28.TabIndex = 248;
-            this.label28.Text = "CADASTRO DE FORNECEDOR";
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.lblStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
+            this.lblStatus.Location = new System.Drawing.Point(208, 1);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(284, 24);
+            this.lblStatus.TabIndex = 248;
+            this.lblStatus.Text = "CADASTRO DE FORNECEDOR";
+            // 
+            // kryptonPanel2
+            // 
+            this.kryptonPanel2.Controls.Add(this.txtFornecedorID);
+            this.kryptonPanel2.Controls.Add(this.lblStatus);
+            this.kryptonPanel2.Controls.Add(this.label10);
+            this.kryptonPanel2.Location = new System.Drawing.Point(-5, -5);
+            this.kryptonPanel2.Name = "kryptonPanel2";
+            this.kryptonPanel2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
+            this.kryptonPanel2.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.TabDock;
+            this.kryptonPanel2.Size = new System.Drawing.Size(698, 66);
+            this.kryptonPanel2.TabIndex = 249;
             // 
             // FrmCadFornecedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(684, 533);
-            this.Controls.Add(this.label28);
+            this.ClientSize = new System.Drawing.Size(684, 431);
+            this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.txtCidadeID);
             this.Controls.Add(this.btnLocalizar);
             this.Controls.Add(this.btnSair);
@@ -598,7 +613,6 @@
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.label10);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.txtNomeCidade);
@@ -609,7 +623,6 @@
             this.Controls.Add(this.txtCnpjCpf);
             this.Controls.Add(this.txtEndereco);
             this.Controls.Add(this.txtNomeFornecedor);
-            this.Controls.Add(this.txtFornecedorID);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmCadFornecedor";
             this.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -617,9 +630,12 @@
             this.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.Text = "Cadastro de Fornecedor";
+            this.Text = "";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmCadFornecedor_FormClosed);
             this.Load += new System.EventHandler(this.FrmCadFornecedor_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
+            this.kryptonPanel2.ResumeLayout(false);
+            this.kryptonPanel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -648,6 +664,7 @@
         public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtEndereco;
         public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtNomeFornecedor;
         public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtFornecedorID;
-        private System.Windows.Forms.Label label28;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel2;
+        public System.Windows.Forms.Label lblStatus;
     }
 }

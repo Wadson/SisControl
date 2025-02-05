@@ -37,9 +37,9 @@
             this.label27 = new System.Windows.Forms.Label();
             this.txtProdutoID = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.lblStatus = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.dtpDataDeEntrada = new ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker();
-            this.label28 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -58,7 +58,7 @@
             // 
             // btnSair
             // 
-            this.btnSair.Location = new System.Drawing.Point(383, 261);
+            this.btnSair.Location = new System.Drawing.Point(385, 241);
             this.btnSair.Name = "btnSair";
             this.btnSair.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnSair.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -117,7 +117,7 @@
             // 
             // btnNovo
             // 
-            this.btnNovo.Location = new System.Drawing.Point(219, 261);
+            this.btnNovo.Location = new System.Drawing.Point(221, 241);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnNovo.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
@@ -177,7 +177,7 @@
             // 
             // btnSalva
             // 
-            this.btnSalva.Location = new System.Drawing.Point(55, 261);
+            this.btnSalva.Location = new System.Drawing.Point(57, 241);
             this.btnSalva.Name = "btnSalva";
             this.btnSalva.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnSalva.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -303,16 +303,29 @@
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.lblStatus);
             this.kryptonPanel1.Controls.Add(this.label29);
             this.kryptonPanel1.Controls.Add(this.dtpDataDeEntrada);
             this.kryptonPanel1.Controls.Add(this.txtProdutoID);
             this.kryptonPanel1.Controls.Add(this.label23);
-            this.kryptonPanel1.Location = new System.Drawing.Point(-7, 8);
+            this.kryptonPanel1.Location = new System.Drawing.Point(-7, -2);
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.kryptonPanel1.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.TabDock;
-            this.kryptonPanel1.Size = new System.Drawing.Size(590, 61);
+            this.kryptonPanel1.Size = new System.Drawing.Size(590, 71);
             this.kryptonPanel1.TabIndex = 245;
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.BackColor = System.Drawing.Color.Transparent;
+            this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.lblStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
+            this.lblStatus.Location = new System.Drawing.Point(178, -2);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(255, 24);
+            this.lblStatus.TabIndex = 246;
+            this.lblStatus.Text = "CADASTRO DE PRODUTOS";
             // 
             // label29
             // 
@@ -320,19 +333,19 @@
             this.label29.BackColor = System.Drawing.Color.Transparent;
             this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
             this.label29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
-            this.label29.Location = new System.Drawing.Point(437, 8);
+            this.label29.Location = new System.Drawing.Point(465, 8);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(138, 16);
+            this.label29.Size = new System.Drawing.Size(107, 16);
             this.label29.TabIndex = 246;
-            this.label29.Text = "DATA DE ENTRADA:";
+            this.label29.Text = "DTA ENTRADA:";
             // 
             // dtpDataDeEntrada
             // 
             this.dtpDataDeEntrada.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDataDeEntrada.Location = new System.Drawing.Point(433, 27);
+            this.dtpDataDeEntrada.Location = new System.Drawing.Point(463, 27);
             this.dtpDataDeEntrada.Name = "dtpDataDeEntrada";
             this.dtpDataDeEntrada.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.dtpDataDeEntrada.Size = new System.Drawing.Size(145, 25);
+            this.dtpDataDeEntrada.Size = new System.Drawing.Size(115, 25);
             this.dtpDataDeEntrada.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.dtpDataDeEntrada.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.dtpDataDeEntrada.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
@@ -341,18 +354,6 @@
             this.dtpDataDeEntrada.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDataDeEntrada.TabIndex = 606;
             this.dtpDataDeEntrada.TabStop = false;
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.BackColor = System.Drawing.Color.Transparent;
-            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
-            this.label28.Location = new System.Drawing.Point(133, 14);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(255, 24);
-            this.label28.TabIndex = 246;
-            this.label28.Text = "CADASTRO DE PRODUTOS";
             // 
             // label1
             // 
@@ -541,8 +542,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(575, 336);
-            this.Controls.Add(this.label28);
+            this.ClientSize = new System.Drawing.Size(575, 298);
             this.Controls.Add(this.txtEstoque);
             this.Controls.Add(this.txtPrecoDeVenda);
             this.Controls.Add(this.txtLucro);
@@ -569,7 +569,7 @@
             this.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.Text = "SisControl - Cadastro de Produtos";
+            this.Text = "";
             this.Load += new System.EventHandler(this.FrmCadProdutos_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmCadProdutos_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
@@ -591,7 +591,6 @@
         private System.Windows.Forms.Label label27;
         public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtProdutoID;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel1;
-        private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label8;
@@ -605,5 +604,6 @@
         public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtPrecoCusto;
         public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtReferencia;
         public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtNomeProduto;
+        public System.Windows.Forms.Label lblStatus;
     }
 }

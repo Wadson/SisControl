@@ -169,7 +169,7 @@ namespace SisControl.DALL
             {
                 DataTable dt = new DataTable();
 
-                string sqlconn = "SELECT UsuarioID, NomeUsuario, Email, Senha, TipoUsuario FROM Usuario WHERE NomeUsuario  LIKE @UsuarioID";
+                string sqlconn = "SELECT UsuarioID, NomeUsuario, Email, Senha, TipoUsuario FROM Usuario WHERE UsuarioID  LIKE @UsuarioID";
                 SqlCommand cmd = new SqlCommand(sqlconn, conn);
                 cmd.Parameters.AddWithValue("@UsuarioID", codigo);
                 conn.Open();

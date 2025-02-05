@@ -31,7 +31,8 @@ namespace SisControl
             {
                 if (StatusOperacao == "NOVO")
                 {
-                    cadUsuarios.Text = "SISCONTROL - NOVO CADASTRO DE USUÁRIO";
+                    cadUsuarios.lblStatus.Text = "NOVO CADASTRO DE USUÁRIO";
+                    cadUsuarios.lblStatus.ForeColor = Color.FromArgb(8, 142, 254);
                     StatusOperacao = "NOVO";  
                     cadUsuarios.ShowDialog();
 
@@ -45,7 +46,8 @@ namespace SisControl
                     cadUsuarios.txtSenha.Text =         dataGridPesquisar.CurrentRow.Cells["Senha"].Value.ToString();
                     cadUsuarios.cmbTipoUsuario.Text =    dataGridPesquisar.CurrentRow.Cells["Tipo de Usuario"].Value.ToString();
 
-                    cadUsuarios.Text = "SISCONTROL - ALTERAR REGISTRO";
+                    cadUsuarios.lblStatus.Text = "ALTERAR REGISTRO";
+                    cadUsuarios.lblStatus.ForeColor = Color.Orange;   
                     StatusOperacao = "ALTERAR";
                     
                     cadUsuarios.btnSalvar.Text = "Alterar";
@@ -61,7 +63,8 @@ namespace SisControl
                     cadUsuarios.txtSenha.Text = dataGridPesquisar.CurrentRow.Cells["Senha"].Value.ToString();
                     cadUsuarios.cmbTipoUsuario.Text = dataGridPesquisar.CurrentRow.Cells["Tipo de Usuario"].Value.ToString();
 
-                    cadUsuarios.Text = "SISCONTROL - EXCLUSÃO DE REGISTRO";
+                    cadUsuarios.lblStatus.Text = "EXCLUSÃO DE REGISTRO";
+                    cadUsuarios.lblStatus.ForeColor = Color.Red;
                     StatusOperacao = "EXCLUSÃO";
 
                     cadUsuarios.btnSalvar.Text = "Excluir";
@@ -165,10 +168,31 @@ namespace SisControl
 
         private void txtPesquisa_TextChanged(object sender, EventArgs e)
         {
-            string nome = "%" + txtPesquisa.Text + "%";
+            string textoPesquisa = txtPesquisa.Text.ToLower();
 
+            string nome = "%" + txtPesquisa.Text + "%";
             UsuarioDALL dao = new UsuarioDALL();
-            dataGridPesquisar.DataSource = dao.PesquisarPorNome(nome);
+
+            if (rbtCodigo.Checked)
+            {               
+                dataGridPesquisar.DataSource = dao.PesquisarPorCodigo(nome);
+            }
+            else
+            {              
+                dataGridPesquisar.DataSource = dao.PesquisarPorNome(nome);
+            }
+        }
+
+        private void rbtCodigo_CheckedChanged(object sender, EventArgs e)
+        {
+            txtPesquisa.Text = "";
+            txtPesquisa.Focus();
+        }
+
+        private void rbtDescricao_CheckedChanged(object sender, EventArgs e)
+        {
+            txtPesquisa.Text = "";
+            txtPesquisa.Focus();
         }
     }
 }

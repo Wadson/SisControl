@@ -78,7 +78,8 @@ namespace SisControl.View
 
             if (StatusOperacao == "NOVO")
             {
-                frm.Text = "SISCONTROL - NOVO CADASTRO DE PRODUTOS";
+                frm.lblStatus.Text = "NOVO CADASTRO";
+                frm.lblStatus.ForeColor = Color.FromArgb(8, 142, 254);
                 StatusOperacao = "NOVO";
                 frm.ShowDialog();
 
@@ -111,7 +112,8 @@ namespace SisControl.View
                         frm.txtReferencia.Text = dataGridPesquisar.CurrentRow.Cells["Referencia"].Value.ToString();                       
                         
 
-                        frm.Text = "SISCONTROL - ALTERAR REGISTRO";
+                        frm.lblStatus.Text = "ALTERAR REGISTRO";
+                        frm.ForeColor = Color.Orange;
                         StatusOperacao = "ALTERAR";                        
                         frm.btnNovo.Enabled = false;
                         frm.btnSalva.Text = "&Alterar";
@@ -151,7 +153,8 @@ namespace SisControl.View
                         frm.cmbStatus.Text = dataGridPesquisar.CurrentRow.Cells["Status"].Value.ToString();
                         frm.txtReferencia.Text = dataGridPesquisar.CurrentRow.Cells["Referencia"].Value.ToString();
 
-                        frm.Text = "SISCONTROL - EXCLUSÃO DE REGISTRO";
+                        frm.lblStatus.Text = "EXCLUSÃO DE REGISTRO";
+                        frm.ForeColor = Color.Red;                         
                         frm.btnSalva.Text = "&Excluir";
 
                         frm.btnNovo.Enabled = false;                       
@@ -185,11 +188,11 @@ namespace SisControl.View
             ProdutosDal dao = new ProdutosDal();
 
             if (rbtCodigo.Checked)
-            {
+            {               
                 dataGridPesquisar.DataSource = dao.PesquisarProdutoPorCodido(nome);
             }
             else
-            {
+            {               
                 dataGridPesquisar.DataSource = dao.PesquisarProdutoPorNome(nome);
             }
             PersonalizarDataGridView(dataGridPesquisar);
@@ -243,6 +246,18 @@ namespace SisControl.View
         {
             FrmEntradaEstoque frm = new FrmEntradaEstoque();
             frm.ShowDialog();
+        }
+
+        private void rbtCodigo_CheckedChanged(object sender, EventArgs e)
+        {
+            txtPesquisa.Text = "";
+            txtPesquisa.Focus();
+        }
+
+        private void rbtDescricao_CheckedChanged(object sender, EventArgs e)
+        {
+            txtPesquisa.Text = "";
+            txtPesquisa.Focus();
         }
     }
 }

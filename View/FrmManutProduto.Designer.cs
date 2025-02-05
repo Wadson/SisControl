@@ -100,7 +100,7 @@
             // 
             // btnAlterar
             // 
-            this.btnAlterar.Location = new System.Drawing.Point(635, 151);
+            this.btnAlterar.Location = new System.Drawing.Point(635, 157);
             this.btnAlterar.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnAlterar.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnAlterar.OverrideDefault.Back.ColorAngle = 45F;
@@ -156,7 +156,7 @@
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Location = new System.Drawing.Point(635, 196);
+            this.btnExcluir.Location = new System.Drawing.Point(635, 208);
             this.btnExcluir.OverrideDefault.Back.Color1 = System.Drawing.Color.Red;
             this.btnExcluir.OverrideDefault.Back.Color2 = System.Drawing.Color.Red;
             this.btnExcluir.OverrideDefault.Back.ColorAngle = 45F;
@@ -266,6 +266,14 @@
             this.btnSair.Values.Text = "&Sair";
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
+            // rbtDescricao
+            // 
+            this.rbtDescricao.CheckedChanged += new System.EventHandler(this.rbtDescricao_CheckedChanged);
+            // 
+            // rbtCodigo
+            // 
+            this.rbtCodigo.CheckedChanged += new System.EventHandler(this.rbtCodigo_CheckedChanged);
+            // 
             // timer1
             // 
             this.timer1.Interval = 1000;
@@ -302,7 +310,7 @@
             // btnEstoque
             // 
             this.btnEstoque.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEstoque.Location = new System.Drawing.Point(635, 245);
+            this.btnEstoque.Location = new System.Drawing.Point(635, 259);
             this.btnEstoque.Name = "btnEstoque";
             this.btnEstoque.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnEstoque.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
