@@ -41,25 +41,26 @@ namespace SisControl.View
         {
         }
 
-        public void PersonalizarDataGridViewPagParciais(KryptonDataGridView dgv)
+        public void PersonalizarDataGridViewPagParciais()
         {
-            if (dgv.Columns.Count >= 4)
+            if (dgvContasReceber.Columns.Count >= 4)
             {
                 // Renomear colunas
-                dgv.Columns[0].Name = "PagamentoParcialID";
-                dgv.Columns[1].Name = "ParcelaID";
-                dgv.Columns[2].Name = "ValorPago";
-                dgv.Columns[3].Name = "DataPagamento";
+                //dgvContasReceber.Columns["PagamentoParcialID"].HeaderText = "Código";
+                //dgvContasReceber.Columns["ParcelaID"].HeaderText = "ParcelaID";
+                //dgvContasReceber.Columns["ValorPago"].HeaderText = "Vlr. Pago";
+                //dgvContasReceber.Columns["DataPagamento"].HeaderText = "Dta. Pgto";
+
 
                 // Ajustar colunas automaticamente
-                dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                dgvContasReceber.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
                 // Tornar o grid somente leitura
-                dgv.ReadOnly = true;
+                dgvContasReceber.ReadOnly = true;
 
                 // Ocultar as colunas PagamentoParcialID e ParcelaID
-                dgv.Columns["PagamentoParcialID"].Visible = false;
-                dgv.Columns["ParcelaID"].Visible = false;
+                //dgvContasReceber.Columns["PagamentoParcialID"].Visible = false;
+                //dgvContasReceber.Columns["ParcelaID"].Visible = false;
             }
             else
             {
@@ -73,6 +74,18 @@ namespace SisControl.View
             {
                 dgvContasReceber = new KryptonDataGridView();
             }
+
+            dgvContasReceber.Columns["ParcelaID"].HeaderText = "Código";
+            dgvContasReceber.Columns["ValorParcela"].HeaderText = "Vlr Parc;";
+            dgvContasReceber.Columns["NumeroParcela"].HeaderText = "Nº Parc.";
+            dgvContasReceber.Columns["SaldoRestante"].HeaderText = "Saldo Rest.";
+            dgvContasReceber.Columns["DataVencimento"].HeaderText = "Dt. Vencto";
+            dgvContasReceber.Columns["VendaID"].HeaderText = "VendaID";
+            dgvContasReceber.Columns["Pago"].HeaderText = "Pago";
+            dgvContasReceber.Columns["ValorRecebido"].HeaderText = "Vlr Rec.";
+            dgvContasReceber.Columns["ClienteID"].HeaderText = "ClienteID";
+            dgvContasReceber.Columns["NomeCliente"].HeaderText = "Nome do Cliente";
+
 
             // Verifique se as colunas existem antes de tentar configurá-las
             if (dgvContasReceber.Columns.Contains("ParcelaID"))
@@ -482,7 +495,7 @@ namespace SisControl.View
                 // Verifica se há dados no DataGridView antes de personalizar
                 if (dgvPagamentosParciais.Rows.Count > 0)
                 {
-                    PersonalizarDataGridViewPagParciais(dgvPagamentosParciais);
+                    PersonalizarDataGridViewPagParciais();
                 }
                 else
                 {
