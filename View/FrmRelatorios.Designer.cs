@@ -701,7 +701,7 @@
             this.dgvItensVenda.Location = new System.Drawing.Point(12, 303);
             this.dgvItensVenda.Name = "dgvItensVenda";
             this.dgvItensVenda.ReadOnly = true;
-            this.dgvItensVenda.Size = new System.Drawing.Size(679, 151);
+            this.dgvItensVenda.Size = new System.Drawing.Size(945, 197);
             this.dgvItensVenda.TabIndex = 631;
             // 
             // kryptonPanel2
@@ -711,7 +711,7 @@
             this.kryptonPanel2.Name = "kryptonPanel2";
             this.kryptonPanel2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.kryptonPanel2.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundSheet;
-            this.kryptonPanel2.Size = new System.Drawing.Size(679, 29);
+            this.kryptonPanel2.Size = new System.Drawing.Size(945, 29);
             this.kryptonPanel2.TabIndex = 632;
             // 
             // label5
@@ -720,7 +720,7 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(100)))), ((int)(((byte)(255)))));
-            this.label5.Location = new System.Drawing.Point(212, 3);
+            this.label5.Location = new System.Drawing.Point(363, 3);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(216, 24);
             this.label5.TabIndex = 596;

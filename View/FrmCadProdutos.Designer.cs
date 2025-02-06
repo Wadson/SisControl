@@ -321,7 +321,7 @@
             this.lblStatus.BackColor = System.Drawing.Color.Transparent;
             this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.lblStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
-            this.lblStatus.Location = new System.Drawing.Point(178, -2);
+            this.lblStatus.Location = new System.Drawing.Point(168, 2);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(255, 24);
             this.lblStatus.TabIndex = 246;

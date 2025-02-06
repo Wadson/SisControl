@@ -12,7 +12,7 @@ namespace SisControl.View
     public partial class FrmLocalizarFornedor : FrmBasePesquisa
     {
         protected int LinhaAtual = -1;
-        private int FornecedorID;
+        private int clienteID;
         public Form FormChamador { get; set; }
         public FrmLocalizarFornedor()
         {
@@ -43,21 +43,18 @@ namespace SisControl.View
         private void FrmLocalizarFornedeor_FormClosing(object sender, FormClosingEventArgs e)
         {
             // Obtém o ID do cliente da célula [0, LinhaAtual] do dataGridPesquisar e converte para inteiro.
-            FornecedorID = Convert.ToInt32(dataGridPesquisar[0, LinhaAtual].Value);
-
-            // Acrescenta zeros à esquerda do ID do cliente até que ele tenha 4 dígitos.
-            string numeroComZeros = Utilitario.AcrescentarZerosEsquerda(FornecedorID, 4);
-
+            clienteID = Convert.ToInt32(dataGridPesquisar[0, LinhaAtual].Value);
+                        
             // Obtém o nome do cliente da célula [1, LinhaAtual] do dataGridPesquisar e converte para string.
             string nomeFornecedor = dataGridPesquisar[1, LinhaAtual].Value.ToString();
            
-            // Verifica se o formulário chamador é uma instância de FrmContaReceber.
-            if (FormChamador is FrmContaReceberr frmContaReceber)
-            {
-                // Se for, define os textos dos campos txtClienteID e txtNomeCliente de FrmContaReceber.
-                frmContaReceber.txtClienteID.Text = numeroComZeros;
-                frmContaReceber.txtNomeCliente.Text = nomeFornecedor;
-            }
+            //// Verifica se o formulário chamador é uma instância de FrmContaReceber.
+            //if (FormChamador is FrmContaReceberr frmContaReceber)
+            //{
+            //    // Se for, define os textos dos campos txtClienteID e txtNomeCliente de FrmContaReceber.
+            //    frmContaReceber.clienteID = clienteID;
+            //    frmContaReceber.txtNomeCliente.Text = nomeFornecedor;
+            //}
         }
 
         private void FrmLocalizarFornedeor_Load(object sender, EventArgs e)

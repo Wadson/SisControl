@@ -8,10 +8,12 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
 using Microsoft.Win32;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.RefAndLookup;
 using SisControl.DALL;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static SisControl.View.FrmContaReceberr;
@@ -21,6 +23,7 @@ namespace SisControl.View
     public partial class FrmContaReceberr : SisControl.FrmModeloForm
     {
         private Parcela _parcela;
+        public int clienteID { get; set; }
         private FrmBaixarConta frmBaixarConta;
         public int vendaID { get; set; }
 
@@ -35,12 +38,7 @@ namespace SisControl.View
             // No construtor do formulário ou no método de inicialização
             dgvContasReceber.SelectionChanged += dgvContasReceber_SelectionChanged;
 
-        }
-
-        public FrmContaReceberr()
-        {
-        }
-
+        }        
         public void PersonalizarDataGridViewPagParciais()
         {
             if (dgvContasReceber.Columns.Count >= 4)
@@ -194,7 +192,7 @@ namespace SisControl.View
             {
                 LocalizarContaPorPeriodo();
             }
-            else if (selectedText == "Nome" && txtClienteID.Text != string.Empty)
+            else if (selectedText == "Nome" && clienteID.ToString() != string.Empty)
             {
                 LocalizarContaPorNome();
             }
@@ -225,13 +223,12 @@ namespace SisControl.View
                 
                 WHERE Parcela.Pago = 0";
 
-
             string nomeParametro = "@ClienteID";
-            string nomePesquisar = txtClienteID.Text;
+            string nomePesquisar = clienteID.ToString();
             Utilitario.PesquisarPorNome(query, nomeParametro, nomePesquisar, dgvContasReceber);
             CalcularTotalDataGrid();
-
         }
+
         private void AtualizarContagemRegistros()
         {
             int totalRegistros = Utilitario.ContaRegistros(dgvContasReceber);
@@ -358,31 +355,32 @@ namespace SisControl.View
 
             if (selectedText == "Status")
             {
-                btnFiltro.Visible = true;
+                btnFiltrar.Visible = true;
                 gbStatus.Visible = true;
                 gbNome.Visible = false;
                 gbPeriodo.Visible = false;
-                btnFiltro.Location = new Point(430, 96);                
+                btnFiltrar.Location = new Point(353, 76);                
             }
             else if (selectedText == "Período")
             {
-                btnFiltro.Visible = true;
+                btnFiltrar.Visible = true;
                 gbPeriodo.Visible = true;
                 gbStatus.Visible = false;
                 gbNome.Visible = false;
-                btnFiltro.Location = new Point(609, 96);                
+                btnFiltrar.Location = new Point(577, 74);                
             }
             else if (selectedText == "Nome")
             {
-                btnFiltro.Visible = true;
+                btnFiltrar.Visible = true;
                 gbNome.Visible = true;
                 gbPeriodo.Visible = false;
                 gbStatus.Visible = false;
-                btnFiltro.Location = new Point(758, 96);
+                //btnFiltrar.Location = new Point(758, 96);
+                btnFiltrar.Visible = false;
             }
             else
             {
-                btnFiltro.Visible = false;
+                btnFiltrar.Visible = false;
                 gbStatus.Visible = false;
                 gbPeriodo.Visible = false;
                 gbNome.Visible = false;
@@ -392,8 +390,6 @@ namespace SisControl.View
                 LimparDataGrid();
             }
         }
-
-
 
         private void btnFiltro_Click(object sender, EventArgs e)
         {
@@ -447,7 +443,6 @@ namespace SisControl.View
             }
         }
 
-
         private void CalcularTotalDataGrid()
         {
             try
@@ -470,23 +465,12 @@ namespace SisControl.View
                 MessageBox.Show("Erro ao calcular o total: " + ex.Message);
             }
         }
-
-
-
-
         private void ListarPagamentosParciais(int parcelaID)
         {
             try
             {
-                string query = @"SELECT 
-            PagamentoParcialID,
-            ParcelaID,
-            ValorPago,
-            DataPagamento
-        FROM 
-            PagamentosParciais
-        WHERE 
-            ParcelaID = @ParcelaID";
+                string query = @"SELECT PagamentoParcialID, ParcelaID,  ValorPago,  DataPagamento
+        FROM  PagamentosParciais  WHERE ParcelaID = @ParcelaID";
 
                 string nomeParametro = "@ParcelaID";
                 string valorParametro = parcelaID.ToString();
@@ -654,7 +638,8 @@ namespace SisControl.View
                 FROM Parcela                          
                 INNER JOIN Venda ON Parcela.VendaID = Venda.VendaID
                 INNER JOIN Cliente ON Venda.ClienteID = Cliente.ClienteID
-                                {(string.IsNullOrWhiteSpace(clausulaWhere) ? "" : "WHERE " + clausulaWhere)}";
+
+            { (string.IsNullOrWhiteSpace(clausulaWhere) ? "" : "WHERE " + clausulaWhere)}";
 
             Utilitario.PesquisarComParametros(query, parametros, grid);
         }
@@ -695,6 +680,18 @@ namespace SisControl.View
         private void btnLocalizarCliente_Click(object sender, EventArgs e)
         {
             AbrirFrmLocalizarCliente();
+        }
+
+        private void txtNomeCliente_TextChanged_1(object sender, EventArgs e)
+        {
+            LocalizarConta();
+            if (dgvContasReceber.Rows.Count == 0)
+            {
+                dgvPagamentosParciais.DataSource = null;
+                dgvPagamentosParciais.DataSource = new List<object>(); // Definir como uma lista vazia
+            }
+
+            CalcularTotalDataGrid();
         }
     }
 }

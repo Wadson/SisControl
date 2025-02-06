@@ -44,5 +44,11 @@ namespace SisControl.View
         {
             this.Close();
         }
+
+        private void btnRelProdutos_Click(object sender, EventArgs e)
+        {
+            FrmRelProdutos frm = new FrmRelProdutos();
+            frm.ShowDialog();
+        }
     }
 }

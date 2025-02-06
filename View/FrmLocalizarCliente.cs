@@ -6,9 +6,9 @@ using System.Windows.Forms;
 namespace SisControl.View
 {
     public partial class FrmLocalizarCliente : SisControl.FrmBasePesquisa
-    {
-        private int ClienteID;
+    {        
         protected int LinhaAtual = -1;
+        private int _clienteID;
         public int numeroComZeros { get; set; }
         public string nomeCliente { get; set; }
 
@@ -100,22 +100,22 @@ namespace SisControl.View
                     return;
                 }
 
-                ClienteID = int.Parse(dataGridPesquisar["ClienteID", LinhaAtual].Value.ToString());
+                _clienteID = int.Parse(dataGridPesquisar["ClienteID", LinhaAtual].Value.ToString());
                 nomeCliente = dataGridPesquisar["NomeCliente", LinhaAtual].Value.ToString();
 
                 if (this.Owner is FrmPedidoVendaNovo frmPedidoVendaNovo)
                 {
-                    frmPedidoVendaNovo.ClienteID = ClienteID;
+                    frmPedidoVendaNovo.ClienteID = _clienteID;
                     frmPedidoVendaNovo.txtNomeCliente.Text = nomeCliente;
                 }
                 else if (this.Owner is FrmContaReceberr frmContaReceberr)
                 {
-                    frmContaReceberr.txtClienteID.Text = ClienteID.ToString();
+                    frmContaReceberr.clienteID = _clienteID;
                     frmContaReceberr.txtNomeCliente.Text = nomeCliente;
                 }
                 else if (this.Owner is FrmRelatorios frmRelatorios)
                 {
-                    frmRelatorios.txtClienteID.Text = ClienteID.ToString();
+                    frmRelatorios.txtClienteID.Text = _clienteID.ToString();
                     frmRelatorios.txtNomeCliente.Text = nomeCliente;
                 }
                 else if (this.Owner is RelClienteContaAberta frmRelGeralContasAbertas)

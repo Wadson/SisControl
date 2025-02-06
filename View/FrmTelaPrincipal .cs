@@ -23,7 +23,7 @@ namespace SisControl
         public FrmTelaPrincipal()
         {
             InitializeComponent();
-            _frmContaReceberr = new FrmContaReceberr();
+            //_frmContaReceberr = new FrmContaReceberr();
             StatusOperacao = "";
         }
 

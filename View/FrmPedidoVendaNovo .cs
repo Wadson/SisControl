@@ -557,57 +557,6 @@ namespace SisControl.View
             this.Close();
         }
 
-        private void btnIncluir_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // Verifica se todos os valores necessários estão preenchidos
-                if (VendaID == 0)
-                {
-                    MessageBox.Show("Por favor, informe o ID da venda.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                if (ItemVendaID == 0)
-                {
-                    MessageBox.Show("Por favor, informe o ID dos itens da venda.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                if (string.IsNullOrWhiteSpace(txtQuantidade.Text))
-                {
-                    MessageBox.Show("Por favor, informe a quantidade.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                if (!int.TryParse(txtQuantidade.Text, out int quantidade) || quantidade <= 0)
-                {
-                    MessageBox.Show("Por favor, informe uma quantidade válida.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                if (string.IsNullOrWhiteSpace(txtValorProduto.Text) || decimal.TryParse(txtValorProduto.Text, out decimal valor) && valor <= 0)
-                {
-                    MessageBox.Show("Por favor, informe um valor de produto válido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                if (string.IsNullOrWhiteSpace(txtNomeProduto.Text))
-                {
-                    MessageBox.Show("Por favor, informe o nome do produto.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                // Chama o método para incluir os itens na grid
-                IncluirItens();
-            }
-            catch (Exception ex)
-            {
-                Log(ex.Message);
-                MessageBox.Show($"Ocorreu um erro: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void AbrirFormParcelar()
         {
             ParcelaID = Utilitario.GerarNovoCodigoID("ParcelaID", "Parcela");
@@ -861,10 +810,55 @@ namespace SisControl.View
         {
            Habilitabotoes();
         }
-
-        private void txtNomeProduto_TextChanged(object sender, EventArgs e)
+        private void btnIncluir_Click(object sender, EventArgs e)
         {
+            try
+            {
+                // Verifica se todos os valores necessários estão preenchidos
+                if (VendaID == 0)
+                {
+                    MessageBox.Show("Por favor, informe o ID da venda.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
+                if (ItemVendaID == 0)
+                {
+                    MessageBox.Show("Por favor, informe o ID dos itens da venda.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(txtQuantidade.Text))
+                {
+                    MessageBox.Show("Por favor, informe a quantidade.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (!int.TryParse(txtQuantidade.Text, out int quantidade) || quantidade <= 0)
+                {
+                    MessageBox.Show("Por favor, informe uma quantidade válida.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(txtValorProduto.Text) || decimal.TryParse(txtValorProduto.Text, out decimal valor) && valor <= 0)
+                {
+                    MessageBox.Show("Por favor, informe um valor de produto válido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(txtNomeProduto.Text))
+                {
+                    MessageBox.Show("Por favor, informe o nome do produto.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Chama o método para incluir os itens na grid
+                IncluirItens();
+            }
+            catch (Exception ex)
+            {
+                Log(ex.Message);
+                MessageBox.Show($"Ocorreu um erro: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

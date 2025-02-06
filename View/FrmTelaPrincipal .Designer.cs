@@ -70,6 +70,7 @@
             this.lblUsuarioLogado = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.MenuVertical = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.kryptonButton1 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnFornecedor = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnRelatorio = new ComponentFactory.Krypton.Toolkit.KryptonButton();
@@ -175,7 +176,7 @@
             this.produtoToolStripMenuItem,
             this.categoriaToolStripMenuItem,
             this.telaUiToolStripMenuItem});
-            this.usuárioToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.usuárioToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.usuárioToolStripMenuItem.Name = "usuárioToolStripMenuItem";
             this.usuárioToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.usuárioToolStripMenuItem.Text = "&Cadastro";
@@ -183,38 +184,38 @@
             // usuárioToolStripMenuItem1
             // 
             this.usuárioToolStripMenuItem1.Name = "usuárioToolStripMenuItem1";
-            this.usuárioToolStripMenuItem1.Size = new System.Drawing.Size(134, 22);
+            this.usuárioToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.usuárioToolStripMenuItem1.Text = "&Usuário";
             // 
             // clienteToolStripMenuItem
             // 
             this.clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
-            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.clienteToolStripMenuItem.Text = "&Cliente";
             // 
             // fornecedorToolStripMenuItem
             // 
             this.fornecedorToolStripMenuItem.Name = "fornecedorToolStripMenuItem";
-            this.fornecedorToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.fornecedorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.fornecedorToolStripMenuItem.Text = "&Fornecedor";
             // 
             // produtoToolStripMenuItem
             // 
             this.produtoToolStripMenuItem.Name = "produtoToolStripMenuItem";
-            this.produtoToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.produtoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.produtoToolStripMenuItem.Text = "&Produto";
             // 
             // categoriaToolStripMenuItem
             // 
             this.categoriaToolStripMenuItem.Name = "categoriaToolStripMenuItem";
-            this.categoriaToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.categoriaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.categoriaToolStripMenuItem.Text = "Ca&tegoria";
             this.categoriaToolStripMenuItem.Click += new System.EventHandler(this.categoriaToolStripMenuItem_Click);
             // 
             // telaUiToolStripMenuItem
             // 
             this.telaUiToolStripMenuItem.Name = "telaUiToolStripMenuItem";
-            this.telaUiToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.telaUiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.telaUiToolStripMenuItem.Text = "TelaUi";
             this.telaUiToolStripMenuItem.Click += new System.EventHandler(this.telaUiToolStripMenuItem_Click);
             // 
@@ -229,6 +230,7 @@
             this.ajudaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.menuStrip1.Size = new System.Drawing.Size(1228, 24);
             this.menuStrip1.TabIndex = 551;
             this.menuStrip1.Text = "menuStrip1";
@@ -242,7 +244,7 @@
             this.produtoToolStripMenuItem1,
             this.fabricanteToolStripMenuItem,
             this.entradaDeEstoqueToolStripMenuItem});
-            this.manutençãoDeCadastrosToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.manutençãoDeCadastrosToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.manutençãoDeCadastrosToolStripMenuItem.Name = "manutençãoDeCadastrosToolStripMenuItem";
             this.manutençãoDeCadastrosToolStripMenuItem.Size = new System.Drawing.Size(157, 20);
             this.manutençãoDeCadastrosToolStripMenuItem.Text = "&Manutenção de Cadastros";
@@ -289,7 +291,7 @@
             // 
             this.ajudaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sobreToolStripMenuItem});
-            this.ajudaToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.ajudaToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.ajudaToolStripMenuItem.Name = "ajudaToolStripMenuItem";
             this.ajudaToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.ajudaToolStripMenuItem.Text = "&Ajuda";
@@ -297,7 +299,7 @@
             // sobreToolStripMenuItem
             // 
             this.sobreToolStripMenuItem.Name = "sobreToolStripMenuItem";
-            this.sobreToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sobreToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
             this.sobreToolStripMenuItem.Text = "&Sobre";
             this.sobreToolStripMenuItem.Click += new System.EventHandler(this.sobreToolStripMenuItem_Click);
             // 
@@ -407,6 +409,7 @@
             // 
             // MenuVertical
             // 
+            this.MenuVertical.Controls.Add(this.kryptonButton1);
             this.MenuVertical.Controls.Add(this.pictureBox1);
             this.MenuVertical.Controls.Add(this.btnFornecedor);
             this.MenuVertical.Controls.Add(this.btnRelatorio);
@@ -426,6 +429,111 @@
             this.MenuVertical.StateCommon.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.MenuVertical.StateCommon.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(244)))));
             this.MenuVertical.TabIndex = 554;
+            // 
+            // kryptonButton1
+            // 
+            this.kryptonButton1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.kryptonButton1.Location = new System.Drawing.Point(12, 391);
+            this.kryptonButton1.Name = "kryptonButton1";
+            this.kryptonButton1.OverrideDefault.Back.Color1 = System.Drawing.Color.White;
+            this.kryptonButton1.OverrideDefault.Back.Color2 = System.Drawing.Color.White;
+            this.kryptonButton1.OverrideDefault.Back.ColorAngle = 45F;
+            this.kryptonButton1.OverrideDefault.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.kryptonButton1.OverrideDefault.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.kryptonButton1.OverrideDefault.Border.ColorAngle = 45F;
+            this.kryptonButton1.OverrideDefault.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.kryptonButton1.OverrideDefault.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.kryptonButton1.OverrideDefault.Border.Rounding = 1;
+            this.kryptonButton1.OverrideDefault.Border.Width = 1;
+            this.kryptonButton1.OverrideDefault.Content.LongText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.kryptonButton1.OverrideDefault.Content.LongText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.kryptonButton1.OverrideDefault.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.kryptonButton1.OverrideDefault.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.kryptonButton1.OverrideFocus.Back.Color1 = System.Drawing.Color.White;
+            this.kryptonButton1.OverrideFocus.Back.Color2 = System.Drawing.Color.White;
+            this.kryptonButton1.OverrideFocus.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.kryptonButton1.OverrideFocus.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.kryptonButton1.OverrideFocus.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.kryptonButton1.OverrideFocus.Content.LongText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.kryptonButton1.OverrideFocus.Content.LongText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.kryptonButton1.OverrideFocus.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.kryptonButton1.OverrideFocus.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.kryptonButton1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.kryptonButton1.Size = new System.Drawing.Size(190, 30);
+            this.kryptonButton1.StateCommon.Back.Color1 = System.Drawing.Color.White;
+            this.kryptonButton1.StateCommon.Back.Color2 = System.Drawing.Color.White;
+            this.kryptonButton1.StateCommon.Back.ColorAngle = 45F;
+            this.kryptonButton1.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.kryptonButton1.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.kryptonButton1.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.kryptonButton1.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.kryptonButton1.StateCommon.Border.Rounding = 1;
+            this.kryptonButton1.StateCommon.Border.Width = 1;
+            this.kryptonButton1.StateCommon.Content.LongText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.kryptonButton1.StateCommon.Content.LongText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.kryptonButton1.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.kryptonButton1.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.kryptonButton1.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonButton1.StateDisabled.Back.Color1 = System.Drawing.Color.White;
+            this.kryptonButton1.StateDisabled.Back.Color2 = System.Drawing.Color.White;
+            this.kryptonButton1.StateDisabled.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.kryptonButton1.StateDisabled.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.kryptonButton1.StateDisabled.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.kryptonButton1.StateDisabled.Content.LongText.Color1 = System.Drawing.Color.White;
+            this.kryptonButton1.StateDisabled.Content.LongText.Color2 = System.Drawing.Color.White;
+            this.kryptonButton1.StateDisabled.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.kryptonButton1.StateDisabled.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.kryptonButton1.StateNormal.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.kryptonButton1.StateNormal.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.kryptonButton1.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.kryptonButton1.StateNormal.Content.LongText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.kryptonButton1.StateNormal.Content.LongText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.kryptonButton1.StateNormal.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.kryptonButton1.StateNormal.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.kryptonButton1.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.kryptonButton1.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.kryptonButton1.StatePressed.Back.ColorAngle = 135F;
+            this.kryptonButton1.StatePressed.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
+            this.kryptonButton1.StatePressed.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.kryptonButton1.StatePressed.Border.ColorAngle = 135F;
+            this.kryptonButton1.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.kryptonButton1.StatePressed.Border.Rounding = 1;
+            this.kryptonButton1.StatePressed.Border.Width = 1;
+            this.kryptonButton1.StatePressed.Content.LongText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.kryptonButton1.StatePressed.Content.LongText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.kryptonButton1.StatePressed.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.kryptonButton1.StatePressed.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.kryptonButton1.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.kryptonButton1.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.kryptonButton1.StateTracking.Back.ColorAngle = 45F;
+            this.kryptonButton1.StateTracking.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.kryptonButton1.StateTracking.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.kryptonButton1.StateTracking.Border.ColorAngle = 45F;
+            this.kryptonButton1.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.kryptonButton1.StateTracking.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.kryptonButton1.StateTracking.Border.Rounding = 1;
+            this.kryptonButton1.StateTracking.Border.Width = 1;
+            this.kryptonButton1.StateTracking.Content.LongText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.kryptonButton1.StateTracking.Content.LongText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.kryptonButton1.StateTracking.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.kryptonButton1.StateTracking.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.kryptonButton1.TabIndex = 563;
+            this.kryptonButton1.Values.Image = global::SisControl.Properties.Resources.Ferramentas24;
+            this.kryptonButton1.Values.Text = "Ferramentas";
             // 
             // pictureBox1
             // 
@@ -456,6 +564,10 @@
             this.btnFornecedor.OverrideDefault.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.btnFornecedor.OverrideDefault.Border.Rounding = 1;
             this.btnFornecedor.OverrideDefault.Border.Width = 1;
+            this.btnFornecedor.OverrideDefault.Content.LongText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnFornecedor.OverrideDefault.Content.LongText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnFornecedor.OverrideDefault.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnFornecedor.OverrideDefault.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnFornecedor.OverrideFocus.Back.Color1 = System.Drawing.Color.White;
             this.btnFornecedor.OverrideFocus.Back.Color2 = System.Drawing.Color.White;
             this.btnFornecedor.OverrideFocus.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
@@ -496,8 +608,6 @@
             this.btnFornecedor.StateDisabled.Content.LongText.Color2 = System.Drawing.Color.White;
             this.btnFornecedor.StateDisabled.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnFornecedor.StateDisabled.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
-            this.btnFornecedor.StateNormal.Back.Color1 = System.Drawing.Color.White;
-            this.btnFornecedor.StateNormal.Back.Color2 = System.Drawing.Color.White;
             this.btnFornecedor.StateNormal.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnFornecedor.StateNormal.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnFornecedor.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
@@ -507,8 +617,8 @@
             this.btnFornecedor.StateNormal.Content.LongText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnFornecedor.StateNormal.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnFornecedor.StateNormal.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
-            this.btnFornecedor.StatePressed.Back.Color1 = System.Drawing.Color.White;
-            this.btnFornecedor.StatePressed.Back.Color2 = System.Drawing.Color.White;
+            this.btnFornecedor.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnFornecedor.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnFornecedor.StatePressed.Back.ColorAngle = 135F;
             this.btnFornecedor.StatePressed.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
             this.btnFornecedor.StatePressed.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
@@ -522,8 +632,8 @@
             this.btnFornecedor.StatePressed.Content.LongText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnFornecedor.StatePressed.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnFornecedor.StatePressed.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
-            this.btnFornecedor.StateTracking.Back.Color1 = System.Drawing.Color.White;
-            this.btnFornecedor.StateTracking.Back.Color2 = System.Drawing.Color.White;
+            this.btnFornecedor.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnFornecedor.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnFornecedor.StateTracking.Back.ColorAngle = 45F;
             this.btnFornecedor.StateTracking.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnFornecedor.StateTracking.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -549,7 +659,7 @@
             // btnRelatorio
             // 
             this.btnRelatorio.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnRelatorio.Location = new System.Drawing.Point(9, 279);
+            this.btnRelatorio.Location = new System.Drawing.Point(9, 283);
             this.btnRelatorio.Name = "btnRelatorio";
             this.btnRelatorio.OverrideDefault.Back.Color1 = System.Drawing.Color.White;
             this.btnRelatorio.OverrideDefault.Back.Color2 = System.Drawing.Color.White;
@@ -563,6 +673,10 @@
             this.btnRelatorio.OverrideDefault.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.btnRelatorio.OverrideDefault.Border.Rounding = 1;
             this.btnRelatorio.OverrideDefault.Border.Width = 1;
+            this.btnRelatorio.OverrideDefault.Content.LongText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnRelatorio.OverrideDefault.Content.LongText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnRelatorio.OverrideDefault.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnRelatorio.OverrideDefault.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnRelatorio.OverrideFocus.Back.Color1 = System.Drawing.Color.White;
             this.btnRelatorio.OverrideFocus.Back.Color2 = System.Drawing.Color.White;
             this.btnRelatorio.OverrideFocus.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
@@ -603,8 +717,6 @@
             this.btnRelatorio.StateDisabled.Content.LongText.Color2 = System.Drawing.Color.White;
             this.btnRelatorio.StateDisabled.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnRelatorio.StateDisabled.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
-            this.btnRelatorio.StateNormal.Back.Color1 = System.Drawing.Color.White;
-            this.btnRelatorio.StateNormal.Back.Color2 = System.Drawing.Color.White;
             this.btnRelatorio.StateNormal.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnRelatorio.StateNormal.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnRelatorio.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
@@ -614,8 +726,8 @@
             this.btnRelatorio.StateNormal.Content.LongText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnRelatorio.StateNormal.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnRelatorio.StateNormal.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
-            this.btnRelatorio.StatePressed.Back.Color1 = System.Drawing.Color.White;
-            this.btnRelatorio.StatePressed.Back.Color2 = System.Drawing.Color.White;
+            this.btnRelatorio.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnRelatorio.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnRelatorio.StatePressed.Back.ColorAngle = 135F;
             this.btnRelatorio.StatePressed.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
             this.btnRelatorio.StatePressed.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
@@ -629,8 +741,8 @@
             this.btnRelatorio.StatePressed.Content.LongText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnRelatorio.StatePressed.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnRelatorio.StatePressed.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
-            this.btnRelatorio.StateTracking.Back.Color1 = System.Drawing.Color.White;
-            this.btnRelatorio.StateTracking.Back.Color2 = System.Drawing.Color.White;
+            this.btnRelatorio.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnRelatorio.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnRelatorio.StateTracking.Back.ColorAngle = 45F;
             this.btnRelatorio.StateTracking.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnRelatorio.StateTracking.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -671,6 +783,10 @@
             this.btnUsuarios.OverrideDefault.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.btnUsuarios.OverrideDefault.Border.Rounding = 1;
             this.btnUsuarios.OverrideDefault.Border.Width = 1;
+            this.btnUsuarios.OverrideDefault.Content.LongText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnUsuarios.OverrideDefault.Content.LongText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnUsuarios.OverrideDefault.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnUsuarios.OverrideDefault.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnUsuarios.OverrideFocus.Back.Color1 = System.Drawing.Color.White;
             this.btnUsuarios.OverrideFocus.Back.Color2 = System.Drawing.Color.White;
             this.btnUsuarios.OverrideFocus.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
@@ -711,8 +827,6 @@
             this.btnUsuarios.StateDisabled.Content.LongText.Color2 = System.Drawing.Color.White;
             this.btnUsuarios.StateDisabled.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnUsuarios.StateDisabled.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
-            this.btnUsuarios.StateNormal.Back.Color1 = System.Drawing.Color.White;
-            this.btnUsuarios.StateNormal.Back.Color2 = System.Drawing.Color.White;
             this.btnUsuarios.StateNormal.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnUsuarios.StateNormal.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnUsuarios.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
@@ -722,8 +836,8 @@
             this.btnUsuarios.StateNormal.Content.LongText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnUsuarios.StateNormal.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnUsuarios.StateNormal.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
-            this.btnUsuarios.StatePressed.Back.Color1 = System.Drawing.Color.White;
-            this.btnUsuarios.StatePressed.Back.Color2 = System.Drawing.Color.White;
+            this.btnUsuarios.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnUsuarios.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnUsuarios.StatePressed.Back.ColorAngle = 135F;
             this.btnUsuarios.StatePressed.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
             this.btnUsuarios.StatePressed.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
@@ -737,8 +851,8 @@
             this.btnUsuarios.StatePressed.Content.LongText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnUsuarios.StatePressed.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnUsuarios.StatePressed.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
-            this.btnUsuarios.StateTracking.Back.Color1 = System.Drawing.Color.White;
-            this.btnUsuarios.StateTracking.Back.Color2 = System.Drawing.Color.White;
+            this.btnUsuarios.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnUsuarios.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnUsuarios.StateTracking.Back.ColorAngle = 45F;
             this.btnUsuarios.StateTracking.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnUsuarios.StateTracking.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -764,7 +878,7 @@
             // btnContasReceber
             // 
             this.btnContasReceber.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnContasReceber.Location = new System.Drawing.Point(9, 243);
+            this.btnContasReceber.Location = new System.Drawing.Point(9, 247);
             this.btnContasReceber.Name = "btnContasReceber";
             this.btnContasReceber.OverrideDefault.Back.Color1 = System.Drawing.Color.White;
             this.btnContasReceber.OverrideDefault.Back.Color2 = System.Drawing.Color.White;
@@ -778,6 +892,10 @@
             this.btnContasReceber.OverrideDefault.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.btnContasReceber.OverrideDefault.Border.Rounding = 1;
             this.btnContasReceber.OverrideDefault.Border.Width = 1;
+            this.btnContasReceber.OverrideDefault.Content.LongText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnContasReceber.OverrideDefault.Content.LongText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnContasReceber.OverrideDefault.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnContasReceber.OverrideDefault.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnContasReceber.OverrideFocus.Back.Color1 = System.Drawing.Color.White;
             this.btnContasReceber.OverrideFocus.Back.Color2 = System.Drawing.Color.White;
             this.btnContasReceber.OverrideFocus.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
@@ -818,8 +936,6 @@
             this.btnContasReceber.StateDisabled.Content.LongText.Color2 = System.Drawing.Color.White;
             this.btnContasReceber.StateDisabled.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnContasReceber.StateDisabled.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
-            this.btnContasReceber.StateNormal.Back.Color1 = System.Drawing.Color.White;
-            this.btnContasReceber.StateNormal.Back.Color2 = System.Drawing.Color.White;
             this.btnContasReceber.StateNormal.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnContasReceber.StateNormal.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnContasReceber.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
@@ -829,8 +945,8 @@
             this.btnContasReceber.StateNormal.Content.LongText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnContasReceber.StateNormal.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnContasReceber.StateNormal.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
-            this.btnContasReceber.StatePressed.Back.Color1 = System.Drawing.Color.White;
-            this.btnContasReceber.StatePressed.Back.Color2 = System.Drawing.Color.White;
+            this.btnContasReceber.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnContasReceber.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnContasReceber.StatePressed.Back.ColorAngle = 135F;
             this.btnContasReceber.StatePressed.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
             this.btnContasReceber.StatePressed.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
@@ -844,8 +960,8 @@
             this.btnContasReceber.StatePressed.Content.LongText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnContasReceber.StatePressed.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnContasReceber.StatePressed.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
-            this.btnContasReceber.StateTracking.Back.Color1 = System.Drawing.Color.White;
-            this.btnContasReceber.StateTracking.Back.Color2 = System.Drawing.Color.White;
+            this.btnContasReceber.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnContasReceber.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnContasReceber.StateTracking.Back.ColorAngle = 45F;
             this.btnContasReceber.StateTracking.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnContasReceber.StateTracking.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -885,6 +1001,10 @@
             this.btnCadClientes.OverrideDefault.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.btnCadClientes.OverrideDefault.Border.Rounding = 1;
             this.btnCadClientes.OverrideDefault.Border.Width = 1;
+            this.btnCadClientes.OverrideDefault.Content.LongText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnCadClientes.OverrideDefault.Content.LongText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnCadClientes.OverrideDefault.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnCadClientes.OverrideDefault.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnCadClientes.OverrideFocus.Back.Color1 = System.Drawing.Color.White;
             this.btnCadClientes.OverrideFocus.Back.Color2 = System.Drawing.Color.White;
             this.btnCadClientes.OverrideFocus.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
@@ -925,8 +1045,6 @@
             this.btnCadClientes.StateDisabled.Content.LongText.Color2 = System.Drawing.Color.White;
             this.btnCadClientes.StateDisabled.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnCadClientes.StateDisabled.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
-            this.btnCadClientes.StateNormal.Back.Color1 = System.Drawing.Color.White;
-            this.btnCadClientes.StateNormal.Back.Color2 = System.Drawing.Color.White;
             this.btnCadClientes.StateNormal.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnCadClientes.StateNormal.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnCadClientes.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
@@ -936,8 +1054,8 @@
             this.btnCadClientes.StateNormal.Content.LongText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnCadClientes.StateNormal.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnCadClientes.StateNormal.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
-            this.btnCadClientes.StatePressed.Back.Color1 = System.Drawing.Color.White;
-            this.btnCadClientes.StatePressed.Back.Color2 = System.Drawing.Color.White;
+            this.btnCadClientes.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnCadClientes.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnCadClientes.StatePressed.Back.ColorAngle = 135F;
             this.btnCadClientes.StatePressed.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
             this.btnCadClientes.StatePressed.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
@@ -951,8 +1069,8 @@
             this.btnCadClientes.StatePressed.Content.LongText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnCadClientes.StatePressed.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnCadClientes.StatePressed.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
-            this.btnCadClientes.StateTracking.Back.Color1 = System.Drawing.Color.White;
-            this.btnCadClientes.StateTracking.Back.Color2 = System.Drawing.Color.White;
+            this.btnCadClientes.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnCadClientes.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnCadClientes.StateTracking.Back.ColorAngle = 45F;
             this.btnCadClientes.StateTracking.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnCadClientes.StateTracking.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -979,7 +1097,7 @@
             // 
             this.btnSair.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnSair.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.Custom1;
-            this.btnSair.Location = new System.Drawing.Point(9, 351);
+            this.btnSair.Location = new System.Drawing.Point(9, 355);
             this.btnSair.Name = "btnSair";
             this.btnSair.OverrideDefault.Back.Color1 = System.Drawing.Color.White;
             this.btnSair.OverrideDefault.Back.Color2 = System.Drawing.Color.White;
@@ -993,6 +1111,10 @@
             this.btnSair.OverrideDefault.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.btnSair.OverrideDefault.Border.Rounding = 1;
             this.btnSair.OverrideDefault.Border.Width = 1;
+            this.btnSair.OverrideDefault.Content.LongText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnSair.OverrideDefault.Content.LongText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnSair.OverrideDefault.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnSair.OverrideDefault.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnSair.OverrideFocus.Back.Color1 = System.Drawing.Color.White;
             this.btnSair.OverrideFocus.Back.Color2 = System.Drawing.Color.White;
             this.btnSair.OverrideFocus.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
@@ -1033,8 +1155,6 @@
             this.btnSair.StateDisabled.Content.LongText.Color2 = System.Drawing.Color.White;
             this.btnSair.StateDisabled.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnSair.StateDisabled.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
-            this.btnSair.StateNormal.Back.Color1 = System.Drawing.Color.White;
-            this.btnSair.StateNormal.Back.Color2 = System.Drawing.Color.White;
             this.btnSair.StateNormal.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnSair.StateNormal.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnSair.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
@@ -1044,8 +1164,8 @@
             this.btnSair.StateNormal.Content.LongText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnSair.StateNormal.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnSair.StateNormal.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
-            this.btnSair.StatePressed.Back.Color1 = System.Drawing.Color.White;
-            this.btnSair.StatePressed.Back.Color2 = System.Drawing.Color.White;
+            this.btnSair.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnSair.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnSair.StatePressed.Back.ColorAngle = 135F;
             this.btnSair.StatePressed.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
             this.btnSair.StatePressed.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
@@ -1059,8 +1179,8 @@
             this.btnSair.StatePressed.Content.LongText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnSair.StatePressed.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnSair.StatePressed.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
-            this.btnSair.StateTracking.Back.Color1 = System.Drawing.Color.White;
-            this.btnSair.StateTracking.Back.Color2 = System.Drawing.Color.White;
+            this.btnSair.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnSair.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnSair.StateTracking.Back.ColorAngle = 45F;
             this.btnSair.StateTracking.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnSair.StateTracking.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -1101,6 +1221,10 @@
             this.btnProdutos.OverrideDefault.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.btnProdutos.OverrideDefault.Border.Rounding = 1;
             this.btnProdutos.OverrideDefault.Border.Width = 1;
+            this.btnProdutos.OverrideDefault.Content.LongText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnProdutos.OverrideDefault.Content.LongText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnProdutos.OverrideDefault.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnProdutos.OverrideDefault.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnProdutos.OverrideFocus.Back.Color1 = System.Drawing.Color.White;
             this.btnProdutos.OverrideFocus.Back.Color2 = System.Drawing.Color.White;
             this.btnProdutos.OverrideFocus.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
@@ -1141,8 +1265,6 @@
             this.btnProdutos.StateDisabled.Content.LongText.Color2 = System.Drawing.Color.White;
             this.btnProdutos.StateDisabled.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnProdutos.StateDisabled.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
-            this.btnProdutos.StateNormal.Back.Color1 = System.Drawing.Color.White;
-            this.btnProdutos.StateNormal.Back.Color2 = System.Drawing.Color.White;
             this.btnProdutos.StateNormal.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnProdutos.StateNormal.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnProdutos.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
@@ -1152,8 +1274,8 @@
             this.btnProdutos.StateNormal.Content.LongText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnProdutos.StateNormal.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnProdutos.StateNormal.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
-            this.btnProdutos.StatePressed.Back.Color1 = System.Drawing.Color.White;
-            this.btnProdutos.StatePressed.Back.Color2 = System.Drawing.Color.White;
+            this.btnProdutos.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnProdutos.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnProdutos.StatePressed.Back.ColorAngle = 135F;
             this.btnProdutos.StatePressed.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
             this.btnProdutos.StatePressed.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
@@ -1167,8 +1289,8 @@
             this.btnProdutos.StatePressed.Content.LongText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnProdutos.StatePressed.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnProdutos.StatePressed.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
-            this.btnProdutos.StateTracking.Back.Color1 = System.Drawing.Color.White;
-            this.btnProdutos.StateTracking.Back.Color2 = System.Drawing.Color.White;
+            this.btnProdutos.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnProdutos.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnProdutos.StateTracking.Back.ColorAngle = 45F;
             this.btnProdutos.StateTracking.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnProdutos.StateTracking.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -1208,6 +1330,10 @@
             this.btnVendas.OverrideDefault.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.btnVendas.OverrideDefault.Border.Rounding = 1;
             this.btnVendas.OverrideDefault.Border.Width = 1;
+            this.btnVendas.OverrideDefault.Content.LongText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnVendas.OverrideDefault.Content.LongText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnVendas.OverrideDefault.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnVendas.OverrideDefault.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnVendas.OverrideFocus.Back.Color1 = System.Drawing.Color.White;
             this.btnVendas.OverrideFocus.Back.Color2 = System.Drawing.Color.White;
             this.btnVendas.OverrideFocus.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
@@ -1248,8 +1374,6 @@
             this.btnVendas.StateDisabled.Content.LongText.Color2 = System.Drawing.Color.White;
             this.btnVendas.StateDisabled.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnVendas.StateDisabled.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
-            this.btnVendas.StateNormal.Back.Color1 = System.Drawing.Color.White;
-            this.btnVendas.StateNormal.Back.Color2 = System.Drawing.Color.White;
             this.btnVendas.StateNormal.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnVendas.StateNormal.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnVendas.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
@@ -1259,8 +1383,8 @@
             this.btnVendas.StateNormal.Content.LongText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnVendas.StateNormal.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnVendas.StateNormal.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
-            this.btnVendas.StatePressed.Back.Color1 = System.Drawing.Color.White;
-            this.btnVendas.StatePressed.Back.Color2 = System.Drawing.Color.White;
+            this.btnVendas.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnVendas.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnVendas.StatePressed.Back.ColorAngle = 135F;
             this.btnVendas.StatePressed.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
             this.btnVendas.StatePressed.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
@@ -1274,8 +1398,8 @@
             this.btnVendas.StatePressed.Content.LongText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnVendas.StatePressed.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnVendas.StatePressed.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
-            this.btnVendas.StateTracking.Back.Color1 = System.Drawing.Color.White;
-            this.btnVendas.StateTracking.Back.Color2 = System.Drawing.Color.White;
+            this.btnVendas.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnVendas.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnVendas.StateTracking.Back.ColorAngle = 45F;
             this.btnVendas.StateTracking.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnVendas.StateTracking.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -1301,7 +1425,7 @@
             // btnFerramentas
             // 
             this.btnFerramentas.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnFerramentas.Location = new System.Drawing.Point(9, 315);
+            this.btnFerramentas.Location = new System.Drawing.Point(9, 319);
             this.btnFerramentas.Name = "btnFerramentas";
             this.btnFerramentas.OverrideDefault.Back.Color1 = System.Drawing.Color.White;
             this.btnFerramentas.OverrideDefault.Back.Color2 = System.Drawing.Color.White;
@@ -1315,6 +1439,10 @@
             this.btnFerramentas.OverrideDefault.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.btnFerramentas.OverrideDefault.Border.Rounding = 1;
             this.btnFerramentas.OverrideDefault.Border.Width = 1;
+            this.btnFerramentas.OverrideDefault.Content.LongText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnFerramentas.OverrideDefault.Content.LongText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnFerramentas.OverrideDefault.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnFerramentas.OverrideDefault.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnFerramentas.OverrideFocus.Back.Color1 = System.Drawing.Color.White;
             this.btnFerramentas.OverrideFocus.Back.Color2 = System.Drawing.Color.White;
             this.btnFerramentas.OverrideFocus.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
@@ -1355,8 +1483,6 @@
             this.btnFerramentas.StateDisabled.Content.LongText.Color2 = System.Drawing.Color.White;
             this.btnFerramentas.StateDisabled.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnFerramentas.StateDisabled.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
-            this.btnFerramentas.StateNormal.Back.Color1 = System.Drawing.Color.White;
-            this.btnFerramentas.StateNormal.Back.Color2 = System.Drawing.Color.White;
             this.btnFerramentas.StateNormal.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnFerramentas.StateNormal.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnFerramentas.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
@@ -1366,8 +1492,8 @@
             this.btnFerramentas.StateNormal.Content.LongText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnFerramentas.StateNormal.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnFerramentas.StateNormal.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
-            this.btnFerramentas.StatePressed.Back.Color1 = System.Drawing.Color.White;
-            this.btnFerramentas.StatePressed.Back.Color2 = System.Drawing.Color.White;
+            this.btnFerramentas.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnFerramentas.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnFerramentas.StatePressed.Back.ColorAngle = 135F;
             this.btnFerramentas.StatePressed.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
             this.btnFerramentas.StatePressed.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
@@ -1381,8 +1507,8 @@
             this.btnFerramentas.StatePressed.Content.LongText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnFerramentas.StatePressed.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnFerramentas.StatePressed.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
-            this.btnFerramentas.StateTracking.Back.Color1 = System.Drawing.Color.White;
-            this.btnFerramentas.StateTracking.Back.Color2 = System.Drawing.Color.White;
+            this.btnFerramentas.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnFerramentas.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnFerramentas.StateTracking.Back.ColorAngle = 45F;
             this.btnFerramentas.StateTracking.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnFerramentas.StateTracking.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -1508,6 +1634,7 @@
         private System.Windows.Forms.ToolStripMenuItem ajudaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sobreToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem entradaDeEstoqueToolStripMenuItem;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton kryptonButton1;
     }
 }
 

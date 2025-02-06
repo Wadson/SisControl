@@ -257,6 +257,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="bdsiscontrolDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>bdsiscontrolDataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="BLL\CidadeBLL.cs" />
     <Compile Include="BLL\ClienteBLL.cs" />
     <Compile Include="BLL\FornecedorBLL.cs" />
@@ -298,6 +303,12 @@
     </Compile>
     <Compile Include="Relatorios\FrmRelGeralContasAbertas.Designer.cs">
       <DependentUpon>FrmRelGeralContasAbertas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\FrmRelProdutos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\FrmRelProdutos.Designer.cs">
+      <DependentUpon>FrmRelProdutos.cs</DependentUpon>
     </Compile>
     <Compile Include="Relatorios\RelClienteContaAberta.cs">
       <SubType>Form</SubType>
@@ -529,9 +540,13 @@
     <EmbeddedResource Include="Relatorios\FrmRelGeralContasAbertas.resx">
       <DependentUpon>FrmRelGeralContasAbertas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\FrmRelProdutos.resx">
+      <DependentUpon>FrmRelProdutos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\RelClienteContaAberta.resx">
       <DependentUpon>RelClienteContaAberta.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\RelProdutos .rdlc" />
     <EmbeddedResource Include="Relatorios\RelClienteItemCompra.rdlc" />
     <EmbeddedResource Include="Relatorios\RelGeral.rdlc" />
     <EmbeddedResource Include="View\FormPrincipal.resx">
@@ -641,6 +656,17 @@
     <EmbeddedResource Include="View\Sobre.resx">
       <DependentUpon>Sobre.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="bdsiscontrolDataSet1.xsc">
+      <DependentUpon>bdsiscontrolDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="bdsiscontrolDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>bdsiscontrolDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bdsiscontrolDataSet1.xss">
+      <DependentUpon>bdsiscontrolDataSet1.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\DataSources\SisControl.Relatorios.RelClienteContaAberta.datasource" />

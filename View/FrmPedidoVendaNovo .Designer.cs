@@ -37,7 +37,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.btnIncluir = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnParcelar = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.txtSubTotal = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.txtValorRecebido = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
@@ -67,6 +66,7 @@
             this.kryptonLabel1 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.txtQtdItens = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonLabel3 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.btnIncluir = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItensVenda)).BeginInit();
@@ -221,7 +221,6 @@
             this.txtNomeProduto.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F);
             this.txtNomeProduto.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.txtNomeProduto.TabIndex = 1;
-            this.txtNomeProduto.TextChanged += new System.EventHandler(this.txtNomeProduto_TextChanged);
             this.txtNomeProduto.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtNomeProduto_KeyUp_1);
             // 
             // label12
@@ -257,75 +256,10 @@
             this.label17.TabIndex = 467;
             this.label17.Text = "DESCRIÇÃO DO PRODUTO";
             // 
-            // btnIncluir
-            // 
-            this.btnIncluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnIncluir.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.Cluster;
-            this.btnIncluir.Location = new System.Drawing.Point(777, 437);
-            this.btnIncluir.Name = "btnIncluir";
-            this.btnIncluir.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
-            this.btnIncluir.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
-            this.btnIncluir.OverrideDefault.Back.ColorAngle = 45F;
-            this.btnIncluir.OverrideDefault.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
-            this.btnIncluir.OverrideDefault.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
-            this.btnIncluir.OverrideDefault.Border.ColorAngle = 45F;
-            this.btnIncluir.OverrideDefault.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnIncluir.OverrideDefault.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.btnIncluir.OverrideDefault.Border.Rounding = 1;
-            this.btnIncluir.OverrideDefault.Border.Width = 1;
-            this.btnIncluir.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2007Black;
-            this.btnIncluir.Size = new System.Drawing.Size(140, 40);
-            this.btnIncluir.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
-            this.btnIncluir.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
-            this.btnIncluir.StateCommon.Back.ColorAngle = 45F;
-            this.btnIncluir.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
-            this.btnIncluir.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
-            this.btnIncluir.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnIncluir.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.btnIncluir.StateCommon.Border.Rounding = 1;
-            this.btnIncluir.StateCommon.Border.Width = 1;
-            this.btnIncluir.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnIncluir.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnIncluir.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIncluir.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnIncluir.StateNormal.Border.Rounding = 20;
-            this.btnIncluir.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
-            this.btnIncluir.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
-            this.btnIncluir.StatePressed.Back.ColorAngle = 135F;
-            this.btnIncluir.StatePressed.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
-            this.btnIncluir.StatePressed.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
-            this.btnIncluir.StatePressed.Border.ColorAngle = 135F;
-            this.btnIncluir.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnIncluir.StatePressed.Border.Rounding = 1;
-            this.btnIncluir.StatePressed.Border.Width = 1;
-            this.btnIncluir.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
-            this.btnIncluir.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
-            this.btnIncluir.StateTracking.Back.ColorAngle = 45F;
-            this.btnIncluir.StateTracking.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
-            this.btnIncluir.StateTracking.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
-            this.btnIncluir.StateTracking.Border.ColorAngle = 45F;
-            this.btnIncluir.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnIncluir.StateTracking.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.btnIncluir.StateTracking.Border.Rounding = 1;
-            this.btnIncluir.StateTracking.Border.Width = 1;
-            this.btnIncluir.TabIndex = 6;
-            this.btnIncluir.Values.Text = "&Incluir Produto";
-            this.btnIncluir.Click += new System.EventHandler(this.btnIncluir_Click);
-            // 
             // btnParcelar
             // 
             this.btnParcelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnParcelar.Location = new System.Drawing.Point(348, 578);
+            this.btnParcelar.Location = new System.Drawing.Point(348, 600);
             this.btnParcelar.Name = "btnParcelar";
             this.btnParcelar.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnParcelar.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
@@ -756,7 +690,7 @@
             // 
             this.txtValorTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtValorTotal.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Custom1;
-            this.txtValorTotal.Location = new System.Drawing.Point(313, 11);
+            this.txtValorTotal.Location = new System.Drawing.Point(313, 5);
             this.txtValorTotal.Name = "txtValorTotal";
             this.txtValorTotal.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.txtValorTotal.ReadOnly = true;
@@ -780,7 +714,7 @@
             // btnReceberConta
             // 
             this.btnReceberConta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnReceberConta.Location = new System.Drawing.Point(634, 578);
+            this.btnReceberConta.Location = new System.Drawing.Point(634, 600);
             this.btnReceberConta.Name = "btnReceberConta";
             this.btnReceberConta.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnReceberConta.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
@@ -856,7 +790,7 @@
             // 
             this.btnSair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSair.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.Cluster;
-            this.btnSair.Location = new System.Drawing.Point(777, 578);
+            this.btnSair.Location = new System.Drawing.Point(777, 600);
             this.btnSair.Name = "btnSair";
             this.btnSair.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnSair.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -930,7 +864,7 @@
             // 
             this.btnFinalizarVenda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFinalizarVenda.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.Cluster;
-            this.btnFinalizarVenda.Location = new System.Drawing.Point(491, 578);
+            this.btnFinalizarVenda.Location = new System.Drawing.Point(491, 600);
             this.btnFinalizarVenda.Name = "btnFinalizarVenda";
             this.btnFinalizarVenda.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnFinalizarVenda.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -1051,17 +985,19 @@
             this.kryptonPanel1.Controls.Add(this.txtQtdItens);
             this.kryptonPanel1.Controls.Add(this.kryptonLabel3);
             this.kryptonPanel1.Controls.Add(this.txtValorTotal);
-            this.kryptonPanel1.Location = new System.Drawing.Point(0, 627);
+            this.kryptonPanel1.Location = new System.Drawing.Point(0, 662);
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Black;
             this.kryptonPanel1.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.HeaderPrimary;
-            this.kryptonPanel1.Size = new System.Drawing.Size(936, 43);
+            this.kryptonPanel1.Size = new System.Drawing.Size(936, 34);
+            this.kryptonPanel1.StateCommon.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.kryptonPanel1.StateCommon.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.kryptonPanel1.TabIndex = 617;
             // 
             // kryptonLabel1
             // 
             this.kryptonLabel1.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.TitlePanel;
-            this.kryptonLabel1.Location = new System.Drawing.Point(5, 10);
+            this.kryptonLabel1.Location = new System.Drawing.Point(5, 4);
             this.kryptonLabel1.Name = "kryptonLabel1";
             this.kryptonLabel1.Size = new System.Drawing.Size(98, 29);
             this.kryptonLabel1.StateCommon.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1075,7 +1011,7 @@
             // 
             this.txtQtdItens.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtQtdItens.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Custom1;
-            this.txtQtdItens.Location = new System.Drawing.Point(98, 11);
+            this.txtQtdItens.Location = new System.Drawing.Point(98, 5);
             this.txtQtdItens.Name = "txtQtdItens";
             this.txtQtdItens.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.txtQtdItens.ReadOnly = true;
@@ -1100,7 +1036,7 @@
             // kryptonLabel3
             // 
             this.kryptonLabel3.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.TitlePanel;
-            this.kryptonLabel3.Location = new System.Drawing.Point(238, 10);
+            this.kryptonLabel3.Location = new System.Drawing.Point(238, 4);
             this.kryptonLabel3.Name = "kryptonLabel3";
             this.kryptonLabel3.Size = new System.Drawing.Size(76, 29);
             this.kryptonLabel3.StateCommon.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1110,14 +1046,88 @@
             this.kryptonLabel3.TabIndex = 3;
             this.kryptonLabel3.Values.Text = "TOTAL:";
             // 
+            // btnIncluir
+            // 
+            this.btnIncluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnIncluir.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.Cluster;
+            this.btnIncluir.Location = new System.Drawing.Point(771, 452);
+            this.btnIncluir.Name = "btnIncluir";
+            this.btnIncluir.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.btnIncluir.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnIncluir.OverrideDefault.Back.ColorAngle = 45F;
+            this.btnIncluir.OverrideDefault.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.btnIncluir.OverrideDefault.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnIncluir.OverrideDefault.Border.ColorAngle = 45F;
+            this.btnIncluir.OverrideDefault.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnIncluir.OverrideDefault.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.btnIncluir.OverrideDefault.Border.Rounding = 20;
+            this.btnIncluir.OverrideDefault.Border.Width = 1;
+            this.btnIncluir.OverrideDefault.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIncluir.OverrideDefault.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIncluir.OverrideFocus.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIncluir.OverrideFocus.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIncluir.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2007Black;
+            this.btnIncluir.Size = new System.Drawing.Size(153, 40);
+            this.btnIncluir.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.btnIncluir.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnIncluir.StateCommon.Back.ColorAngle = 45F;
+            this.btnIncluir.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.btnIncluir.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnIncluir.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnIncluir.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.btnIncluir.StateCommon.Border.Rounding = 3;
+            this.btnIncluir.StateCommon.Border.Width = 1;
+            this.btnIncluir.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.btnIncluir.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.btnIncluir.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIncluir.StateDisabled.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIncluir.StateDisabled.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIncluir.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnIncluir.StateNormal.Border.Rounding = 20;
+            this.btnIncluir.StateNormal.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIncluir.StateNormal.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIncluir.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
+            this.btnIncluir.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnIncluir.StatePressed.Back.ColorAngle = 135F;
+            this.btnIncluir.StatePressed.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
+            this.btnIncluir.StatePressed.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnIncluir.StatePressed.Border.ColorAngle = 135F;
+            this.btnIncluir.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnIncluir.StatePressed.Border.Rounding = 20;
+            this.btnIncluir.StatePressed.Border.Width = 1;
+            this.btnIncluir.StatePressed.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIncluir.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnIncluir.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.btnIncluir.StateTracking.Back.ColorAngle = 45F;
+            this.btnIncluir.StateTracking.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.btnIncluir.StateTracking.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnIncluir.StateTracking.Border.ColorAngle = 45F;
+            this.btnIncluir.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnIncluir.StateTracking.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.btnIncluir.StateTracking.Border.Rounding = 20;
+            this.btnIncluir.StateTracking.Border.Width = 1;
+            this.btnIncluir.TabIndex = 618;
+            this.btnIncluir.Values.Text = "&Incluir Item";
+            this.btnIncluir.Click += new System.EventHandler(this.btnIncluir_Click);
+            // 
             // FrmPedidoVendaNovo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(936, 695);
+            this.Controls.Add(this.btnIncluir);
             this.Controls.Add(this.kryptonPanel1);
             this.Controls.Add(this.btnParcelar);
             this.Controls.Add(this.kryptonGroupBox2);
-            this.Controls.Add(this.btnIncluir);
             this.Controls.Add(this.btnFinalizarVenda);
             this.Controls.Add(this.btnReceberConta);
             this.Controls.Add(this.btnSair);
@@ -1191,7 +1201,6 @@
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnFinalizarVenda;
         private System.Windows.Forms.Label label28;
         private ComponentFactory.Krypton.Toolkit.KryptonGroupBox kryptonGroupBox2;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnIncluir;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnParcelar;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnLocalizarCliente;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnLocalizarProduto;
@@ -1201,5 +1210,6 @@
         public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtQtdItens;
         private ComponentFactory.Krypton.Toolkit.KryptonRadioButton radiobtnParcelado;
         private ComponentFactory.Krypton.Toolkit.KryptonRadioButton radiobtnAVista;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnIncluir;
     }
 }
