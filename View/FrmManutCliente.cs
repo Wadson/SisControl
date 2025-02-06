@@ -31,22 +31,7 @@ namespace SisControl.View
             timer1.Enabled = habilitar;
         }
         public void PersonalizarDataGridView()
-        {
-            //DataTable dt = new DataTable();
-                       
-            //dt.Columns.Add("ClienteID", typeof(int));
-            //dt.Columns.Add("NomeCliente", typeof(string));
-            //dt.Columns.Add("Cpf", typeof(string));
-            //dt.Columns.Add("Endereco", typeof(string));
-            //dt.Columns.Add("Telefone", typeof(string));
-            //dt.Columns.Add("Email", typeof(string));
-            //dt.Columns.Add("CidadeID", typeof(int));
-            //dt.Columns.Add("NomeCidade", typeof(string));
-            //dt.Columns.Add("EstadoID", typeof(int));
-            //dt.Columns.Add("NomeEstado", typeof(string));
-            //dt.Columns.Add("Uf", typeof(string));
-            
-            //dataGridPesquisar.DataSource = dt;
+        {            
             
             dataGridPesquisar.Columns["ClienteID"].HeaderText = "Cód. Cliente";
             dataGridPesquisar.Columns["NomeCliente"].HeaderText = "Nome do Cliente";

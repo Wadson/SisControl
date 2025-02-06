@@ -13,49 +13,49 @@ namespace SisControl.DALL
     internal class ProdutosDal
     {
 
-        public List<ProdutosModel> Listar()
-        {
-            var connection = Conexao.Conex();
+        //public List<ProdutosModel> Listar()
+        //{
+        //    var connection = Conexao.Conex();
 
-            var produtos = new List<ProdutosModel>();
-            using (connection)
-            {
-                var query = "SELECT * FROM Produtos";
-                using (var command = new SqlCommand(query, connection))
-                {
-                    connection.Open();
-                    using (var reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            var produto = new ProdutosModel
-                            {
-                                ProdutoID = reader.GetInt32(reader.GetOrdinal("ProdutoID")),
-                                NomeProduto = reader.GetString(reader.GetOrdinal("NomeProduto")),                               
-                                PrecoCusto = reader.GetDecimal(reader.GetOrdinal("PrecoCusto")),
-                                Lucro = reader.GetDecimal(reader.GetOrdinal("Lucro")),
-                                PrecoDeVenda = reader.GetDecimal(reader.GetOrdinal("PrecoDeVenda")),
-                                Estoque = reader.GetInt32(reader.GetOrdinal("Estoque")),
-                                DataDeEntrada = reader.GetDateTime(reader.GetOrdinal("DataDeEntrada")),                              
-                                Status = reader.GetString(reader.GetOrdinal("Status")),                                                               
-                                Referencia = reader.GetString(reader.GetOrdinal("Referencia")), 
+        //    var produtos = new List<ProdutosModel>();
+        //    using (connection)
+        //    {
+        //        var query = "SELECT * FROM Produtos";
+        //        using (var command = new SqlCommand(query, connection))
+        //        {
+        //            connection.Open();
+        //            using (var reader = command.ExecuteReader())
+        //            {
+        //                while (reader.Read())
+        //                {
+        //                    var produto = new ProdutosModel
+        //                    {
+        //                        ProdutoID = reader.GetInt32(reader.GetOrdinal("ProdutoID")),
+        //                        NomeProduto = reader.GetString(reader.GetOrdinal("NomeProduto")),                               
+        //                        PrecoCusto = reader.GetDecimal(reader.GetOrdinal("PrecoCusto")),
+        //                        Lucro = reader.GetDecimal(reader.GetOrdinal("Lucro")),
+        //                        PrecoDeVenda = reader.GetDecimal(reader.GetOrdinal("PrecoDeVenda")),
+        //                        Estoque = reader.GetInt32(reader.GetOrdinal("Estoque")),
+        //                        DataDeEntrada = reader.GetDateTime(reader.GetOrdinal("DataDeEntrada")),                              
+        //                        Status = reader.GetString(reader.GetOrdinal("Status")),                                                               
+        //                        Referencia = reader.GetString(reader.GetOrdinal("Referencia")), 
                                 
-                            };
-                            produtos.Add(produto);
-                        }
-                    }
-                }
+        //                    };
+        //                    produtos.Add(produto);
+        //                }
+        //            }
+        //        }
 
               
-            }
-            return produtos;
-        }
+        //    }
+        //    return produtos;
+        //}
         public DataTable listarProdutos()
         {
             var conn = Conexao.Conex();
             try
             {
-                SqlCommand comando = new SqlCommand("SELECT ProdutoID, Referencia, NomeProduto, PrecoCusto, Lucro, PrecoDeVenda, Estoque, DataDeEntrada, Status FROM Produtos", conn);              
+                SqlCommand comando = new SqlCommand("SELECT TOP (30) ProdutoID, Referencia, NomeProduto, PrecoCusto, Lucro, PrecoDeVenda, Estoque, DataDeEntrada, Status FROM Produtos", conn);              
 
                 SqlDataAdapter daProduto = new SqlDataAdapter();
                 daProduto.SelectCommand = comando;

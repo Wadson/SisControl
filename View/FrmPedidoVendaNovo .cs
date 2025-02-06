@@ -130,21 +130,31 @@ namespace SisControl.View
             dgvItensVenda.Columns["ValorProduto"].HeaderText = "Valor Unitário";
             dgvItensVenda.Columns["SubTotal"].HeaderText = "Subtotal";
 
-            //dgvItensVenda.RowHeadersVisible = false;
-
             // Centralizar colunas específicas
             dgvItensVenda.Columns["Quantidade"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvItensVenda.Columns["ProdutoID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            // Ajustar colunas automaticamente
-            dgvItensVenda.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            // Centralizar cabeçalhos das colunas
+            foreach (DataGridViewColumn column in dgvItensVenda.Columns)
+            {
+                column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+
+            // Ajustar colunas manualmente
+            dgvItensVenda.Columns["NomeProduto"].Width = 400;    // Exemplo de ajuste de largura da coluna NomeProduto
+            dgvItensVenda.Columns["Quantidade"].Width = 100;      // Exemplo de ajuste de largura da coluna Quantidade
+            dgvItensVenda.Columns["ValorProduto"].Width = 120;   // Exemplo de ajuste de largura da coluna ValorProduto
+            dgvItensVenda.Columns["SubTotal"].Width = 120;       // Exemplo de ajuste de largura da coluna SubTotal
 
             // Tornar o grid somente leitura
             dgvItensVenda.ReadOnly = true;
 
             // Ocultar a coluna ItemVendaID
             dgvItensVenda.Columns["ItemVendaID"].Visible = false;
-        }       
+            dgvItensVenda.Columns["ProdutoID"].Visible = false;
+        }
+
+
 
         private void IncluirItens()
         {
@@ -552,11 +562,6 @@ namespace SisControl.View
             CalcularSubtotal();
         }
 
-        private void btnSair_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void AbrirFormParcelar()
         {
             ParcelaID = Utilitario.GerarNovoCodigoID("ParcelaID", "Parcela");
@@ -592,11 +597,6 @@ namespace SisControl.View
         private void btnLocalizarProduto_Click(object sender, EventArgs e)
         {
             LocalizarProduto();
-        }
-
-        private void btnReceberConta_Click(object sender, EventArgs e)
-        {
-            LimparFormulario();
         }
 
         private void FrmPedido_KeyDown(object sender, KeyEventArgs e)
@@ -635,49 +635,6 @@ namespace SisControl.View
 
 
 
-
-
-        private void btnFinalizarVenda_Click(object sender, EventArgs e)
-        {
-            if (VendaID == 0)
-            {
-                MessageBox.Show("Por favor, informe o ID da venda.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (dgvItensVenda.Rows.Count == 0)
-            {
-                MessageBox.Show("Por favor, adicione itens à venda.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            else
-            {
-                FinalizarVenda();
-            }
-                     
-        }
-        private void btnParcelar_Click_1(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtValorTotal.Text) || decimal.Parse(txtValorTotal.Text) <= 0)
-            {
-                MessageBox.Show("Informe um valor válido para a venda.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            // Salva a venda antes de abrir o formulário de parcelas
-            if (FinalizarVenda())
-            {
-                // Abre a tela FrmGerarParcelas para gerar as parcelas
-                using (FrmGerarParcelas formParcelas = new FrmGerarParcelas(this, VendaID, decimal.Parse(txtValorTotal.Text)))
-                {
-                    if (formParcelas.ShowDialog() == DialogResult.OK)
-                    {
-                        MessageBox.Show("Parcelas geradas e venda finalizada com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LimparDataGridView(dgvItensVenda);
-                        NovoCodigo();
-                    }
-                }
-            }          
-        }
 
         public bool FinalizarVenda()
         {
@@ -810,6 +767,60 @@ namespace SisControl.View
         {
            Habilitabotoes();
         }
+
+        private void btnNovo_Click(object sender, EventArgs e)
+        {
+            LimparFormulario();
+        }
+
+        private void btnFinalizarVenda_Click(object sender, EventArgs e)
+        {
+
+            if (VendaID == 0)
+            {
+                MessageBox.Show("Por favor, informe o ID da venda.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (dgvItensVenda.Rows.Count == 0)
+            {
+                MessageBox.Show("Por favor, adicione itens à venda.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                FinalizarVenda();
+            }
+        }
+
+        private void btnParcelar_Click_1(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtValorTotal.Text) || decimal.Parse(txtValorTotal.Text) <= 0)
+            {
+                MessageBox.Show("Informe um valor válido para a venda.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Salva a venda antes de abrir o formulário de parcelas
+            if (FinalizarVenda())
+            {
+                // Abre a tela FrmGerarParcelas para gerar as parcelas
+                using (FrmGerarParcelas formParcelas = new FrmGerarParcelas(this, VendaID, decimal.Parse(txtValorTotal.Text)))
+                {
+                    if (formParcelas.ShowDialog() == DialogResult.OK)
+                    {
+                        MessageBox.Show("Parcelas geradas e venda finalizada com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LimparDataGridView(dgvItensVenda);
+                        NovoCodigo();
+                    }
+                }
+            }
+        }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void btnIncluir_Click(object sender, EventArgs e)
         {
             try

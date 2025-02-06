@@ -313,6 +313,36 @@ namespace SisControl
                 }
             }
         }
+        public static void PesquisarGeralComParametro(string query, string nomeParametro, object valorParametro, DataGridView dataGridView)
+        {
+            using (var connection = Conexao.Conex())
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue(nomeParametro, valorParametro);
+
+                try
+                {
+                    connection.Open();
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    dataAdapter.Fill(dataTable);
+
+                    if (dataTable.Rows.Count == 0)
+                    {
+                        MessageBox.Show("Nenhum resultado encontrado.", "Informe.", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        dataGridView.DataSource = null; // Limpa o DataGridView
+                    }
+                    else
+                    {
+                        dataGridView.DataSource = dataTable;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao buscar categoria: " + ex.Message);
+                }
+            }
+        }
 
         public static void PesquisarPorCodigoRetornarNome(string query, string parametroCodigo, int codigoPesquisar, Label labelResultado)
         {

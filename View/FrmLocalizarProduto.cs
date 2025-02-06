@@ -1,4 +1,5 @@
-﻿using SisControl.BLL;
+﻿using ComponentFactory.Krypton.Toolkit;
+using SisControl.BLL;
 using SisControl.DALL;
 using System;
 using System.Collections.Generic;
@@ -33,20 +34,40 @@ namespace SisControl.View
             // Configurar o DataGridView (apenas exemplo, configure conforme necessário)
             dataGridPesquisar.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
-        public void PersonalizarDataGridView(DataGridView dgv)
+        public void PersonalizarDataGridView(KryptonDataGridView dgv)
         {
+            // Renomear colunas
+            dgv.Columns[0].Name = "ProdutoID";
+            dgv.Columns[1].Name = "Referencia";
+            dgv.Columns[2].Name = "Produto";
+            dgv.Columns[3].Name = "Preco de Custo";
+            dgv.Columns[4].Name = "Lucro";
+            dgv.Columns[5].Name = "Preco De Venda";
+            dgv.Columns[6].Name = "Estoque";
+            dgv.Columns[7].Name = "Dta. Entrada";
+            dgv.Columns[8].Name = "Status";
+
+
+            // Ajustar colunas automaticamente
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
             // Tornar o grid somente leitura
             dgv.ReadOnly = true;
 
-            //Redimensiona o tamanho das colunas do DataGridView 
-            dataGridPesquisar.Columns[0].Width = 100;
-            dataGridPesquisar.Columns[1].Width = 200;
-            dataGridPesquisar.Columns[2].Width = 110;
-            dataGridPesquisar.Columns[3].Width = 100;            
-            dataGridPesquisar.Columns[4].Width = 130;
-            dataGridPesquisar.Columns[5].Width = 100;
-            dataGridPesquisar.Columns[6].Width = 110;
-            dataGridPesquisar.Columns[7].Width = 110;
+            // Centralizar colunas de IDs e Quantidade
+            dgv.Columns["ProdutoID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgv.Columns["Estoque"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            dgv.Columns["Preco De Venda"].DefaultCellStyle.Font = new Font("Arial", 10F, FontStyle.Italic); // Fonte Arial, 12, Negrito
+            dgv.Columns["Preco De Venda"].DefaultCellStyle.ForeColor = System.Drawing.Color.DarkGreen; // Cor da fonte: Verde Escuro
+            dgv.Columns["Preco De Venda"].DefaultCellStyle.Format = "N2"; // Formato de moeda
+            dgv.Columns["Preco De Venda"].DefaultCellStyle.BackColor = System.Drawing.Color.LightBlue; // Cor de fundo Azul Claro
+            dgv.Columns["Preco De Venda"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight; // Alinhamento à direita
+
+
+
+            // Ocultar a coluna ProdutoID
+            dgv.Columns["ProdutoID"].Visible = false;
         }
         public new int ObterLinhaAtual()
         {
@@ -104,9 +125,9 @@ namespace SisControl.View
                     return;
                 }
                 // Verifica e obtém os valores das células NomeProduto e PrecoDeVenda
-                if (dataGridPesquisar["NomeProduto", LinhaAtual]?.Value == null ||
-                    dataGridPesquisar["PrecoDeVenda", LinhaAtual]?.Value == null ||
-                    !decimal.TryParse(dataGridPesquisar["PrecoDeVenda", LinhaAtual].Value.ToString(), out PrecoUnitario))
+                if (dataGridPesquisar["Produto", LinhaAtual]?.Value == null ||
+                    dataGridPesquisar["Preco De Venda", LinhaAtual]?.Value == null ||
+                    !decimal.TryParse(dataGridPesquisar["Preco De Venda", LinhaAtual].Value.ToString(), out PrecoUnitario))
                 {
                     // Caso os valores não sejam válidos, exibe uma mensagem de erro
                     MessageBox.Show("Dados do produto inválidos.");
@@ -115,7 +136,7 @@ namespace SisControl.View
 
                 // Converte o valor da célula NomeProduto para string
                 ProdutoID = int.Parse(dataGridPesquisar["ProdutoID", LinhaAtual].Value.ToString());
-                NomeProduto = dataGridPesquisar["NomeProduto", LinhaAtual].Value.ToString();
+                NomeProduto = dataGridPesquisar["Produto", LinhaAtual].Value.ToString();
                 referencia = dataGridPesquisar["Referencia", LinhaAtual].Value.ToString();
 
                 // Acrescenta zeros à esquerda do ProdutoID

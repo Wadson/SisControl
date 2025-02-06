@@ -29,13 +29,33 @@ namespace SisControl.View
             return LinhaAtual;
         }
 
-        private void InicializaDataGridView()
+        public void PersonalizarDataGridView()
         {
-            // Redimensiona o tamanho das colunas do DataGridView 
-            dataGridPesquisar.Columns[0].Width = 100;
-            dataGridPesquisar.Columns[1].Width = 200;
-            dataGridPesquisar.Columns[2].Width = 110;
-            dataGridPesquisar.Columns[3].Width = 110;
+            dataGridPesquisar.Columns["ClienteID"].HeaderText = "Cód. Cliente";
+            dataGridPesquisar.Columns["NomeCliente"].HeaderText = "Nome do Cliente";
+            dataGridPesquisar.Columns["Cpf"].HeaderText = "CPF";
+            dataGridPesquisar.Columns["Endereco"].HeaderText = "Endereço";
+            dataGridPesquisar.Columns["Telefone"].HeaderText = "Telefone";
+            dataGridPesquisar.Columns["Email"].HeaderText = "E-mail";
+            dataGridPesquisar.Columns["CidadeID"].HeaderText = "Cód. Cidade";
+            dataGridPesquisar.Columns["NomeCidade"].HeaderText = "Nome da Cidade";           
+            dataGridPesquisar.Columns["NomeEstado"].HeaderText = "Nome do Estado";          
+
+            // Ocultar coluna de Código (exemplo: CidadeID)
+            //dataGridPesquisar.Columns["CidadeID"].Visible = false;
+            //dataGridPesquisar.Columns["ClienteID"].Visible = false;
+            //dataGridPesquisar.Columns["EstadoID"].Visible = false;
+            // Definir tamanhos das colunas
+            //this.dataGridPesquisar.Columns["ClienteID"].Width = 100;
+
+            // Ajustar colunas automaticamente
+            dataGridPesquisar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
+            // Tornar o grid somente leitura
+            dataGridPesquisar.ReadOnly = true;
+
+            // Centralizar coluna de Estoque (exemplo: NomeCidade)
+            //this.dataGridPesquisar.Columns["NomeCidade"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
         public void ListarCliente()
@@ -43,7 +63,7 @@ namespace SisControl.View
             ClienteDALL dao = new ClienteDALL();
             dataGridPesquisar.DataSource = dao.PesquisarGeral();
 
-            InicializaDataGridView();
+            PersonalizarDataGridView();
         }
 
         private void FrmLocalizarCliente_Load(object sender, EventArgs e)

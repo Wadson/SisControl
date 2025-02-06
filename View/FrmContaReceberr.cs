@@ -31,6 +31,8 @@ namespace SisControl.View
         {
             InitializeComponent();
 
+            // Adiciona o evento SelectionChanged ao DataGridView
+            dgvContaAgrupada.SelectionChanged += new EventHandler(dgvContaAgrupada_SelectionChanged);
             _parcela = parcela;
             ListarContaReceber();
             ConfigurarDgvContasReceber();            
@@ -38,33 +40,134 @@ namespace SisControl.View
             // No construtor do formulário ou no método de inicialização
             dgvContasReceber.SelectionChanged += dgvContasReceber_SelectionChanged;
 
-        }        
-        public void PersonalizarDataGridViewPagParciais()
+        }
+        private void ListarPagamentosParciais(int parcelaID)
         {
-            if (dgvContasReceber.Columns.Count >= 4)
+            try
             {
-                // Renomear colunas
-                //dgvContasReceber.Columns["PagamentoParcialID"].HeaderText = "Código";
-                //dgvContasReceber.Columns["ParcelaID"].HeaderText = "ParcelaID";
-                //dgvContasReceber.Columns["ValorPago"].HeaderText = "Vlr. Pago";
-                //dgvContasReceber.Columns["DataPagamento"].HeaderText = "Dta. Pgto";
+                string query = @"SELECT PagamentoParcialID, ParcelaID, ValorPago, DataPagamento
+                         FROM PagamentosParciais
+                         WHERE ParcelaID = @ParcelaID";
 
+                string nomeParametro = "@ParcelaID";
+                string valorParametro = parcelaID.ToString();
 
-                // Ajustar colunas automaticamente
-                dgvContasReceber.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                // Limpar colunas existentes para evitar duplicação
+                dgvPagamentosParciais.Columns.Clear();
 
-                // Tornar o grid somente leitura
-                dgvContasReceber.ReadOnly = true;
+                // Carregar os dados no DataGridView
+                Utilitario.PesquisarPorNomeMensagemSuprimida(query, nomeParametro, valorParametro, dgvPagamentosParciais);
 
-                // Ocultar as colunas PagamentoParcialID e ParcelaID
-                //dgvContasReceber.Columns["PagamentoParcialID"].Visible = false;
-                //dgvContasReceber.Columns["ParcelaID"].Visible = false;
+                // Verifica se há dados no DataGridView antes de personalizar
+                if (dgvPagamentosParciais.Rows.Count > 0)
+                {
+                    PersonalizarDataGridViewPagParciais();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Erro: O DataGridView não possui colunas suficientes para personalizar.");
+                MessageBox.Show("Erro ao listar pagamentos parciais: " + ex.Message);
             }
         }
+        private void PersonalizarColunas()
+        {
+            // Verifica se há colunas no DataGridView antes de tentar personalizá-las
+            if (dgvContaAgrupada.Columns.Count > 0)
+            {
+                // Verifica se a coluna 'SaldoRestante' existe antes de tentar personalizá-la
+                if (dgvContaAgrupada.Columns.Contains("SaldoRestante"))
+                {
+                    dgvContaAgrupada.Columns["SaldoRestante"].DefaultCellStyle.BackColor = Color.LightBlue;
+                }
+
+                // Redimensionar as colunas manualmente
+                dgvContaAgrupada.Columns["NomeCliente"].Width = 300;
+                dgvContaAgrupada.Columns["ValorParcela"].Width = 90;
+                dgvContaAgrupada.Columns["SaldoRestante"].Width = 90;
+                dgvContaAgrupada.Columns["ValorRecebido"].Width = 90;
+
+                // Centralizar cabeçalhos das colunas
+                foreach (DataGridViewColumn column in dgvContaAgrupada.Columns)
+                {
+                    column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                }
+
+                // Ajustar colunas automaticamente para o conteúdo se necessário
+                // dgvContaAgrupada.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            }
+        }
+
+        // Chame o método PersonalizarColunas após carregar os dados no DataGridView
+        private void ListarValoresAgrupado(int parcelaID)
+        {
+            try
+            {
+                string queryConsulta = @"
+            SELECT
+                Cliente.NomeCliente,
+                Parcela.ValorParcela,
+                SUM(Parcela.SaldoRestante) AS SaldoRestante,
+                SUM(Parcela.ValorRecebido) AS ValorRecebido
+            FROM Parcela
+            INNER JOIN Venda ON Parcela.VendaID = Venda.VendaID
+            INNER JOIN Cliente ON Venda.ClienteID = Cliente.ClienteID
+            WHERE Parcela.Pago = 0 AND Parcela.ParcelaID = @ParcelaID
+            GROUP BY
+                Cliente.NomeCliente,
+                Parcela.ValorParcela";
+
+                // Limpar colunas existentes para evitar duplicação
+                dgvContaAgrupada.Columns.Clear();
+
+                // Carregar os dados no DataGridView com o parâmetro
+                Utilitario.PesquisarGeralComParametro(queryConsulta, "@ParcelaID", parcelaID, dgvContaAgrupada);
+
+                // Personalizar as colunas após carregar os dados
+                PersonalizarColunas();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao listar pagamentos parciais: " + ex.Message);
+            }
+        }
+
+
+
+
+
+
+        public void PersonalizarDataGridViewPagParciais()
+        {
+            // Adicionar colunas ao DataGridView se não existirem
+            if (dgvPagamentosParciais.Columns.Contains("PagamentoParcialID"))
+            {
+                dgvPagamentosParciais.Columns["PagamentoParcialID"].HeaderText = "Código";
+                dgvPagamentosParciais.Columns["PagamentoParcialID"].Visible = false;
+            }
+
+            if (dgvPagamentosParciais.Columns.Contains("ParcelaID"))
+            {
+                dgvPagamentosParciais.Columns["ParcelaID"].HeaderText = "ParcelaID";
+                dgvPagamentosParciais.Columns["ParcelaID"].Visible = false;
+            }
+
+            if (dgvPagamentosParciais.Columns.Contains("ValorPago"))
+            {
+                dgvPagamentosParciais.Columns["ValorPago"].HeaderText = "Vlr. Pago";
+            }
+
+            if (dgvPagamentosParciais.Columns.Contains("DataPagamento"))
+            {
+                dgvPagamentosParciais.Columns["DataPagamento"].HeaderText = "Dta. Pgto";
+            }
+
+            // Ajustar colunas automaticamente
+            dgvPagamentosParciais.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
+            // Tornar o grid somente leitura
+            dgvPagamentosParciais.ReadOnly = true;
+        }
+
         private void ConfigurarDgvContasReceber()
         {
             // Inicializar o DataGridView se ainda não estiver feito
@@ -73,19 +176,31 @@ namespace SisControl.View
                 dgvContasReceber = new KryptonDataGridView();
             }
 
-            dgvContasReceber.Columns["ParcelaID"].HeaderText = "Código";
-            dgvContasReceber.Columns["ValorParcela"].HeaderText = "Vlr Parc;";
-            dgvContasReceber.Columns["NumeroParcela"].HeaderText = "Nº Parc.";
-            dgvContasReceber.Columns["SaldoRestante"].HeaderText = "Saldo Rest.";
-            dgvContasReceber.Columns["DataVencimento"].HeaderText = "Dt. Vencto";
-            dgvContasReceber.Columns["VendaID"].HeaderText = "VendaID";
-            dgvContasReceber.Columns["Pago"].HeaderText = "Pago";
-            dgvContasReceber.Columns["ValorRecebido"].HeaderText = "Vlr Rec.";
-            dgvContasReceber.Columns["ClienteID"].HeaderText = "ClienteID";
-            dgvContasReceber.Columns["NomeCliente"].HeaderText = "Nome do Cliente";
+            // Configurar colunas do DataGridView
+            if (dgvContasReceber.Columns.Count == 0)
+            {
+                dgvContasReceber.Columns.Add("ParcelaID", "Código");
+                dgvContasReceber.Columns.Add("ValorParcela", "Vlr Parc.");
+                dgvContasReceber.Columns.Add("NumeroParcela", "Nº Parc.");
+                dgvContasReceber.Columns.Add("SaldoRestante", "Saldo Rest.");
+                dgvContasReceber.Columns.Add("DataVencimento", "Dt. Vencto");
+                dgvContasReceber.Columns.Add("VendaID", "VendaID");
+                dgvContasReceber.Columns.Add("Pago", "Pago");
+                dgvContasReceber.Columns.Add("ValorRecebido", "Vlr Rec.");
+                dgvContasReceber.Columns.Add("ClienteID", "ClienteID");
+                dgvContasReceber.Columns.Add("NomeCliente", "Nome do Cliente");
+            }
 
+            // Ajustar largura das colunas manualmente
+            dgvContasReceber.Columns["NomeCliente"].Width = 300;
+            dgvContasReceber.Columns["DataVencimento"].Width = 100;
+            dgvContasReceber.Columns["ValorParcela"].Width = 100;
+            dgvContasReceber.Columns["SaldoRestante"].Width = 100;
+            dgvContasReceber.Columns["Pago"].Width = 50;
+            dgvContasReceber.Columns["ValorRecebido"].Width = 100;
+            dgvContasReceber.Columns["NumeroParcela"].Width = 100;
 
-            // Verifique se as colunas existem antes de tentar configurá-las
+            // Verificar se as colunas existem antes de tentar configurá-las
             if (dgvContasReceber.Columns.Contains("ParcelaID"))
             {
                 dgvContasReceber.Columns["ParcelaID"].Visible = false;
@@ -107,12 +222,16 @@ namespace SisControl.View
                 dgvContasReceber.Columns["NumeroParcela"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
 
-            // Ajustar colunas automaticamente
-            dgvContasReceber.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            // Centralizar cabeçalhos das colunas
+            foreach (DataGridViewColumn column in dgvContasReceber.Columns)
+            {
+                column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
 
             // Tornar o grid somente leitura
             dgvContasReceber.ReadOnly = true;
         }
+
 
 
 
@@ -158,19 +277,24 @@ namespace SisControl.View
 
         private void LocalizarContaPorPeriodo()
         {
-            string query = @"SELECT Parcela.ParcelaID, Parcela.ValorParcela,  Parcela.NumeroParcela, Parcela.SaldoRestante,  Parcela.DataVencimento,           
-                        Parcela.VendaID, Parcela.Pago, Parcela.ValorRecebido, Cliente.ClienteID, Cliente.NomeCliente               
-                    FROM  Parcela               
-                    INNER JOIN Parcela                          
-                    INNER JOIN Venda                            
-                        ON Parcela.VendaID = Venda.VendaID
-                    INNER JOIN Cliente                           
-                        ON Venda.ClienteID = Cliente.ClienteID
-                    WHERE  Parcela.DataVencimento BETWEEN @DataVencimentoInicio AND @DataVencimentoFim  -- Filtrar por período de vencimento
-                        AND Parcela.Pago = 0            -- Filtrar apenas parcelas não pagas
-                    ORDER BY  Parcela.DataVencimento DESC;      -- Ordenar por data de vencimento em ordem decrescente";
-
-
+            string query = @"
+        SELECT 
+            Parcela.ParcelaID, 
+            Parcela.ValorParcela,  
+            Parcela.NumeroParcela, 
+            Parcela.SaldoRestante,  
+            Parcela.DataVencimento, 
+            Parcela.VendaID, 
+            Parcela.Pago, 
+            Parcela.ValorRecebido, 
+            Cliente.ClienteID, 
+            Cliente.NomeCliente 
+        FROM Parcela 
+        INNER JOIN Venda ON Parcela.VendaID = Venda.VendaID
+        INNER JOIN Cliente ON Venda.ClienteID = Cliente.ClienteID
+        WHERE Parcela.DataVencimento BETWEEN @DataVencimentoInicio AND @DataVencimentoFim
+          AND Parcela.Pago = 0
+        ORDER BY Parcela.DataVencimento DESC";
 
             string nomeParametroInicio = "@DataVencimentoInicio";
             string nomeParametroFim = "@DataVencimentoFim";
@@ -179,6 +303,7 @@ namespace SisControl.View
 
             Utilitario.PesquisarPorPeriodo(query, nomeParametroInicio, dataVencimentoInicio, nomeParametroFim, dataVencimentoFim, dgvContasReceber);
         }
+
 
         private void LocalizarConta()
         {
@@ -206,26 +331,25 @@ namespace SisControl.View
         public void ListarContaReceber()
         {
             string query = @"
-                SELECT
-                    Parcela.ParcelaID,   
-                    Parcela.ValorParcela, 
-                    Parcela.NumeroParcela,   
-                    Parcela.SaldoRestante,     
-                    Parcela.DataVencimento, 
-                    Parcela.VendaID,           
-                    Parcela.Pago,              
-                    Parcela.ValorRecebido,         
-                    Cliente.ClienteID,              
-                    Cliente.NomeCliente            
-                FROM Parcela                          
-                INNER JOIN Venda ON Parcela.VendaID = Venda.VendaID
-                INNER JOIN Cliente ON Venda.ClienteID = Cliente.ClienteID
-                
-                WHERE Parcela.Pago = 0";
+    SELECT
+        Cliente.NomeCliente,
+        Parcela.ParcelaID,   
+        Parcela.ValorParcela, 
+        Parcela.NumeroParcela,   
+        Parcela.SaldoRestante,     
+        Parcela.DataVencimento, 
+        Parcela.VendaID,           
+        Parcela.Pago,              
+        Parcela.ValorRecebido,         
+        Cliente.ClienteID             
+    FROM Parcela                          
+    INNER JOIN Venda ON Parcela.VendaID = Venda.VendaID
+    INNER JOIN Cliente ON Venda.ClienteID = Cliente.ClienteID
+    WHERE Parcela.Pago = @Pago";
 
-            string nomeParametro = "@ClienteID";
-            string nomePesquisar = clienteID.ToString();
-            Utilitario.PesquisarPorNome(query, nomeParametro, nomePesquisar, dgvContasReceber);
+            int pago = 0;
+
+            Utilitario.PesquisarGeralComParametro(query,"@Pago", pago, dgvContasReceber);
             CalcularTotalDataGrid();
         }
 
@@ -417,13 +541,14 @@ namespace SisControl.View
                     if (dgvContasReceber.Columns.Contains("ClienteID") &&
                         dgvContasReceber.SelectedRows[0].Cells["ClienteID"].Value != null)
                     {
-                        int clienteID = Convert.ToInt32(dgvContasReceber.SelectedRows[0].Cells["ClienteID"].Value);
+                        clienteID = Convert.ToInt32(dgvContasReceber.SelectedRows[0].Cells["ClienteID"].Value);
                         // Usar o clienteID para buscar informações adicionais
-                        lblNomeCliente.Text = dgvContasReceber.SelectedRows[0].Cells["NomeCliente"].Value.ToString();
+                        //lblNomeCliente.Text = dgvContasReceber.SelectedRows[0].Cells["NomeCliente"].Value.ToString();
 
                         // Listar Pagametnos Parciais através da ParcelaID na linha selecionada no dgvContasReceber
                         int parcelaID = Convert.ToInt32(dgvContasReceber.SelectedRows[0].Cells["ParcelaID"].Value);
                         ListarPagamentosParciais(parcelaID);
+                        ListarValoresAgrupado(parcelaID);
                     }
                     else
                     {
@@ -465,32 +590,19 @@ namespace SisControl.View
                 MessageBox.Show("Erro ao calcular o total: " + ex.Message);
             }
         }
-        private void ListarPagamentosParciais(int parcelaID)
+        
+        private void ConfigurarColunasDataGridView(DataGridView dgv)
         {
-            try
-            {
-                string query = @"SELECT PagamentoParcialID, ParcelaID,  ValorPago,  DataPagamento
-        FROM  PagamentosParciais  WHERE ParcelaID = @ParcelaID";
+            // Limpar todas as colunas existentes para evitar conflitos
+            dgv.Columns.Clear();
 
-                string nomeParametro = "@ParcelaID";
-                string valorParametro = parcelaID.ToString();
-                Utilitario.PesquisarPorNomeMensagemSuprimida(query, nomeParametro, valorParametro, dgvPagamentosParciais);
-
-                // Verifica se há dados no DataGridView antes de personalizar
-                if (dgvPagamentosParciais.Rows.Count > 0)
-                {
-                    PersonalizarDataGridViewPagParciais();
-                }
-                else
-                {
-                    return;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao listar pagamentos parciais: " + ex.Message);
-            }
+            // Adicionar colunas ao DataGridView
+            dgv.Columns.Add("PagamentoParcialID", "Código");
+            dgv.Columns.Add("ParcelaID", "ParcelaID");
+            dgv.Columns.Add("ValorPago", "Vlr. Pago");
+            dgv.Columns.Add("DataPagamento", "Dta. Pgto");
         }
+
 
         //******OUTRO MÉTODO
         public class Parcela
@@ -624,20 +736,20 @@ namespace SisControl.View
         private void LocalizarContas(string clausulaWhere, Dictionary<string, object> parametros, DataGridView grid)
         {
             string query = $@"
-                SELECT
-                    Parcela.ParcelaID,   
-                    Parcela.ValorParcela, 
-                    Parcela.NumeroParcela,   
-                    Parcela.SaldoRestante,     
-                    Parcela.DataVencimento, 
-                    Parcela.VendaID,           
-                    Parcela.Pago,              
-                    Parcela.ValorRecebido,         
-                    Cliente.ClienteID,              
-                    Cliente.NomeCliente            
-                FROM Parcela                          
-                INNER JOIN Venda ON Parcela.VendaID = Venda.VendaID
-                INNER JOIN Cliente ON Venda.ClienteID = Cliente.ClienteID
+    SELECT
+        Cliente.NomeCliente,
+        Parcela.ParcelaID,   
+        Parcela.ValorParcela, 
+        Parcela.NumeroParcela,   
+        Parcela.SaldoRestante,     
+        Parcela.DataVencimento, 
+        Parcela.VendaID,           
+        Parcela.Pago,              
+        Parcela.ValorRecebido,         
+        Cliente.ClienteID             
+    FROM Parcela                          
+    INNER JOIN Venda ON Parcela.VendaID = Venda.VendaID
+    INNER JOIN Cliente ON Venda.ClienteID = Cliente.ClienteID
 
             { (string.IsNullOrWhiteSpace(clausulaWhere) ? "" : "WHERE " + clausulaWhere)}";
 
@@ -693,6 +805,23 @@ namespace SisControl.View
 
             CalcularTotalDataGrid();
         }
+
+        private void dgvContaAgrupada_SelectionChanged(object sender, EventArgs e)
+        {
+            // Verifica se há alguma linha selecionada
+            if (dgvContaAgrupada.SelectedRows.Count > 0)
+            {
+                // Obtém a linha selecionada
+                DataGridViewRow row = dgvContaAgrupada.SelectedRows[0];
+
+                // Obtém os valores das células 'NomeCliente' e 'SaldoRestante'
+                string nomeCliente = row.Cells["NomeCliente"].Value.ToString();
+                string saldoRestante = row.Cells["SaldoRestante"].Value.ToString();
+
+                // Concatena os valores na Label
+                lblNomeCliente.Text = $"{nomeCliente} | Valor Total: {saldoRestante}";
+            }
+        }      
     }
 }
 
