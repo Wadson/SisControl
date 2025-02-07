@@ -525,3 +525,4 @@ D:\SisControl\obj\Debug\SisControl.View.FrmEntradaEstoque.resources
 C:\SisControl\obj\Debug\SisControl.Relatorios.FrmMenuRelatorio.resources
 C:\SisControl\obj\Debug\SisControl.View.FrmEntradaEstoque.resources
 D:\SisControl\obj\Debug\SisControl.Relatorios.FrmRelProdutos.resources
+D:\SisControl\obj\Debug\SisControl.View.FrmPrincipal.resources

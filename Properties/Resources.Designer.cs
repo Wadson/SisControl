@@ -143,6 +143,16 @@ namespace SisControl.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Clientes32 {
+            get {
+                object obj = ResourceManager.GetObject("Clientes32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Contas_a_Pagar {
             get {
                 object obj = ResourceManager.GetObject("Contas_a_Pagar", resourceCulture);
@@ -213,6 +223,16 @@ namespace SisControl.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Ferramentas32 {
+            get {
+                object obj = ResourceManager.GetObject("Ferramentas32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Fornec24 {
             get {
                 object obj = ResourceManager.GetObject("Fornec24", resourceCulture);
@@ -226,6 +246,16 @@ namespace SisControl.Properties {
         internal static System.Drawing.Bitmap Fornecedor {
             get {
                 object obj = ResourceManager.GetObject("Fornecedor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Fornecedores32 {
+            get {
+                object obj = ResourceManager.GetObject("Fornecedores32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -473,9 +503,29 @@ namespace SisControl.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Produtos32 {
+            get {
+                object obj = ResourceManager.GetObject("Produtos32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Receber24 {
             get {
                 object obj = ResourceManager.GetObject("Receber24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Receber32 {
+            get {
+                object obj = ResourceManager.GetObject("Receber32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -496,6 +546,16 @@ namespace SisControl.Properties {
         internal static System.Drawing.Bitmap Relatorio24 {
             get {
                 object obj = ResourceManager.GetObject("Relatorio24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Relatorios32 {
+            get {
+                object obj = ResourceManager.GetObject("Relatorios32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -526,6 +586,16 @@ namespace SisControl.Properties {
         internal static System.Drawing.Bitmap Sair24 {
             get {
                 object obj = ResourceManager.GetObject("Sair24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Sair32 {
+            get {
+                object obj = ResourceManager.GetObject("Sair32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -573,6 +643,16 @@ namespace SisControl.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Usuarios32 {
+            get {
+                object obj = ResourceManager.GetObject("Usuarios32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Venda24 {
             get {
                 object obj = ResourceManager.GetObject("Venda24", resourceCulture);
@@ -586,6 +666,16 @@ namespace SisControl.Properties {
         internal static System.Drawing.Bitmap Vendas {
             get {
                 object obj = ResourceManager.GetObject("Vendas", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Vendas32 {
+            get {
+                object obj = ResourceManager.GetObject("Vendas32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -88,37 +88,29 @@ namespace SisControl
 
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
-            FrmManutUsuario frm = new FrmManutUsuario(StatusOperacao);
-            AbrirFormEnPanel(frm);            
+                    
         }
 
         private void btnCadClientes_Click(object sender, EventArgs e)
         {
-            FrmManutCliente frm = new FrmManutCliente(StatusOperacao);
-            StatusOperacao = "NOVO";
-            AbrirFormEnPanel(frm); 
+            
         }
 
         private void btnFornecedor_Click(object sender, EventArgs e)
         {
-            FrmManutFornecedor frm = new FrmManutFornecedor(StatusOperacao);
-            StatusOperacao = "NOVO";
-            AbrirFormEnPanel(frm); 
+            
         }
 
         private void btnProdutos_Click(object sender, EventArgs e)
         {
-            FrmManutProduto frm = new FrmManutProduto(StatusOperacao);
-            StatusOperacao = "NOVO";
-            AbrirFormEnPanel(frm); 
+            
         }
 
         private void btnVendas_Click(object sender, EventArgs e)
         {
             //FrmPedido frm = new FrmPedido();
             //AbrirFormEnPanel(frm); 
-            FrmPedidoVendaNovo frm = new FrmPedidoVendaNovo();
-            AbrirFormEnPanel(frm);
+           
         }
 
         private void btnContasPagar_Click(object sender, EventArgs e)
@@ -127,23 +119,16 @@ namespace SisControl
 
         private void btnContasReceber_Click(object sender, EventArgs e)
         {
-           // Suponha que você tenha uma instância de Parcela
-            Parcela parcela = new Parcela();           
-            // Chama o construtor de FrmContaReceberr com os parâmetros necessários
-            FrmContaReceberr frm = new FrmContaReceberr(parcela); 
-            AbrirFormEnPanel(frm);                 
         }
 
         private void btnRelatorio_Click(object sender, EventArgs e)
         {
-            FrmRelatorios frm = new FrmRelatorios();
-            AbrirFormEnPanel(frm);
+            
         }
 
         private void btnFerramentas_Click(object sender, EventArgs e)
         {
-            FrmFerramentas frm = new FrmFerramentas();
-            AbrirFormEnPanel(frm);  
+            
         }
         
          

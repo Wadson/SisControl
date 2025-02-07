@@ -383,6 +383,12 @@
     <Compile Include="View\FrmPedidoVendaNovo .Designer.cs">
       <DependentUpon>FrmPedidoVendaNovo .cs</DependentUpon>
     </Compile>
+    <Compile Include="View\FrmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmPrincipal.Designer.cs">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FrmRelatorios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -581,6 +587,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmPedidoVendaNovo .resx">
       <DependentUpon>FrmPedidoVendaNovo .cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmPrincipal.resx">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmRelatorios.resx">
       <DependentUpon>FrmRelatorios.cs</DependentUpon>
@@ -822,6 +831,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\WRIco.png" />
+    <None Include="Resources\Ferramentas32.png" />
+    <None Include="Resources\Relatorios32.png" />
+    <None Include="Resources\Receber32.png" />
+    <None Include="Resources\Produtos32.png" />
+    <None Include="Resources\Clientes32.png" />
+    <None Include="Resources\Usuarios32.png" />
+    <None Include="Resources\Fornecedores32.png" />
+    <None Include="Resources\Sair32.png" />
+    <None Include="Resources\Vendas32.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

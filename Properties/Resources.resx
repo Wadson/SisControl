@@ -283,4 +283,31 @@
   <data name="WRIco" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\WRIco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Clientes32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Clientes32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ferramentas32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ferramentas32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Fornecedores32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fornecedores32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Produtos32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Produtos32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Receber32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Receber32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Relatorios32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Relatorios32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Sair32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Sair32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Usuarios32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Usuarios32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Vendas32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Vendas32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

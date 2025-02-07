@@ -184,38 +184,38 @@
             // usuárioToolStripMenuItem1
             // 
             this.usuárioToolStripMenuItem1.Name = "usuárioToolStripMenuItem1";
-            this.usuárioToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.usuárioToolStripMenuItem1.Size = new System.Drawing.Size(134, 22);
             this.usuárioToolStripMenuItem1.Text = "&Usuário";
             // 
             // clienteToolStripMenuItem
             // 
             this.clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
-            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.clienteToolStripMenuItem.Text = "&Cliente";
             // 
             // fornecedorToolStripMenuItem
             // 
             this.fornecedorToolStripMenuItem.Name = "fornecedorToolStripMenuItem";
-            this.fornecedorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.fornecedorToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.fornecedorToolStripMenuItem.Text = "&Fornecedor";
             // 
             // produtoToolStripMenuItem
             // 
             this.produtoToolStripMenuItem.Name = "produtoToolStripMenuItem";
-            this.produtoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.produtoToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.produtoToolStripMenuItem.Text = "&Produto";
             // 
             // categoriaToolStripMenuItem
             // 
             this.categoriaToolStripMenuItem.Name = "categoriaToolStripMenuItem";
-            this.categoriaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.categoriaToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.categoriaToolStripMenuItem.Text = "Ca&tegoria";
             this.categoriaToolStripMenuItem.Click += new System.EventHandler(this.categoriaToolStripMenuItem_Click);
             // 
             // telaUiToolStripMenuItem
             // 
             this.telaUiToolStripMenuItem.Name = "telaUiToolStripMenuItem";
-            this.telaUiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.telaUiToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.telaUiToolStripMenuItem.Text = "TelaUi";
             this.telaUiToolStripMenuItem.Click += new System.EventHandler(this.telaUiToolStripMenuItem_Click);
             // 
@@ -252,38 +252,38 @@
             // usuárioToolStripMenuItem2
             // 
             this.usuárioToolStripMenuItem2.Name = "usuárioToolStripMenuItem2";
-            this.usuárioToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.usuárioToolStripMenuItem2.Size = new System.Drawing.Size(175, 22);
             this.usuárioToolStripMenuItem2.Text = "&Usuário";
             // 
             // clienteToolStripMenuItem1
             // 
             this.clienteToolStripMenuItem1.Name = "clienteToolStripMenuItem1";
-            this.clienteToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.clienteToolStripMenuItem1.Size = new System.Drawing.Size(175, 22);
             this.clienteToolStripMenuItem1.Text = "&Cliente";
             // 
             // fornecedorToolStripMenuItem1
             // 
             this.fornecedorToolStripMenuItem1.Name = "fornecedorToolStripMenuItem1";
-            this.fornecedorToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.fornecedorToolStripMenuItem1.Size = new System.Drawing.Size(175, 22);
             this.fornecedorToolStripMenuItem1.Text = "&Fornecedor";
             // 
             // produtoToolStripMenuItem1
             // 
             this.produtoToolStripMenuItem1.Name = "produtoToolStripMenuItem1";
-            this.produtoToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.produtoToolStripMenuItem1.Size = new System.Drawing.Size(175, 22);
             this.produtoToolStripMenuItem1.Text = "&Produto";
             // 
             // fabricanteToolStripMenuItem
             // 
             this.fabricanteToolStripMenuItem.Name = "fabricanteToolStripMenuItem";
-            this.fabricanteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.fabricanteToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.fabricanteToolStripMenuItem.Text = "&Fabricante";
             this.fabricanteToolStripMenuItem.Click += new System.EventHandler(this.fabricanteToolStripMenuItem_Click);
             // 
             // entradaDeEstoqueToolStripMenuItem
             // 
             this.entradaDeEstoqueToolStripMenuItem.Name = "entradaDeEstoqueToolStripMenuItem";
-            this.entradaDeEstoqueToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.entradaDeEstoqueToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.entradaDeEstoqueToolStripMenuItem.Text = "Entrada de Estoque";
             this.entradaDeEstoqueToolStripMenuItem.Click += new System.EventHandler(this.entradaDeEstoqueToolStripMenuItem_Click);
             // 
@@ -1553,7 +1553,13 @@
             this.Controls.Add(this.statusStrip2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "FrmTelaPrincipal";
+            this.Name = "FrmTelaPrincipal";            
+            this.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Global;
+            this.StateActive.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.StateActive.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.StateActive.Back.ColorAlign = ComponentFactory.Krypton.Toolkit.PaletteRectangleAlign.Control;
+            this.StateActive.Header.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.StateActive.Header.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
