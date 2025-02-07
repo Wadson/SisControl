@@ -108,7 +108,6 @@ D:\SisControl\obj\Debug\SisControl.FrmModeloForm.resources
 D:\SisControl\obj\Debug\SisControl.View.FrmContaReceberr.resources
 D:\SisControl\obj\Debug\SisControl.FrmBaixarConta.resources
 D:\SisControl\obj\Debug\SisControl.View.FormPrincipal.resources
-D:\SisControl\obj\Debug\SisControl.FrmTelaPrincipal.resources
 D:\SisControl\bin\Debug\ComponentFactory.Krypton.Docking.dll
 D:\SisControl\bin\Debug\ComponentFactory.Krypton.Navigator.dll
 D:\SisControl\bin\Debug\ComponentFactory.Krypton.Ribbon.dll

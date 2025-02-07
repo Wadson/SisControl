@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using static SisControl.View.FrmContaReceberr;
@@ -19,15 +20,15 @@ namespace SisControl.View
         private string StatusOperacao = "";
         private FrmContaReceberr _frmContaReceberr;
         private Parcela _parcela;
-        private void AbrirFormEnPanel(object Formhijo)
+        private void AbrirFormEnPanel(object Form)
         {
-            if (this.LayoutPanelGeral.Controls.Count > 0)
-                this.LayoutPanelGeral.Controls.RemoveAt(0);
-            Form fh = Formhijo as Form;
+            if (this.panelConteiner.Controls.Count > 0)
+                this.panelConteiner.Controls.RemoveAt(0);
+            Form fh = Form as Form;
             fh.TopLevel = false;
             fh.Dock = DockStyle.Fill;
-            this.LayoutPanelGeral.Controls.Add(fh);
-            this.LayoutPanelGeral.Tag = fh;
+            this.panelConteiner.Controls.Add(fh);
+            this.panelConteiner.Tag = fh;
             fh.Show();
         }
 
@@ -89,6 +90,27 @@ namespace SisControl.View
         {
             FrmRelatorios frm = new FrmRelatorios();
             AbrirFormEnPanel(frm);
+        }
+
+        private void FrmPrincipal_Load(object sender, EventArgs e)
+        {
+            string currentPath = Path.GetDirectoryName(Application.ExecutablePath);
+
+            //lblUsuarioLogado.Text = FrmLogin.usuarioConectado + "  |  Previlégio:" + FrmLogin.NivelAcesso + "  |  Diretório:" + currentPath + @"\Money.exe";
+
+            string data = DateTime.Now.ToLongDateString();
+            data = data.Substring(0, 1).ToUpper() + data.Substring(1, data.Length - 1);
+            lblData.Text = data;
+
+            string path = System.AppDomain.CurrentDomain.BaseDirectory.ToString();
+            var informacao = Environment.UserName;
+            var nomeComputador = Environment.MachineName;
+
+            lblEstação.Text = path;            
+
+            lblEstação.Text = nomeComputador;
+            lblData.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            lblHoraAtual.Text = DateTime.Now.ToString("HH:mm:ss");
         }
     }
 }

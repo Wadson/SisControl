@@ -21,6 +21,11 @@ namespace SisControl
         {
             InitializeComponent();
             this.StatusOperacao = statusOperacao;
+            //Centraliza o Label dentro do Panel
+            label28.Location = new Point(
+                (kryptonPanel2.Width - label28.Width) / 2,
+                (kryptonPanel2.Height - label28.Height) / 2);
+
         }
       
         private void CarregaDados()

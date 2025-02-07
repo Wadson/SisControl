@@ -49,6 +49,12 @@ namespace SisControl.View
         {
             InitializeComponent();
 
+
+            //Centraliza o Label dentro do Panel
+            label28.Location = new Point(
+                (kryptonPanel2.Width - label28.Width) / 2,
+                (kryptonPanel2.Height - label28.Height) / 2);
+
             nextItemVendaID = Utilitario.GerarNovoCodigoID("ItemVendaID", "ItemVenda");
 
             // Registrar o evento KeyDown
@@ -870,6 +876,10 @@ namespace SisControl.View
                 Log(ex.Message);
                 MessageBox.Show($"Ocorreu um erro: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
         }
     }
 }

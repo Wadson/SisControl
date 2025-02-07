@@ -401,12 +401,6 @@
     <Compile Include="View\FrmRestauraBackup.Designer.cs">
       <DependentUpon>FrmRestauraBackup.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\FrmTelaPrincipal .cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\FrmTelaPrincipal .Designer.cs">
-      <DependentUpon>FrmTelaPrincipal .cs</DependentUpon>
-    </Compile>
     <Compile Include="View\FrmUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -596,9 +590,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmRestauraBackup.resx">
       <DependentUpon>FrmRestauraBackup.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\FrmTelaPrincipal .resx">
-      <DependentUpon>FrmTelaPrincipal .cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmUsuario.resx">
       <DependentUpon>FrmUsuario.cs</DependentUpon>

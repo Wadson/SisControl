@@ -458,11 +458,6 @@
             this.btnSair.StateTracking.Border.Width = 1;
             this.btnSair.StateTracking.Content.ShortText.Color1 = System.Drawing.Color.White;
             this.btnSair.TabIndex = 637;
-            this.btnSair.Values.Image = global::SisControl.Properties.Resources.Sair24;
-            this.btnSair.Values.ImageStates.ImageCheckedNormal = null;
-            this.btnSair.Values.ImageStates.ImageCheckedPressed = null;
-            this.btnSair.Values.ImageStates.ImageCheckedTracking = null;
-            this.btnSair.Values.ImageStates.ImageNormal = global::SisControl.Properties.Resources.Sair24;
             this.btnSair.Values.Text = "&Sair";
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
