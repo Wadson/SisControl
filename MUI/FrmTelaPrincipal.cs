@@ -114,5 +114,11 @@ namespace SisControl.MUI
             lblData.Text = DateTime.Now.ToString("dd/MM/yyyy");
             lblHoraAtual.Text = DateTime.Now.ToString("HH:mm:ss");
         }
+
+        private void loginToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmLogin frmLogin = new FrmLogin();
+            frmLogin.ShowDialog();
+        }
     }
 }

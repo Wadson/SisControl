@@ -530,3 +530,8 @@ C:\SisControl\bin\Debug\MetroFramework.Fonts.dll
 C:\SisControl\obj\Debug\SisControl.MUI.FrmTelaPrincipal.resources
 C:\SisControl\obj\Debug\SisControl.Relatorios.FrmRelProdutos.resources
 C:\SisControl\obj\Debug\SisControl.View.FrmPrincipal.resources
+D:\SisControl\bin\Debug\MetroFramework.Design.dll
+D:\SisControl\bin\Debug\MetroFramework.dll
+D:\SisControl\bin\Debug\MetroFramework.Fonts.dll
+D:\SisControl\obj\Debug\SisControl.MUI.FrmTelaPrincipal.resources
+D:\SisControl\obj\Debug\SisControl.MUI.FrmLogin.resources

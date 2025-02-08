@@ -296,6 +296,12 @@
     <Compile Include="DALL\VendaDALL.cs" />
     <Compile Include="MODEL\CidadeMODEL.cs" />
     <Compile Include="MODEL\PagamentoParcialModel.cs" />
+    <Compile Include="MUI\FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MUI\FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="MUI\FrmTelaPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -549,6 +555,9 @@
     <Compile Include="View\Sobre.Designer.cs">
       <DependentUpon>Sobre.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="MUI\FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MUI\FrmTelaPrincipal.resx">
       <DependentUpon>FrmTelaPrincipal.cs</DependentUpon>
     </EmbeddedResource>
@@ -849,6 +858,10 @@
     <None Include="Resources\Fornecedores32.png" />
     <None Include="Resources\Sair32.png" />
     <None Include="Resources\Vendas32.png" />
+    <None Include="Resources\WRLogo.png" />
+    <None Include="Resources\Login.png" />
+    <None Include="Resources\Usuario16.png" />
+    <None Include="Resources\Cadeado16.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

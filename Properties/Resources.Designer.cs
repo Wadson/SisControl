@@ -73,6 +73,16 @@ namespace SisControl.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Cadeado16 {
+            get {
+                object obj = ResourceManager.GetObject("Cadeado16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap caixas {
             get {
                 object obj = ResourceManager.GetObject("caixas", resourceCulture);
@@ -336,6 +346,16 @@ namespace SisControl.Properties {
         internal static System.Drawing.Bitmap LocalizarProduto32 {
             get {
                 object obj = ResourceManager.GetObject("LocalizarProduto32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Login {
+            get {
+                object obj = ResourceManager.GetObject("Login", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -633,6 +653,16 @@ namespace SisControl.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Usuario16 {
+            get {
+                object obj = ResourceManager.GetObject("Usuario16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Usuario24 {
             get {
                 object obj = ResourceManager.GetObject("Usuario24", resourceCulture);
@@ -696,6 +726,16 @@ namespace SisControl.Properties {
         internal static System.Drawing.Bitmap WRIco {
             get {
                 object obj = ResourceManager.GetObject("WRIco", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WRLogo {
+            get {
+                object obj = ResourceManager.GetObject("WRLogo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

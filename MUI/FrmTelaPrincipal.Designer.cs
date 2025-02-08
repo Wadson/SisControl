@@ -47,9 +47,17 @@
             this.lblData = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel11 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblHoraAtual = new System.Windows.Forms.ToolStripStatusLabel();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.cadastrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fornecedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.produtosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.usuáriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
             this.statusStrip2.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPanel2
@@ -65,11 +73,11 @@
             this.kryptonPanel2.Controls.Add(this.btnContaReceber);
             this.kryptonPanel2.Controls.Add(this.btnVendas);
             this.kryptonPanel2.Controls.Add(this.btnFerramentas);
-            this.kryptonPanel2.Location = new System.Drawing.Point(7, 53);
+            this.kryptonPanel2.Location = new System.Drawing.Point(20, 89);
             this.kryptonPanel2.Name = "kryptonPanel2";
             this.kryptonPanel2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.kryptonPanel2.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.SeparatorHighInternalProfile;
-            this.kryptonPanel2.Size = new System.Drawing.Size(1006, 73);
+            this.kryptonPanel2.Size = new System.Drawing.Size(984, 73);
             this.kryptonPanel2.TabIndex = 604;
             // 
             // btnUsuario
@@ -136,7 +144,7 @@
             this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSair.Image = global::SisControl.Properties.Resources.Sair32;
             this.btnSair.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSair.Location = new System.Drawing.Point(928, 4);
+            this.btnSair.Location = new System.Drawing.Point(906, 4);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(75, 65);
             this.btnSair.TabIndex = 7;
@@ -240,9 +248,9 @@
             this.panelConteiner.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelConteiner.Location = new System.Drawing.Point(11, 128);
+            this.panelConteiner.Location = new System.Drawing.Point(20, 173);
             this.panelConteiner.Name = "panelConteiner";
-            this.panelConteiner.Size = new System.Drawing.Size(1002, 592);
+            this.panelConteiner.Size = new System.Drawing.Size(984, 547);
             this.panelConteiner.TabIndex = 603;
             // 
             // statusStrip2
@@ -311,23 +319,83 @@
             this.lblHoraAtual.Size = new System.Drawing.Size(12, 17);
             this.lblHoraAtual.Text = "-";
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cadastrosToolStripMenuItem,
+            this.loginToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(20, 60);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(984, 24);
+            this.menuStrip1.TabIndex = 606;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // cadastrosToolStripMenuItem
+            // 
+            this.cadastrosToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.cadastrosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.clientesToolStripMenuItem,
+            this.fornecedoresToolStripMenuItem,
+            this.produtosToolStripMenuItem,
+            this.usuáriosToolStripMenuItem});
+            this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
+            this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
+            this.cadastrosToolStripMenuItem.Text = "C&adastros";
+            // 
+            // clientesToolStripMenuItem
+            // 
+            this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.clientesToolStripMenuItem.Text = "&Clientes";
+            // 
+            // fornecedoresToolStripMenuItem
+            // 
+            this.fornecedoresToolStripMenuItem.Name = "fornecedoresToolStripMenuItem";
+            this.fornecedoresToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.fornecedoresToolStripMenuItem.Text = "&Fornecedores";
+            // 
+            // produtosToolStripMenuItem
+            // 
+            this.produtosToolStripMenuItem.Name = "produtosToolStripMenuItem";
+            this.produtosToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.produtosToolStripMenuItem.Text = "&Produtos";
+            // 
+            // usuáriosToolStripMenuItem
+            // 
+            this.usuáriosToolStripMenuItem.Name = "usuáriosToolStripMenuItem";
+            this.usuáriosToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.usuáriosToolStripMenuItem.Text = "&Usuários";
+            // 
+            // loginToolStripMenuItem
+            // 
+            this.loginToolStripMenuItem.Name = "loginToolStripMenuItem";
+            this.loginToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
+            this.loginToolStripMenuItem.Text = "Login";
+            this.loginToolStripMenuItem.Click += new System.EventHandler(this.loginToolStripMenuItem_Click);
+            // 
             // FrmTelaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = MetroFramework.Forms.MetroFormBorderStyle.FixedSingle;
             this.ClientSize = new System.Drawing.Size(1024, 768);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.statusStrip2);
             this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.panelConteiner);
             this.Name = "FrmTelaPrincipal";
-            this.Text = "SisControl- Sistema de Controle de Vendas";
+            this.Style = MetroFramework.MetroColorStyle.Silver;
+            this.Text = "SisControl  - Sistema de Vendas";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmTelaPrincipal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             this.statusStrip2.ResumeLayout(false);
             this.statusStrip2.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -354,5 +422,12 @@
         private System.Windows.Forms.ToolStripStatusLabel lblData;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel11;
         private System.Windows.Forms.ToolStripStatusLabel lblHoraAtual;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem cadastrosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fornecedoresToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem produtosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem usuáriosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loginToolStripMenuItem;
     }
 }

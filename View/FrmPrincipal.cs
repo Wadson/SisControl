@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SisControl.MUI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -111,6 +112,12 @@ namespace SisControl.View
             lblEstação.Text = nomeComputador;
             lblData.Text = DateTime.Now.ToString("dd/MM/yyyy");
             lblHoraAtual.Text = DateTime.Now.ToString("HH:mm:ss");
+        }
+
+        private void loginToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmLogin frmLogin = new FrmLogin();
+            frmLogin.ShowDialog();
         }
     }
 }
