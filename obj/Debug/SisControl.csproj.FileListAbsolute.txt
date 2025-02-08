@@ -487,7 +487,6 @@ C:\SisControl\obj\Debug\SisControl.FrmBaixarConta.resources
 C:\SisControl\obj\Debug\SisControl.FrmModeloUI.resources
 C:\SisControl\obj\Debug\SisControl.View.FrmRelatorios.resources
 C:\SisControl\obj\Debug\SisControl.View.FrmRestauraBackup.resources
-C:\SisControl\obj\Debug\SisControl.FrmTelaPrincipal.resources
 C:\SisControl\obj\Debug\SisControl.FrmUsuario.resources
 C:\SisControl\obj\Debug\SisControl.FrmModelo.resources
 C:\SisControl\obj\Debug\SisControl.PhoneFormat.resources
@@ -525,3 +524,9 @@ C:\SisControl\obj\Debug\SisControl.Relatorios.FrmMenuRelatorio.resources
 C:\SisControl\obj\Debug\SisControl.View.FrmEntradaEstoque.resources
 D:\SisControl\obj\Debug\SisControl.Relatorios.FrmRelProdutos.resources
 D:\SisControl\obj\Debug\SisControl.View.FrmPrincipal.resources
+C:\SisControl\bin\Debug\MetroFramework.Design.dll
+C:\SisControl\bin\Debug\MetroFramework.dll
+C:\SisControl\bin\Debug\MetroFramework.Fonts.dll
+C:\SisControl\obj\Debug\SisControl.MUI.FrmTelaPrincipal.resources
+C:\SisControl\obj\Debug\SisControl.Relatorios.FrmRelProdutos.resources
+C:\SisControl\obj\Debug\SisControl.View.FrmPrincipal.resources

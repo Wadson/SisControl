@@ -1,4 +1,5 @@
-﻿using SisControl.View;
+﻿using SisControl.MUI;
+using SisControl.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,8 @@ namespace SisControl
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new FrmPrincipal());
             //Application.Run(new FrmTelaPrincipal());
-            Application.Run(new FrmPrincipal());
+            //Application.Run(new FrmPrincipal());
+            Application.Run(new FrmTelaPrincipal());
         }
     }
 }
