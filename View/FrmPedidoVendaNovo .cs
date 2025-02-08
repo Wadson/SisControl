@@ -49,7 +49,7 @@ namespace SisControl.View
         {
             InitializeComponent();
 
-
+            Utilitario.AdicionarEfeitoFocoEmTodos(this);
             //Centraliza o Label dentro do Panel
             label28.Location = new Point(
                 (kryptonPanel2.Width - label28.Width) / 2,
@@ -822,10 +822,7 @@ namespace SisControl.View
             }
         }
 
-        private void btnSair_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+       
 
         private void btnIncluir_Click(object sender, EventArgs e)
         {
@@ -880,6 +877,11 @@ namespace SisControl.View
 
         private void label1_Click(object sender, EventArgs e)
         {
+        }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -11,7 +11,7 @@ using static SisControl.View.FrmContaReceberr;
 
 namespace SisControl.View
 {
-    public partial class FrmPrincipal : SisControl.FrmModeloForm
+    public partial class FrmPrincipal : MetroFramework.Forms.MetroForm
     {
         public FrmPrincipal()
         {
