@@ -31,6 +31,7 @@
             this.btnClienteVendas = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnSair = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnRelatorioGeral = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnRelprodutos = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.SuspendLayout();
             // 
             // btnClienteVendas
@@ -213,10 +214,71 @@
             this.btnRelatorioGeral.Values.Text = "&Relatório Geral";
             this.btnRelatorioGeral.Click += new System.EventHandler(this.btnRelatorioGeral_Click);
             // 
+            // btnRelprodutos
+            // 
+            this.btnRelprodutos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRelprodutos.Location = new System.Drawing.Point(-1, 135);
+            this.btnRelprodutos.Name = "btnRelprodutos";
+            this.btnRelprodutos.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.btnRelprodutos.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnRelprodutos.OverrideDefault.Back.ColorAngle = 45F;
+            this.btnRelprodutos.OverrideDefault.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.btnRelprodutos.OverrideDefault.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnRelprodutos.OverrideDefault.Border.ColorAngle = 45F;
+            this.btnRelprodutos.OverrideDefault.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnRelprodutos.OverrideDefault.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.btnRelprodutos.OverrideDefault.Border.Rounding = 20;
+            this.btnRelprodutos.OverrideDefault.Border.Width = 1;
+            this.btnRelprodutos.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.btnRelprodutos.Size = new System.Drawing.Size(252, 39);
+            this.btnRelprodutos.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.btnRelprodutos.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnRelprodutos.StateCommon.Back.ColorAngle = 45F;
+            this.btnRelprodutos.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.btnRelprodutos.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnRelprodutos.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnRelprodutos.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.btnRelprodutos.StateCommon.Border.Rounding = 20;
+            this.btnRelprodutos.StateCommon.Border.Width = 1;
+            this.btnRelprodutos.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.btnRelprodutos.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.btnRelprodutos.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRelprodutos.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
+            this.btnRelprodutos.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnRelprodutos.StatePressed.Back.ColorAngle = 135F;
+            this.btnRelprodutos.StatePressed.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
+            this.btnRelprodutos.StatePressed.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnRelprodutos.StatePressed.Border.ColorAngle = 135F;
+            this.btnRelprodutos.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnRelprodutos.StatePressed.Border.Rounding = 20;
+            this.btnRelprodutos.StatePressed.Border.Width = 1;
+            this.btnRelprodutos.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnRelprodutos.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.btnRelprodutos.StateTracking.Back.ColorAngle = 45F;
+            this.btnRelprodutos.StateTracking.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.btnRelprodutos.StateTracking.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnRelprodutos.StateTracking.Border.ColorAngle = 45F;
+            this.btnRelprodutos.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnRelprodutos.StateTracking.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.btnRelprodutos.StateTracking.Border.Rounding = 20;
+            this.btnRelprodutos.StateTracking.Border.Width = 1;
+            this.btnRelprodutos.TabIndex = 567;
+            this.btnRelprodutos.Values.Text = "&Relatório de produtos";
+            this.btnRelprodutos.Click += new System.EventHandler(this.btnRelprodutos_Click);
+            // 
             // FrmMenuRelatorio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(534, 461);
+            this.Controls.Add(this.btnRelprodutos);
             this.Controls.Add(this.btnRelatorioGeral);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.btnClienteVendas);
@@ -235,5 +297,6 @@
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnClienteVendas;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnSair;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnRelatorioGeral;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnRelprodutos;
     }
 }

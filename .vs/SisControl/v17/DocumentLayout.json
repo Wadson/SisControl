@@ -1,7 +1,40 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\SisControl\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|d:\\siscontrol\\relatorios\\relprodutos .rdlc||{46F6D2A1-5E86-4080-A799-01F3D0E23796}",
+      "RelativeMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|solutionrelative:relatorios\\relprodutos .rdlc||{46F6D2A1-5E86-4080-A799-01F3D0E23796}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|d:\\siscontrol\\relatorios\\frmmenurelatorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|solutionrelative:relatorios\\frmmenurelatorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|d:\\siscontrol\\relatorios\\frmrelprodutos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|solutionrelative:relatorios\\frmrelprodutos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|d:\\siscontrol\\relatorios\\frmrelprodutos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|solutionrelative:relatorios\\frmrelprodutos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|d:\\siscontrol\\relatorios\\relgeral.rdlc||{46F6D2A1-5E86-4080-A799-01F3D0E23796}",
+      "RelativeMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|solutionrelative:relatorios\\relgeral.rdlc||{46F6D2A1-5E86-4080-A799-01F3D0E23796}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|d:\\siscontrol\\relatorios\\frmmenurelatorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|solutionrelative:relatorios\\frmmenurelatorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|d:\\siscontrol\\relatorios\\frmrelgeralcontasabertas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|solutionrelative:relatorios\\frmrelgeralcontasabertas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|d:\\siscontrol\\relatorios\\relclienteitemcompra.rdlc||{46F6D2A1-5E86-4080-A799-01F3D0E23796}",
+      "RelativeMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|solutionrelative:relatorios\\relclienteitemcompra.rdlc||{46F6D2A1-5E86-4080-A799-01F3D0E23796}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,6 +63,104 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FrmRelProdutos.cs",
+              "DocumentMoniker": "D:\\SisControl\\Relatorios\\FrmRelProdutos.cs",
+              "RelativeDocumentMoniker": "Relatorios\\FrmRelProdutos.cs",
+              "ToolTip": "D:\\SisControl\\Relatorios\\FrmRelProdutos.cs",
+              "RelativeToolTip": "Relatorios\\FrmRelProdutos.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAAABgAAABTAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-09T02:31:52.072Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FrmMenuRelatorio.cs",
+              "DocumentMoniker": "D:\\SisControl\\Relatorios\\FrmMenuRelatorio.cs",
+              "RelativeDocumentMoniker": "Relatorios\\FrmMenuRelatorio.cs",
+              "ToolTip": "D:\\SisControl\\Relatorios\\FrmMenuRelatorio.cs",
+              "RelativeToolTip": "Relatorios\\FrmMenuRelatorio.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAcwCUAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-09T02:29:04.628Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RelProdutos .rdlc [Criar]",
+              "DocumentMoniker": "D:\\SisControl\\Relatorios\\RelProdutos .rdlc",
+              "RelativeDocumentMoniker": "Relatorios\\RelProdutos .rdlc",
+              "ToolTip": "D:\\SisControl\\Relatorios\\RelProdutos .rdlc [Criar]",
+              "RelativeToolTip": "Relatorios\\RelProdutos .rdlc [Criar]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001755|",
+              "WhenOpened": "2025-02-09T02:27:20.753Z",
+              "EditorCaption": " [Criar]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "RelGeral.rdlc [Criar]",
+              "DocumentMoniker": "D:\\SisControl\\Relatorios\\RelGeral.rdlc",
+              "RelativeDocumentMoniker": "Relatorios\\RelGeral.rdlc",
+              "ToolTip": "D:\\SisControl\\Relatorios\\RelGeral.rdlc [Criar]",
+              "RelativeToolTip": "Relatorios\\RelGeral.rdlc [Criar]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001755|",
+              "WhenOpened": "2025-02-09T02:27:15.712Z",
+              "EditorCaption": " [Criar]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FrmRelProdutos.cs [Design]",
+              "DocumentMoniker": "D:\\SisControl\\Relatorios\\FrmRelProdutos.cs",
+              "RelativeDocumentMoniker": "Relatorios\\FrmRelProdutos.cs",
+              "ToolTip": "D:\\SisControl\\Relatorios\\FrmRelProdutos.cs [Design]",
+              "RelativeToolTip": "Relatorios\\FrmRelProdutos.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-09T02:25:42.421Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "FrmMenuRelatorio.cs [Design]",
+              "DocumentMoniker": "D:\\SisControl\\Relatorios\\FrmMenuRelatorio.cs",
+              "RelativeDocumentMoniker": "Relatorios\\FrmMenuRelatorio.cs",
+              "ToolTip": "D:\\SisControl\\Relatorios\\FrmMenuRelatorio.cs [Design]",
+              "RelativeToolTip": "Relatorios\\FrmMenuRelatorio.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-09T02:25:37.985Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "FrmRelGeralContasAbertas.cs [Design]",
+              "DocumentMoniker": "D:\\SisControl\\Relatorios\\FrmRelGeralContasAbertas.cs",
+              "RelativeDocumentMoniker": "Relatorios\\FrmRelGeralContasAbertas.cs",
+              "ToolTip": "D:\\SisControl\\Relatorios\\FrmRelGeralContasAbertas.cs [Design]",
+              "RelativeToolTip": "Relatorios\\FrmRelGeralContasAbertas.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-09T02:25:40.274Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "RelClienteItemCompra.rdlc [Criar]",
+              "DocumentMoniker": "D:\\SisControl\\Relatorios\\RelClienteItemCompra.rdlc",
+              "RelativeDocumentMoniker": "Relatorios\\RelClienteItemCompra.rdlc",
+              "ToolTip": "D:\\SisControl\\Relatorios\\RelClienteItemCompra.rdlc [Criar]",
+              "RelativeToolTip": "Relatorios\\RelClienteItemCompra.rdlc [Criar]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001755|",
+              "WhenOpened": "2025-02-09T02:25:46.862Z",
+              "EditorCaption": " [Criar]"
             }
           ]
         }

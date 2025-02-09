@@ -31,5 +31,11 @@ namespace SisControl.Relatorios
             FrmRelGeralContasAbertas frmRelGeralContasAbertas = new FrmRelGeralContasAbertas();
             frmRelGeralContasAbertas.ShowDialog();
         }
+
+        private void btnRelprodutos_Click(object sender, EventArgs e)
+        {
+            FrmRelProdutos frmRelProdutos = new FrmRelProdutos();
+            frmRelProdutos.ShowDialog();
+        }
     }
 }
