@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
@@ -17,7 +18,6 @@ namespace SisControl
     public partial class FrmCadUser : KryptonForm
     {
         private string QueryUsuario = "SELECT MAX(UsuarioID) FROM Usuario";
-
         private string StatusOperacao;
         private int UsuarioID;
 
@@ -25,111 +25,141 @@ namespace SisControl
         {
             InitializeComponent();
             this.StatusOperacao = statusOperacao;
-            // Utiliza a classe Utilitario para adicionar os efeitos de foco a todos os TextBoxes no formulário
             Utilitario.AdicionarEfeitoFocoEmTodos(this);
         }
-       
+
+        // Método para criar hash SHA-256
+        public static string HashSHA256(string senha)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(senha));
+                StringBuilder builder = new StringBuilder();
+                foreach (byte b in bytes)
+                {
+                    builder.Append(b.ToString("x2")); // Converte para hexadecimal
+                }
+                return builder.ToString();
+            }
+        }
+
         public void SalvarRegistro()
         {
             try
             {
                 if (UsuarioID != 0 && txtNomeUsuario.Text != string.Empty && cmbTipoUsuario.Text != string.Empty && txtSenha.Text == txtRepitaSenha.Text)
                 {
-                    UsuarioMODEL objusuario = new UsuarioMODEL();
-
-                    objusuario.UsuarioID = Convert.ToInt32(txtUsarioID.Text);
-                    objusuario.NomeUsuario = txtNomeUsuario.Text;
-                    objusuario.Email = txtEmail.Text;
-                    objusuario.Senha = Convert.ToString(txtSenha.Text);
-                    objusuario.TipoUsuario = cmbTipoUsuario.Text;
+                    UsuarioMODEL objusuario = new UsuarioMODEL
+                    {
+                        UsuarioID = Convert.ToInt32(txtUsarioID.Text),
+                        NomeUsuario = txtNomeUsuario.Text,
+                        Email = txtEmail.Text,
+                        Senha = HashSHA256(txtSenha.Text), // Armazena a senha como hash
+                        TipoUsuario = cmbTipoUsuario.Text,
+                        Cpf = txtCPF.Text,
+                        DataNascimento = dtpDataNascimento.Value
+                    };
 
                     UsuarioBLL usuariobll = new UsuarioBLL();
-
                     usuariobll.Salvar(objusuario);
-                    MessageBox.Show("REGISTRO gravado com sucesso! ", "Informação!!!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
+                    MessageBox.Show("Registro gravado com sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     ((FrmManutUsuario)Application.OpenForms["FrmManutUsuario"]).HabilitarTimer(true);
                     Utilitario.LimpaCampoKrypton(this);
                 }
+                else
+                {
+                    MessageBox.Show("Verifique os campos obrigatórios!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
-            catch (OverflowException ov)
+            catch (Exception erro)
             {
-                MessageBox.Show("Overfow Exeção deu erro! " + ov);
+                MessageBox.Show("Erro ao salvar o registro: " + erro.Message);
             }
-            catch (Win32Exception erro)
+        }
+
+        public void AlterarRegistro()
+        {
+            try
             {
-                MessageBox.Show("Win32 Win32!!! \n" + erro);
+                UsuarioMODEL objetoUsuario = new UsuarioMODEL
+                {
+                    UsuarioID = Convert.ToInt32(txtUsarioID.Text),
+                    NomeUsuario = txtNomeUsuario.Text,
+                    Email = txtEmail.Text,
+                    Senha = HashSHA256(txtSenha.Text), // Armazena a senha alterada como hash
+                    TipoUsuario = cmbTipoUsuario.Text,
+                    Cpf = txtCPF.Text,
+                    DataNascimento = dtpDataNascimento.Value
+                };
+
+                UsuarioBLL usuarioBll = new UsuarioBLL();
+                usuarioBll.Alterar(objetoUsuario);
+
+                MessageBox.Show("Registro alterado com sucesso!", "Alteração", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                ((FrmManutUsuario)Application.OpenForms["FrmManutUsuario"]).HabilitarTimer(true);
+                Utilitario.LimpaCampoKrypton(this);
+                this.Close();
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show("Erro ao alterar o registro: " + erro.Message);
             }
         }
         public void ExcluirRegistro()
         {
             try
             {
-                UsuarioMODEL objetoUsuario = new UsuarioMODEL();
+                if (string.IsNullOrEmpty(txtUsarioID.Text))
+                {
+                    MessageBox.Show("Selecione um usuário para excluir!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-                objetoUsuario.UsuarioID = Convert.ToInt32(txtUsarioID.Text);
+                int usuarioId = Convert.ToInt32(txtUsarioID.Text);
+
+                UsuarioMODEL objetoUsuario = new UsuarioMODEL
+                {
+                    UsuarioID = usuarioId
+                };
+
                 UsuarioBLL usuarioBll = new UsuarioBLL();
-
                 usuarioBll.Excluir(objetoUsuario);
-                MessageBox.Show("Registro Excluído com sucesso!", "Alteração!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                ((FrmManutUsuario)Application.OpenForms["FrmManutUsuario"]).HabilitarTimer(true);// Habilita Timer do outro form Obs: O timer no outro form executa um Método.    
+
+                MessageBox.Show("Registro excluído com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Atualiza a tela de manutenção de usuários
+                ((FrmManutUsuario)Application.OpenForms["FrmManutUsuario"]).HabilitarTimer(true);
+
+                // Limpa os campos e fecha o formulário
                 Utilitario.LimpaCampoKrypton(this);
                 this.Close();
             }
             catch (Exception erro)
             {
-                MessageBox.Show("Erro ao Excluir o registro!!! " + erro);
+                MessageBox.Show("Erro ao excluir o registro: " + erro.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-
-        public void AlterarRegistro()
-        {
-            try
-            {
-                UsuarioMODEL objetoUsuario = new UsuarioMODEL();
-
-                objetoUsuario.UsuarioID = Convert.ToInt32(txtUsarioID.Text);
-                objetoUsuario.NomeUsuario = txtNomeUsuario.Text;
-                objetoUsuario.Email = txtEmail.Text;
-                objetoUsuario.Senha = Convert.ToString(txtSenha.Text);
-                objetoUsuario.TipoUsuario = cmbTipoUsuario.Text;
-
-                UsuarioBLL usuarioBll = new UsuarioBLL();
-                usuarioBll.Alterar(objetoUsuario);
-
-                MessageBox.Show("Registro Alterado com sucesso!", "Alteração!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                ((FrmManutUsuario)Application.OpenForms["FrmManutUsuario"]).HabilitarTimer(true);// Habilita Timer do outro form Obs: O timer no outro form executa um Método.    
-                Utilitario.LimpaCampoKrypton(this);
-                this.Close();
-            }
-            catch (Exception erro)
-            {
-                MessageBox.Show("Erro ao Alterar o registro!!! " + erro);
-            }
-        }
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            FrmManutUsuario pesquisausuario = new FrmManutUsuario(StatusOperacao);
-
             if (StatusOperacao == "ALTERAR")
             {
                 AlterarRegistro();
             }
-            if (StatusOperacao == "NOVO")
+            else if (StatusOperacao == "NOVO")
             {
                 SalvarRegistro();
                 Utilitario.LimpaCampo(this);
                 txtNomeUsuario.Focus();
 
                 UsuarioID = Utilitario.GerarProximoCodigo(QueryUsuario);
-                int codigo = UsuarioID;
-                txtUsarioID.Text = Utilitario.AcrescentarZerosEsquerda(codigo, 6);
-
+                txtUsarioID.Text = Utilitario.AcrescentarZerosEsquerda(UsuarioID, 6);
                 ((FrmManutUsuario)Application.OpenForms["FrmManutUsuario"]).HabilitarTimer(true);
             }
-            if (StatusOperacao == "EXCLUSÃO")
+            else if (StatusOperacao == "EXCLUSÃO")
             {
-                if (MessageBox.Show("Deseja Excluir? \n\n O Usuário: " + txtNomeUsuario.Text + " ??? ", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show($"Deseja excluir o usuário {txtNomeUsuario.Text}?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     ExcluirRegistro();
                 }
@@ -143,17 +173,11 @@ namespace SisControl
 
         private void FrmCadUser_Load(object sender, EventArgs e)
         {
-            if (StatusOperacao == "ALTERAR")
-            {
-                return;
-            }
             if (StatusOperacao == "NOVO")
             {
-                int NovoCodigo = Utilitario.GerarProximoCodigo(QueryUsuario);//RetornaCodigoContaMaisUm(QueryUsuario).ToString();
-                string numeroComZeros = Utilitario.AcrescentarZerosEsquerda(NovoCodigo, 4);
+                int NovoCodigo = Utilitario.GerarProximoCodigo(QueryUsuario);
                 UsuarioID = NovoCodigo;
-                txtUsarioID.Text = numeroComZeros;
-
+                txtUsarioID.Text = Utilitario.AcrescentarZerosEsquerda(NovoCodigo, 4);
                 txtNomeUsuario.Focus();
             }
         }
@@ -161,11 +185,9 @@ namespace SisControl
         private void btnNovo_Click(object sender, EventArgs e)
         {
             Utilitario.LimpaCampo(this);
-
-            int NovoCodigo = Utilitario.GerarProximoCodigo(QueryUsuario);//RetornaCodigoContaMaisUm(QueryUsuario).ToString();
-            string numeroComZeros = Utilitario.AcrescentarZerosEsquerda(NovoCodigo, 6);
+            int NovoCodigo = Utilitario.GerarProximoCodigo(QueryUsuario);
             UsuarioID = NovoCodigo;
-            txtUsarioID.Text = numeroComZeros;
+            txtUsarioID.Text = Utilitario.AcrescentarZerosEsquerda(NovoCodigo, 6);
         }
 
         private void FrmCadUser_KeyPress(object sender, KeyPressEventArgs e)
@@ -173,7 +195,7 @@ namespace SisControl
             if (e.KeyChar == 13)
             {
                 e.Handled = true;
-                SendKeys.Send("{tab}");
+                SendKeys.Send("{TAB}");
             }
         }
     }

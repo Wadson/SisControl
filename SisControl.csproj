@@ -302,11 +302,11 @@
     <Compile Include="MUI\FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="MUI\FrmTelaPrincipal.cs">
+    <Compile Include="MUI\FrmRecuperarSenhaOffline.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MUI\FrmTelaPrincipal.Designer.cs">
-      <DependentUpon>FrmTelaPrincipal.cs</DependentUpon>
+    <Compile Include="MUI\FrmRecuperarSenhaOffline.Designer.cs">
+      <DependentUpon>FrmRecuperarSenhaOffline.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -421,12 +421,6 @@
     </Compile>
     <Compile Include="View\FrmRestauraBackup.Designer.cs">
       <DependentUpon>FrmRestauraBackup.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\FrmUsuario.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\FrmUsuario.Designer.cs">
-      <DependentUpon>FrmUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmModelo.cs">
       <SubType>Form</SubType>
@@ -558,8 +552,8 @@
     <EmbeddedResource Include="MUI\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MUI\FrmTelaPrincipal.resx">
-      <DependentUpon>FrmTelaPrincipal.cs</DependentUpon>
+    <EmbeddedResource Include="MUI\FrmRecuperarSenhaOffline.resx">
+      <DependentUpon>FrmRecuperarSenhaOffline.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\FrmMenuRelatorio.resx">
       <DependentUpon>FrmMenuRelatorio.cs</DependentUpon>
@@ -617,9 +611,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmRestauraBackup.resx">
       <DependentUpon>FrmRestauraBackup.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\FrmUsuario.resx">
-      <DependentUpon>FrmUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmModelo.resx">
       <DependentUpon>FrmModelo.cs</DependentUpon>
@@ -712,98 +703,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Excluir2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Alterar.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Carrinho.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Categorias.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cliente.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Contas_a_Pagar.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Contas_a_Receber.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Excluir.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Fornecedor.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Money.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Novo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\OKp.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Parcel.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\pasta.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Produtos.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Relatório.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sair.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\salve-.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\SubCategoria.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Usuario.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Vendas.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\inserir.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Localizar16.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Parcelar1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Parcelar2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\inserir32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Localizar32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\LocalizarProduto32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\pagar.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Inserir16.png" />
-    <None Include="Resources\localizador16.png" />
-    <None Include="Resources\produtos16.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.7.2 %28x86 e x64%29</ProductName>
@@ -816,52 +715,29 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\cartao24.png" />
     <None Include="Data\WR SOFT.png" />
-    <None Include="Resources\caixas.png" />
-    <None Include="Resources\Ferramentas24.png" />
-    <None Include="Resources\Ferramentas.png" />
-    <None Include="Resources\Sair24.png" />
-    <None Include="Resources\Minimizada.png" />
-    <None Include="Resources\Venda24.png" />
-    <None Include="Resources\Usuario24.png" />
-    <None Include="Resources\Restaurar.png" />
-    <None Include="Resources\Relatorio24.png" />
-    <None Include="Resources\Receber24.png" />
-    <None Include="Resources\procurar16.png" />
-    <None Include="Resources\praca.png" />
-    <None Include="Resources\Pagar24.png" />
-    <None Include="Resources\Menu24.png" />
-    <None Include="Resources\Maximizar.png" />
-    <None Include="Resources\Home.png" />
-    <None Include="Resources\Fornec24.png" />
-    <None Include="Resources\Exit.png" />
-    <None Include="Resources\Clientes24.png" />
-    <None Include="Resources\Cliente24.png" />
-    <None Include="Resources\Restaurar2.png" />
-    <None Include="Resources\Mobile-Menu-Icon.png" />
-    <None Include="Resources\menu2.png" />
-    <None Include="Resources\maximize3.png" />
-    <None Include="Resources\Fechar2.png" />
-    <None Include="Resources\Close.png" />
-    <None Include="Resources\Fechar.png" />
-    <None Include="Resources\app.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\WRIco.png" />
-    <None Include="Resources\Ferramentas32.png" />
-    <None Include="Resources\Relatorios32.png" />
-    <None Include="Resources\Receber32.png" />
-    <None Include="Resources\Produtos32.png" />
-    <None Include="Resources\Clientes32.png" />
-    <None Include="Resources\Usuarios32.png" />
-    <None Include="Resources\Fornecedores32.png" />
-    <None Include="Resources\Sair32.png" />
-    <None Include="Resources\Vendas32.png" />
-    <None Include="Resources\WRLogo.png" />
-    <None Include="Resources\Login.png" />
-    <None Include="Resources\Usuario16.png" />
-    <None Include="Resources\Cadeado16.png" />
+    <None Include="Resources\Ferramentas64.png" />
+    <None Include="Resources\Fornecedor64.png" />
+    <None Include="Resources\Receber64.png" />
+    <None Include="Resources\Relatorios64.png" />
+    <None Include="Resources\Usuario64.png" />
+    <None Include="Resources\Vendas64.png" />
+    <None Include="Resources\Ferramenta64.png" />
+    <None Include="Resources\Gestao-de-produtos64.png" />
+    <None Include="Resources\Cliente64.png" />
+    <None Include="Resources\Sair64.png" />
+    <None Include="Resources\Senha24.png" />
+    <None Include="Resources\Senhas24.png" />
+    <None Include="Resources\Usuario24.png" />
+    <None Include="Resources\autenticacao-do-usuario.png" />
+    <None Include="Resources\SenhasBlue24.png" />
+    <None Include="Resources\SenhaBlue24.png" />
+    <None Include="Resources\UsuarioBlue24.png" />
+    <None Include="Resources\EmailAzul24.png" />
+    <None Include="Resources\EmailBranco24.png" />
+    <None Include="Resources\Logogg64.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

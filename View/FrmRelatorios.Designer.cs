@@ -486,7 +486,7 @@
             this.btnFiltro.StateTracking.Border.Rounding = 20;
             this.btnFiltro.StateTracking.Border.Width = 1;
             this.btnFiltro.TabIndex = 594;
-            this.btnFiltro.Values.Image = global::SisControl.Properties.Resources.localizador16;
+            
             this.btnFiltro.Values.Text = "&Filtrar";
             this.btnFiltro.Visible = false;
             this.btnFiltro.Click += new System.EventHandler(this.btnFiltro_Click);

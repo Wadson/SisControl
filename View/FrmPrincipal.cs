@@ -95,29 +95,46 @@ namespace SisControl.View
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
+            // Obtém o caminho do diretório de execução
             string currentPath = Path.GetDirectoryName(Application.ExecutablePath);
 
-            //lblUsuarioLogado.Text = FrmLogin.usuarioConectado + "  |  Previlégio:" + FrmLogin.NivelAcesso + "  |  Diretório:" + currentPath + @"\Money.exe";
+            // Atualiza a label de usuário na barra de status
+            string usuarioLogado = FrmLogin.UsuarioConectado;
+            string nivelAcesso = FrmLogin.NivelAcesso;
+            lblUsuarioLogado.Text = $"{usuarioLogado}";
+            lblTipoUsuario.Text = $"{nivelAcesso}";
 
+            // Atualiza a data
             string data = DateTime.Now.ToLongDateString();
-            data = data.Substring(0, 1).ToUpper() + data.Substring(1, data.Length - 1);
+            data = data.Substring(0, 1).ToUpper() + data.Substring(1);
             lblData.Text = data;
 
+            // Exibe informações do computador
             string path = System.AppDomain.CurrentDomain.BaseDirectory.ToString();
             var informacao = Environment.UserName;
             var nomeComputador = Environment.MachineName;
-
-            lblEstação.Text = path;            
 
             lblEstação.Text = nomeComputador;
             lblData.Text = DateTime.Now.ToString("dd/MM/yyyy");
             lblHoraAtual.Text = DateTime.Now.ToString("HH:mm:ss");
         }
 
+
         private void loginToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmLogin frmLogin = new FrmLogin();
             frmLogin.ShowDialog();
+        }
+
+        private void loginToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            FrmLogin frmLogin = new FrmLogin();
+            frmLogin.ShowDialog();
+        }
+
+        private void btnLogoff_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
         }
     }
 }

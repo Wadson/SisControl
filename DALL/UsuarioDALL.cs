@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.Math;
+using SisControl.MUI;
 
 namespace SisControl.DALL
 {
@@ -20,7 +22,7 @@ namespace SisControl.DALL
             var conn = Conexao.Conex();
             try
             {
-                SqlCommand comando = new SqlCommand("SELECT UsuarioID, NomeUsuario, Email, Senha, TipoUsuario FROM Usuario", conn);
+                SqlCommand comando = new SqlCommand("SELECT UsuarioID, NomeUsuario, Email, Senha, TipoUsuario, Cpf, DataNascimento FROM Usuario", conn);
                 //id_usuario, nome_usuario, user_usuario, dt_nascimento, nivelacesso_usuario, senha_usuario, email_usuario, dt_nascimento
 
                 SqlDataAdapter daUsuario = new SqlDataAdapter();
@@ -46,13 +48,15 @@ namespace SisControl.DALL
 
             try
             {
-                SqlCommand sqlcomm = new SqlCommand("INSERT INTO Usuario (UsuarioID, NomeUsuario, Email, Senha, TipoUsuario) VALUES (@UsuarioID, @NomeUsuario, @Email, @Senha, @TipoUsuario)", conn);
+                SqlCommand sqlcomm = new SqlCommand("INSERT INTO Usuario (UsuarioID, NomeUsuario, Email, Senha, TipoUsuario, Cpf, DataNascimento) VALUES (@UsuarioID, @NomeUsuario, @Email, @Senha, @TipoUsuario, @Cpf, @DataNascimento)", conn);
 
                 sqlcomm.Parameters.AddWithValue("@UsuarioID", usuarios.UsuarioID);
                 sqlcomm.Parameters.AddWithValue("@NomeUsuario", usuarios.NomeUsuario);
                 sqlcomm.Parameters.AddWithValue("@Email", usuarios.Email);
                 sqlcomm.Parameters.AddWithValue("@Senha", usuarios.Senha);
                 sqlcomm.Parameters.AddWithValue("@TipoUsuario", usuarios.TipoUsuario);
+                sqlcomm.Parameters.AddWithValue("@Cpf", usuarios.Cpf);
+                sqlcomm.Parameters.AddWithValue("@DataNascimento", usuarios.DataNascimento);
 
                 conn.Open();
                 sqlcomm.ExecuteNonQuery();
@@ -92,14 +96,16 @@ namespace SisControl.DALL
             var conn = Conexao.Conex();
             try
             {
-                SqlCommand sqlcomm = new SqlCommand("UPDATE Usuario SET NomeUsuario = @NomeUsuario, Email = @Email, Senha = @Senha, TipoUsuario = @TipoUsuario WHERE UsuarioID = @UsuarioID", conn);
+                SqlCommand sqlcomm = new SqlCommand("UPDATE Usuario SET NomeUsuario = @NomeUsuario, Email = @Email, Senha = @Senha, TipoUsuario = @TipoUsuario , Cpf = @Cpf, DataNascimento = @DataNascimento WHERE UsuarioID = @UsuarioID", conn);
 
+                sqlcomm.Parameters.AddWithValue("@UsuarioID", usuarios.UsuarioID);
                 sqlcomm.Parameters.AddWithValue("@NomeUsuario", usuarios.NomeUsuario);
                 sqlcomm.Parameters.AddWithValue("@Email", usuarios.Email);
                 sqlcomm.Parameters.AddWithValue("@Senha", usuarios.Senha);
-                sqlcomm.Parameters.AddWithValue("@TipoUsuario", usuarios.Email);
-                sqlcomm.Parameters.AddWithValue("@UsuarioID", usuarios.UsuarioID);
-
+                sqlcomm.Parameters.AddWithValue("@TipoUsuario", usuarios.TipoUsuario);                
+                sqlcomm.Parameters.AddWithValue("@Cpf", usuarios.Cpf);
+                sqlcomm.Parameters.AddWithValue("@DataNascimento", usuarios.DataNascimento);
+                
                 conn.Open();
                 sqlcomm.ExecuteNonQuery();
 
@@ -169,7 +175,7 @@ namespace SisControl.DALL
             {
                 DataTable dt = new DataTable();
 
-                string sqlconn = "SELECT UsuarioID, NomeUsuario, Email, Senha, TipoUsuario FROM Usuario WHERE UsuarioID  LIKE @UsuarioID";
+                string sqlconn = "SELECT UsuarioID, NomeUsuario, Email, Senha, TipoUsuario, Cpf, DataNascimento FROM Usuario WHERE UsuarioID  LIKE @UsuarioID";
                 SqlCommand cmd = new SqlCommand(sqlconn, conn);
                 cmd.Parameters.AddWithValue("@UsuarioID", codigo);
                 conn.Open();

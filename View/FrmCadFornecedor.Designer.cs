@@ -135,7 +135,7 @@
             this.btnLocalizar.StateTracking.Border.Rounding = 20;
             this.btnLocalizar.StateTracking.Border.Width = 1;
             this.btnLocalizar.TabIndex = 6;
-            this.btnLocalizar.Values.Image = global::SisControl.Properties.Resources.localizador16;
+            
             this.btnLocalizar.Values.Text = "&Localizar...";
             this.btnLocalizar.Click += new System.EventHandler(this.btnLocalizar_Click_1);
             // 

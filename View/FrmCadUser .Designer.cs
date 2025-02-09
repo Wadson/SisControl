@@ -47,6 +47,10 @@
             this.txtRepitaSenha = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.lblStatus = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtCPF = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.dtpDataNascimento = new ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.cmbTipoUsuario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
@@ -121,7 +125,7 @@
             // 
             // btnSalvar
             // 
-            this.btnSalvar.Location = new System.Drawing.Point(125, 273);
+            this.btnSalvar.Location = new System.Drawing.Point(115, 292);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnSalvar.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -174,13 +178,13 @@
             this.btnSalvar.StateTracking.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.btnSalvar.StateTracking.Border.Rounding = 20;
             this.btnSalvar.StateTracking.Border.Width = 1;
-            this.btnSalvar.TabIndex = 7;
+            this.btnSalvar.TabIndex = 8;
             this.btnSalvar.Values.Text = "Salvar";
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // btnNovo
             // 
-            this.btnNovo.Location = new System.Drawing.Point(250, 273);
+            this.btnNovo.Location = new System.Drawing.Point(240, 292);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnNovo.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
@@ -234,13 +238,13 @@
             this.btnNovo.StateTracking.Border.Rounding = 20;
             this.btnNovo.StateTracking.Border.Width = 1;
             this.btnNovo.StateTracking.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnNovo.TabIndex = 8;
-            this.btnNovo.Values.Text = "Alterar";
+            this.btnNovo.TabIndex = 9;
+            this.btnNovo.Values.Text = "&Novo";
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // btnSair
             // 
-            this.btnSair.Location = new System.Drawing.Point(375, 273);
+            this.btnSair.Location = new System.Drawing.Point(365, 292);
             this.btnSair.Name = "btnSair";
             this.btnSair.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnSair.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -293,13 +297,13 @@
             this.btnSair.StateTracking.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.btnSair.StateTracking.Border.Rounding = 20;
             this.btnSair.StateTracking.Border.Width = 1;
-            this.btnSair.TabIndex = 9;
+            this.btnSair.TabIndex = 10;
             this.btnSair.Values.Text = "&Sair";
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
             // txtNomeUsuario
             // 
-            this.txtNomeUsuario.Location = new System.Drawing.Point(27, 113);
+            this.txtNomeUsuario.Location = new System.Drawing.Point(24, 113);
             this.txtNomeUsuario.Name = "txtNomeUsuario";
             this.txtNomeUsuario.Size = new System.Drawing.Size(581, 30);
             this.txtNomeUsuario.StateCommon.Back.Color1 = System.Drawing.Color.White;
@@ -318,7 +322,7 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(27, 169);
+            this.txtEmail.Location = new System.Drawing.Point(24, 169);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(245, 30);
             this.txtEmail.StateCommon.Back.Color1 = System.Drawing.Color.White;
@@ -337,7 +341,7 @@
             // 
             // txtSenha
             // 
-            this.txtSenha.Location = new System.Drawing.Point(276, 169);
+            this.txtSenha.Location = new System.Drawing.Point(273, 169);
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.Size = new System.Drawing.Size(162, 30);
             this.txtSenha.StateCommon.Back.Color1 = System.Drawing.Color.White;
@@ -358,7 +362,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label2.Location = new System.Drawing.Point(27, 93);
+            this.label2.Location = new System.Drawing.Point(24, 93);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(102, 17);
             this.label2.TabIndex = 8;
@@ -368,7 +372,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label3.Location = new System.Drawing.Point(27, 149);
+            this.label3.Location = new System.Drawing.Point(24, 149);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 17);
             this.label3.TabIndex = 9;
@@ -386,22 +390,23 @@
             // 
             // cmbTipoUsuario
             // 
+            this.cmbTipoUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTipoUsuario.DropDownWidth = 244;
             this.cmbTipoUsuario.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Custom1;
             this.cmbTipoUsuario.Items.AddRange(new object[] {
             "Administrador",
             "Operador"});
-            this.cmbTipoUsuario.Location = new System.Drawing.Point(27, 228);
+            this.cmbTipoUsuario.Location = new System.Drawing.Point(406, 232);
             this.cmbTipoUsuario.Name = "cmbTipoUsuario";
             this.cmbTipoUsuario.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparklePurple;
-            this.cmbTipoUsuario.Size = new System.Drawing.Size(578, 21);
-            this.cmbTipoUsuario.TabIndex = 6;
+            this.cmbTipoUsuario.Size = new System.Drawing.Size(199, 21);
+            this.cmbTipoUsuario.TabIndex = 7;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label5.Location = new System.Drawing.Point(27, 208);
+            this.label5.Location = new System.Drawing.Point(406, 212);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(93, 17);
             this.label5.TabIndex = 12;
@@ -419,7 +424,7 @@
             // 
             // txtRepitaSenha
             // 
-            this.txtRepitaSenha.Location = new System.Drawing.Point(444, 169);
+            this.txtRepitaSenha.Location = new System.Drawing.Point(441, 169);
             this.txtRepitaSenha.Name = "txtRepitaSenha";
             this.txtRepitaSenha.Size = new System.Drawing.Size(162, 30);
             this.txtRepitaSenha.StateCommon.Back.Color1 = System.Drawing.Color.White;
@@ -460,12 +465,63 @@
             this.lblStatus.TabIndex = 248;
             this.lblStatus.Text = "CADASTRO DE USUÁRIOS";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label7.Location = new System.Drawing.Point(270, 212);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(120, 17);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "Data Nascimento:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label8.Location = new System.Drawing.Point(24, 203);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(33, 17);
+            this.label8.TabIndex = 18;
+            this.label8.Text = "Cpf:";
+            // 
+            // txtCPF
+            // 
+            this.txtCPF.Location = new System.Drawing.Point(24, 223);
+            this.txtCPF.Name = "txtCPF";
+            this.txtCPF.Size = new System.Drawing.Size(233, 30);
+            this.txtCPF.StateCommon.Back.Color1 = System.Drawing.Color.White;
+            this.txtCPF.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.txtCPF.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.txtCPF.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.txtCPF.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.txtCPF.StateCommon.Border.Rounding = 20;
+            this.txtCPF.StateCommon.Border.Width = 1;
+            this.txtCPF.StateCommon.Content.Color1 = System.Drawing.Color.Gray;
+            this.txtCPF.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.txtCPF.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.txtCPF.TabIndex = 6;
+            // 
+            // dtpDataNascimento
+            // 
+            this.dtpDataNascimento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDataNascimento.Location = new System.Drawing.Point(273, 232);
+            this.dtpDataNascimento.Name = "dtpDataNascimento";
+            this.dtpDataNascimento.Size = new System.Drawing.Size(117, 21);
+            this.dtpDataNascimento.TabIndex = 20;
+            // 
             // FrmCadUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
-            this.ClientSize = new System.Drawing.Size(630, 331);
+            this.ClientSize = new System.Drawing.Size(630, 355);
+            this.Controls.Add(this.dtpDataNascimento);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.txtCPF);
             this.Controls.Add(this.kryptonPanel1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtRepitaSenha);
@@ -517,5 +573,9 @@
         public ComponentFactory.Krypton.Toolkit.KryptonButton btnSair;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel1;
         public System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtCPF;
+        public ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker dtpDataNascimento;
     }
 }

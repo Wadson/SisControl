@@ -606,8 +606,7 @@
             this.btnLocalizar.StateTracking.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.btnLocalizar.StateTracking.Border.Rounding = 20;
             this.btnLocalizar.StateTracking.Border.Width = 1;
-            this.btnLocalizar.TabIndex = 7;
-            this.btnLocalizar.Values.Image = global::SisControl.Properties.Resources.localizador16;
+            this.btnLocalizar.TabIndex = 7;           
             this.btnLocalizar.Values.Text = "&Localizar...";
             this.btnLocalizar.Click += new System.EventHandler(this.btnLocalizar_Click);
             // 

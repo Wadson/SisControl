@@ -50,6 +50,8 @@ namespace SisControl
                     cadUsuarios.txtEmail.Text =         dataGridPesquisar.CurrentRow.Cells["Email"].Value.ToString();
                     cadUsuarios.txtSenha.Text =         dataGridPesquisar.CurrentRow.Cells["Senha"].Value.ToString();
                     cadUsuarios.cmbTipoUsuario.Text =    dataGridPesquisar.CurrentRow.Cells["Tipo de Usuario"].Value.ToString();
+                    cadUsuarios.txtCPF.Text = dataGridPesquisar.CurrentRow.Cells["CPF"].Value.ToString();
+                    cadUsuarios.dtpDataNascimento.Value = Convert.ToDateTime(dataGridPesquisar.CurrentRow.Cells["Data de Nascimento"].Value.ToString());
 
                     cadUsuarios.lblStatus.Text = "ALTERAR REGISTRO";
                     cadUsuarios.lblStatus.ForeColor = Color.Orange;   
@@ -67,6 +69,8 @@ namespace SisControl
                     cadUsuarios.txtEmail.Text = dataGridPesquisar.CurrentRow.Cells["Email"].Value.ToString();
                     cadUsuarios.txtSenha.Text = dataGridPesquisar.CurrentRow.Cells["Senha"].Value.ToString();
                     cadUsuarios.cmbTipoUsuario.Text = dataGridPesquisar.CurrentRow.Cells["Tipo de Usuario"].Value.ToString();
+                    cadUsuarios.txtCPF.Text = dataGridPesquisar.CurrentRow.Cells["CPF"].Value.ToString();
+                    cadUsuarios.dtpDataNascimento.Value = Convert.ToDateTime(dataGridPesquisar.CurrentRow.Cells["Data de Nascimento"].Value.ToString());
 
                     cadUsuarios.lblStatus.Text = "EXCLUSÃO DE REGISTRO";
                     cadUsuarios.lblStatus.ForeColor = Color.Red;
@@ -128,6 +132,8 @@ namespace SisControl
             dgv.Columns[2].Name = "Email"       ;
             dgv.Columns[3].Name = "Senha"        ;
             dgv.Columns[4].Name = "Tipo de Usuario" ;
+            dgv.Columns[5].Name = "Cpf";
+            dgv.Columns[6].Name = "Data de Nascimento";
 
             // Ocultar a coluna, mas ainda manter o acesso aos valores
             dataGridPesquisar.Columns["UsuarioID"].Visible = false;

@@ -3,14 +3,14 @@
     partial class FrmLogin
     {
         /// <summary>
-        /// Required designer variable.
+        /// Variável de designer necessária.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// Limpar os recursos que estão sendo usados.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true se for necessário descartar os recursos gerenciados; caso contrário, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,228 +20,369 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Código gerado pelo Windows Form Designer
 
         /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
+        /// Método necessário para suporte ao Designer - não modifique 
+        /// o conteúdo deste método com o editor de código.
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
-            this.txtUsuario = new MetroFramework.Controls.MetroTextBox();
-            this.txtSenha = new MetroFramework.Controls.MetroTextBox();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.btnLogin = new MetroFramework.Controls.MetroTile();
-            this.btnSair = new MetroFramework.Controls.MetroTile();
-            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.txtConfirmaSenha = new MetroFramework.Controls.MetroTextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.lblEsqueciSenha = new System.Windows.Forms.Label();
+            this.btnCancelar = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.txtUserName = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.btnLogin = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.pictureBoxUser = new System.Windows.Forms.PictureBox();
+            this.pictureBoxEmail = new System.Windows.Forms.PictureBox();
+            this.pictureBoxRepetePassWord = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUser)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRepetePassWord)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
-            // txtUsuario
+            // lblEsqueciSenha
             // 
+            this.lblEsqueciSenha.AutoSize = true;
+            this.lblEsqueciSenha.ForeColor = System.Drawing.Color.Yellow;
+            this.lblEsqueciSenha.Location = new System.Drawing.Point(192, 373);
+            this.lblEsqueciSenha.Name = "lblEsqueciSenha";
+            this.lblEsqueciSenha.Size = new System.Drawing.Size(88, 13);
+            this.lblEsqueciSenha.TabIndex = 10;
+            this.lblEsqueciSenha.Text = "Esqueci a Senha";
+            this.lblEsqueciSenha.Click += new System.EventHandler(this.lblEsqueciSenha_Click);
             // 
+            // btnCancelar
             // 
+            this.btnCancelar.Location = new System.Drawing.Point(161, 306);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.btnCancelar.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.btnCancelar.OverrideDefault.Back.ColorAngle = 45F;
+            this.btnCancelar.OverrideDefault.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnCancelar.OverrideDefault.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnCancelar.OverrideDefault.Border.ColorAngle = 45F;
+            this.btnCancelar.OverrideDefault.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnCancelar.OverrideDefault.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.btnCancelar.OverrideDefault.Border.Rounding = 20;
+            this.btnCancelar.OverrideDefault.Border.Width = 1;
+            this.btnCancelar.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.btnCancelar.Size = new System.Drawing.Size(121, 40);
+            this.btnCancelar.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.btnCancelar.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.btnCancelar.StateCommon.Back.ColorAngle = 45F;
+            this.btnCancelar.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.btnCancelar.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnCancelar.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnCancelar.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.btnCancelar.StateCommon.Border.Rounding = 20;
+            this.btnCancelar.StateCommon.Border.Width = 1;
+            this.btnCancelar.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnCancelar.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.btnCancelar.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
+            this.btnCancelar.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnCancelar.StatePressed.Back.ColorAngle = 135F;
+            this.btnCancelar.StatePressed.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
+            this.btnCancelar.StatePressed.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnCancelar.StatePressed.Border.ColorAngle = 135F;
+            this.btnCancelar.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnCancelar.StatePressed.Border.Rounding = 20;
+            this.btnCancelar.StatePressed.Border.Width = 1;
+            this.btnCancelar.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnCancelar.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.btnCancelar.StateTracking.Back.ColorAngle = 45F;
+            this.btnCancelar.StateTracking.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.btnCancelar.StateTracking.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnCancelar.StateTracking.Border.ColorAngle = 45F;
+            this.btnCancelar.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnCancelar.StateTracking.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.btnCancelar.StateTracking.Border.Rounding = 20;
+            this.btnCancelar.StateTracking.Border.Width = 1;
+            this.btnCancelar.StateTracking.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.btnCancelar.TabIndex = 4;
+            this.btnCancelar.TabStop = false;
+            this.btnCancelar.Values.Text = "&Cancelar";
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            this.txtUsuario.CustomButton.FlatAppearance.BorderSize = 0;
-            this.txtUsuario.CustomButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.txtUsuario.CustomButton.Image = null;
-            this.txtUsuario.CustomButton.Location = new System.Drawing.Point(199, 1);
-            this.txtUsuario.CustomButton.Name = "";
-            this.txtUsuario.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.txtUsuario.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtUsuario.CustomButton.TabIndex = 1;
-            this.txtUsuario.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtUsuario.CustomButton.UseSelectable = true;
-            this.txtUsuario.CustomButton.UseStyleColors = true;
-            this.txtUsuario.CustomButton.UseVisualStyleBackColor = true;
-            this.txtUsuario.CustomButton.UseWaitCursor = true;
-            this.txtUsuario.CustomButton.Visible = false;
-            this.txtUsuario.Lines = new string[0];
-            this.txtUsuario.Location = new System.Drawing.Point(137, 156);
-            this.txtUsuario.MaxLength = 32767;
-            this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.PasswordChar = '\0';
-            this.txtUsuario.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtUsuario.SelectedText = "";
-            this.txtUsuario.SelectionLength = 0;
-            this.txtUsuario.SelectionStart = 0;
-            this.txtUsuario.ShortcutsEnabled = true;
-            this.txtUsuario.Size = new System.Drawing.Size(221, 23);
-            this.txtUsuario.TabIndex = 1;
-            this.txtUsuario.UseSelectable = true;
-            this.txtUsuario.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtUsuario.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // txtUserName
             // 
-            // txtSenha
+            this.txtUserName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.txtUserName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.txtUserName.ForeColor = System.Drawing.Color.White;
+            this.txtUserName.HideSelection = false;
+            this.txtUserName.Location = new System.Drawing.Point(58, 147);
+            this.txtUserName.Name = "txtUserName";
+            this.txtUserName.Size = new System.Drawing.Size(224, 16);
+            this.txtUserName.TabIndex = 0;
+            this.txtUserName.Text = "UserName";
+            this.txtUserName.Click += new System.EventHandler(this.txtUserName_Click);
+            this.txtUserName.Enter += new System.EventHandler(this.txtUserName_Enter);
             // 
+            // txtEmail
             // 
+            this.txtEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.txtEmail.ForeColor = System.Drawing.Color.White;
+            this.txtEmail.HideSelection = false;
+            this.txtEmail.Location = new System.Drawing.Point(58, 188);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(224, 16);
+            this.txtEmail.TabIndex = 1;
+            this.txtEmail.Text = "E-Mail";
+            this.txtEmail.Click += new System.EventHandler(this.txtPasssword_Click);
+            this.txtEmail.Enter += new System.EventHandler(this.txtPasssword_Enter);
             // 
+            // txtPassword
             // 
-            this.txtSenha.CustomButton.Image = null;
-            this.txtSenha.CustomButton.Location = new System.Drawing.Point(199, 1);
-            this.txtSenha.CustomButton.Name = "";
-            this.txtSenha.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.txtSenha.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtSenha.CustomButton.TabIndex = 1;
-            this.txtSenha.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtSenha.CustomButton.UseSelectable = true;
-            this.txtSenha.CustomButton.Visible = false;
-            this.txtSenha.Lines = new string[0];
-            this.txtSenha.Location = new System.Drawing.Point(137, 193);
-            this.txtSenha.MaxLength = 32767;
-            this.txtSenha.Name = "txtSenha";
-            this.txtSenha.PasswordChar = '\0';
-            this.txtSenha.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtSenha.SelectedText = "";
-            this.txtSenha.SelectionLength = 0;
-            this.txtSenha.SelectionStart = 0;
-            this.txtSenha.ShortcutsEnabled = true;
-            this.txtSenha.Size = new System.Drawing.Size(221, 23);
-            this.txtSenha.TabIndex = 2;
-            this.txtSenha.UseSelectable = true;
-            this.txtSenha.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtSenha.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.txtPassword.ForeColor = System.Drawing.Color.White;
+            this.txtPassword.HideSelection = false;
+            this.txtPassword.Location = new System.Drawing.Point(58, 225);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(224, 16);
+            this.txtPassword.TabIndex = 2;
+            this.txtPassword.Text = "Passsword";
+            this.txtPassword.Click += new System.EventHandler(this.txtRepetPass_Click);
+            this.txtPassword.Enter += new System.EventHandler(this.txtRepetPass_Enter);
+            this.txtPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtRepetPass_Validating);
             // 
-            // metroLabel1
+            // panel3
             // 
-            this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(13, 156);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(44, 19);
-            this.metroLabel1.TabIndex = 3;
-            this.metroLabel1.Text = "Login:";
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Location = new System.Drawing.Point(25, 246);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(255, 2);
+            this.panel3.TabIndex = 15;
             // 
-            // metroLabel2
+            // panel2
             // 
-            this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(13, 193);
-            this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(47, 19);
-            this.metroLabel2.TabIndex = 4;
-            this.metroLabel2.Text = "Senha:";
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Location = new System.Drawing.Point(25, 208);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(255, 2);
+            this.panel2.TabIndex = 16;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Location = new System.Drawing.Point(25, 169);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(255, 2);
+            this.panel1.TabIndex = 17;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.panel4.Controls.Add(this.btnLogin);
+            this.panel4.Controls.Add(this.btnCancelar);
+            this.panel4.Controls.Add(this.panel1);
+            this.panel4.Controls.Add(this.panel2);
+            this.panel4.Controls.Add(this.pictureBoxUser);
+            this.panel4.Controls.Add(this.panel3);
+            this.panel4.Controls.Add(this.pictureBoxEmail);
+            this.panel4.Controls.Add(this.txtPassword);
+            this.panel4.Controls.Add(this.pictureBoxRepetePassWord);
+            this.panel4.Controls.Add(this.txtEmail);
+            this.panel4.Controls.Add(this.pictureBox4);
+            this.panel4.Controls.Add(this.txtUserName);
+            this.panel4.Controls.Add(this.lblEsqueciSenha);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(318, 397);
+            this.panel4.TabIndex = 19;
             // 
             // btnLogin
             // 
-            this.btnLogin.ActiveControl = null;
-            this.btnLogin.Location = new System.Drawing.Point(137, 255);
+            this.btnLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLogin.Location = new System.Drawing.Point(24, 306);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(221, 38);
-            this.btnLogin.TabIndex = 5;
-            this.btnLogin.Text = "Login";
-            this.btnLogin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnLogin.UseSelectable = true;
+            this.btnLogin.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnLogin.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnLogin.OverrideDefault.Back.ColorAngle = 45F;
+            this.btnLogin.OverrideDefault.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnLogin.OverrideDefault.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnLogin.OverrideDefault.Border.ColorAngle = 45F;
+            this.btnLogin.OverrideDefault.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnLogin.OverrideDefault.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.btnLogin.OverrideDefault.Border.Rounding = 20;
+            this.btnLogin.OverrideDefault.Border.Width = 1;
+            this.btnLogin.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.btnLogin.Size = new System.Drawing.Size(121, 40);
+            this.btnLogin.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.btnLogin.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.btnLogin.StateCommon.Back.ColorAngle = 45F;
+            this.btnLogin.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.btnLogin.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnLogin.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnLogin.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.btnLogin.StateCommon.Border.Rounding = 20;
+            this.btnLogin.StateCommon.Border.Width = 1;
+            this.btnLogin.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.btnLogin.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.btnLogin.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.btnLogin.StateDisabled.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnLogin.StateDisabled.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnLogin.StateDisabled.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnLogin.StateDisabled.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnLogin.StateDisabled.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.btnLogin.StateNormal.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnLogin.StateNormal.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnLogin.StateNormal.Content.LongText.Color1 = System.Drawing.Color.White;
+            this.btnLogin.StateNormal.Content.LongText.Color2 = System.Drawing.Color.White;
+            this.btnLogin.StateNormal.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.btnLogin.StateNormal.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.btnLogin.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
+            this.btnLogin.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnLogin.StatePressed.Back.ColorAngle = 135F;
+            this.btnLogin.StatePressed.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
+            this.btnLogin.StatePressed.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnLogin.StatePressed.Border.ColorAngle = 135F;
+            this.btnLogin.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnLogin.StatePressed.Border.Rounding = 20;
+            this.btnLogin.StatePressed.Border.Width = 1;
+            this.btnLogin.StatePressed.Content.LongText.Color1 = System.Drawing.Color.White;
+            this.btnLogin.StatePressed.Content.LongText.Color2 = System.Drawing.Color.White;
+            this.btnLogin.StatePressed.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.btnLogin.StatePressed.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.btnLogin.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnLogin.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.btnLogin.StateTracking.Back.ColorAngle = 45F;
+            this.btnLogin.StateTracking.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.btnLogin.StateTracking.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnLogin.StateTracking.Border.ColorAngle = 45F;
+            this.btnLogin.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnLogin.StateTracking.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.btnLogin.StateTracking.Border.Rounding = 20;
+            this.btnLogin.StateTracking.Border.Width = 1;
+            this.btnLogin.StateTracking.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.btnLogin.TabIndex = 3;
+            this.btnLogin.Values.Text = "&Login";
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
-            // btnSair
+            // pictureBoxUser
             // 
-            this.btnSair.ActiveControl = null;
-            this.btnSair.Location = new System.Drawing.Point(137, 321);
-            this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(126, 38);
-            this.btnSair.TabIndex = 6;
-            this.btnSair.Text = "&Sair";
-            this.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnSair.UseSelectable = true;
+            this.pictureBoxUser.Image = global::SisControl.Properties.Resources.Usuario24;
+            this.pictureBoxUser.Location = new System.Drawing.Point(25, 141);
+            this.pictureBoxUser.Name = "pictureBoxUser";
+            this.pictureBoxUser.Size = new System.Drawing.Size(20, 25);
+            this.pictureBoxUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxUser.TabIndex = 6;
+            this.pictureBoxUser.TabStop = false;
             // 
-            // metroLabel3
+            // pictureBoxEmail
             // 
-            this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(13, 222);
-            this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(118, 19);
-            this.metroLabel3.TabIndex = 8;
-            this.metroLabel3.Text = "Confirmar Sennha:";
+            this.pictureBoxEmail.Image = global::SisControl.Properties.Resources.EmailBranco24;
+            this.pictureBoxEmail.Location = new System.Drawing.Point(25, 179);
+            this.pictureBoxEmail.Name = "pictureBoxEmail";
+            this.pictureBoxEmail.Size = new System.Drawing.Size(20, 25);
+            this.pictureBoxEmail.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxEmail.TabIndex = 7;
+            this.pictureBoxEmail.TabStop = false;
             // 
-            // txtConfirmaSenha
+            // pictureBoxRepetePassWord
             // 
+            this.pictureBoxRepetePassWord.Image = global::SisControl.Properties.Resources.Senhas24;
+            this.pictureBoxRepetePassWord.Location = new System.Drawing.Point(25, 217);
+            this.pictureBoxRepetePassWord.Name = "pictureBoxRepetePassWord";
+            this.pictureBoxRepetePassWord.Size = new System.Drawing.Size(20, 25);
+            this.pictureBoxRepetePassWord.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxRepetePassWord.TabIndex = 8;
+            this.pictureBoxRepetePassWord.TabStop = false;
             // 
+            // pictureBox4
             // 
-            // 
-            this.txtConfirmaSenha.CustomButton.Image = null;
-            this.txtConfirmaSenha.CustomButton.Location = new System.Drawing.Point(199, 1);
-            this.txtConfirmaSenha.CustomButton.Name = "";
-            this.txtConfirmaSenha.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.txtConfirmaSenha.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtConfirmaSenha.CustomButton.TabIndex = 1;
-            this.txtConfirmaSenha.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtConfirmaSenha.CustomButton.UseSelectable = true;
-            this.txtConfirmaSenha.CustomButton.Visible = false;
-            this.txtConfirmaSenha.Lines = new string[0];
-            this.txtConfirmaSenha.Location = new System.Drawing.Point(137, 222);
-            this.txtConfirmaSenha.MaxLength = 32767;
-            this.txtConfirmaSenha.Name = "txtConfirmaSenha";
-            this.txtConfirmaSenha.PasswordChar = '\0';
-            this.txtConfirmaSenha.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtConfirmaSenha.SelectedText = "";
-            this.txtConfirmaSenha.SelectionLength = 0;
-            this.txtConfirmaSenha.SelectionStart = 0;
-            this.txtConfirmaSenha.ShortcutsEnabled = true;
-            this.txtConfirmaSenha.Size = new System.Drawing.Size(221, 23);
-            this.txtConfirmaSenha.TabIndex = 7;
-            this.txtConfirmaSenha.UseSelectable = true;
-            this.txtConfirmaSenha.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtConfirmaSenha.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(110, 155);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 9;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(110, 191);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 10;
-            this.pictureBox2.TabStop = false;
+            this.pictureBox4.Image = global::SisControl.Properties.Resources.autenticacao_do_usuario;
+            this.pictureBox4.Location = new System.Drawing.Point(101, 12);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(110, 103);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 9;
+            this.pictureBox4.TabStop = false;
             // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(390, 427);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.metroLabel3);
-            this.Controls.Add(this.txtConfirmaSenha);
-            this.Controls.Add(this.btnSair);
-            this.Controls.Add(this.btnLogin);
-            this.Controls.Add(this.metroLabel2);
-            this.Controls.Add(this.metroLabel1);
-            this.Controls.Add(this.txtSenha);
-            this.Controls.Add(this.txtUsuario);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.ClientSize = new System.Drawing.Size(318, 397);
+            this.Controls.Add(this.panel4);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.GroupBorderStyle = ComponentFactory.Krypton.Toolkit.PaletteBorderStyle.FormCustom1;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmLogin";
-            this.TransparencyKey = System.Drawing.Color.DodgerBlue;
-            this.Load += new System.EventHandler(this.FrmLogin_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.StateCommon.Header.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.StateCommon.Header.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.StateCommon.Header.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.StateInactive.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.StateInactive.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.StateInactive.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.Text = " ";
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUser)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRepetePassWord)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private MetroFramework.Controls.MetroTextBox txtUsuario;
-        private MetroFramework.Controls.MetroTextBox txtSenha;
-        private MetroFramework.Controls.MetroLabel metroLabel1;
-        private MetroFramework.Controls.MetroLabel metroLabel2;
-        private MetroFramework.Controls.MetroTile btnLogin;
-        private MetroFramework.Controls.MetroTile btnSair;
-        private MetroFramework.Controls.MetroLabel metroLabel3;
-        private MetroFramework.Controls.MetroTextBox txtConfirmaSenha;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBoxUser;
+        private System.Windows.Forms.PictureBox pictureBoxEmail;
+        private System.Windows.Forms.PictureBox pictureBoxRepetePassWord;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Label lblEsqueciSenha;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnCancelar;
+        private System.Windows.Forms.TextBox txtUserName;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel4;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnLogin;
     }
 }

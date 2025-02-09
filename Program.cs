@@ -18,10 +18,19 @@ namespace SisControl
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new FrmPrincipal());
-            //Application.Run(new FrmTelaPrincipal());
-            Application.Run(new FrmPrincipal());
-            //Application.Run(new FrmTelaPrincipal());
+
+            // Criar a tela de login
+            FrmLogin frmLogin = new FrmLogin();
+            if (frmLogin.ShowDialog() == DialogResult.OK) // Se o login for bem-sucedido
+            {
+                Application.Run(new FrmPrincipal()); // Abre a tela principal
+            }
+            else
+            {
+                Application.Exit(); // Fecha o aplicativo se o login for cancelado
+            }
+
+
         }
     }
 }

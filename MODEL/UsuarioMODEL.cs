@@ -13,5 +13,7 @@ namespace SisControl.MODEL
         public string Email { get; set; }
         public string Senha { get; set; }
         public string TipoUsuario { get; set; }
+        public string Cpf { get; set; }
+        public DateTime DataNascimento { get; set; }
     }
 }

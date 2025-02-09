@@ -3,12 +3,8 @@
   "WorkspaceRootPath": "D:\\SisControl\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|d:\\siscontrol\\view\\frmpedidovendanovo .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|solutionrelative:view\\frmpedidovendanovo .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|d:\\siscontrol\\view\\frmpedidovendanovo .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|solutionrelative:view\\frmpedidovendanovo .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|d:\\siscontrol\\view\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{DBDB5375-4381-46B4-AD77-796E102800CD}|SisControl.csproj|solutionrelative:view\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,27 +38,14 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "FrmPedidoVendaNovo .cs",
-              "DocumentMoniker": "D:\\SisControl\\View\\FrmPedidoVendaNovo .cs",
-              "RelativeDocumentMoniker": "View\\FrmPedidoVendaNovo .cs",
-              "ToolTip": "D:\\SisControl\\View\\FrmPedidoVendaNovo .cs",
-              "RelativeToolTip": "View\\FrmPedidoVendaNovo .cs",
-              "ViewState": "AgIAAGcDAAAAAAAAAAAmwHMDAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-08T13:12:54.976Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "FrmPedidoVendaNovo .cs [Design]",
-              "DocumentMoniker": "D:\\SisControl\\View\\FrmPedidoVendaNovo .cs",
-              "RelativeDocumentMoniker": "View\\FrmPedidoVendaNovo .cs",
-              "ToolTip": "D:\\SisControl\\View\\FrmPedidoVendaNovo .cs [Design]",
-              "RelativeToolTip": "View\\FrmPedidoVendaNovo .cs [Design]",
+              "Title": "FrmPrincipal.cs [Design]",
+              "DocumentMoniker": "D:\\SisControl\\View\\FrmPrincipal.cs",
+              "RelativeDocumentMoniker": "View\\FrmPrincipal.cs",
+              "ToolTip": "D:\\SisControl\\View\\FrmPrincipal.cs [Design]",
+              "RelativeToolTip": "View\\FrmPrincipal.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-08T13:07:47.085Z",
+              "WhenOpened": "2025-02-08T23:20:05.546Z",
               "EditorCaption": " [Design]"
             }
           ]
