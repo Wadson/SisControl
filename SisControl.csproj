@@ -738,6 +738,11 @@
     <None Include="Resources\EmailAzul24.png" />
     <None Include="Resources\EmailBranco24.png" />
     <None Include="Resources\Logogg64.png" />
+    <None Include="Resources\redefinir-senha.png" />
+    <None Include="Resources\cpfAzul24.png" />
+    <None Include="Resources\cpfBranco24.png" />
+    <None Include="Resources\calendarioAzul24.png" />
+    <None Include="Resources\calendarioBranco24.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

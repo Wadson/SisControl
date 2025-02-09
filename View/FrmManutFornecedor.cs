@@ -50,12 +50,19 @@ namespace SisControl.View
 
                     frm.txtFornecedorID.Text = dataGridPesquisar.CurrentRow.Cells["FornecedorID"].Value.ToString();
                     frm.txtNomeFornecedor.Text = dataGridPesquisar.CurrentRow.Cells["Fornecedor"].Value.ToString();
-                    frm.txtCnpjCpf.Text = dataGridPesquisar.CurrentRow.Cells["Cnpj"].Value.ToString();
+                    frm.txtCnpjCpf.Text = dataGridPesquisar.CurrentRow.Cells["Cnpj"].Value.ToString();                    
                     frm.txtEndereco.Text = dataGridPesquisar.CurrentRow.Cells["Endereco"].Value.ToString();
                     frm.txtTelefone.Text = dataGridPesquisar.CurrentRow.Cells["Telefone"].Value.ToString();
                     frm.txtEmail.Text = dataGridPesquisar.CurrentRow.Cells["Email"].Value.ToString();
                     frm.txtNomeCidade.Text = dataGridPesquisar.CurrentRow.Cells["Cidade"].Value.ToString();
+                    string cidade = dataGridPesquisar.CurrentRow.Cells["Cidade"].Value.ToString();
                     frm.txtCidadeID.Text = dataGridPesquisar.CurrentRow.Cells["CidadeID"].Value.ToString();
+                    // Query SQL corrigida
+                    string query = "SELECT Estado.NomeEstado AS Estado FROM Estado " +
+                                   "INNER JOIN Cidade ON Estado.EstadoID = Cidade.EstadoID " +
+                                   "WHERE Cidade.NomeCidade = @NomeCidade";
+
+                    Utilitario.PesquisarPorCodigoRetornarNomeTexBox(query, "@NomeCidade", cidade, frm.txtEstado);
 
                     frm.lblStatus.Text = "ALTERAR CADASTRO";
                     frm.lblStatus.ForeColor = Color.Orange;
@@ -93,7 +100,16 @@ namespace SisControl.View
                     frm.txtTelefone.Text = dataGridPesquisar.CurrentRow.Cells["Telefone"].Value.ToString();
                     frm.txtEmail.Text = dataGridPesquisar.CurrentRow.Cells["Email"].Value.ToString();
                     frm.txtNomeCidade.Text = dataGridPesquisar.CurrentRow.Cells["Cidade"].Value.ToString();
+                    string cidade = dataGridPesquisar.CurrentRow.Cells["Cidade"].Value.ToString();
                     frm.txtCidadeID.Text = dataGridPesquisar.CurrentRow.Cells["CidadeID"].Value.ToString();
+                    string query = "SELECT Estado.NomeEstado AS Estado FROM Estado " +
+                                  "INNER JOIN Cidade ON Estado.EstadoID = Cidade.EstadoID " +
+                                  "WHERE Cidade.NomeCidade = @NomeCidade";
+
+                    Utilitario.PesquisarPorCodigoRetornarNomeTexBox(query, "@NomeCidade", cidade, frm.txtEstado);
+
+
+
                     frm.lblStatus.Text = "EXCLUSÃO DE REGISTRO!";
                     frm.lblStatus.ForeColor = Color.Red;
                     StatusOperacao = "EXCLUSÃO";

@@ -121,8 +121,20 @@
   <data name="autenticacao_do_usuario" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\autenticacao-do-usuario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="calendarioAzul24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\calendarioAzul24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="calendarioBranco24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\calendarioBranco24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Cliente64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Cliente64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cpfAzul24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cpfAzul24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cpfBranco24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cpfBranco24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="EmailAzul24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\EmailAzul24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -147,6 +159,9 @@
   </data>
   <data name="Receber64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Receber64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="redefinir_senha" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\redefinir-senha.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Relatorios64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Relatorios64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

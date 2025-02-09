@@ -28,6 +28,41 @@ namespace SisControl
             return valor.TrimStart('0');            
 
         }
+       
+        public static void PreencherCamposEndereco(string enderecoCompleto, KryptonTextBox txtEndereco, KryptonTextBox txtNumero, KryptonTextBox txtBairro)
+        {
+            try
+            {
+                // Divide o endereço por vírgula (,) e hífen (-), removendo espaços extras
+                string[] partesEndereco = Regex.Split(enderecoCompleto, @"\s*[,|-]\s*");
+
+                // Garantir que há pelo menos 3 partes (Rua, Número, Bairro)
+                if (partesEndereco.Length >= 3)
+                {
+                    txtEndereco.Text = partesEndereco[0].Trim();
+
+                    string numero = partesEndereco[1].Trim();
+                    if (numero.StartsWith("nº "))
+                    {
+                        numero = numero.Substring(3).Trim(); // Remover "nº " com segurança
+                    }
+
+                    txtNumero.Text = numero;
+                    txtBairro.Text = partesEndereco[2].Trim();
+                }
+                else
+                {
+                    MessageBox.Show("Formato de endereço inválido. Certifique-se de que o endereço contém ao menos rua, número e bairro.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao processar o endereço: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
         // Mudar a Cor dos Texbox inicio
         public static void AdicionarEfeitoFocoEmTodos(Control container)
         {
@@ -373,7 +408,35 @@ namespace SisControl
                 }
             }
         }
+        public static void PesquisarPorCodigoRetornarNomeTexBox(string query, string nomeParametro, string parametro, KryptonTextBox txtResultado)
+        {
+            using (var connection = Conexao.Conex())
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue(nomeParametro, parametro);
 
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        txtResultado.Text = reader["Estado"].ToString();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nenhum resultado encontrado.", "Informe.", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        txtResultado.Text = string.Empty; // Limpa o texbox
+                    }
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao buscar nome: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
         public static void PesquisarPorNomeMensagemSuprimida(string query, string nomeParametro, string valorParametro, KryptonDataGridView dgv)
         {
             try

@@ -73,9 +73,49 @@ namespace SisControl.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap calendarioAzul24 {
+            get {
+                object obj = ResourceManager.GetObject("calendarioAzul24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap calendarioBranco24 {
+            get {
+                object obj = ResourceManager.GetObject("calendarioBranco24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Cliente64 {
             get {
                 object obj = ResourceManager.GetObject("Cliente64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cpfAzul24 {
+            get {
+                object obj = ResourceManager.GetObject("cpfAzul24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cpfBranco24 {
+            get {
+                object obj = ResourceManager.GetObject("cpfBranco24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -156,6 +196,16 @@ namespace SisControl.Properties {
         internal static System.Drawing.Bitmap Receber64 {
             get {
                 object obj = ResourceManager.GetObject("Receber64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap redefinir_senha {
+            get {
+                object obj = ResourceManager.GetObject("redefinir_senha", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

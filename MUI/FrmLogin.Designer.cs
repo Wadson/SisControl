@@ -128,7 +128,7 @@
             this.txtUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.txtUserName.ForeColor = System.Drawing.Color.White;
             this.txtUserName.HideSelection = false;
-            this.txtUserName.Location = new System.Drawing.Point(58, 147);
+            this.txtUserName.Location = new System.Drawing.Point(58, 172);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(224, 16);
             this.txtUserName.TabIndex = 0;
@@ -143,7 +143,7 @@
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.txtEmail.ForeColor = System.Drawing.Color.White;
             this.txtEmail.HideSelection = false;
-            this.txtEmail.Location = new System.Drawing.Point(58, 188);
+            this.txtEmail.Location = new System.Drawing.Point(58, 213);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(224, 16);
             this.txtEmail.TabIndex = 1;
@@ -158,7 +158,7 @@
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.txtPassword.ForeColor = System.Drawing.Color.White;
             this.txtPassword.HideSelection = false;
-            this.txtPassword.Location = new System.Drawing.Point(58, 225);
+            this.txtPassword.Location = new System.Drawing.Point(58, 250);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(224, 16);
@@ -171,7 +171,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Location = new System.Drawing.Point(25, 246);
+            this.panel3.Location = new System.Drawing.Point(25, 271);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(255, 2);
             this.panel3.TabIndex = 15;
@@ -179,7 +179,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Location = new System.Drawing.Point(25, 208);
+            this.panel2.Location = new System.Drawing.Point(25, 233);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(255, 2);
             this.panel2.TabIndex = 16;
@@ -187,7 +187,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Location = new System.Drawing.Point(25, 169);
+            this.panel1.Location = new System.Drawing.Point(25, 194);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(255, 2);
             this.panel1.TabIndex = 17;
@@ -295,7 +295,7 @@
             // pictureBoxUser
             // 
             this.pictureBoxUser.Image = global::SisControl.Properties.Resources.Usuario24;
-            this.pictureBoxUser.Location = new System.Drawing.Point(25, 141);
+            this.pictureBoxUser.Location = new System.Drawing.Point(25, 166);
             this.pictureBoxUser.Name = "pictureBoxUser";
             this.pictureBoxUser.Size = new System.Drawing.Size(20, 25);
             this.pictureBoxUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -305,7 +305,7 @@
             // pictureBoxEmail
             // 
             this.pictureBoxEmail.Image = global::SisControl.Properties.Resources.EmailBranco24;
-            this.pictureBoxEmail.Location = new System.Drawing.Point(25, 179);
+            this.pictureBoxEmail.Location = new System.Drawing.Point(25, 204);
             this.pictureBoxEmail.Name = "pictureBoxEmail";
             this.pictureBoxEmail.Size = new System.Drawing.Size(20, 25);
             this.pictureBoxEmail.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -315,7 +315,7 @@
             // pictureBoxRepetePassWord
             // 
             this.pictureBoxRepetePassWord.Image = global::SisControl.Properties.Resources.Senhas24;
-            this.pictureBoxRepetePassWord.Location = new System.Drawing.Point(25, 217);
+            this.pictureBoxRepetePassWord.Location = new System.Drawing.Point(25, 242);
             this.pictureBoxRepetePassWord.Name = "pictureBoxRepetePassWord";
             this.pictureBoxRepetePassWord.Size = new System.Drawing.Size(20, 25);
             this.pictureBoxRepetePassWord.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -325,9 +325,9 @@
             // pictureBox4
             // 
             this.pictureBox4.Image = global::SisControl.Properties.Resources.autenticacao_do_usuario;
-            this.pictureBox4.Location = new System.Drawing.Point(101, 12);
+            this.pictureBox4.Location = new System.Drawing.Point(96, 12);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(110, 103);
+            this.pictureBox4.Size = new System.Drawing.Size(128, 129);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 9;
             this.pictureBox4.TabStop = false;

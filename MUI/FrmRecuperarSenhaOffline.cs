@@ -10,7 +10,7 @@ using System.Windows.Forms;
 namespace SisControl.MUI
 {
     public partial class FrmRecuperarSenhaOffline : SisControl.FrmModeloForm
-    {   
+    {
 
         public FrmRecuperarSenhaOffline()
         {
@@ -110,40 +110,137 @@ namespace SisControl.MUI
 
         private void btnRecuperarSenha_Click(object sender, EventArgs e)
         {
-            string cpf = txtCPF.Text.Trim();
-            DateTime dataNascimento = dtpDataNascimento.Value.Date; // Obtém apenas a data
-
-            // Busca o usuário baseado no CPF e na data de nascimento
-            Usuario usuario = ObterUsuarioPorCPFDataNascimento(cpf, dataNascimento);
-            if (usuario != null)
+            try
             {
-                // Gerar nova senha temporária
-                string novaSenha = GerarNovaSenha();
-
-                // Atualizar senha no banco (armazenando o hash da nova senha)
-                if (AtualizarSenhaUsuario(usuario.UsuarioID, novaSenha))
+                string cpf = txtCpf.Text.Trim();
+                DateTime dataNascimento;
+                if (!DateTime.TryParse(txtDataNascimento.Text, out dataNascimento))
                 {
-                    lblNovaSenha.Visible = true;
-                    lblNovaSenhaRotulo.Visible = true;
-                    lblNovaSenha.Text = novaSenha;
-                    // Exibir a nova senha diretamente no formulário
-                    MessageBox.Show("Sua nova senha é: " + novaSenha + "\nRecomendamos que a altere após o primeiro acesso.",
-                                    "Recuperação de Senha", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    
+                    MessageBox.Show("Data de Nascimento inválida.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
-                    this.Close();
+                // Busca o usuário baseado no CPF e na data de nascimento
+                Usuario usuario = ObterUsuarioPorCPFDataNascimento(cpf, dataNascimento);
+                if (usuario != null)
+                {
+                    // Gerar nova senha temporária
+                    string novaSenha = GerarNovaSenha();
+
+                    // Atualizar senha no banco (armazenando o hash da nova senha)
+                    if (AtualizarSenhaUsuario(usuario.UsuarioID, novaSenha))
+                    {
+                        lblNovaSenha.Visible = true;
+                        lblNovaSenhaRotulo.Visible = true;
+                        lblNovaSenha.Text = novaSenha;
+                        lblCopiarNovaSenha.Visible = true;
+                        // Exibir a nova senha diretamente no formulário
+                        MessageBox.Show("Sua nova senha é: " + novaSenha + "\nRecomendamos que a altere após o primeiro acesso.",
+                                        "Recuperação de Senha", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Erro ao atualizar a senha no sistema.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Erro ao atualizar a senha no sistema.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("CPF ou Data de Nascimento não encontrados.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else
+            catch (FormatException ex)
             {
-                MessageBox.Show("CPF ou Data de Nascimento não encontrados.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro no formato da data de nascimento: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro inesperado: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+       
+
+
+        private void PersonalizaCampos(MaskedTextBox activeTextBox, PictureBox activePictureBox, Panel activePanel)
+        {
+            // Configurar os demais campos de texto, painéis e imagens como inativos antes de personalizar o ativo
+            ResetarCampos();
+
+            // Configurar o campo de texto ativo, painel ativo e imagem ativa
+            activeTextBox.Clear();
+            activePanel.BackColor = Color.FromArgb(8, 142, 254);
+            activeTextBox.ForeColor = Color.FromArgb(78, 184, 206);
+
+            // Definir a imagem correta com base no TextBox ativo
+            if (activeTextBox == txtCpf)
+            {
+                activePictureBox.Image = Properties.Resources.cpfAzul24;
+            }
+            else if (activeTextBox == txtDataNascimento)
+            {
+                activePictureBox.Image = Properties.Resources.calendarioAzul24;
+            }           
+        }
+
+        private void ResetarCampos()
+        {
+            // Resetar todos os campos de texto, painéis e imagens para inativos
+            pictureBoxCpf.Image = Properties.Resources.cpfBranco24;
+            panel1.BackColor = Color.White;
+            txtCpf.ForeColor = Color.White;
+
+            pictureBoxDataNasc.Image = Properties.Resources.calendarioBranco24;
+            panel2.BackColor = Color.White;
+            txtDataNascimento.ForeColor = Color.White;
+        }
+
+        private void txtCpf_Enter(object sender, EventArgs e)
+        {
+            PersonalizaCampos(txtCpf, pictureBoxCpf, panel1);
+        }
+
+        private void txtDataNascimento_Enter(object sender, EventArgs e)
+        {
+            PersonalizaCampos(txtDataNascimento, pictureBoxDataNasc, panel2);
+        }
+
+        private void txtCpf_Click(object sender, EventArgs e)
+        {
+            PersonalizaCampos(txtCpf, pictureBoxCpf, panel1);
+        }
+
+        private void txtDataNascimento_Click(object sender, EventArgs e)
+        {
+            PersonalizaCampos(txtDataNascimento, pictureBoxDataNasc, panel2);
+        }
+
+        private void txtDataNascimento_Leave(object sender, EventArgs e)
+        {
+            ResetarCampos();
+        }
+        private void CopiarTextoDoLabel()
+        {
+            if(string.IsNullOrEmpty(lblNovaSenha.Text))
+            {
+                MessageBox.Show("Não há texto para copiar!", "Copiar Texto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            string textoDoLabel = lblNovaSenha.Text;
+            Clipboard.SetText(textoDoLabel);
+            MessageBox.Show("Texto copiado para a área de transferência!", "Copiar Texto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Close();
+        }
+
+        private void lblCopiarNovaSenha_Click(object sender, EventArgs e)
+        {
+            CopiarTextoDoLabel();
+        }
     }
+
+
+
+
+
 
     /// <summary>
     /// Classe para representar os dados mínimos de um usuário para esse processo.
@@ -153,4 +250,9 @@ namespace SisControl.MUI
         public int UsuarioID { get; set; }
         public string Email { get; set; }
     }
+
 }
+
+   
+    
+
